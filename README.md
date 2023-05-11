@@ -2,23 +2,23 @@ EN:
 
 **Project name:** Calculator.
 
-Programming language: Java.
+**Programming language:** Java.
 
-What was used in the development of the project: Java Core, JavaFX, "Command" pattern.
+**What was used in the development of the project:** Java Core, JavaFX, "Command" pattern.
 
 UA:
 
-Назва проекту: Калькулятор.
+**Назва проекту: **Калькулятор.
 
-Мова програмування: Java.
+**Мова програмування:** Java.
 
-Що використовувалося при розробці проекту: Java Core, JavaFX, паттерн "Команда".
+**Що використовувалося при розробці проекту:** Java Core, JavaFX, паттерн "Команда".
 
 RU:
 
-Название проекта: Калькулятор.
+**Название проекта:** Калькулятор.
 
-Язык программирования: Java.
+**Язык программирования:** Java.
 
-Что использовалось при разработке проекта: Java Core, JavaFX, паттерн "Команда".
+**Что использовалось при разработке проекта:** Java Core, JavaFX, паттерн "Команда".
 
