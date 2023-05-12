@@ -1,4 +1,4 @@
-package com.app.helloworld;
+package com.app.calculator;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

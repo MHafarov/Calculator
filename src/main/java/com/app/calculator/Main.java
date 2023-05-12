@@ -1,10 +1,10 @@
-package com.app.helloworld;
+package com.app.calculator;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class Main
 {
     public static void main( String[] args )
     {
