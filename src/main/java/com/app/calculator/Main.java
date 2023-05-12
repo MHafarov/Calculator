@@ -1,14 +1,10 @@
 package com.app.calculator;
 
-/**
- * Hello world!
- *
- */
-public class Main
-{
-    public static void main( String[] args )
-    {
+import com.app.calculator.application.Calculator;
+import javafx.application.Application;
 
-        System.out.println( "Hello World!" );
+public class Main {
+    public static void main(String[] args) {
+        Application.launch(Calculator.class, args);
     }
 }
