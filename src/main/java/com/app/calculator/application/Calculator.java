@@ -12,20 +12,18 @@ import java.util.List;
 
 public class Calculator extends Application {
     @Override
-    public void start(Stage hiddenStage) throws Exception {
+    public void start(Stage hiddenStage) {
 
-        List<Window> windows = new ArrayList<Window>();
+        List<Window> windows = new ArrayList<>();
 
-        ArithmeticWindow aW = new ArithmeticWindow();
-        TrigonometricWindow tW = new TrigonometricWindow();
-        ConvertionWindow cW = new ConvertionWindow();
+        Window arithmeticWindow = new ArithmeticWindow(new Stage());
+        Window trigonometricWindow = new TrigonometricWindow(new Stage());
+        Window convertionWindow = new ConvertionWindow(new Stage());
 
-        windows.add(aW);
-        windows.add(tW);
-        windows.add(cW);
+        windows.add(arithmeticWindow);
+        windows.add(trigonometricWindow);
+        windows.add(convertionWindow);
 
-        for (int i=0; i < windows.size(); i++ ) {
-            windows.get(i).showWindow();
-        }
+        windows.stream().forEach(window -> new Thread(window).start());
     }
 }

@@ -1,36 +1,27 @@
 package com.app.calculator.abstractclasses;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public abstract class Window extends Application {
-    private Stage stage;
+public abstract class Window implements Runnable {
+    protected final Stage stage;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        // Сохраняем ссылку на основной Stage
-        stage = primaryStage;
-
-        // Создаем корневой узел с пустым содержимым
-        StackPane root = new StackPane();
-
-        // Создаем сцену
-        Scene scene = new Scene(root, 400, 300);
-
-        // Устанавливаем сцену на окно
-        stage.setScene(scene);
+    public Window (Stage stage) {
+        this.stage = stage;
     }
+    @Override
+    public void run() {
+        Platform.runLater(() -> {
 
+            stage.setTitle("Title");
+            StackPane root = new StackPane();
+            Scene scene = new Scene(root, 300, 250);
+            stage.setScene(scene);
 
-    public void showWindow(){
-        // Запускаем окно в отдельном потоке
-        Thread thread = new Thread(() -> {
-            // Показываем окно
             stage.show();
         });
-        thread.start();
     }
-
 }
