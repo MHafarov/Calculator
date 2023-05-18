@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Set padding for ArithmeticWindow">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
-    </list>
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Created Buttons of ArithmeticWindow" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +105,7 @@
       <workItem from="1684173515653" duration="2364000" />
       <workItem from="1684260915115" duration="842000" />
       <workItem from="1684261966751" duration="1750000" />
-      <workItem from="1684343513331" duration="2349000" />
+      <workItem from="1684343513331" duration="2762000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -152,11 +149,29 @@
       <option name="project" value="LOCAL" />
       <updated>1684263873249</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Created Buttons of ArithmeticWindow">
+      <created>1684351176251</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684351176251</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Firsts steps." />
@@ -164,6 +179,7 @@
     <MESSAGE value="Create GUI classes" />
     <MESSAGE value="Now each GUI window is created on its own thread" />
     <MESSAGE value="Set padding for ArithmeticWindow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set padding for ArithmeticWindow" />
+    <MESSAGE value="Created Buttons of ArithmeticWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Buttons of ArithmeticWindow" />
   </component>
 </project>
