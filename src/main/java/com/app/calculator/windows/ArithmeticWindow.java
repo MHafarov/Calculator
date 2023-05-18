@@ -3,10 +3,13 @@ package com.app.calculator.windows;
 import com.app.calculator.abstractclasses.Window;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.geometry.Pos;
 
 import java.awt.*;
 
@@ -26,6 +29,10 @@ public class ArithmeticWindow extends Window{
 
             Scene scene = new Scene(root, 600, 600);
             stage.setScene(scene);
+
+            TextField displayField = new TextField();
+            displayField.requestFocus();
+            displayField.setText("0");
 
             Button btnMC = new Button("MC");
             Button btnMR = new Button("MR");
