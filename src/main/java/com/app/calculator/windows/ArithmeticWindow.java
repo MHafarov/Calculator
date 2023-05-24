@@ -25,7 +25,7 @@ public class ArithmeticWindow extends Window{
 
             MenuBar menuBar = new MenuBar();
 
-            Menu mType = new Menu("Type");
+            Menu mType = new Menu("Calculator");
             Menu mTheme = new Menu("Theme");
             Menu mLanguage = new Menu("Language");
             Menu mSound = new Menu("Sound");
@@ -35,41 +35,53 @@ public class ArithmeticWindow extends Window{
 
 
 
-            // Create MenuItems
-            RadioMenuItem newItem = new RadioMenuItem("New");
+
+            CheckMenuItem cMITrigonometricWindow = new CheckMenuItem("Trigonometric");
+            CheckMenuItem cMIConvertionWindow = new CheckMenuItem("Convertion");
 
            // Image newImage = MyImageUtils.getImage("/org/o7planning/javafx/icon/new-16.png");
            // newItem.setGraphic(new ImageView(newImage));
-
-            MenuItem openFileItem = new MenuItem("Open File");
-            // SeparatorMenuItem.
             SeparatorMenuItem separator= new SeparatorMenuItem();
             MenuItem exitItem = new MenuItem("Exit");
 
-            MenuItem copyItem = new MenuItem("Copy");
-            MenuItem pasteItem = new MenuItem("Paste");
+            RadioMenuItem rMIThemeClassic = new RadioMenuItem("Classic");
+            RadioMenuItem rMIThemeDark = new RadioMenuItem("Dark");
+            RadioMenuItem rMIThemeAnimated = new RadioMenuItem("Animated");
+
+            ToggleGroup groupTheme = new ToggleGroup();
+            rMIThemeClassic.setToggleGroup(groupTheme);
+            rMIThemeDark.setToggleGroup(groupTheme);
+            rMIThemeAnimated.setToggleGroup(groupTheme);
 
             // CheckMenuItem
-            CheckMenuItem buildItem = new CheckMenuItem("Build Automatically");
+
+            RadioMenuItem rMILanguageEnglish = new RadioMenuItem("English");
+            RadioMenuItem rMILanguageUkranian = new RadioMenuItem("Українська");
+            RadioMenuItem rMILanguageRussian = new RadioMenuItem("Русский");
+
+            ToggleGroup groupLanguage = new ToggleGroup();
+            rMILanguageEnglish.setToggleGroup(groupLanguage);
+            rMILanguageUkranian.setToggleGroup(groupLanguage);
+            rMILanguageRussian.setToggleGroup(groupLanguage);
+
             //Image buildImage = MyImageUtils.getImage("/org/o7planning/javafx/icon/build-16.png");
             //buildItem.setGraphic(new ImageView(buildImage));
-            buildItem.setSelected(true);
+            rMILanguageEnglish.setSelected(true);
 
             // RadioMenuItem
-            RadioMenuItem updateItem1 = new RadioMenuItem("Auto Update");
-            RadioMenuItem updateItem2 = new RadioMenuItem("Ask for Update");
+            RadioMenuItem rMISoundOff = new RadioMenuItem("Sound off");
+            RadioMenuItem rMISoundOn = new RadioMenuItem("Sound on");
 
             ToggleGroup group = new ToggleGroup();
-            updateItem1.setToggleGroup(group);
-            updateItem2.setToggleGroup(group);
-            updateItem1.setSelected(true);
+            rMISoundOff.setToggleGroup(group);
+            rMISoundOn.setToggleGroup(group);
+            rMISoundOff.setSelected(true);
 
             // Add menuItems to the Menus
-            mType.getItems().addAll(newItem, openFileItem,separator, exitItem);
-            mTheme.getItems().addAll(copyItem, pasteItem);
-            mLanguage.getItems().add(buildItem);
-            mSound.getItems().addAll(updateItem1,updateItem2);
-
+            mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,separator, exitItem);
+            mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
+            mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
+            mSound.getItems().addAll(rMISoundOff,rMISoundOn);
 
             // Add Menus to the MenuBar
             menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
