@@ -16,12 +16,7 @@ public abstract class Window implements Runnable {
     public void run() {
         Platform.runLater(() -> {
 
-            stage.setTitle("Title");
-            StackPane root = new StackPane();
-            Scene scene = new Scene(root, 300, 250);
-            stage.setScene(scene);
 
-            stage.show();
         });
     }
 }

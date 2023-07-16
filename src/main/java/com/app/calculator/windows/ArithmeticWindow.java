@@ -3,11 +3,13 @@ package com.app.calculator.windows;
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
+import com.app.calculator.constants.Size;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -15,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.layout.Priority;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ArithmeticWindow extends Window{
     public ArithmeticWindow (Stage stage) {
@@ -26,91 +32,84 @@ public class ArithmeticWindow extends Window{
 
             this.stage.setTitle("Calculator");
             GridPane root = new GridPane();
-            GridPane.setHgrow(root, Priority.ALWAYS);
-            GridPane.setVgrow(root, Priority.ALWAYS);
 
-            root.setPadding(new Insets(10,10,10,10));
-            root.setHgap(5);
-            root.setVgap(5);
+            root.setPadding(new Insets(Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber(),
+                                       Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber()));
+            root.setHgap(Size.FIVE_PIXELS.getNumber());
+            root.setVgap(Size.FIVE_PIXELS.getNumber());
+
+            Column[] columns = Column.values();
+            Row[] rows = Row.values();
+
+            List<GridPane> listGridPanes = new ArrayList<>();
+            List<Label> listElementsThirdRowTop = new ArrayList<>();
+            List<Control> listElementsThirdRowDown = new ArrayList<>();
+            List<Control> listElementsFourthRow = new ArrayList<>();
+            List<Control> listElementsFifthRow = new ArrayList<>();
+            List<Control> listElementsSixthRow = new ArrayList<>();
+            List<Control> listElementsSeventhRow  = new ArrayList<>();
+            List<Control> listElementsEighthRow  = new ArrayList<>();
+            List<Control> listElementsNinthRow = new ArrayList<>();
+            List<Control> listElementsTenthRow = new ArrayList<>();
+
 
             GridPane subPanelFirstRow = new GridPane();
-            addSubPanelToRoot(subPanelFirstRow, root, Column.FIRST, Row.FIRST);
-
             GridPane subPanelSecondRow = new GridPane();
-            addSubPanelToRoot(subPanelSecondRow, root, Column.FIRST, Row.SECOND);
-
             GridPane subPanelThirdRow = new GridPane();
-            addSubPanelToRoot(subPanelThirdRow, root, Column.FIRST, Row.THIRD);
-
             GridPane subPanelFourthRow = new GridPane();
-            addSubPanelToRoot(subPanelFourthRow, root, Column.FIRST, Row.FOURTH);
-
             GridPane subPanelFifthRow = new GridPane();
-            addSubPanelToRoot(subPanelFifthRow, root, Column.FIRST, Row.FIFTH);
-
             GridPane subPanelSixthRow = new GridPane();
-            addSubPanelToRoot(subPanelSixthRow, root, Column.FIRST, Row.SIXTH);
-
             GridPane subPanelSeventhRow = new GridPane();
-            addSubPanelToRoot(subPanelSeventhRow, root, Column.FIRST, Row.SEVENTH);
-
             GridPane subPanelEighthRow = new GridPane();
-            addSubPanelToRoot(subPanelEighthRow, root, Column.FIRST, Row.EIGHTH);
-
             GridPane subPanelNinthRow = new GridPane();
-            addSubPanelToRoot(subPanelNinthRow, root, Column.FIRST, Row.NINTH);
-
             GridPane subPanelTenthRow = new GridPane();
-            addSubPanelToRoot(subPanelTenthRow, root, Column.FIRST, Row.TENTH);
+
+            listGridPanes.add(subPanelFirstRow);
+            listGridPanes.add(subPanelSecondRow);
+            listGridPanes.add(subPanelThirdRow);
+            listGridPanes.add(subPanelFourthRow);
+            listGridPanes.add(subPanelFifthRow);
+            listGridPanes.add(subPanelSixthRow);
+            listGridPanes.add(subPanelSeventhRow);
+            listGridPanes.add(subPanelEighthRow);
+            listGridPanes.add(subPanelNinthRow);
+            listGridPanes.add(subPanelTenthRow);
+
+            for (int i = 0; i < listGridPanes.size(); i++) {
+                addSubPanelToRoot(listGridPanes.get(i), root, Column.FIRST, rows[i]);
+            }
 
             MenuBar menuBar = new MenuBar();
-            menuBar.setMaxWidth(Double.MAX_VALUE);
-            menuBar.setMaxHeight(Double.MAX_VALUE);
-            GridPane.setHgrow(menuBar, Priority.ALWAYS);
-            GridPane.setVgrow(menuBar, Priority.ALWAYS);
+            stretchMenuBar(menuBar);
 
             Menu mType = new Menu("Calculator");
             Menu mTheme = new Menu("Theme");
             Menu mLanguage = new Menu("Language");
             Menu mSound = new Menu("Sound");
 
-            Button btnUndo = new Button();
-            Image iUndo = new Image("/images/undo.png");
-            ImageView iVUndo = new ImageView(iUndo);
-            btnUndo.setGraphic(iVUndo);
-            btnUndo.setFocusTraversable(false);
-            btnUndo.setMaxWidth(Double.MAX_VALUE);
-            btnUndo.setMaxHeight(Double.MAX_VALUE);
-            GridPane.setHgrow(btnUndo, Priority.ALWAYS);
-            GridPane.setVgrow(btnUndo, Priority.ALWAYS);
+            menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
+            subPanelFirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
+            Button btnUndo = new Button();
+            stretchMenuButton(btnUndo);
+            addImageToButton(btnUndo, "/images/undo.png");
+            subPanelFirstRow.add(btnUndo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
             Button btnRedo = new Button();
-            Image iRedo = new Image("/images/redo.png");
-            ImageView iVRedo = new ImageView(iRedo);
-            btnRedo.setGraphic(iVRedo);
-            btnRedo.setFocusTraversable(false);
-            btnRedo.setMaxWidth(Double.MAX_VALUE);
-            btnRedo.setMaxHeight(Double.MAX_VALUE);
-            GridPane.setHgrow(btnRedo, Priority.ALWAYS);
-            GridPane.setVgrow(btnRedo, Priority.ALWAYS);
-
-
+            stretchMenuButton(btnRedo);
+            addImageToButton(btnRedo, "/images/redo.png");
+            subPanelFirstRow.add(btnRedo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
             CheckMenuItem cMITrigonometricWindow = new CheckMenuItem("Trigonometric");
+            addImageToCheckMenuItem(cMITrigonometricWindow, "/images/function.png");
+
             CheckMenuItem cMIConvertionWindow = new CheckMenuItem("Convertion");
-            Image imageCMITrigonometricWindow = new Image("/images/function.png");
-            Image imageCMIConvertionWindow = new Image("/images/scales.png");
-            ImageView iVCMITrigonometricWindow = new ImageView(imageCMITrigonometricWindow);
-            ImageView iVCMIConvertionWindow = new ImageView(imageCMIConvertionWindow);
-            iVCMITrigonometricWindow.setFitWidth(20);
-            iVCMITrigonometricWindow.setFitHeight(20);
-            iVCMIConvertionWindow.setFitWidth(20);
-            iVCMIConvertionWindow.setFitHeight(20);
-            cMITrigonometricWindow.setGraphic(iVCMITrigonometricWindow);
-            cMIConvertionWindow.setGraphic(iVCMIConvertionWindow);
+            addImageToCheckMenuItem(cMIConvertionWindow, "/images/scales.png");
+
             SeparatorMenuItem sMISeparatorExit= new SeparatorMenuItem();
             MenuItem mIExit = new MenuItem("Exit");
+
+            mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
 
             RadioMenuItem rMIThemeClassic = new RadioMenuItem("Classic");
             RadioMenuItem rMIThemeDark = new RadioMenuItem("Dark");
@@ -119,6 +118,7 @@ public class ArithmeticWindow extends Window{
             rMIThemeClassic.setToggleGroup(groupTheme);
             rMIThemeDark.setToggleGroup(groupTheme);
             rMIThemeAnimated.setToggleGroup(groupTheme);
+            mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
 
             RadioMenuItem rMILanguageEnglish = new RadioMenuItem("English");
             RadioMenuItem rMILanguageUkranian = new RadioMenuItem("Українська");
@@ -128,7 +128,7 @@ public class ArithmeticWindow extends Window{
             rMILanguageUkranian.setToggleGroup(groupLanguage);
             rMILanguageRussian.setToggleGroup(groupLanguage);
             rMILanguageEnglish.setSelected(true);
-
+            mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
 
             RadioMenuItem rMISoundOff = new RadioMenuItem("Sound off");
             RadioMenuItem rMISoundOn = new RadioMenuItem("Sound on");
@@ -136,110 +136,96 @@ public class ArithmeticWindow extends Window{
             rMISoundOff.setToggleGroup(group);
             rMISoundOn.setToggleGroup(group);
             rMISoundOff.setSelected(true);
-
-            mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
-            mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
-            mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
             mSound.getItems().addAll(rMISoundOff,rMISoundOn);
-            menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
-            subPanelFirstRow.add(menuBar,0,0);
-            subPanelFirstRow.add(btnUndo,1,0);
-            subPanelFirstRow.add(btnRedo,2,0);
-
 
             TextField displayField = new TextField();
             displayField.setStyle("-fx-alignment: center-right;");
             displayField.setText("0");
             GridPane.setHgrow(displayField, Priority.ALWAYS);
             GridPane.setVgrow(displayField, Priority.ALWAYS);
-
-            subPanelSecondRow.add(displayField, 0,0);
-
+            subPanelSecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
             Label emptyLabel1 = new Label(" ");
-            addLabelToPanel(emptyLabel1, subPanelThirdRow, Column.FIRST, Row.FIRST);
-
-
-            subPanelThirdRow.setHalignment(emptyLabel1, HPos.CENTER);
-            subPanelThirdRow.setValignment(emptyLabel1, VPos.CENTER);
-
             Label lUp = new Label("⮤");
-            addLabelToPanel(lUp, subPanelThirdRow, Column.SECOND, Row.FIRST);
-
             Label lFiveDivFour = new Label("5/4");
-            addLabelToPanel(lFiveDivFour, subPanelThirdRow, Column.THIRD, Row.FIRST);
-
             Label lDown  = new Label("⮧");
-            addLabelToPanel(lDown, subPanelThirdRow, Column.FOURTH, Row.FIRST);
-
             Label emptyLabel6 = new Label(" ");
-            addLabelToPanel(emptyLabel6, subPanelThirdRow, Column.FIFTH, Row.FIRST);
-
             Label emptyLabel7 = new Label(" ");
-            addLabelToPanel(emptyLabel7, subPanelThirdRow, Column.SIXTH, Row.FIRST);
-
             Label lA  = new Label("A");
-            addLabelToPanel(lA, subPanelThirdRow, Column.SEVENTH, Row.FIRST);
-
             Label lZero  = new Label("0");
-            addLabelToPanel(lZero, subPanelThirdRow, Column.EIGHTH, Row.FIRST);
-
             Label lTwo  = new Label("2");
-            addLabelToPanel(lTwo, subPanelThirdRow, Column.NINTH, Row.FIRST);
-
             Label lThree  = new Label("3");
-            addLabelToPanel(lThree, subPanelThirdRow, Column.TENTH, Row.FIRST);
-
             Label lFour  = new Label("4");
-            addLabelToPanel(lFour, subPanelThirdRow, Column.ELEVENTH, Row.FIRST);
-
             Label lF   = new Label("F");
-            addLabelToPanel(lF, subPanelThirdRow, Column.TWELFTH, Row.FIRST);
-
             Label emptyLabel8 = new Label(" ");
-            addLabelToPanel(emptyLabel8, subPanelThirdRow, Column.THIRTEENTH, Row.FIRST);
+
+            listElementsThirdRowTop.add(emptyLabel1);
+            listElementsThirdRowTop.add(lUp);
+            listElementsThirdRowTop.add(lFiveDivFour);
+            listElementsThirdRowTop.add(lDown);
+            listElementsThirdRowTop.add(emptyLabel6);
+            listElementsThirdRowTop.add(emptyLabel7);
+            listElementsThirdRowTop.add(lA);
+            listElementsThirdRowTop.add(lZero);
+            listElementsThirdRowTop.add(lTwo);
+            listElementsThirdRowTop.add(lThree);
+            listElementsThirdRowTop.add(lFour);
+            listElementsThirdRowTop.add(lF);
+            listElementsThirdRowTop.add(emptyLabel8);
+
+            for (int i = 0; i < listElementsThirdRowTop.size(); i++) {
+                addElementToPanel(listElementsThirdRowTop.get(i), subPanelThirdRow, columns[i], Row.FIRST);
+                listElementsThirdRowTop.get(i).setAlignment(Pos.CENTER);
+            }
+
+            Label emptyLabel9 = new Label(" ");
+            RadioButton rBtnUp = new RadioButton();
+            RadioButton rBtnFiveDivFour = new RadioButton();
+            RadioButton rBtntDown = new RadioButton();
+            Label emptyLabel14 = new Label(" ");
+            Label emptyLabel15 = new Label(" ");
+            RadioButton rBtnA = new RadioButton();
+            RadioButton rBtnZero = new RadioButton();
+            RadioButton rBtnTwo = new RadioButton();
+            RadioButton rBtnThree = new RadioButton();
+            RadioButton rBtnFour = new RadioButton();
+            RadioButton rBtnF = new RadioButton();
+            Label emptyLabel16 = new Label(" ");
+
+            emptyLabel9.setAlignment(Pos.CENTER);
+            rBtnUp.setAlignment(Pos.CENTER);
+            rBtnFiveDivFour.setAlignment(Pos.CENTER);
+            rBtntDown.setAlignment(Pos.CENTER);
+            emptyLabel14.setAlignment(Pos.CENTER);
+            emptyLabel15.setAlignment(Pos.CENTER);
+            rBtnA.setAlignment(Pos.CENTER);
+            rBtnZero.setAlignment(Pos.CENTER);
+            rBtnTwo.setAlignment(Pos.CENTER);
+            rBtnThree.setAlignment(Pos.CENTER);
+            rBtnFour.setAlignment(Pos.CENTER);
+            rBtnF.setAlignment(Pos.CENTER);
+            emptyLabel16.setAlignment(Pos.CENTER);
+
+            listElementsThirdRowDown.add(emptyLabel9);
+            listElementsThirdRowDown.add(rBtnUp);
+            listElementsThirdRowDown.add(rBtnFiveDivFour);
+            listElementsThirdRowDown.add(rBtntDown);
+            listElementsThirdRowDown.add(emptyLabel14);
+            listElementsThirdRowDown.add(emptyLabel15);
+            listElementsThirdRowDown.add(rBtnA);
+            listElementsThirdRowDown.add(rBtnZero);
+            listElementsThirdRowDown.add(rBtnTwo);
+            listElementsThirdRowDown.add(rBtnThree);
+            listElementsThirdRowDown.add(rBtnFour);
+            listElementsThirdRowDown.add(rBtnF);
+            listElementsThirdRowDown.add(emptyLabel16);
+
+            for (int i = 0; i < listElementsThirdRowDown.size(); i++) {
+                addElementToPanel(listElementsThirdRowDown.get(i), subPanelThirdRow, columns[i], Row.SECOND);
+            }
 
             ToggleGroup toggleGroupLeft = new ToggleGroup();
             ToggleGroup toggleGroupRight = new ToggleGroup();
-
-            Label emptyLabel9 = new Label(" ");
-            addLabelToPanel(emptyLabel9, subPanelThirdRow, Column.FIRST, Row.SECOND);
-
-            RadioButton rBtnUp = new RadioButton();
-            addRadioButtonToPanel(rBtnUp , subPanelThirdRow, Column.SECOND, Row.SECOND);
-
-            RadioButton rBtnFiveDivFour = new RadioButton();
-            addRadioButtonToPanel(rBtnFiveDivFour, subPanelThirdRow, Column.THIRD, Row.SECOND);
-
-            RadioButton rBtntDown = new RadioButton();
-            addRadioButtonToPanel(rBtntDown, subPanelThirdRow, Column.FOURTH, Row.SECOND);
-
-            Label emptyLabel14 = new Label(" ");
-            addLabelToPanel(emptyLabel14, subPanelThirdRow, Column.FIFTH, Row.SECOND);
-
-            Label emptyLabel15 = new Label(" ");
-            addLabelToPanel(emptyLabel15, subPanelThirdRow, Column.SIXTH, Row.SECOND);
-
-            RadioButton rBtnA = new RadioButton();
-            addRadioButtonToPanel(rBtnA, subPanelThirdRow, Column.SEVENTH, Row.SECOND);
-
-            RadioButton rBtnZero = new RadioButton();
-            addRadioButtonToPanel(rBtnZero, subPanelThirdRow, Column.EIGHTH, Row.SECOND);
-
-            RadioButton rBtnTwo = new RadioButton();
-            addRadioButtonToPanel(rBtnTwo, subPanelThirdRow, Column.NINTH, Row.SECOND);
-
-            RadioButton rBtnThree = new RadioButton();
-            addRadioButtonToPanel(rBtnThree, subPanelThirdRow, Column.TENTH, Row.SECOND);
-
-            RadioButton rBtnFour = new RadioButton();
-            addRadioButtonToPanel(rBtnFour, subPanelThirdRow, Column.ELEVENTH, Row.SECOND);
-
-            RadioButton rBtnF = new RadioButton();
-            addRadioButtonToPanel(rBtnF, subPanelThirdRow, Column.TWELFTH, Row.SECOND);
-
-            Label emptyLabel16 = new Label(" ");
-            addLabelToPanel(emptyLabel16, subPanelThirdRow, Column.THIRTEENTH, Row.SECOND);
 
             rBtnUp.setToggleGroup(toggleGroupLeft);
             rBtnFiveDivFour.setToggleGroup(toggleGroupLeft);
@@ -254,107 +240,132 @@ public class ArithmeticWindow extends Window{
             rBtnF.setToggleGroup(toggleGroupRight);
             rBtnA.setSelected(true);
 
-            Label mathematicalRounding = new Label("Mathematical rounding");
-            mathematicalRounding.setStyle("-fx-background-color: red;");
-            mathematicalRounding.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
-            subPanelThirdRow.add(mathematicalRounding,0,2, 5, 2);
-            mathematicalRounding.setAlignment(Pos.CENTER);
-            GridPane.setHgrow(mathematicalRounding, Priority.ALWAYS);
-            GridPane.setVgrow(mathematicalRounding, Priority.ALWAYS);
-            subPanelThirdRow.setHalignment(mathematicalRounding, HPos.CENTER);
-            subPanelThirdRow.setValignment(mathematicalRounding, VPos.CENTER);
+            Label lMathematicalRounding = new Label("Mathematical rounding");
 
-            Label noRounding = new Label("No rounding");
-            noRounding.setStyle("-fx-background-color: red;");
-            noRounding.setStyle("-fx-border-color: black; -fx-border-width: 1px;");
-            subPanelThirdRow.add(noRounding,5,2,14,2);
-            noRounding.setAlignment(Pos.CENTER);
-            GridPane.setHgrow(noRounding, Priority.ALWAYS);
-            GridPane.setVgrow(noRounding, Priority.ALWAYS);
-            subPanelThirdRow.setHalignment(noRounding, HPos.CENTER);
-            subPanelThirdRow.setValignment(noRounding, VPos.CENTER);
+            subPanelThirdRow.add(lMathematicalRounding,0,2, 5, 2);
+            lMathematicalRounding.setAlignment(Pos.CENTER);
+            GridPane.setHgrow(lMathematicalRounding, Priority.ALWAYS);
+            GridPane.setVgrow(lMathematicalRounding, Priority.ALWAYS);
+            subPanelThirdRow.setHalignment(lMathematicalRounding, HPos.CENTER);
+            subPanelThirdRow.setValignment(lMathematicalRounding, VPos.CENTER);
+
+            Label lNoRounding = new Label("No rounding");
+
+            subPanelThirdRow.add(lNoRounding,5,2,14,2);
+            lNoRounding.setAlignment(Pos.CENTER);
+            GridPane.setHgrow(lNoRounding, Priority.ALWAYS);
+            GridPane.setVgrow(lNoRounding, Priority.ALWAYS);
+            subPanelThirdRow.setHalignment(lNoRounding, HPos.CENTER);
+            subPanelThirdRow.setValignment(lNoRounding, VPos.CENTER);
+
 
             Button btnMC = new Button("MC");
-            addButtonToPanel(btnMC, subPanelFourthRow, Column.FIRST, Row.FIRST);
             Button btnMR = new Button("MR");
-            addButtonToPanel(btnMR, subPanelFourthRow, Column.SECOND, Row.FIRST);
             Button btnMPlus = new Button("M+");
-            addButtonToPanel(btnMPlus, subPanelFourthRow, Column.THIRD, Row.FIRST);
             Button btnMMinus = new Button("M-");
-            addButtonToPanel(btnMMinus, subPanelFourthRow, Column.FOURTH, Row.FIRST);
             Button btnMS = new Button("MS");
-            addButtonToPanel(btnMS, subPanelFourthRow, Column.FIFTH, Row.FIRST);
             Button btnM = new Button("M");
-            addButtonToPanel(btnM, subPanelFourthRow, Column.SIXTH, Row.FIRST);
 
-            ColumnConstraints cCMFirst = new ColumnConstraints();
-            cCMFirst.setPercentWidth(16.67);
-            ColumnConstraints cCMSecond = new ColumnConstraints();
-            cCMSecond.setPercentWidth(16.67);
-            ColumnConstraints cCMThird = new ColumnConstraints();
-            cCMThird.setPercentWidth(16.67);
-            ColumnConstraints cCMFourth = new ColumnConstraints();
-            cCMFourth.setPercentWidth(16.67);
-            ColumnConstraints cCMFives = new ColumnConstraints();
-            cCMFives.setPercentWidth(16.67);
-            ColumnConstraints cCMSixth = new ColumnConstraints();
-            cCMSixth.setPercentWidth(16.67);
-            subPanelFourthRow.getColumnConstraints().addAll(cCMFirst, cCMSecond, cCMThird, cCMFourth, cCMFives, cCMSixth);
+            listElementsFourthRow.add(btnMC);
+            listElementsFourthRow.add(btnMR);
+            listElementsFourthRow.add(btnMPlus);
+            listElementsFourthRow.add(btnMMinus);
+            listElementsFourthRow.add(btnMS );
+            listElementsFourthRow.add(btnM);
+
+            for (int i = 0; i < listElementsFourthRow.size(); i++) {
+                addButtonsToPanel(listElementsFourthRow.get(i), subPanelFourthRow, columns[i], Row.FIRST);
+            }
+
 
             Button btnPercent = new Button("%");
-            addButtonToPanel(btnPercent, subPanelFifthRow, Column.FIRST, Row.FIRST);
             Button btnSqrt = new Button("√");
-            addButtonToPanel(btnSqrt, subPanelFifthRow, Column.SECOND, Row.FIRST);
             Button btnXSquared = new Button("X²");
-            addButtonToPanel(btnXSquared, subPanelFifthRow, Column.THIRD, Row.FIRST);
             Button btnOneDivX = new Button("1/X");
-            addButtonToPanel(btnOneDivX, subPanelFifthRow, Column.FOURTH, Row.FIRST);
+
+            listElementsFifthRow.add(btnPercent);
+            listElementsFifthRow.add(btnSqrt);
+            listElementsFifthRow.add(btnXSquared);
+            listElementsFifthRow.add(btnOneDivX);
+
+            for (int i = 0; i < listElementsFifthRow.size(); i++) {
+                addButtonsToPanel(listElementsFifthRow.get(i), subPanelFifthRow, columns[i], Row.FIRST);
+            }
 
 
             Button btnCE = new Button("CE");
-            addButtonToPanel(btnCE, subPanelSixthRow, Column.FIRST, Row.FIRST);
             Button btnC = new Button("C");
-            addButtonToPanel(btnC, subPanelSixthRow, Column.SECOND, Row.FIRST);
             Button btnBackspace = new Button("←");
-            addButtonToPanel(btnBackspace, subPanelSixthRow, Column.THIRD, Row.FIRST);
             Button btnDiv = new Button("÷");
-            addButtonToPanel(btnDiv, subPanelSixthRow, Column.FOURTH, Row.FIRST);
+
+            listElementsSixthRow.add(btnCE);
+            listElementsSixthRow.add(btnC);
+            listElementsSixthRow.add(btnBackspace);
+            listElementsSixthRow.add(btnDiv);
+
+            for (int i = 0; i < listElementsSixthRow.size(); i++) {
+                addButtonsToPanel(listElementsSixthRow.get(i), subPanelSixthRow, columns[i], Row.FIRST);
+            }
+
 
             Button btn7 = new Button("7");
-            addButtonToPanel(btn7, subPanelSeventhRow, Column.FIRST, Row.FIRST);
             Button btn8 = new Button("8");
-            addButtonToPanel(btn8, subPanelSeventhRow, Column.SECOND, Row.FIRST);
             Button btn9 = new Button("9");
-            addButtonToPanel(btn9, subPanelSeventhRow, Column.THIRD, Row.FIRST);
             Button btnMult = new Button("╳");
-            addButtonToPanel(btnMult, subPanelSeventhRow, Column.FOURTH, Row.FIRST);
+
+            listElementsSeventhRow.add(btn7);
+            listElementsSeventhRow.add(btn8);
+            listElementsSeventhRow.add(btn9);
+            listElementsSeventhRow.add(btnMult);
+
+            for (int i = 0; i < listElementsSeventhRow.size(); i++) {
+                addButtonsToPanel(listElementsSeventhRow.get(i), subPanelSeventhRow, columns[i], Row.FIRST);
+            }
+
 
             Button btn4 = new Button("4");
-            addButtonToPanel(btn4, subPanelEighthRow, Column.FIRST, Row.FIRST);
             Button btn5 = new Button("5");
-            addButtonToPanel(btn5, subPanelEighthRow, Column.SECOND, Row.FIRST);
             Button btn6 = new Button("6");
-            addButtonToPanel(btn6, subPanelEighthRow, Column.THIRD, Row.FIRST);
             Button btnMinus = new Button("-");
-            addButtonToPanel(btnMinus, subPanelEighthRow, Column.FOURTH, Row.FIRST);
+
+            listElementsEighthRow.add(btn4);
+            listElementsEighthRow.add(btn5);
+            listElementsEighthRow.add(btn6);
+            listElementsEighthRow.add(btnMinus);
+
+            for (int i = 0; i < listElementsEighthRow.size(); i++) {
+                addButtonsToPanel(listElementsEighthRow.get(i), subPanelEighthRow, columns[i], Row.FIRST);
+            }
+
 
             Button btn1 = new Button("1");
-            addButtonToPanel(btn1, subPanelNinthRow, Column.FIRST, Row.FIRST);
             Button btn2 = new Button("2");
-            addButtonToPanel(btn2, subPanelNinthRow, Column.SECOND, Row.FIRST);
             Button btn3 = new Button("3");
-            addButtonToPanel(btn3, subPanelNinthRow, Column.THIRD, Row.FIRST);
             Button btnPlus = new Button("+");
-            addButtonToPanel(btnPlus, subPanelNinthRow, Column.FOURTH, Row.FIRST);
+
+            listElementsNinthRow.add(btn1);
+            listElementsNinthRow.add(btn2);
+            listElementsNinthRow.add(btn3);
+            listElementsNinthRow.add(btnPlus);
+
+            for (int i = 0; i < listElementsNinthRow.size(); i++) {
+                addButtonsToPanel(listElementsNinthRow.get(i), subPanelNinthRow, columns[i], Row.FIRST);
+            }
 
             Button btnPlusMinus = new Button("±");
-            addButtonToPanel(btnPlusMinus, subPanelTenthRow, Column.FIRST, Row.FIRST);
             Button btn0 = new Button("0");
-            addButtonToPanel(btn0, subPanelTenthRow, Column.SECOND, Row.FIRST);
             Button btnComma = new Button(",");
-            addButtonToPanel(btnComma, subPanelTenthRow, Column.THIRD, Row.FIRST);
             Button btnEquals = new Button("=");
-            addButtonToPanel(btnEquals, subPanelTenthRow, Column.FOURTH, Row.FIRST);
+
+            listElementsTenthRow.add(btnPlusMinus);
+            listElementsTenthRow.add(btn0);
+            listElementsTenthRow.add(btnComma);
+            listElementsTenthRow.add(btnEquals);
+
+            for (int i = 0; i < listElementsTenthRow.size(); i++) {
+                addButtonsToPanel(listElementsTenthRow.get(i), subPanelTenthRow, columns[i], Row.FIRST);
+            }
+
 
             Scene scene = new Scene(root, 300, 300);
             stage.setScene(scene);
@@ -366,31 +377,54 @@ public class ArithmeticWindow extends Window{
 
     public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {
         root.add(subPanel, column.getNumber(), row.getNumber());
-        GridPane.setHgrow(subPanel, Priority.ALWAYS);
-        GridPane.setVgrow(subPanel, Priority.ALWAYS);
+        stretchElement(subPanel, root);
     }
 
-    public void addButtonToPanel(Button button, GridPane gridPane, Column column, Row row) {
-        gridPane.add(button, column.getNumber(),row.getNumber());
-        button.setMaxWidth(Double.MAX_VALUE);
-        button.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setHgrow(button, Priority.ALWAYS);
-        GridPane.setVgrow(button, Priority.ALWAYS);
+    public void addElementToPanel(Control control, GridPane gridPane, Column column, Row row) {
+        gridPane.add(control, column.getNumber(),row.getNumber());
+        stretchElement(control, gridPane);
+        control.setMaxWidth(Double.MAX_VALUE);
+        control.setMaxHeight(Double.MAX_VALUE);
     }
 
-    public void addLabelToPanel(Label label, GridPane gridPane, Column column, Row row) {
-        gridPane.add(label, column.getNumber(),row.getNumber());
-        GridPane.setHgrow(label, Priority.ALWAYS);
-        GridPane.setVgrow(label, Priority.ALWAYS);
-        label.setAlignment(Pos.CENTER);
-        gridPane.setHalignment(label, HPos.CENTER);
-        gridPane.setValignment(label, VPos.CENTER);
+    public void addButtonsToPanel(Control control, GridPane gridPane, Column column, Row row) {
+        gridPane.add(control, column.getNumber(),row.getNumber());
+        control.prefWidthProperty().bind(gridPane.widthProperty().multiply(1.0));
+        stretchElement(control, gridPane);
+        control.setMaxWidth(Double.MAX_VALUE);
+        control.setMaxHeight(Double.MAX_VALUE);
     }
-    public void addRadioButtonToPanel(RadioButton radioButton, GridPane gridPane, Column column, Row row) {
-        gridPane.add(radioButton,column.getNumber(),row.getNumber());
-        GridPane.setHgrow(radioButton, Priority.ALWAYS);
-        GridPane.setVgrow(radioButton, Priority.ALWAYS);
-        gridPane.setHalignment(radioButton, HPos.CENTER);
-        gridPane.setValignment(radioButton, VPos.CENTER);
+
+    public void stretchElement(Parent parent, GridPane gridPane) {
+        GridPane.setHgrow(parent, Priority.ALWAYS);
+        GridPane.setVgrow(parent, Priority.ALWAYS);
+        gridPane.setHalignment(parent, HPos.CENTER);
+        gridPane.setValignment(parent, VPos.CENTER);
+    }
+    public void stretchMenuBar(MenuBar menuBar) {
+        GridPane.setHgrow(menuBar, Priority.ALWAYS);
+        GridPane.setVgrow(menuBar, Priority.ALWAYS);
+        menuBar.setMaxWidth(Double.MAX_VALUE);
+        menuBar.setMaxHeight(Double.MAX_VALUE);
+    }
+
+    public void stretchMenuButton(Control control) {
+        GridPane.setHgrow(control, Priority.ALWAYS);
+        GridPane.setVgrow(control, Priority.ALWAYS);
+        control.setMaxWidth(Double.MAX_VALUE);
+        control.setMaxHeight(Double.MAX_VALUE);
+    }
+    public void addImageToButton(Button button, String imagePath) {
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView(image);
+        button.setGraphic(imageView);
+        button.setFocusTraversable(false);
+    }
+    public void addImageToCheckMenuItem(CheckMenuItem checkMenu, String imagePath) {
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        checkMenu.setGraphic(imageView);
     }
 }
