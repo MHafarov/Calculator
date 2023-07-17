@@ -103,6 +103,7 @@ public class ArithmeticWindow extends Window{
 
             SeparatorMenuItem sMISeparatorExit= new SeparatorMenuItem();
             MenuItem mIExit = new MenuItem("Exit");
+            addImageToMenuItem(mIExit, "/images/exit.png");
 
             mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
 

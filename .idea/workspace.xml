@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Aded TrigonometricWindow">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Aded ConvertionWindow">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
     </list>
@@ -141,7 +143,7 @@
       <workItem from="1685816602729" duration="6050000" />
       <workItem from="1689444080715" duration="8833000" />
       <workItem from="1689492267811" duration="29986000" />
-      <workItem from="1689587562105" duration="5960000" />
+      <workItem from="1689587562105" duration="11234000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -255,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689532426277</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Aded ConvertionWindow">
+      <created>1689594237080</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1689594237080</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +294,7 @@
     <MESSAGE value="Added Enum Column, Enum Row. Added methods: addSubPanelToRoot, addLabelToPanel, addRadioButtonToPanel" />
     <MESSAGE value="Done GUI main Window" />
     <MESSAGE value="Aded TrigonometricWindow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aded TrigonometricWindow" />
+    <MESSAGE value="Aded ConvertionWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aded ConvertionWindow" />
   </component>
 </project>

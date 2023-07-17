@@ -414,7 +414,6 @@ public class TrigonometricWindow extends Window{
                 addButtonsToPanel(listElementsTwelthRow.get(i), subPanelTwelthRow, columns[i], Row.FIRST);
             }
 
-
             Scene scene = new Scene(root, 300, 300);
             stage.setScene(scene);
 

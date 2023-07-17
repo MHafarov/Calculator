@@ -2,9 +2,12 @@ package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.constants.Column;
+import com.app.calculator.constants.Element;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,9 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,31 +128,53 @@ public class ConvertionWindow extends Window{
             rMISoundOff.setSelected(true);
             mSound.getItems().addAll(rMISoundOff,rMISoundOn);
 
-            ComboBox<Planet> comboBox = new ComboBox<Planet>();
 
-            ObservableList<Planet> list = PlanetDAO.getPlanetList();
+            ComboBox<String> cBCategory = new ComboBox<String>();
+            ObservableList<String> listCategory = FXCollections.observableArrayList();
+            listCategory.add("Volume");
+            listCategory.add("Length");
+            listCategory.add("Weight and mass");
+            cBCategory.setItems(listCategory);
+            cBCategory.getSelectionModel().select(Element.FIRST.getNumber());
+            Label lSelectCategory = new Label("Select Category: ");
+            subPanelSecondRow.getChildren().add(lSelectCategory);
+            GridPane.setConstraints(lSelectCategory, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            subPanelSecondRow.getChildren().add(cBCategory);
+            GridPane.setConstraints(cBCategory, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            comboBox.setItems(list);
-            comboBox.getSelectionModel().select(1);
+            TextField DisplayFieldIn = new TextField();
+            DisplayFieldIn.setStyle("-fx-alignment: center-left;");
+            DisplayFieldIn.setText("0");
+            GridPane.setHgrow(DisplayFieldIn, Priority.ALWAYS);
+            GridPane.setVgrow(DisplayFieldIn, Priority.ALWAYS);
+            subPanelThirdRow.add(DisplayFieldIn, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-            FlowPane root = new FlowPane();
-            root.setPadding(new Insets(5));
-            root.setHgap(5);
+            ComboBox<String> cBUnitOfMeasurementIn = new ComboBox<String>();
+            ObservableList<String> listUnitsOfMeasurementIn = FXCollections.observableArrayList();
+            listUnitsOfMeasurementIn.add("Meter");
+            listUnitsOfMeasurementIn.add("Santimeter");
+            listUnitsOfMeasurementIn.add("Kilometer");
+            cBUnitOfMeasurementIn.setItems(listUnitsOfMeasurementIn);
+            cBUnitOfMeasurementIn.getSelectionModel().select(Element.FIRST.getNumber());
+            subPanelFourthRow.getChildren().add(cBUnitOfMeasurementIn);
+            GridPane.setConstraints(cBUnitOfMeasurementIn, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            root.getChildren().add(new Label("Select Planet:"));
-            root.getChildren().add(comboBox);
+            TextField DisplayFieldOut = new TextField();
+            DisplayFieldOut.setStyle("-fx-alignment: center-left;");
+            DisplayFieldOut.setText("0");
+            GridPane.setHgrow(DisplayFieldOut, Priority.ALWAYS);
+            GridPane.setVgrow(DisplayFieldOut, Priority.ALWAYS);
+            subPanelFifthRow.add(DisplayFieldOut, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-
-
-
-
-
-            TextField displayField = new TextField();
-            displayField.setStyle("-fx-alignment: center-right;");
-            displayField.setText("0");
-            GridPane.setHgrow(displayField, Priority.ALWAYS);
-            GridPane.setVgrow(displayField, Priority.ALWAYS);
-            subPanelSecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            ComboBox<String> cBUnitOfMeasurementOut = new ComboBox<String>();
+            ObservableList<String> listUnitsOfMeasurementOut = FXCollections.observableArrayList();
+            listUnitsOfMeasurementOut.add("Meter");
+            listUnitsOfMeasurementOut.add("Santimeter");
+            listUnitsOfMeasurementOut.add("Kilometer");
+            cBUnitOfMeasurementOut.setItems(listUnitsOfMeasurementOut);
+            cBUnitOfMeasurementOut.getSelectionModel().select(Element.FIRST.getNumber());
+            subPanelSixthRow.getChildren().add(cBUnitOfMeasurementOut);
+            GridPane.setConstraints(cBUnitOfMeasurementOut, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
             Label emptyLabel1 = new Label(" ");
             Label lUp = new Label("⮤");
@@ -267,154 +290,65 @@ public class ConvertionWindow extends Window{
             subPanelSeventhRow.setValignment(lNoRounding, VPos.CENTER);
 
 
-            Button btnMC = new Button("MC");
-            Button btnMR = new Button("MR");
-            Button btnMPlus = new Button("M+");
-            Button btnMMinus = new Button("M-");
-            Button btnMS = new Button("MS");
-            Button btnM = new Button("M");
 
-            listElementsFourthRow.add(btnMC);
-            listElementsFourthRow.add(btnMR);
-            listElementsFourthRow.add(btnMPlus);
-            listElementsFourthRow.add(btnMMinus);
-            listElementsFourthRow.add(btnMS );
-            listElementsFourthRow.add(btnM);
-
-            for (int i = 0; i < listElementsFourthRow.size(); i++) {
-                addButtonsToPanel(listElementsFourthRow.get(i), subPanelFourthRow, columns[i], Row.FIRST);
-            }
-
-            // Fifth row
-            Button btnXToThePowerOfY = new Button("x^y");
-            Button btnSin = new Button("sin");
-            Button btnCos = new Button("cos");
-            Button btnTan = new Button("tan");
-            Button btnLog = new Button("log");
-
-            listElementsFifthRow.add(btnXToThePowerOfY);
-            listElementsFifthRow.add(btnSin);
-            listElementsFifthRow.add(btnCos);
-            listElementsFifthRow.add(btnTan);
-            listElementsFifthRow.add(btnLog);
-
-            for (int i = 0; i < listElementsFifthRow.size(); i++) {
-                addButtonsToPanel(listElementsFifthRow.get(i), subPanelFifthRow, columns[i], Row.FIRST);
-            }
-
-            // Sixth row
-            Button btnXToThePowerOf1divY = new Button("x^(1/y)");
-            Button btnSineToThePowerOfNegativeOne = new Button("sin^(-1)");
-            Button btnCosToThePowerOfNegativeOne = new Button("cos^(-1)");
-            Button btnTanToThePowerOfNegativeOne = new Button("tan^(-1)");
-            Button btnLn = new Button("ln");
-
-            listElementsSixthRow.add(btnXToThePowerOf1divY);
-            listElementsSixthRow.add(btnSineToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnCosToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnTanToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnLn);
-
-            for (int i = 0; i < listElementsSixthRow.size(); i++) {
-                addButtonsToPanel(listElementsSixthRow.get(i), subPanelSixthRow, columns[i], Row.FIRST);
-            }
-
-
-            Button btnEx = new Button("e^x");
-            Button btnPercent = new Button("%");
-            Button btnSqrt = new Button("√");
-            Button btnXSquared = new Button("X²");
-            Button btnOneDivX = new Button("1/X");
-
-            listElementsSeventhRow2.add(btnEx);
-            listElementsSeventhRow2.add(btnPercent);
-            listElementsSeventhRow2.add(btnSqrt);
-            listElementsSeventhRow2.add(btnXSquared);
-            listElementsSeventhRow2.add(btnOneDivX);
-
-            for (int i = 0; i < listElementsSeventhRow2.size(); i++) {
-                addButtonsToPanel(listElementsSeventhRow2.get(i), subPanelSeventhRow2, columns[i], Row.FIRST);
-            }
-
-
-            Button btnX3 = new Button("x^3");
+            Button emptyButton = new Button("   ");
+            emptyButton.setVisible(false);
             Button btnCE = new Button("CE");
-            Button btnC = new Button("C");
             Button btnBackspace = new Button("←");
-            Button btnDiv = new Button("÷");
 
-            listElementsEighthRow.add(btnX3);
+            listElementsEighthRow.add(emptyButton);
             listElementsEighthRow.add(btnCE);
-            listElementsEighthRow.add(btnC);
             listElementsEighthRow.add(btnBackspace);
-            listElementsEighthRow.add(btnDiv);
 
             for (int i = 0; i < listElementsEighthRow.size(); i++) {
                 addButtonsToPanel(listElementsEighthRow.get(i), subPanelEighthRow, columns[i], Row.FIRST);
             }
 
-
-            Button btnExp = new Button("Exp");
             Button btn7 = new Button("7");
             Button btn8 = new Button("8");
             Button btn9 = new Button("9");
-            Button btnMult = new Button("╳");
 
-            listElementsNinthRow.add(btnExp);
             listElementsNinthRow.add(btn7);
             listElementsNinthRow.add(btn8);
             listElementsNinthRow.add(btn9);
-            listElementsNinthRow.add(btnMult);
 
             for (int i = 0; i < listElementsNinthRow.size(); i++) {
                 addButtonsToPanel(listElementsNinthRow.get(i), subPanelNinthRow, columns[i], Row.FIRST);
             }
 
-
-            Button btnMod = new Button("Mod");
             Button btn4 = new Button("4");
             Button btn5 = new Button("5");
             Button btn6 = new Button("6");
-            Button btnMinus = new Button("-");
 
-            listElementsTenthRow.add(btnMod);
             listElementsTenthRow.add(btn4);
             listElementsTenthRow.add(btn5);
             listElementsTenthRow.add(btn6);
-            listElementsTenthRow.add(btnMinus);
 
             for (int i = 0; i < listElementsTenthRow.size(); i++) {
                 addButtonsToPanel(listElementsTenthRow.get(i), subPanelTenthRow, columns[i], Row.FIRST);
             }
 
 
-            Button btnPi = new Button("π");
             Button btn1 = new Button("1");
             Button btn2 = new Button("2");
             Button btn3 = new Button("3");
-            Button btnPlus = new Button("+");
 
-            listElementsEleventhRow.add(btnPi);
             listElementsEleventhRow.add(btn1);
             listElementsEleventhRow.add(btn2);
             listElementsEleventhRow.add(btn3);
-            listElementsEleventhRow.add(btnPlus);
 
             for (int i = 0; i < listElementsEleventhRow.size(); i++) {
                 addButtonsToPanel(listElementsEleventhRow.get(i), subPanelEleventhRow, columns[i], Row.FIRST);
             }
 
-            Button btnFactorial = new Button("n!");
-            Button btnPlusMinus = new Button("±");
+            Button emptyButton2 = new Button("   ");
+            emptyButton2.setVisible(false);
             Button btn0 = new Button("0");
             Button btnComma = new Button(",");
-            Button btnEquals = new Button("=");
 
-            listElementsTwelthRow.add(btnFactorial);
-            listElementsTwelthRow.add(btnPlusMinus);
+            listElementsTwelthRow.add(emptyButton2);
             listElementsTwelthRow.add(btn0);
             listElementsTwelthRow.add(btnComma);
-            listElementsTwelthRow.add(btnEquals);
 
             for (int i = 0; i < listElementsTwelthRow.size(); i++) {
                 addButtonsToPanel(listElementsTwelthRow.get(i), subPanelTwelthRow, columns[i], Row.FIRST);

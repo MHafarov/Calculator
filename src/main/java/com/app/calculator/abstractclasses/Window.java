@@ -8,10 +8,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Control;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -84,4 +81,12 @@ public abstract class Window implements Runnable {
         imageView.setFitHeight(20);
         checkMenu.setGraphic(imageView);
     }
+    public void addImageToMenuItem(MenuItem checkMenu, String imagePath) {
+        Image image = new Image(imagePath);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        checkMenu.setGraphic(imageView);
+    }
+
 }
