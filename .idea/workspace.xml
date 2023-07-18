@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Aded ConvertionWindow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Element.java" afterDir="false" />
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Completed ConvertionWindow">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/AddCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/scales.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/scales.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -143,7 +148,8 @@
       <workItem from="1685816602729" duration="6050000" />
       <workItem from="1689444080715" duration="8833000" />
       <workItem from="1689492267811" duration="29986000" />
-      <workItem from="1689587562105" duration="11234000" />
+      <workItem from="1689587562105" duration="13812000" />
+      <workItem from="1689667758957" duration="14525000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -264,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689594237080</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Completed ConvertionWindow">
+      <created>1689605053590</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1689605053590</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +308,7 @@
     <MESSAGE value="Done GUI main Window" />
     <MESSAGE value="Aded TrigonometricWindow" />
     <MESSAGE value="Aded ConvertionWindow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aded ConvertionWindow" />
+    <MESSAGE value="Completed ConvertionWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed ConvertionWindow" />
   </component>
 </project>

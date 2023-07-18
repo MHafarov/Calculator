@@ -1,10 +1,14 @@
 package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
+import com.app.calculator.commands.AddCommand;
+import com.app.calculator.commands.InsertDigitCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,17 +30,7 @@ public class ArithmeticWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Calculator");
-            GridPane root = new GridPane();
 
-            root.setPadding(new Insets(Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber(),
-                                       Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber()));
-            root.setHgap(Size.FIVE_PIXELS.getNumber());
-            root.setVgap(Size.FIVE_PIXELS.getNumber());
-
-            Column[] columns = Column.values();
-            Row[] rows = Row.values();
-
-            List<GridPane> listGridPanes = new ArrayList<>();
             List<Label> listElementsThirdRowTop = new ArrayList<>();
             List<Control> listElementsThirdRowDown = new ArrayList<>();
             List<Control> listElementsFourthRow = new ArrayList<>();
@@ -46,44 +40,6 @@ public class ArithmeticWindow extends Window{
             List<Control> listElementsEighthRow  = new ArrayList<>();
             List<Control> listElementsNinthRow = new ArrayList<>();
             List<Control> listElementsTenthRow = new ArrayList<>();
-
-
-            GridPane subPanelFirstRow = new GridPane();
-            GridPane subPanelSecondRow = new GridPane();
-            GridPane subPanelThirdRow = new GridPane();
-            GridPane subPanelFourthRow = new GridPane();
-            GridPane subPanelFifthRow = new GridPane();
-            GridPane subPanelSixthRow = new GridPane();
-            GridPane subPanelSeventhRow = new GridPane();
-            GridPane subPanelEighthRow = new GridPane();
-            GridPane subPanelNinthRow = new GridPane();
-            GridPane subPanelTenthRow = new GridPane();
-
-            listGridPanes.add(subPanelFirstRow);
-            listGridPanes.add(subPanelSecondRow);
-            listGridPanes.add(subPanelThirdRow);
-            listGridPanes.add(subPanelFourthRow);
-            listGridPanes.add(subPanelFifthRow);
-            listGridPanes.add(subPanelSixthRow);
-            listGridPanes.add(subPanelSeventhRow);
-            listGridPanes.add(subPanelEighthRow);
-            listGridPanes.add(subPanelNinthRow);
-            listGridPanes.add(subPanelTenthRow);
-
-            for (int i = 0; i < listGridPanes.size(); i++) {
-                addSubPanelToRoot(listGridPanes.get(i), root, Column.FIRST, rows[i]);
-            }
-
-            MenuBar menuBar = new MenuBar();
-            stretchMenuBar(menuBar);
-
-            Menu mType = new Menu("Calculator");
-            Menu mTheme = new Menu("Theme");
-            Menu mLanguage = new Menu("Language");
-            Menu mSound = new Menu("Sound");
-
-            menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
-            subPanelFirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
             Button btnUndo = new Button();
             stretchMenuButton(btnUndo);
@@ -95,46 +51,8 @@ public class ArithmeticWindow extends Window{
             addImageToButton(btnRedo, "/images/redo.png");
             subPanelFirstRow.add(btnRedo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
-            CheckMenuItem cMITrigonometricWindow = new CheckMenuItem("Trigonometric");
-            addImageToCheckMenuItem(cMITrigonometricWindow, "/images/function.png");
 
-            CheckMenuItem cMIConvertionWindow = new CheckMenuItem("Convertion");
-            addImageToCheckMenuItem(cMIConvertionWindow, "/images/scales.png");
 
-            SeparatorMenuItem sMISeparatorExit= new SeparatorMenuItem();
-            MenuItem mIExit = new MenuItem("Exit");
-            addImageToMenuItem(mIExit, "/images/exit.png");
-
-            mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
-
-            RadioMenuItem rMIThemeClassic = new RadioMenuItem("Classic");
-            RadioMenuItem rMIThemeDark = new RadioMenuItem("Dark");
-            RadioMenuItem rMIThemeAnimated = new RadioMenuItem("Animated");
-            ToggleGroup groupTheme = new ToggleGroup();
-            rMIThemeClassic.setToggleGroup(groupTheme);
-            rMIThemeDark.setToggleGroup(groupTheme);
-            rMIThemeAnimated.setToggleGroup(groupTheme);
-            mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
-
-            RadioMenuItem rMILanguageEnglish = new RadioMenuItem("English");
-            RadioMenuItem rMILanguageUkranian = new RadioMenuItem("Українська");
-            RadioMenuItem rMILanguageRussian = new RadioMenuItem("Русский");
-            ToggleGroup groupLanguage = new ToggleGroup();
-            rMILanguageEnglish.setToggleGroup(groupLanguage);
-            rMILanguageUkranian.setToggleGroup(groupLanguage);
-            rMILanguageRussian.setToggleGroup(groupLanguage);
-            rMILanguageEnglish.setSelected(true);
-            mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
-
-            RadioMenuItem rMISoundOff = new RadioMenuItem("Sound off");
-            RadioMenuItem rMISoundOn = new RadioMenuItem("Sound on");
-            ToggleGroup group = new ToggleGroup();
-            rMISoundOff.setToggleGroup(group);
-            rMISoundOn.setToggleGroup(group);
-            rMISoundOff.setSelected(true);
-            mSound.getItems().addAll(rMISoundOff,rMISoundOn);
-
-            TextField displayField = new TextField();
             displayField.setStyle("-fx-alignment: center-right;");
             displayField.setText("0");
             GridPane.setHgrow(displayField, Priority.ALWAYS);
@@ -338,6 +256,14 @@ public class ArithmeticWindow extends Window{
             Button btn2 = new Button("2");
             Button btn3 = new Button("3");
             Button btnPlus = new Button("+");
+
+            btn1.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+
 
             listElementsNinthRow.add(btn1);
             listElementsNinthRow.add(btn2);

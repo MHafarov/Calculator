@@ -29,17 +29,9 @@ public class ConvertionWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Convertion");
-            GridPane root = new GridPane();
 
-            root.setPadding(new Insets(Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber(),
-                    Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber()));
-            root.setHgap(Size.FIVE_PIXELS.getNumber());
-            root.setVgap(Size.FIVE_PIXELS.getNumber());
 
-            Column[] columns = Column.values();
-            Row[] rows = Row.values();
 
-            List<GridPane> listGridPanes = new ArrayList<>();
             List<Label> listElementsSeventhRowTop = new ArrayList<>();
             List<Control> listElementsSeventhRowDown = new ArrayList<>();
             List<Control> listElementsEighthRow = new ArrayList<>();
@@ -48,86 +40,11 @@ public class ConvertionWindow extends Window{
             List<Control> listElementsEleventhRow = new ArrayList<>();
             List<Control> listElementsTwelthRow = new ArrayList<>();
 
-
-            GridPane subPanelFirstRow = new GridPane();
-            GridPane subPanelSecondRow = new GridPane();
-            GridPane subPanelThirdRow = new GridPane();
-            GridPane subPanelFourthRow = new GridPane();
-            GridPane subPanelFifthRow = new GridPane();
-            GridPane subPanelSixthRow = new GridPane();
-            GridPane subPanelSeventhRow = new GridPane();
-            GridPane subPanelEighthRow = new GridPane();
-            GridPane subPanelNinthRow = new GridPane();
-            GridPane subPanelTenthRow = new GridPane();
             GridPane subPanelEleventhRow = new GridPane();
             GridPane subPanelTwelthRow = new GridPane();
 
-            listGridPanes.add(subPanelFirstRow);
-            listGridPanes.add(subPanelSecondRow);
-            listGridPanes.add(subPanelThirdRow);
-            listGridPanes.add(subPanelFourthRow);
-            listGridPanes.add(subPanelFifthRow);
-            listGridPanes.add(subPanelSixthRow);
-            listGridPanes.add(subPanelSeventhRow);
-            listGridPanes.add(subPanelEighthRow);
-            listGridPanes.add(subPanelNinthRow);
-            listGridPanes.add(subPanelTenthRow);
             listGridPanes.add(subPanelEleventhRow);
             listGridPanes.add(subPanelTwelthRow);
-
-            for (int i = 0; i < listGridPanes.size(); i++) {
-                addSubPanelToRoot(listGridPanes.get(i), root, Column.FIRST, rows[i]);
-            }
-
-            MenuBar menuBar = new MenuBar();
-            stretchMenuBar(menuBar);
-
-            Menu mType = new Menu("Calculator");
-            Menu mTheme = new Menu("Theme");
-            Menu mLanguage = new Menu("Language");
-            Menu mSound = new Menu("Sound");
-
-            menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
-            subPanelFirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
-
-            CheckMenuItem cMITrigonometricWindow = new CheckMenuItem("Trigonometric");
-            addImageToCheckMenuItem(cMITrigonometricWindow, "/images/function.png");
-
-            CheckMenuItem cMIConvertionWindow = new CheckMenuItem("Convertion");
-            addImageToCheckMenuItem(cMIConvertionWindow, "/images/scales.png");
-
-            SeparatorMenuItem sMISeparatorExit= new SeparatorMenuItem();
-            MenuItem mIExit = new MenuItem("Exit");
-
-            mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
-
-            RadioMenuItem rMIThemeClassic = new RadioMenuItem("Classic");
-            RadioMenuItem rMIThemeDark = new RadioMenuItem("Dark");
-            RadioMenuItem rMIThemeAnimated = new RadioMenuItem("Animated");
-            ToggleGroup groupTheme = new ToggleGroup();
-            rMIThemeClassic.setToggleGroup(groupTheme);
-            rMIThemeDark.setToggleGroup(groupTheme);
-            rMIThemeAnimated.setToggleGroup(groupTheme);
-            mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
-
-            RadioMenuItem rMILanguageEnglish = new RadioMenuItem("English");
-            RadioMenuItem rMILanguageUkranian = new RadioMenuItem("Українська");
-            RadioMenuItem rMILanguageRussian = new RadioMenuItem("Русский");
-            ToggleGroup groupLanguage = new ToggleGroup();
-            rMILanguageEnglish.setToggleGroup(groupLanguage);
-            rMILanguageUkranian.setToggleGroup(groupLanguage);
-            rMILanguageRussian.setToggleGroup(groupLanguage);
-            rMILanguageEnglish.setSelected(true);
-            mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
-
-            RadioMenuItem rMISoundOff = new RadioMenuItem("Sound off");
-            RadioMenuItem rMISoundOn = new RadioMenuItem("Sound on");
-            ToggleGroup group = new ToggleGroup();
-            rMISoundOff.setToggleGroup(group);
-            rMISoundOn.setToggleGroup(group);
-            rMISoundOff.setSelected(true);
-            mSound.getItems().addAll(rMISoundOff,rMISoundOn);
-
 
             ComboBox<String> cBCategory = new ComboBox<String>();
             ObservableList<String> listCategory = FXCollections.observableArrayList();
