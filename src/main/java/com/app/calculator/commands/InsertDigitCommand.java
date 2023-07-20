@@ -10,7 +10,7 @@ public class InsertDigitCommand extends Command {
     }
     @Override
     public boolean execute() {
-        window.checkDigit
+        window.checkDigit;
 
 
         return false;

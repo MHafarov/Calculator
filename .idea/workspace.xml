@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Completed ConvertionWindow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/AddCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/scales.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/scales.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

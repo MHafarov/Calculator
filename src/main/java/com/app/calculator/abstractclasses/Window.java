@@ -4,13 +4,10 @@ import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import com.app.calculator.history.History;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,7 +17,6 @@ import java.util.List;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Window implements Runnable {
     protected final Stage stage;
@@ -29,71 +25,97 @@ public abstract class Window implements Runnable {
 
     public Column[] columns;
     public Row[] rows;
-    public List<GridPane> listGridPanes;
-    public GridPane subPanelFirstRow;
-    public GridPane subPanelSecondRow;
-    public GridPane subPanelThirdRow;
-    public GridPane subPanelFourthRow;
-    public GridPane subPanelFifthRow;
-    public GridPane subPanelSixthRow;
-    public GridPane subPanelSeventhRow;
-    public GridPane subPanelEighthRow;
-    public GridPane subPanelNinthRow;
-    public GridPane subPanelTenthRow;
-
+    public List<GridPane> list_GridPanes;
+    public GridPane subPanel_FirstRow;
+    public GridPane subPanel_SecondRow;
+    public GridPane subPanel_ThirdRow;
+    public GridPane subPanel_FourthRow;
+    public GridPane subPanel_FifthRow;
+    public GridPane subPanel_SixthRow;
+    public GridPane subPanel_SeventhRow;
+    public GridPane subPanel_EighthRow;
+    public GridPane subPanel_NinthRow;
+    public GridPane subPanel_TenthRow;
+    public List<Label> list_ElementsThirdRowTop;
+    public List<Control> list_ElementsThirdRowDown;
+    public List<Control> list_ElementsFourthRow;
+    public List<Control> list_ElementsFifthRow;
+    public List<Control> list_ElementsSixthRow;
+    public List<Control> list_ElementsSeventhRow;
+    public List<Label> list_ElementsSeventhRowTop;
+    public List<Control> list_ElementsSeventhRowDown;
+    public List<Control> list_ElementsEighthRow;
+    public List<Control> list_ElementsNinthRow;
+    public List<Control> list_ElementsTenthRow;
+    public List<Control> list_ElementsEleventhRow;
+    public List<Control> list_ElementsTwelthRow;
     public MenuBar menuBar;
-    public Menu mType;
-    public Menu mTheme;
-    public Menu mLanguage;
-    public Menu mSound;
-    public CheckMenuItem cMITrigonometricWindow;
-    public CheckMenuItem cMIConvertionWindow;
-    public SeparatorMenuItem sMISeparatorExit;
-    public MenuItem mIExit;
-    public RadioMenuItem rMIThemeClassic;
-    public RadioMenuItem rMIThemeDark;
-    public RadioMenuItem rMIThemeAnimated;
-    public ToggleGroup groupTheme;
-    public RadioMenuItem rMILanguageEnglish;
-    public RadioMenuItem rMILanguageUkranian;
-    public RadioMenuItem rMILanguageRussian;
-    public RadioMenuItem rMISoundOff;
-    public RadioMenuItem rMISoundOn;
-    public ToggleGroup group;
-
-
+    public Menu menu_Type;
+    public Menu menu_Theme;
+    public Menu menu_Language;
+    public Menu menu_Sound;
+    public CheckMenuItem cMI_TrigonometricWindow;
+    public CheckMenuItem cMI_ConvertionWindow;
+    public SeparatorMenuItem sMI_SeparatorExit;
+    public MenuItem menuItem_Exit;
+    public RadioMenuItem rMI_ThemeClassic;
+    public RadioMenuItem rMI_ThemeDark;
+    public RadioMenuItem rMI_ThemeAnimated;
+    public ToggleGroup group_Theme;
+    public RadioMenuItem rMI_LanguageEnglish;
+    public RadioMenuItem rMI_LanguageUkranian;
+    public RadioMenuItem rMI_LanguageRussian;
     public ToggleGroup groupLanguage;
-
-
+    public RadioMenuItem rMI_SoundOff;
+    public RadioMenuItem rMI_SoundOn;
+    public ToggleGroup group_Sound;
     public TextField displayField = new TextField();
+    public Label label_Space = new Label(" ");
 
 
     public Window (Stage stage) {
         this.stage = stage;
 
-        subPanelFirstRow = new GridPane();
-        subPanelSecondRow = new GridPane();
-        subPanelThirdRow = new GridPane();
-        subPanelFourthRow = new GridPane();
-        subPanelFifthRow = new GridPane();
-        subPanelSixthRow = new GridPane();
-        subPanelSeventhRow = new GridPane();
-        subPanelEighthRow = new GridPane();
-        subPanelNinthRow = new GridPane();
-        subPanelTenthRow = new GridPane();
+        subPanel_FirstRow = new GridPane();
+        subPanel_SecondRow = new GridPane();
+        subPanel_ThirdRow = new GridPane();
+        subPanel_FourthRow = new GridPane();
+        subPanel_FifthRow = new GridPane();
+        subPanel_SixthRow = new GridPane();
+        subPanel_SeventhRow = new GridPane();
+        subPanel_EighthRow = new GridPane();
+        subPanel_NinthRow = new GridPane();
+        subPanel_TenthRow = new GridPane();
 
-        listGridPanes = new ArrayList<>();
+        list_GridPanes = new ArrayList<>();
 
-        listGridPanes.add(subPanelFirstRow);
-        listGridPanes.add(subPanelSecondRow);
-        listGridPanes.add(subPanelThirdRow);
-        listGridPanes.add(subPanelFourthRow);
-        listGridPanes.add(subPanelFifthRow);
-        listGridPanes.add(subPanelSixthRow);
-        listGridPanes.add(subPanelSeventhRow);
-        listGridPanes.add(subPanelEighthRow);
-        listGridPanes.add(subPanelNinthRow);
-        listGridPanes.add(subPanelTenthRow);
+        list_GridPanes.add(subPanel_FirstRow);
+        list_GridPanes.add(subPanel_SecondRow);
+        list_GridPanes.add(subPanel_ThirdRow);
+        list_GridPanes.add(subPanel_FourthRow);
+        list_GridPanes.add(subPanel_FifthRow);
+        list_GridPanes.add(subPanel_SixthRow);
+        list_GridPanes.add(subPanel_SeventhRow);
+        list_GridPanes.add(subPanel_EighthRow);
+        list_GridPanes.add(subPanel_NinthRow);
+        list_GridPanes.add(subPanel_TenthRow);
+
+        list_ElementsThirdRowTop = new ArrayList<>();
+        list_ElementsThirdRowDown = new ArrayList<>();
+
+        list_ElementsFourthRow = new ArrayList<>();
+        list_ElementsFifthRow = new ArrayList<>();
+        list_ElementsSixthRow = new ArrayList<>();
+
+        list_ElementsSeventhRow = new ArrayList<>();
+        list_ElementsSeventhRowTop = new ArrayList<>();
+        list_ElementsSeventhRowDown = new ArrayList<>();
+
+        list_ElementsEighthRow = new ArrayList<>();
+        list_ElementsNinthRow = new ArrayList<>();
+        list_ElementsTenthRow = new ArrayList<>();
+        list_ElementsEleventhRow = new ArrayList<>();
+        list_ElementsTwelthRow = new ArrayList<>();
 
         root = new GridPane();
 
@@ -105,59 +127,59 @@ public abstract class Window implements Runnable {
         columns = Column.values();
         rows = Row.values();
 
-        for (int i = 0; i < listGridPanes.size(); i++) {
-            addSubPanelToRoot(listGridPanes.get(i), root, Column.FIRST, rows[i]);
+        for (int i = 0; i < list_GridPanes.size(); i++) {
+            addSubPanelToRoot(list_GridPanes.get(i), root, Column.FIRST, rows[i]);
         }
 
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
-        mType = new Menu("Calculator");
-        mTheme = new Menu("Theme");
-        mLanguage = new Menu("Language");
-        mSound = new Menu("Sound");
+        menu_Type = new Menu("Calculator");
+        menu_Theme = new Menu("Theme");
+        menu_Language = new Menu("Language");
+        menu_Sound = new Menu("Sound");
 
-        menuBar.getMenus().addAll(mType, mTheme, mLanguage, mSound);
-        subPanelFirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
+        menuBar.getMenus().addAll(menu_Type, menu_Theme, menu_Language, menu_Sound);
+        subPanel_FirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-        cMITrigonometricWindow = new CheckMenuItem("Trigonometric");
-        addImageToCheckMenuItem(cMITrigonometricWindow, "/images/function.png");
+        cMI_TrigonometricWindow = new CheckMenuItem("Trigonometric");
+        addImageToCheckMenuItem(cMI_TrigonometricWindow, "/images/function.png");
 
-        cMIConvertionWindow = new CheckMenuItem("Convertion");
-        addImageToCheckMenuItem(cMIConvertionWindow, "/images/scales.png");
+        cMI_ConvertionWindow = new CheckMenuItem("Convertion");
+        addImageToCheckMenuItem(cMI_ConvertionWindow, "/images/scales.png");
 
-        sMISeparatorExit= new SeparatorMenuItem();
-        mIExit = new MenuItem("Exit");
-        addImageToMenuItem(mIExit, "/images/exit.png");
+        sMI_SeparatorExit = new SeparatorMenuItem();
+        menuItem_Exit = new MenuItem("Exit");
+        addImageToMenuItem(menuItem_Exit, "/images/exit.png");
 
-        mType.getItems().addAll(cMITrigonometricWindow, cMIConvertionWindow,sMISeparatorExit, mIExit);
+        menu_Type.getItems().addAll(cMI_TrigonometricWindow, cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);
 
-        rMIThemeClassic = new RadioMenuItem("Classic");
-        rMIThemeDark = new RadioMenuItem("Dark");
-        rMIThemeAnimated = new RadioMenuItem("Animated");
-        groupTheme = new ToggleGroup();
-        rMIThemeClassic.setToggleGroup(groupTheme);
-        rMIThemeDark.setToggleGroup(groupTheme);
-        rMIThemeAnimated.setToggleGroup(groupTheme);
-        mTheme.getItems().addAll(rMIThemeClassic, rMIThemeDark, rMIThemeAnimated);
+        rMI_ThemeClassic = new RadioMenuItem("Classic");
+        rMI_ThemeDark = new RadioMenuItem("Dark");
+        rMI_ThemeAnimated = new RadioMenuItem("Animated");
+        group_Theme = new ToggleGroup();
+        rMI_ThemeClassic.setToggleGroup(group_Theme);
+        rMI_ThemeDark.setToggleGroup(group_Theme);
+        rMI_ThemeAnimated.setToggleGroup(group_Theme);
+        menu_Theme.getItems().addAll(rMI_ThemeClassic, rMI_ThemeDark, rMI_ThemeAnimated);
 
-        rMILanguageEnglish = new RadioMenuItem("English");
-        rMILanguageUkranian = new RadioMenuItem("Українська");
-        rMILanguageRussian = new RadioMenuItem("Русский");
+        rMI_LanguageEnglish = new RadioMenuItem("English");
+        rMI_LanguageUkranian = new RadioMenuItem("Українська");
+        rMI_LanguageRussian = new RadioMenuItem("Русский");
         groupLanguage = new ToggleGroup();
-        rMILanguageEnglish.setToggleGroup(groupLanguage);
-        rMILanguageUkranian.setToggleGroup(groupLanguage);
-        rMILanguageRussian.setToggleGroup(groupLanguage);
-        rMILanguageEnglish.setSelected(true);
-        mLanguage.getItems().addAll(rMILanguageEnglish, rMILanguageUkranian, rMILanguageRussian);
+        rMI_LanguageEnglish.setToggleGroup(groupLanguage);
+        rMI_LanguageUkranian.setToggleGroup(groupLanguage);
+        rMI_LanguageRussian.setToggleGroup(groupLanguage);
+        rMI_LanguageEnglish.setSelected(true);
+        menu_Language.getItems().addAll(rMI_LanguageEnglish, rMI_LanguageUkranian, rMI_LanguageRussian);
 
-        rMISoundOff = new RadioMenuItem("Sound off");
-        rMISoundOn = new RadioMenuItem("Sound on");
-        group = new ToggleGroup();
-        rMISoundOff.setToggleGroup(group);
-        rMISoundOn.setToggleGroup(group);
-        rMISoundOff.setSelected(true);
-        mSound.getItems().addAll(rMISoundOff,rMISoundOn);
+        rMI_SoundOff = new RadioMenuItem("Sound off");
+        rMI_SoundOn = new RadioMenuItem("Sound on");
+        group_Sound = new ToggleGroup();
+        rMI_SoundOff.setToggleGroup(group_Sound);
+        rMI_SoundOn.setToggleGroup(group_Sound);
+        rMI_SoundOff.setSelected(true);
+        menu_Sound.getItems().addAll(rMI_SoundOff, rMI_SoundOn);
 
     }
 

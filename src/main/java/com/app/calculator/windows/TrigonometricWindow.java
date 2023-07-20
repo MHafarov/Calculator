@@ -3,10 +3,8 @@ package com.app.calculator.windows;
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
-import com.app.calculator.constants.Size;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
@@ -14,9 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TrigonometricWindow extends Window{
     public TrigonometricWindow (Stage stage) {
@@ -28,40 +23,28 @@ public class TrigonometricWindow extends Window{
 
             this.stage.setTitle("Trigonometric");
 
-            List<Label> listElementsThirdRowTop = new ArrayList<>();
-            List<Control> listElementsThirdRowDown = new ArrayList<>();
-            List<Control> listElementsFourthRow = new ArrayList<>();
-            List<Control> listElementsFifthRow = new ArrayList<>();
-            List<Control> listElementsSixthRow = new ArrayList<>();
-            List<Control> listElementsSeventhRow = new ArrayList<>();
-            List<Control> listElementsEighthRow = new ArrayList<>();
-            List<Control> listElementsNinthRow  = new ArrayList<>();
-            List<Control> listElementsTenthRow  = new ArrayList<>();
-            List<Control> listElementsEleventhRow = new ArrayList<>();
-            List<Control> listElementsTwelthRow = new ArrayList<>();
-
             GridPane subPanelEleventhRow = new GridPane();
             GridPane subPanelTwelthRow = new GridPane();
 
-            listGridPanes.add(subPanelEleventhRow);
-            listGridPanes.add(subPanelTwelthRow);
+            list_GridPanes.add(subPanelEleventhRow);
+            list_GridPanes.add(subPanelTwelthRow);
 
             Button btnUndo = new Button();
             stretchMenuButton(btnUndo);
             addImageToButton(btnUndo, "/images/undo.png");
-            subPanelFirstRow.add(btnUndo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
+            subPanel_FirstRow.add(btnUndo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
             Button btnRedo = new Button();
             stretchMenuButton(btnRedo);
             addImageToButton(btnRedo, "/images/redo.png");
-            subPanelFirstRow.add(btnRedo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
+            subPanel_FirstRow.add(btnRedo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
             displayField = new TextField();
             displayField.setStyle("-fx-alignment: center-right;");
             displayField.setText("0");
             GridPane.setHgrow(displayField, Priority.ALWAYS);
             GridPane.setVgrow(displayField, Priority.ALWAYS);
-            subPanelSecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            subPanel_SecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
             Label emptyLabel1 = new Label(" ");
             Label lUp = new Label("⮤");
@@ -77,23 +60,23 @@ public class TrigonometricWindow extends Window{
             Label lF   = new Label("F");
             Label emptyLabel8 = new Label(" ");
 
-            listElementsThirdRowTop.add(emptyLabel1);
-            listElementsThirdRowTop.add(lUp);
-            listElementsThirdRowTop.add(lFiveDivFour);
-            listElementsThirdRowTop.add(lDown);
-            listElementsThirdRowTop.add(emptyLabel6);
-            listElementsThirdRowTop.add(emptyLabel7);
-            listElementsThirdRowTop.add(lA);
-            listElementsThirdRowTop.add(lZero);
-            listElementsThirdRowTop.add(lTwo);
-            listElementsThirdRowTop.add(lThree);
-            listElementsThirdRowTop.add(lFour);
-            listElementsThirdRowTop.add(lF);
-            listElementsThirdRowTop.add(emptyLabel8);
+            list_ElementsThirdRowTop.add(emptyLabel1);
+            list_ElementsThirdRowTop.add(lUp);
+            list_ElementsThirdRowTop.add(lFiveDivFour);
+            list_ElementsThirdRowTop.add(lDown);
+            list_ElementsThirdRowTop.add(emptyLabel6);
+            list_ElementsThirdRowTop.add(emptyLabel7);
+            list_ElementsThirdRowTop.add(lA);
+            list_ElementsThirdRowTop.add(lZero);
+            list_ElementsThirdRowTop.add(lTwo);
+            list_ElementsThirdRowTop.add(lThree);
+            list_ElementsThirdRowTop.add(lFour);
+            list_ElementsThirdRowTop.add(lF);
+            list_ElementsThirdRowTop.add(emptyLabel8);
 
-            for (int i = 0; i < listElementsThirdRowTop.size(); i++) {
-                addElementToPanel(listElementsThirdRowTop.get(i), subPanelThirdRow, columns[i], Row.FIRST);
-                listElementsThirdRowTop.get(i).setAlignment(Pos.CENTER);
+            for (int i = 0; i < list_ElementsThirdRowTop.size(); i++) {
+                addElementToPanel(list_ElementsThirdRowTop.get(i), subPanel_ThirdRow, columns[i], Row.FIRST);
+                list_ElementsThirdRowTop.get(i).setAlignment(Pos.CENTER);
             }
 
             Label emptyLabel9 = new Label(" ");
@@ -124,22 +107,22 @@ public class TrigonometricWindow extends Window{
             rBtnF.setAlignment(Pos.CENTER);
             emptyLabel16.setAlignment(Pos.CENTER);
 
-            listElementsThirdRowDown.add(emptyLabel9);
-            listElementsThirdRowDown.add(rBtnUp);
-            listElementsThirdRowDown.add(rBtnFiveDivFour);
-            listElementsThirdRowDown.add(rBtntDown);
-            listElementsThirdRowDown.add(emptyLabel14);
-            listElementsThirdRowDown.add(emptyLabel15);
-            listElementsThirdRowDown.add(rBtnA);
-            listElementsThirdRowDown.add(rBtnZero);
-            listElementsThirdRowDown.add(rBtnTwo);
-            listElementsThirdRowDown.add(rBtnThree);
-            listElementsThirdRowDown.add(rBtnFour);
-            listElementsThirdRowDown.add(rBtnF);
-            listElementsThirdRowDown.add(emptyLabel16);
+            list_ElementsThirdRowDown.add(emptyLabel9);
+            list_ElementsThirdRowDown.add(rBtnUp);
+            list_ElementsThirdRowDown.add(rBtnFiveDivFour);
+            list_ElementsThirdRowDown.add(rBtntDown);
+            list_ElementsThirdRowDown.add(emptyLabel14);
+            list_ElementsThirdRowDown.add(emptyLabel15);
+            list_ElementsThirdRowDown.add(rBtnA);
+            list_ElementsThirdRowDown.add(rBtnZero);
+            list_ElementsThirdRowDown.add(rBtnTwo);
+            list_ElementsThirdRowDown.add(rBtnThree);
+            list_ElementsThirdRowDown.add(rBtnFour);
+            list_ElementsThirdRowDown.add(rBtnF);
+            list_ElementsThirdRowDown.add(emptyLabel16);
 
-            for (int i = 0; i < listElementsThirdRowDown.size(); i++) {
-                addElementToPanel(listElementsThirdRowDown.get(i), subPanelThirdRow, columns[i], Row.SECOND);
+            for (int i = 0; i < list_ElementsThirdRowDown.size(); i++) {
+                addElementToPanel(list_ElementsThirdRowDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);
             }
 
             ToggleGroup toggleGroupLeft = new ToggleGroup();
@@ -160,21 +143,21 @@ public class TrigonometricWindow extends Window{
 
             Label lMathematicalRounding = new Label("Mathematical rounding");
 
-            subPanelThirdRow.add(lMathematicalRounding,0,2, 5, 2);
+            subPanel_ThirdRow.add(lMathematicalRounding,0,2, 5, 2);
             lMathematicalRounding.setAlignment(Pos.CENTER);
             GridPane.setHgrow(lMathematicalRounding, Priority.ALWAYS);
             GridPane.setVgrow(lMathematicalRounding, Priority.ALWAYS);
-            subPanelThirdRow.setHalignment(lMathematicalRounding, HPos.CENTER);
-            subPanelThirdRow.setValignment(lMathematicalRounding, VPos.CENTER);
+            subPanel_ThirdRow.setHalignment(lMathematicalRounding, HPos.CENTER);
+            subPanel_ThirdRow.setValignment(lMathematicalRounding, VPos.CENTER);
 
             Label lNoRounding = new Label("No rounding");
 
-            subPanelThirdRow.add(lNoRounding,5,2,14,2);
+            subPanel_ThirdRow.add(lNoRounding,5,2,14,2);
             lNoRounding.setAlignment(Pos.CENTER);
             GridPane.setHgrow(lNoRounding, Priority.ALWAYS);
             GridPane.setVgrow(lNoRounding, Priority.ALWAYS);
-            subPanelThirdRow.setHalignment(lNoRounding, HPos.CENTER);
-            subPanelThirdRow.setValignment(lNoRounding, VPos.CENTER);
+            subPanel_ThirdRow.setHalignment(lNoRounding, HPos.CENTER);
+            subPanel_ThirdRow.setValignment(lNoRounding, VPos.CENTER);
 
 
             Button btnMC = new Button("MC");
@@ -184,15 +167,15 @@ public class TrigonometricWindow extends Window{
             Button btnMS = new Button("MS");
             Button btnM = new Button("M");
 
-            listElementsFourthRow.add(btnMC);
-            listElementsFourthRow.add(btnMR);
-            listElementsFourthRow.add(btnMPlus);
-            listElementsFourthRow.add(btnMMinus);
-            listElementsFourthRow.add(btnMS );
-            listElementsFourthRow.add(btnM);
+            list_ElementsFourthRow.add(btnMC);
+            list_ElementsFourthRow.add(btnMR);
+            list_ElementsFourthRow.add(btnMPlus);
+            list_ElementsFourthRow.add(btnMMinus);
+            list_ElementsFourthRow.add(btnMS );
+            list_ElementsFourthRow.add(btnM);
 
-            for (int i = 0; i < listElementsFourthRow.size(); i++) {
-                addButtonsToPanel(listElementsFourthRow.get(i), subPanelFourthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsFourthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsFourthRow.get(i), subPanel_FourthRow, columns[i], Row.FIRST);
             }
 
             // Fifth row
@@ -202,14 +185,14 @@ public class TrigonometricWindow extends Window{
             Button btnTan = new Button("tan");
             Button btnLog = new Button("log");
 
-            listElementsFifthRow.add(btnXToThePowerOfY);
-            listElementsFifthRow.add(btnSin);
-            listElementsFifthRow.add(btnCos);
-            listElementsFifthRow.add(btnTan);
-            listElementsFifthRow.add(btnLog);
+            list_ElementsFifthRow.add(btnXToThePowerOfY);
+            list_ElementsFifthRow.add(btnSin);
+            list_ElementsFifthRow.add(btnCos);
+            list_ElementsFifthRow.add(btnTan);
+            list_ElementsFifthRow.add(btnLog);
 
-            for (int i = 0; i < listElementsFifthRow.size(); i++) {
-                addButtonsToPanel(listElementsFifthRow.get(i), subPanelFifthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsFifthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsFifthRow.get(i), subPanel_FifthRow, columns[i], Row.FIRST);
             }
 
             // Sixth row
@@ -219,14 +202,14 @@ public class TrigonometricWindow extends Window{
             Button btnTanToThePowerOfNegativeOne = new Button("tan^(-1)");
             Button btnLn = new Button("ln");
 
-            listElementsSixthRow.add(btnXToThePowerOf1divY);
-            listElementsSixthRow.add(btnSineToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnCosToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnTanToThePowerOfNegativeOne);
-            listElementsSixthRow.add(btnLn);
+            list_ElementsSixthRow.add(btnXToThePowerOf1divY);
+            list_ElementsSixthRow.add(btnSineToThePowerOfNegativeOne);
+            list_ElementsSixthRow.add(btnCosToThePowerOfNegativeOne);
+            list_ElementsSixthRow.add(btnTanToThePowerOfNegativeOne);
+            list_ElementsSixthRow.add(btnLn);
 
-            for (int i = 0; i < listElementsSixthRow.size(); i++) {
-                addButtonsToPanel(listElementsSixthRow.get(i), subPanelSixthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsSixthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsSixthRow.get(i), subPanel_SixthRow, columns[i], Row.FIRST);
             }
 
 
@@ -236,14 +219,14 @@ public class TrigonometricWindow extends Window{
             Button btnXSquared = new Button("X²");
             Button btnOneDivX = new Button("1/X");
 
-            listElementsSeventhRow.add(btnEx);
-            listElementsSeventhRow.add(btnPercent);
-            listElementsSeventhRow.add(btnSqrt);
-            listElementsSeventhRow.add(btnXSquared);
-            listElementsSeventhRow.add(btnOneDivX);
+            list_ElementsSeventhRow.add(btnEx);
+            list_ElementsSeventhRow.add(btnPercent);
+            list_ElementsSeventhRow.add(btnSqrt);
+            list_ElementsSeventhRow.add(btnXSquared);
+            list_ElementsSeventhRow.add(btnOneDivX);
 
-            for (int i = 0; i < listElementsSeventhRow.size(); i++) {
-                addButtonsToPanel(listElementsSeventhRow.get(i), subPanelSeventhRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsSeventhRow.size(); i++) {
+                addButtonsToPanel(list_ElementsSeventhRow.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);
             }
 
 
@@ -253,14 +236,14 @@ public class TrigonometricWindow extends Window{
             Button btnBackspace = new Button("←");
             Button btnDiv = new Button("÷");
 
-            listElementsEighthRow.add(btnX3);
-            listElementsEighthRow.add(btnCE);
-            listElementsEighthRow.add(btnC);
-            listElementsEighthRow.add(btnBackspace);
-            listElementsEighthRow.add(btnDiv);
+            list_ElementsEighthRow.add(btnX3);
+            list_ElementsEighthRow.add(btnCE);
+            list_ElementsEighthRow.add(btnC);
+            list_ElementsEighthRow.add(btnBackspace);
+            list_ElementsEighthRow.add(btnDiv);
 
-            for (int i = 0; i < listElementsEighthRow.size(); i++) {
-                addButtonsToPanel(listElementsEighthRow.get(i), subPanelEighthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsEighthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsEighthRow.get(i), subPanel_EighthRow, columns[i], Row.FIRST);
             }
 
 
@@ -270,14 +253,14 @@ public class TrigonometricWindow extends Window{
             Button btn9 = new Button("9");
             Button btnMult = new Button("╳");
 
-            listElementsNinthRow.add(btnExp);
-            listElementsNinthRow.add(btn7);
-            listElementsNinthRow.add(btn8);
-            listElementsNinthRow.add(btn9);
-            listElementsNinthRow.add(btnMult);
+            list_ElementsNinthRow.add(btnExp);
+            list_ElementsNinthRow.add(btn7);
+            list_ElementsNinthRow.add(btn8);
+            list_ElementsNinthRow.add(btn9);
+            list_ElementsNinthRow.add(btnMult);
 
-            for (int i = 0; i < listElementsNinthRow.size(); i++) {
-                addButtonsToPanel(listElementsNinthRow.get(i), subPanelNinthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsNinthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsNinthRow.get(i), subPanel_NinthRow, columns[i], Row.FIRST);
             }
 
 
@@ -287,14 +270,14 @@ public class TrigonometricWindow extends Window{
             Button btn6 = new Button("6");
             Button btnMinus = new Button("-");
 
-            listElementsTenthRow.add(btnMod);
-            listElementsTenthRow.add(btn4);
-            listElementsTenthRow.add(btn5);
-            listElementsTenthRow.add(btn6);
-            listElementsTenthRow.add(btnMinus);
+            list_ElementsTenthRow.add(btnMod);
+            list_ElementsTenthRow.add(btn4);
+            list_ElementsTenthRow.add(btn5);
+            list_ElementsTenthRow.add(btn6);
+            list_ElementsTenthRow.add(btnMinus);
 
-            for (int i = 0; i < listElementsTenthRow.size(); i++) {
-                addButtonsToPanel(listElementsTenthRow.get(i), subPanelTenthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsTenthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsTenthRow.get(i), subPanel_TenthRow, columns[i], Row.FIRST);
             }
 
 
@@ -304,14 +287,14 @@ public class TrigonometricWindow extends Window{
             Button btn3 = new Button("3");
             Button btnPlus = new Button("+");
 
-            listElementsEleventhRow.add(btnPi);
-            listElementsEleventhRow.add(btn1);
-            listElementsEleventhRow.add(btn2);
-            listElementsEleventhRow.add(btn3);
-            listElementsEleventhRow.add(btnPlus);
+            list_ElementsEleventhRow.add(btnPi);
+            list_ElementsEleventhRow.add(btn1);
+            list_ElementsEleventhRow.add(btn2);
+            list_ElementsEleventhRow.add(btn3);
+            list_ElementsEleventhRow.add(btnPlus);
 
-            for (int i = 0; i < listElementsEleventhRow.size(); i++) {
-                addButtonsToPanel(listElementsEleventhRow.get(i), subPanelEleventhRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsEleventhRow.size(); i++) {
+                addButtonsToPanel(list_ElementsEleventhRow.get(i), subPanelEleventhRow, columns[i], Row.FIRST);
             }
 
             Button btnFactorial = new Button("n!");
@@ -320,14 +303,14 @@ public class TrigonometricWindow extends Window{
             Button btnComma = new Button(",");
             Button btnEquals = new Button("=");
 
-            listElementsTwelthRow.add(btnFactorial);
-            listElementsTwelthRow.add(btnPlusMinus);
-            listElementsTwelthRow.add(btn0);
-            listElementsTwelthRow.add(btnComma);
-            listElementsTwelthRow.add(btnEquals);
+            list_ElementsTwelthRow.add(btnFactorial);
+            list_ElementsTwelthRow.add(btnPlusMinus);
+            list_ElementsTwelthRow.add(btn0);
+            list_ElementsTwelthRow.add(btnComma);
+            list_ElementsTwelthRow.add(btnEquals);
 
-            for (int i = 0; i < listElementsTwelthRow.size(); i++) {
-                addButtonsToPanel(listElementsTwelthRow.get(i), subPanelTwelthRow, columns[i], Row.FIRST);
+            for (int i = 0; i < list_ElementsTwelthRow.size(); i++) {
+                addButtonsToPanel(list_ElementsTwelthRow.get(i), subPanelTwelthRow, columns[i], Row.FIRST);
             }
 
             Scene scene = new Scene(root, 300, 300);
