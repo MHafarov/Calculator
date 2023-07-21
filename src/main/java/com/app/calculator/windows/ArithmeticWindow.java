@@ -26,31 +26,10 @@ public class ArithmeticWindow extends Window{
 
             this.stage.setTitle("Calculator");
 
-            Button btn_Undo = new Button();
-            stretchMenuButton(btn_Undo);
-            addImageToButton(btn_Undo, "/images/undo.png");
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
-
-            Button btn_Redo = new Button();
-            stretchMenuButton(btn_Redo);
-            addImageToButton(btn_Redo, "/images/redo.png");
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
-            displayField.setStyle("-fx-alignment: center-right;");
-            displayField.setText("0");
-            GridPane.setHgrow(displayField, Priority.ALWAYS);
-            GridPane.setVgrow(displayField, Priority.ALWAYS);
             subPanel_SecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
-
-            Label label_Up = new Label("⮤");
-            Label label_FiveDivFour = new Label("5/4");
-            Label label_Down  = new Label("⮧");
-            Label label_A  = new Label("A");
-            Label label_Zero  = new Label("0");
-            Label label_Two  = new Label("2");
-            Label label_Three  = new Label("3");
-            Label label_Four  = new Label("4");
-            Label label_F   = new Label("F");
 
             list_ElementsThirdRowTop.add(label_Space);
             list_ElementsThirdRowTop.add(label_Up);
@@ -70,20 +49,6 @@ public class ArithmeticWindow extends Window{
                 addElementToPanel(list_ElementsThirdRowTop.get(i), subPanel_ThirdRow, columns[i], Row.FIRST);
                 list_ElementsThirdRowTop.get(i).setAlignment(Pos.CENTER);
             }
-
-
-            RadioButton rBtn_Up = new RadioButton();
-            RadioButton rBtn_FiveDivFour = new RadioButton();
-            RadioButton rBtn_Down = new RadioButton();
-
-
-            RadioButton rBtn_A = new RadioButton();
-            RadioButton rBtn_Zero = new RadioButton();
-            RadioButton rBtn_Two = new RadioButton();
-            RadioButton rBtn_Three = new RadioButton();
-            RadioButton rBtn_Four = new RadioButton();
-            RadioButton rBtn_F = new RadioButton();
-
 
             label_Space.setAlignment(Pos.CENTER);
             rBtn_Up.setAlignment(Pos.CENTER);
@@ -113,9 +78,6 @@ public class ArithmeticWindow extends Window{
             for (int i = 0; i < list_ElementsThirdRowDown.size(); i++) {
                 addElementToPanel(list_ElementsThirdRowDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);
             }
-
-            ToggleGroup toggleGroup_Left = new ToggleGroup();
-            ToggleGroup toggleGroup_Right = new ToggleGroup();
 
             rBtn_Up.setToggleGroup(toggleGroup_Left);
             rBtn_FiveDivFour.setToggleGroup(toggleGroup_Left);

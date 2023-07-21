@@ -6,6 +6,7 @@ import com.app.calculator.constants.Size;
 import com.app.calculator.history.History;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -54,6 +55,11 @@ public abstract class Window implements Runnable {
     public Menu menu_Theme;
     public Menu menu_Language;
     public Menu menu_Sound;
+
+    public Button btn_Undo;
+    public Button btn_Redo;
+
+
     public CheckMenuItem cMI_TrigonometricWindow;
     public CheckMenuItem cMI_ConvertionWindow;
     public SeparatorMenuItem sMI_SeparatorExit;
@@ -71,6 +77,34 @@ public abstract class Window implements Runnable {
     public ToggleGroup group_Sound;
     public TextField displayField = new TextField();
     public Label label_Space = new Label(" ");
+
+
+
+    public Label label_Up;
+    public Label label_FiveDivFour;
+    public Label label_Down;
+    public Label label_A;
+    public Label label_Zero;
+    public Label label_Two;
+    public Label label_Three;
+    public Label label_Four;
+    public Label label_F;
+
+    public RadioButton rBtn_Up;
+    public RadioButton rBtn_FiveDivFour;
+    public RadioButton rBtn_Down;
+
+
+    public RadioButton rBtn_A;
+    public RadioButton rBtn_Zero;
+    public RadioButton rBtn_Two;
+    public RadioButton rBtn_Three;
+    public RadioButton rBtn_Four;
+    public RadioButton rBtn_F;
+
+
+    public ToggleGroup toggleGroup_Left;
+    public ToggleGroup toggleGroup_Right;
 
 
     public Window (Stage stage) {
@@ -181,6 +215,68 @@ public abstract class Window implements Runnable {
         rMI_SoundOff.setSelected(true);
         menu_Sound.getItems().addAll(rMI_SoundOff, rMI_SoundOn);
 
+        btn_Undo = new Button();
+        stretchMenuButton(btn_Undo);
+        addImageToButton(btn_Undo, "/images/undo.png");
+
+        btn_Redo = new Button();
+        stretchMenuButton(btn_Redo);
+        addImageToButton(btn_Redo, "/images/redo.png");
+
+        displayField.setStyle("-fx-alignment: center-right;");
+        displayField.setText("0");
+        GridPane.setHgrow(displayField, Priority.ALWAYS);
+        GridPane.setVgrow(displayField, Priority.ALWAYS);
+
+        label_Up = new Label("⮤");
+        label_FiveDivFour = new Label("5/4");
+        label_Down  = new Label("⮧");
+        label_A  = new Label("A");
+        label_Zero  = new Label("0");
+        label_Two  = new Label("2");
+        label_Three  = new Label("3");
+        label_Four  = new Label("4");
+        label_F   = new Label("F");
+
+        rBtn_Up = new RadioButton();
+        rBtn_FiveDivFour = new RadioButton();
+        rBtn_Down = new RadioButton();
+
+
+        rBtn_A = new RadioButton();
+        rBtn_Zero = new RadioButton();
+        rBtn_Two = new RadioButton();
+        rBtn_Three = new RadioButton();
+        rBtn_Four = new RadioButton();
+        rBtn_F = new RadioButton();
+
+
+        label_Space.setAlignment(Pos.CENTER);
+        rBtn_Up.setAlignment(Pos.CENTER);
+        rBtn_FiveDivFour.setAlignment(Pos.CENTER);
+        rBtn_Down.setAlignment(Pos.CENTER);
+        rBtn_A.setAlignment(Pos.CENTER);
+        rBtn_Zero.setAlignment(Pos.CENTER);
+        rBtn_Two.setAlignment(Pos.CENTER);
+        rBtn_Three.setAlignment(Pos.CENTER);
+        rBtn_Four.setAlignment(Pos.CENTER);
+        rBtn_F.setAlignment(Pos.CENTER);
+
+        toggleGroup_Left = new ToggleGroup();
+        toggleGroup_Right = new ToggleGroup();
+
+        rBtn_Up.setToggleGroup(toggleGroup_Left);
+        rBtn_FiveDivFour.setToggleGroup(toggleGroup_Left);
+        rBtn_Down.setToggleGroup(toggleGroup_Left);
+        rBtn_Up.setSelected(true);
+
+        rBtn_A.setToggleGroup(toggleGroup_Right);
+        rBtn_Zero.setToggleGroup(toggleGroup_Right);
+        rBtn_Two.setToggleGroup(toggleGroup_Right);
+        rBtn_Three.setToggleGroup(toggleGroup_Right);
+        rBtn_Four.setToggleGroup(toggleGroup_Right);
+        rBtn_F.setToggleGroup(toggleGroup_Right);
+        rBtn_A.setSelected(true);
     }
 
     public void executeCommand(Command command) {
