@@ -37,8 +37,8 @@ public abstract class Window implements Runnable {
     public GridPane subPanel_EighthRow;
     public GridPane subPanel_NinthRow;
     public GridPane subPanel_TenthRow;
-    public List<Label> list_ElementsThirdRowTop;
-    public List<Control> list_ElementsThirdRowDown;
+    public List<Label> list_ElementsRoundingTop;
+    public List<Control> list_ElementsRoundingDown;
     public List<Control> list_ElementsFourthRow;
     public List<Control> list_ElementsFifthRow;
     public List<Control> list_ElementsSixthRow;
@@ -76,7 +76,19 @@ public abstract class Window implements Runnable {
     public RadioMenuItem rMI_SoundOn;
     public ToggleGroup group_Sound;
     public TextField displayField = new TextField();
-    public Label label_Space = new Label(" ");
+    public Label label_Space_1 = new Label(" ");
+    public Label label_Space_2 = new Label(" ");
+    public Label label_Space_3 = new Label(" ");
+    public Label label_Space_4 = new Label(" ");
+    public Label label_Space_5 = new Label(" ");
+    public Label label_Space_6 = new Label(" ");
+    public Label label_Space_7 = new Label(" ");
+    public Label label_Space_8 = new Label(" ");
+    public Label label_Space_9 = new Label(" ");
+    public Label label_Space_10 = new Label(" ");
+    public Label label_Space_11 = new Label(" ");
+    public Label label_Space_12 = new Label(" ");
+    public Label label_Space_13 = new Label(" ");
     public Label label_Up;
     public Label label_FiveDivFour;
     public Label label_Down;
@@ -97,6 +109,9 @@ public abstract class Window implements Runnable {
     public RadioButton rBtn_F;
     public ToggleGroup toggleGroup_Left;
     public ToggleGroup toggleGroup_Right;
+
+    public Label label_MathematicalRounding;
+    public Label label_NoRounding;
 
 
     public Window (Stage stage) {
@@ -126,8 +141,8 @@ public abstract class Window implements Runnable {
         list_GridPanes.add(subPanel_NinthRow);
         list_GridPanes.add(subPanel_TenthRow);
 
-        list_ElementsThirdRowTop = new ArrayList<>();
-        list_ElementsThirdRowDown = new ArrayList<>();
+        list_ElementsRoundingTop = new ArrayList<>();
+        list_ElementsRoundingDown = new ArrayList<>();
 
         list_ElementsFourthRow = new ArrayList<>();
         list_ElementsFifthRow = new ArrayList<>();
@@ -140,8 +155,6 @@ public abstract class Window implements Runnable {
         list_ElementsEighthRow = new ArrayList<>();
         list_ElementsNinthRow = new ArrayList<>();
         list_ElementsTenthRow = new ArrayList<>();
-        list_ElementsEleventhRow = new ArrayList<>();
-        list_ElementsTwelthRow = new ArrayList<>();
 
         root = new GridPane();
 
@@ -153,9 +166,6 @@ public abstract class Window implements Runnable {
         columns = Column.values();
         rows = Row.values();
 
-        for (int i = 0; i < list_GridPanes.size(); i++) {
-            addSubPanelToRoot(list_GridPanes.get(i), root, Column.FIRST, rows[i]);
-        }
 
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
@@ -230,6 +240,22 @@ public abstract class Window implements Runnable {
         label_Four  = new Label("4");
         label_F   = new Label("F");
 
+        list_ElementsRoundingTop.add(label_Space_1);
+        list_ElementsRoundingTop.add(label_Up);
+        list_ElementsRoundingTop.add(label_FiveDivFour);
+        list_ElementsRoundingTop.add(label_Down);
+        list_ElementsRoundingTop.add(label_Space_2);
+        list_ElementsRoundingTop.add(label_Space_3);
+        list_ElementsRoundingTop.add(label_A);
+        list_ElementsRoundingTop.add(label_Zero);
+        list_ElementsRoundingTop.add(label_Two);
+        list_ElementsRoundingTop.add(label_Three);
+        list_ElementsRoundingTop.add(label_Four);
+        list_ElementsRoundingTop.add(label_F);
+        list_ElementsRoundingTop.add(label_Space_4);
+
+
+
         rBtn_Up = new RadioButton();
         rBtn_FiveDivFour = new RadioButton();
         rBtn_Down = new RadioButton();
@@ -243,7 +269,7 @@ public abstract class Window implements Runnable {
         rBtn_F = new RadioButton();
 
 
-        label_Space.setAlignment(Pos.CENTER);
+        label_Space_9.setAlignment(Pos.CENTER);
         rBtn_Up.setAlignment(Pos.CENTER);
         rBtn_FiveDivFour.setAlignment(Pos.CENTER);
         rBtn_Down.setAlignment(Pos.CENTER);
@@ -253,6 +279,35 @@ public abstract class Window implements Runnable {
         rBtn_Three.setAlignment(Pos.CENTER);
         rBtn_Four.setAlignment(Pos.CENTER);
         rBtn_F.setAlignment(Pos.CENTER);
+
+        label_Space_1.setAlignment(Pos.CENTER);
+        rBtn_Up.setAlignment(Pos.CENTER);
+        rBtn_FiveDivFour.setAlignment(Pos.CENTER);
+        rBtn_Down.setAlignment(Pos.CENTER);
+        label_Space_2.setAlignment(Pos.CENTER);
+        label_Space_3.setAlignment(Pos.CENTER);
+        rBtn_A.setAlignment(Pos.CENTER);
+        rBtn_Zero.setAlignment(Pos.CENTER);
+        rBtn_Two.setAlignment(Pos.CENTER);
+        rBtn_Three.setAlignment(Pos.CENTER);
+        rBtn_Four.setAlignment(Pos.CENTER);
+        rBtn_F.setAlignment(Pos.CENTER);
+        label_Space_4.setAlignment(Pos.CENTER);
+
+        list_ElementsRoundingDown.add(label_Space_5);
+        list_ElementsRoundingDown.add(rBtn_Up);
+        list_ElementsRoundingDown.add(rBtn_FiveDivFour);
+        list_ElementsRoundingDown.add(rBtn_Down);
+        list_ElementsRoundingDown.add(label_Space_6);
+        list_ElementsRoundingDown.add(label_Space_7);
+        list_ElementsRoundingDown.add(rBtn_A);
+        list_ElementsRoundingDown.add(rBtn_Zero);
+        list_ElementsRoundingDown.add(rBtn_Two);
+        list_ElementsRoundingDown.add(rBtn_Three);
+        list_ElementsRoundingDown.add(rBtn_Four);
+        list_ElementsRoundingDown.add(rBtn_F);
+        list_ElementsRoundingDown.add(label_Space_8);
+
 
         toggleGroup_Left = new ToggleGroup();
         toggleGroup_Right = new ToggleGroup();
@@ -270,7 +325,21 @@ public abstract class Window implements Runnable {
         rBtn_F.setToggleGroup(toggleGroup_Right);
         rBtn_A.setSelected(true);
 
-        System.out.println("1");
+        label_MathematicalRounding = new Label("Mathematical rounding");
+        label_MathematicalRounding.setAlignment(Pos.CENTER);
+        GridPane.setHgrow(label_MathematicalRounding, Priority.ALWAYS);
+        GridPane.setVgrow(label_MathematicalRounding, Priority.ALWAYS);
+        subPanel_ThirdRow.setHalignment(label_MathematicalRounding, HPos.CENTER);
+        subPanel_ThirdRow.setValignment(label_MathematicalRounding, VPos.CENTER);
+
+        label_NoRounding = new Label("No rounding");
+        label_NoRounding.setAlignment(Pos.CENTER);
+        GridPane.setHgrow(label_NoRounding, Priority.ALWAYS);
+        GridPane.setVgrow(label_NoRounding, Priority.ALWAYS);
+        subPanel_ThirdRow.setHalignment(label_NoRounding, HPos.CENTER);
+        subPanel_ThirdRow.setValignment(label_NoRounding, VPos.CENTER);
+
+        System.out.println("Конструктор Window выполнен");
 
     }
 

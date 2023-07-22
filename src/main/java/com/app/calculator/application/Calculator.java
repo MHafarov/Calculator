@@ -24,9 +24,9 @@ public class Calculator extends Application {
         windows.add(trigonometricWindow);
         windows.add(convertionWindow);
 
-        System.out.println("3");
+        System.out.println("В методе start класса Calculator");
 
         windows.stream().forEach(window -> new Thread(window).start());
-        System.out.println("2");
+        System.out.println("Все три окна запущены");
     }
 }

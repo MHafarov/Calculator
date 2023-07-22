@@ -1,9 +1,7 @@
 package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.constants.Column;
-import com.app.calculator.constants.Element;
-import com.app.calculator.constants.Row;
+import com.app.calculator.constants.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +14,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConvertionWindow extends Window{
     public ConvertionWindow (Stage stage) {
         super(stage);
@@ -25,12 +26,8 @@ public class ConvertionWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Convertion");
-
-            GridPane subPanel_EleventhRow = new GridPane();
-            GridPane subPanel_TwelthRow = new GridPane();
-
-            list_GridPanes.add(subPanel_EleventhRow);
-            list_GridPanes.add(subPanel_TwelthRow);
+            this.stage.setX(Position.CONVERTION_WINDOW.getHorizontal());
+            this.stage.setY(Position.CONVERTION_WINDOW.getVertical());
 
             ComboBox<String> comboBox_Category = new ComboBox<String>();
             ObservableList<String> observablelist_Category = FXCollections.observableArrayList();
@@ -80,83 +77,55 @@ public class ConvertionWindow extends Window{
             GridPane.setConstraints(combo_Box_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
 
-            Label label_Up = new Label("⮤");
-            Label label_FiveDivFour = new Label("5/4");
-            Label label_Down  = new Label("⮧");
-            Label label_A  = new Label("A");
-            Label label_Zero  = new Label("0");
-            Label label_Two  = new Label("2");
-            Label label_Three  = new Label("3");
-            Label label_Four  = new Label("4");
-            Label label_F   = new Label("F");
 
 
-            list_ElementsSeventhRowTop.add(label_Space);
-            list_ElementsSeventhRowTop.add(label_Up);
-            list_ElementsSeventhRowTop.add(label_FiveDivFour);
-            list_ElementsSeventhRowTop.add(label_Down);
-            list_ElementsSeventhRowTop.add(label_Space);
-            list_ElementsSeventhRowTop.add(label_Space);
-            list_ElementsSeventhRowTop.add(label_A);
-            list_ElementsSeventhRowTop.add(label_Zero);
-            list_ElementsSeventhRowTop.add(label_Two);
-            list_ElementsSeventhRowTop.add(label_Three);
-            list_ElementsSeventhRowTop.add(label_Four);
-            list_ElementsSeventhRowTop.add(label_F);
-            list_ElementsSeventhRowTop.add(label_Space);
 
-            for (int i = 0; i < list_ElementsSeventhRowTop.size(); i++) {
-                addElementToPanel(list_ElementsSeventhRowTop.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);
-                list_ElementsSeventhRowTop.get(i).setAlignment(Pos.CENTER);
+//            list_ElementsSeventhRowTop.add(label_Space_10);
+//            list_ElementsSeventhRowTop.add(label_Up);
+//            list_ElementsSeventhRowTop.add(label_FiveDivFour);
+//            list_ElementsSeventhRowTop.add(label_Down);
+//            list_ElementsSeventhRowTop.add(label_Space_11);
+//            list_ElementsSeventhRowTop.add(label_Space_12);
+//            list_ElementsSeventhRowTop.add(label_A);
+//            list_ElementsSeventhRowTop.add(label_Zero);
+//            list_ElementsSeventhRowTop.add(label_Two);
+//            list_ElementsSeventhRowTop.add(label_Three);
+//            list_ElementsSeventhRowTop.add(label_Four);
+//            list_ElementsSeventhRowTop.add(label_F);
+//            list_ElementsSeventhRowTop.add(label_Space_13);
+
+            for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {
+                addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);
+                list_ElementsRoundingTop.get(i).setAlignment(Pos.CENTER);
+            }
+
+            for (int i = 0; i < list_ElementsRoundingDown.size(); i++) {
+                addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_SeventhRow, columns[i], Row.SECOND);
             }
 
 
-            RadioButton rBtn_Up = new RadioButton();
-            RadioButton rBtn_FiveDivFour = new RadioButton();
-            RadioButton rBtnt_Down = new RadioButton();
+//
+//            list_ElementsSeventhRowDown.add(label_Space_10);
+//            list_ElementsSeventhRowDown.add(rBtn_Up);
+//            list_ElementsSeventhRowDown.add(rBtn_FiveDivFour);
+//            list_ElementsSeventhRowDown.add(rBtn_Down);
+//            list_ElementsSeventhRowDown.add(label_Space_11);
+//            list_ElementsSeventhRowDown.add(label_Space_12);
+//            list_ElementsSeventhRowDown.add(rBtn_A);
+//            list_ElementsSeventhRowDown.add(rBtn_Zero);
+//            list_ElementsSeventhRowDown.add(rBtn_Two);
+//            list_ElementsSeventhRowDown.add(rBtn_Three);
+//            list_ElementsSeventhRowDown.add(rBtn_Four);
+//            list_ElementsSeventhRowDown.add(rBtn_F);
+//            list_ElementsSeventhRowDown.add(label_Space_13);
 
-            RadioButton rBtn_A = new RadioButton();
-            RadioButton rBtn_Zero = new RadioButton();
-            RadioButton rBtn_Two = new RadioButton();
-            RadioButton rBtn_Three = new RadioButton();
-            RadioButton rBtn_Four = new RadioButton();
-            RadioButton rBtn_F = new RadioButton();
-
-            label_Space.setAlignment(Pos.CENTER);
-            rBtn_Up.setAlignment(Pos.CENTER);
-            rBtn_FiveDivFour.setAlignment(Pos.CENTER);
-            rBtnt_Down.setAlignment(Pos.CENTER);
-            rBtn_A.setAlignment(Pos.CENTER);
-            rBtn_Zero.setAlignment(Pos.CENTER);
-            rBtn_Two.setAlignment(Pos.CENTER);
-            rBtn_Three.setAlignment(Pos.CENTER);
-            rBtn_Four.setAlignment(Pos.CENTER);
-            rBtn_F.setAlignment(Pos.CENTER);
-
-            list_ElementsSeventhRowDown.add(label_Space);
-            list_ElementsSeventhRowDown.add(rBtn_Up);
-            list_ElementsSeventhRowDown.add(rBtn_FiveDivFour);
-            list_ElementsSeventhRowDown.add(rBtnt_Down);
-            list_ElementsSeventhRowDown.add(label_Space);
-            list_ElementsSeventhRowDown.add(label_Space);
-            list_ElementsSeventhRowDown.add(rBtn_A);
-            list_ElementsSeventhRowDown.add(rBtn_Zero);
-            list_ElementsSeventhRowDown.add(rBtn_Two);
-            list_ElementsSeventhRowDown.add(rBtn_Three);
-            list_ElementsSeventhRowDown.add(rBtn_Four);
-            list_ElementsSeventhRowDown.add(rBtn_F);
-            list_ElementsSeventhRowDown.add(label_Space);
-
-            for (int i = 0; i < list_ElementsSeventhRowDown.size(); i++) {
-                addElementToPanel(list_ElementsSeventhRowDown.get(i), subPanel_SeventhRow, columns[i], Row.SECOND);
-            }
 
             ToggleGroup toggleGroup_Left = new ToggleGroup();
             ToggleGroup toggleGroup_Right = new ToggleGroup();
 
             rBtn_Up.setToggleGroup(toggleGroup_Left);
             rBtn_FiveDivFour.setToggleGroup(toggleGroup_Left);
-            rBtnt_Down.setToggleGroup(toggleGroup_Left);
+            rBtn_Down.setToggleGroup(toggleGroup_Left);
             rBtn_Up.setSelected(true);
 
             rBtn_A.setToggleGroup(toggleGroup_Right);
@@ -224,10 +193,15 @@ public class ConvertionWindow extends Window{
                 addButtonsToPanel(list_ElementsTenthRow.get(i), subPanel_TenthRow, columns[i], Row.FIRST);
             }
 
+            GridPane subPanel_EleventhRow = new GridPane();
+            list_GridPanes.add(subPanel_EleventhRow);
+            List<Control> list_ElementsEleventhRow = new ArrayList<>();
 
             Button btn_One = new Button("1");
             Button btn_Two = new Button("2");
             Button btn_Three = new Button("3");
+
+
 
             list_ElementsEleventhRow.add(btn_One);
             list_ElementsEleventhRow.add(btn_Two);
@@ -236,6 +210,11 @@ public class ConvertionWindow extends Window{
             for (int i = 0; i < list_ElementsEleventhRow.size(); i++) {
                 addButtonsToPanel(list_ElementsEleventhRow.get(i), subPanel_EleventhRow, columns[i], Row.FIRST);
             }
+
+            GridPane subPanel_TwelthRow = new GridPane();
+            list_GridPanes.add(subPanel_TwelthRow);
+
+            List<Control> list_ElementsTwelthRow = new ArrayList<>();
 
             Button btn_Zero = new Button("0");
             Button btn_Comma = new Button(",");
@@ -248,8 +227,11 @@ public class ConvertionWindow extends Window{
                 addButtonsToPanel(list_ElementsTwelthRow.get(i), subPanel_TwelthRow, columns[i], Row.FIRST);
             }
 
+            for (int i = 0; i < list_GridPanes.size(); i++) {
+                addSubPanelToRoot(list_GridPanes.get(i), root, Column.FIRST, rows[i]);
+            }
 
-            Scene scene = new Scene(root, 300, 300);
+            Scene scene = new Scene(root, Dimension.CONVERTION_WINDOW.getWidth(), Dimension.CONVERTION_WINDOW.getHeight());
             stage.setScene(scene);
 
             stage.show();
