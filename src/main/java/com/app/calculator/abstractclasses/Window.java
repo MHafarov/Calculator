@@ -77,9 +77,6 @@ public abstract class Window implements Runnable {
     public ToggleGroup group_Sound;
     public TextField displayField = new TextField();
     public Label label_Space = new Label(" ");
-
-
-
     public Label label_Up;
     public Label label_FiveDivFour;
     public Label label_Down;
@@ -89,20 +86,15 @@ public abstract class Window implements Runnable {
     public Label label_Three;
     public Label label_Four;
     public Label label_F;
-
     public RadioButton rBtn_Up;
     public RadioButton rBtn_FiveDivFour;
     public RadioButton rBtn_Down;
-
-
     public RadioButton rBtn_A;
     public RadioButton rBtn_Zero;
     public RadioButton rBtn_Two;
     public RadioButton rBtn_Three;
     public RadioButton rBtn_Four;
     public RadioButton rBtn_F;
-
-
     public ToggleGroup toggleGroup_Left;
     public ToggleGroup toggleGroup_Right;
 
@@ -277,6 +269,9 @@ public abstract class Window implements Runnable {
         rBtn_Four.setToggleGroup(toggleGroup_Right);
         rBtn_F.setToggleGroup(toggleGroup_Right);
         rBtn_A.setSelected(true);
+
+        System.out.println("1");
+
     }
 
     public void executeCommand(Command command) {
@@ -354,5 +349,6 @@ public abstract class Window implements Runnable {
         imageView.setFitHeight(20);
         checkMenu.setGraphic(imageView);
     }
+    //window.checkDigit();
 
 }
