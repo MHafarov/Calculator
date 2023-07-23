@@ -16,7 +16,7 @@ public abstract class Command {
         this.event = event;
     }
 
-    void backup() {
+    public void backup() {
         backup = window.displayField.getText();
     }
 
@@ -39,6 +39,11 @@ public abstract class Command {
         String outputString = String.valueOf(bigDecimal);
         outputString = outputString.replace('.',',');
         return outputString;
+    }
+
+    @Override
+    public String toString() {
+        return getSource(event).getText();
     }
 }
 

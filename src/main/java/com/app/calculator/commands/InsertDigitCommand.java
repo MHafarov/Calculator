@@ -11,12 +11,17 @@ public class InsertDigitCommand extends Command {
     }
     @Override
     public boolean execute() {
-        String inputString = window.displayField.getText();
-        //checkInputString(inputString);
+        backup();
+        String presentText = window.displayField.getText();
+        if (presentText.equals("0")) {
+            presentText = "";
+        }
+        //checkInputString(presentText);
 
         Button source = getSource(event);
         String outputString = source.getText();
-        window.displayField.setText(outputString);
+        presentText += outputString;
+        window.displayField.setText(presentText);
 
         return true;
     }

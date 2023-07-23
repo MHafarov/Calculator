@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Button One try Event">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Dimension.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -150,7 +146,9 @@
       <workItem from="1685816602729" duration="6050000" />
       <workItem from="1689444080715" duration="8833000" />
       <workItem from="1689492267811" duration="24925000" />
-      <workItem from="1690028137342" duration="12304000" />
+      <workItem from="1690028137342" duration="10289000" />
+      <workItem from="1690054443576" duration="585000" />
+      <workItem from="1690102525568" duration="17912000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>

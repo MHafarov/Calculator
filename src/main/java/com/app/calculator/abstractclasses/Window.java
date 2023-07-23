@@ -1,9 +1,13 @@
 package com.app.calculator.abstractclasses;
 
+import com.app.calculator.commands.InsertDigitCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import com.app.calculator.history.History;
+import com.app.calculator.windows.ArithmeticWindow;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -220,6 +224,14 @@ public abstract class Window implements Runnable {
         btn_Undo = new Button();
         stretchMenuButton(btn_Undo);
         addImageToButton(btn_Undo, "/images/undo.png");
+        btn_Undo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                undo();
+            }
+        });
+
+
 
         btn_Redo = new Button();
         stretchMenuButton(btn_Redo);
@@ -345,14 +357,19 @@ public abstract class Window implements Runnable {
 
     public void executeCommand(Command command) {
         if (command.execute()) {
+//            System.out.println("Стек до ввода: " + history.history);
             history.push(command);
+//            System.out.println("Стек после ввода: " + history.history);
         }
     }
 
     public void undo() {
         if (history.isEmpty()) return;
 
+        //System.out.println("Стек до отмены: " + history.history);
+
         Command command = history.pop();
+       //System.out.println("Стек после отмены: " + history.history);
         if (command != null) {
             command.undo();
         }

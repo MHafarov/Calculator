@@ -101,6 +101,26 @@ public class ArithmeticWindow extends Window{
             Button btn_Nine = new Button("9");
             Button btn_Mult = new Button("╳");
 
+            btn_Seven.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Eight.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Nine.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+
+
             list_ElementsSeventhRow.add(btn_Seven);
             list_ElementsSeventhRow.add(btn_Eight);
             list_ElementsSeventhRow.add(btn_Nine);
@@ -115,6 +135,27 @@ public class ArithmeticWindow extends Window{
             Button btn_Five = new Button("5");
             Button btn_Six = new Button("6");
             Button btn_Minus = new Button("-");
+
+            btn_Four.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Five.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Six.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+
+
 
             list_ElementsEighthRow.add(btn_Four);
             list_ElementsEighthRow.add(btn_Five);
@@ -132,6 +173,19 @@ public class ArithmeticWindow extends Window{
             Button btn_Plus = new Button("+");
 
             btn_One.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+
+            btn_Two.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Three.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
