@@ -1,11 +1,9 @@
 package com.app.calculator.abstractclasses;
 
-import com.app.calculator.commands.InsertDigitCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import com.app.calculator.history.History;
-import com.app.calculator.windows.ArithmeticWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -231,11 +229,15 @@ public abstract class Window implements Runnable {
             }
         });
 
-
-
         btn_Redo = new Button();
         stretchMenuButton(btn_Redo);
         addImageToButton(btn_Redo, "/images/redo.png");
+        btn_Redo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                redo();
+            }
+        });
 
         displayField.setStyle("-fx-alignment: center-right;");
         displayField.setText("0");
@@ -371,9 +373,22 @@ public abstract class Window implements Runnable {
         Command command = history.pop();
        //System.out.println("Стек после отмены: " + history.history);
         if (command != null) {
-            command.undo();
+            command.show_PreviousNumber();
         }
     }
+
+    public void redo() {
+        if (history.isEmpty()) return;
+
+        //System.out.println("Стек до отмены: " + history.history);
+
+        Command command = history.next();
+        //System.out.println("Стек после отмены: " + history.history);
+        if (command != null) {
+            command.show_CurrentNumber();
+        }
+    }
+
 
     public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {
         root.add(subPanel, column.getNumber(), row.getNumber());

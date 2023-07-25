@@ -62,11 +62,20 @@ public class History {
         return history.get(currentIndex);
     }
     public Command next() {
-        currentIndex += 1;
-        if (history.get(currentIndex) == null) {
+        if (currentIndex == history.size()) {
             currentIndex -= 1;
         }
-        return history.get(currentIndex);
+        System.out.println("A currentIndex " + currentIndex);
+        if (history.get(currentIndex) == null) {
+            System.out.println("B currentIndex " + currentIndex);
+            return history.get(currentIndex++);
+        } else {
+            System.out.println("C currentIndex " + currentIndex);
+            System.out.println("D currentIndex " + currentIndex);
+
+            return history.get(currentIndex++);
+        }
+
     }
     public boolean isEmpty() {
         return history.isEmpty(); }
