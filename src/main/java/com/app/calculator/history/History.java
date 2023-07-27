@@ -12,8 +12,13 @@ public class History {
         history.add(null);
     }
     public int currentIndex = 0;
+
     public void push(Command c) {
         //history.add(null);
+        if (history.size() == (currentIndex - 1)) {
+            currentIndex -= 1;
+        }
+
         if (history.get(currentIndex) == null) {
             System.out.println("1 currentIndex " + currentIndex);
             System.out.println("Стек до добавления элемента: " + history);
@@ -62,7 +67,7 @@ public class History {
         return history.get(currentIndex);
     }
     public Command next() {
-        if (currentIndex == history.size()) {
+        if (currentIndex == history.size() | history.size() == (currentIndex - 1)) {
             currentIndex -= 1;
         }
         System.out.println("A currentIndex " + currentIndex);

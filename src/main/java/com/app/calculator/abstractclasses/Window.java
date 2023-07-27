@@ -114,6 +114,7 @@ public abstract class Window implements Runnable {
 
     public Label label_MathematicalRounding;
     public Label label_NoRounding;
+    public boolean previousCommandWasSimple;
 
 
     public Window (Stage stage) {
@@ -220,6 +221,7 @@ public abstract class Window implements Runnable {
         menu_Sound.getItems().addAll(rMI_SoundOff, rMI_SoundOn);
 
         btn_Undo = new Button();
+        btn_Undo.setDisable(true);
         stretchMenuButton(btn_Undo);
         addImageToButton(btn_Undo, "/images/undo.png");
         btn_Undo.setOnAction(new EventHandler<ActionEvent>() {
@@ -230,6 +232,7 @@ public abstract class Window implements Runnable {
         });
 
         btn_Redo = new Button();
+        btn_Redo.setDisable(true);
         stretchMenuButton(btn_Redo);
         addImageToButton(btn_Redo, "/images/redo.png");
         btn_Redo.setOnAction(new EventHandler<ActionEvent>() {
@@ -355,12 +358,15 @@ public abstract class Window implements Runnable {
 
         System.out.println("Конструктор Window выполнен");
 
+        previousCommandWasSimple = false;
+
     }
 
     public void executeCommand(Command command) {
         if (command.execute()) {
 //            System.out.println("Стек до ввода: " + history.history);
             history.push(command);
+            btn_Undo.setDisable(false);
 //            System.out.println("Стек после ввода: " + history.history);
         }
     }
@@ -371,6 +377,7 @@ public abstract class Window implements Runnable {
         //System.out.println("Стек до отмены: " + history.history);
 
         Command command = history.pop();
+        btn_Redo.setDisable(false);
        //System.out.println("Стек после отмены: " + history.history);
         if (command != null) {
             command.show_PreviousNumber();
@@ -383,9 +390,12 @@ public abstract class Window implements Runnable {
         //System.out.println("Стек до отмены: " + history.history);
 
         Command command = history.next();
+        btn_Undo.setDisable(false);
         //System.out.println("Стек после отмены: " + history.history);
         if (command != null) {
             command.show_CurrentNumber();
+        } else {
+            history.currentIndex -= 1;
         }
     }
 
