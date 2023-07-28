@@ -40,7 +40,8 @@ public class EditDigitCommand extends Command {
                 }
                 if (digitIsZero(input_String)) {
                     output_String = "0";
-                    if (history_size > 1 && lastCommandWas("±")) {
+                    if (history_size > 1 && lastCommandWas("±")
+                        && window.getHistory().currentIndex == history_size-2) {
                         window.getHistory().history.remove(history_size-2);
                         window.getHistory().currentIndex -= 1;
                     }
@@ -51,21 +52,24 @@ public class EditDigitCommand extends Command {
                 if (digitIsZero(input_String)) {
                     output_String = input_String + ",";
                     System.out.println("Zero 1");
-                    if (history_size > 1 && lastCommandWas(",")) {
-                        window.getHistory().history.remove(history_size-2);
-                        window.getHistory().currentIndex -= 1;
-                        System.out.println("Zero 2");
-                    }
                     break;
                 }
                 if (digitHasComma(input_String)) {
+                    System.out.println("input_String на ВХОДЕ " + input_String);
                     output_String = input_String;
+                    System.out.println("output_String " + input_String);
                     System.out.println("Has comma 1");
+                    System.out.println("Стек " + window.getHistory().history);
                     if (history_size > 1 && lastCommandWas(",")) {
-                        //setNumber_Previous((window.getHistory().history.get(window.getHistory().history.size()-2).getNumber_Current()));
+                        setNumber_Previous((window.getHistory().history.get(window.getHistory().history.size()-3).getNumber_Previous()));
+                        setNumber_Current((window.getHistory().history.get(window.getHistory().history.size()-3).getNumber_Current()));
+                        System.out.println("Previous " + getNumber_Previous());
+                        System.out.println("Current " + getNumber_Current());
                         window.getHistory().history.remove(history_size-2);
                         window.getHistory().currentIndex -= 1;
                         System.out.println("Has comma 2");
+                        System.out.println("Стек " + window.getHistory().history);
+                        break;
                     }
                     break;
                 }
@@ -75,6 +79,7 @@ public class EditDigitCommand extends Command {
                 }
                 output_String = input_String + ",";
                 System.out.println("Add comma 1");
+                System.out.println("Стек " + window.getHistory().history);
                 break;
 
             default:

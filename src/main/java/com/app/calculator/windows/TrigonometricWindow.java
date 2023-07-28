@@ -220,7 +220,7 @@ public class TrigonometricWindow extends Window{
             Scene scene = new Scene(root, Dimension.TRIGONOMETRIC_WINDOW.getWidth(), Dimension.TRIGONOMETRIC_WINDOW.getHeight());
             stage.setScene(scene);
 
-            stage.show();
+            //stage.show();
             System.out.println("Метод show()");
         });
     }

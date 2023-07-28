@@ -366,12 +366,9 @@ public abstract class Window implements Runnable {
     }
 
     public void executeCommand(Command command) {
-        if (command.execute()) {
-//            System.out.println("Стек до ввода: " + history.history);
-            history.push(command);
-            btn_Undo.setDisable(false);
-//            System.out.println("Стек после ввода: " + history.history);
-        }
+        history.push(command);
+        btn_Undo.setDisable(false);
+        command.execute();
     }
 
     public void undo() {

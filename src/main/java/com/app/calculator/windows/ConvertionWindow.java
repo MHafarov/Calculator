@@ -234,7 +234,7 @@ public class ConvertionWindow extends Window{
             Scene scene = new Scene(root, Dimension.CONVERTION_WINDOW.getWidth(), Dimension.CONVERTION_WINDOW.getHeight());
             stage.setScene(scene);
 
-            stage.show();
+            //stage.show();
         });
     }
 }
