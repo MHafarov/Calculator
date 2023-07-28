@@ -82,5 +82,9 @@ public abstract class Command {
     public String toString() {
         return getSource(event).getText();
     }
+    public String getTextCommand() {
+        return getSource(event).getText();
+    }
 }
+
 

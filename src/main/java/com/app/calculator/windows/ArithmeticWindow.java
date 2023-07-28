@@ -2,6 +2,7 @@ package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.commands.InsertDigitCommand;
+import com.app.calculator.commands.EditDigitCommand;
 import com.app.calculator.commands.OneDigitCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 
 public class ArithmeticWindow extends Window{
+
     public ArithmeticWindow (Stage stage) {
         super(stage);
     }
@@ -97,12 +99,6 @@ public class ArithmeticWindow extends Window{
                 }
             });
 
-
-
-
-
-
-
             list_ElementsFifthRow.add(btn_Percent);
             list_ElementsFifthRow.add(btn_Sqrt);
             list_ElementsFifthRow.add(btn_XSquared);
@@ -117,6 +113,31 @@ public class ArithmeticWindow extends Window{
             Button btn_C = new Button("C");
             Button btn_Backspace = new Button("←");
             Button btn_Div = new Button("÷");
+
+//            btn_CE.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+//                }
+//            });
+//            btn_C.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+//                }
+//            });
+            btn_Backspace.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+//            btn_Div.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+//                }
+//            });
 
             list_ElementsSixthRow.add(btn_CE);
             list_ElementsSixthRow.add(btn_C);
@@ -238,6 +259,32 @@ public class ArithmeticWindow extends Window{
             Button btn_Zero = new Button("0");
             Button btn_Comma = new Button(",");
             Button btn_Equals = new Button("=");
+
+            btn_PlusMinus.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+//            btn_Zero.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+//                }
+//            });
+            btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+//            btn_Equals.setOnAction(new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
+//                }
+//            });
+
 
             list_ElementsTenthRow.add(btn_PlusMinus);
             list_ElementsTenthRow.add(btn_Zero);

@@ -23,6 +23,9 @@ import java.util.ArrayList;
 
 public abstract class Window implements Runnable {
     protected final Stage stage;
+
+
+
     private History history = new History();
     public GridPane root;
 
@@ -460,6 +463,8 @@ public abstract class Window implements Runnable {
         imageView.setFitHeight(20);
         checkMenu.setGraphic(imageView);
     }
-    //window.checkDigit();
+    public History getHistory() {
+        return history;
+    }
 
 }
