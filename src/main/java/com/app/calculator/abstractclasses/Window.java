@@ -3,6 +3,7 @@ package com.app.calculator.abstractclasses;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
+import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,6 +28,10 @@ public abstract class Window implements Runnable {
 
 
     private History history = new History();
+
+
+
+    private Cash cash = new Cash();
     public GridPane root;
 
     public Column[] columns;
@@ -117,7 +122,7 @@ public abstract class Window implements Runnable {
 
     public Label label_MathematicalRounding;
     public Label label_NoRounding;
-    public boolean previousCommandWasSimple;
+    public boolean nextDigitShouldBeNew;
 
 
     public Window (Stage stage) {
@@ -361,7 +366,7 @@ public abstract class Window implements Runnable {
 
         System.out.println("Конструктор Window выполнен");
 
-        previousCommandWasSimple = false;
+        nextDigitShouldBeNew = false;
 
     }
 
@@ -463,5 +468,7 @@ public abstract class Window implements Runnable {
     public History getHistory() {
         return history;
     }
-
+    public Cash getCash() {
+        return cash;
+    }
 }

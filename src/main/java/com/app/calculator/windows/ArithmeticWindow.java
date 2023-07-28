@@ -4,6 +4,7 @@ import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.commands.InsertDigitCommand;
 import com.app.calculator.commands.EditDigitCommand;
 import com.app.calculator.commands.OneDigitCommand;
+import com.app.calculator.commands.TwoDigitsCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
 import com.app.calculator.constants.Position;
@@ -132,12 +133,12 @@ public class ArithmeticWindow extends Window{
                     executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
                 }
             });
-//            btn_Div.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_Div.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new TwoDigitsCommand(ArithmeticWindow.this, event));
+                }
+            });
 
             list_ElementsSixthRow.add(btn_CE);
             list_ElementsSixthRow.add(btn_C);
@@ -170,6 +171,12 @@ public class ArithmeticWindow extends Window{
                 @Override
                 public void handle(ActionEvent event) {
                     executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Mult.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new TwoDigitsCommand(ArithmeticWindow.this, event));
                 }
             });
 
@@ -207,6 +214,12 @@ public class ArithmeticWindow extends Window{
                     executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
                 }
             });
+            btn_Minus.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new TwoDigitsCommand(ArithmeticWindow.this, event));
+                }
+            });
 
 
 
@@ -242,6 +255,12 @@ public class ArithmeticWindow extends Window{
                 @Override
                 public void handle(ActionEvent event) {
                     executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_Plus.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new TwoDigitsCommand(ArithmeticWindow.this, event));
                 }
             });
 

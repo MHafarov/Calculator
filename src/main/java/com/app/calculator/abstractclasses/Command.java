@@ -31,12 +31,12 @@ public abstract class Command {
         String outputString = source.getText();
         setNumber_Current(outputString);
 
-        if (getNumber_Previous().equals("0") | window.previousCommandWasSimple == true) {
+        if (getNumber_Previous().equals("0") | window.nextDigitShouldBeNew == true) {
             setNumber_Current(outputString);
-            window.previousCommandWasSimple = false;
+            window.nextDigitShouldBeNew = false;
         } else {
             setNumber_Current(getNumber_Previous() + getNumber_Current());
-            window.previousCommandWasSimple = false;
+            window.nextDigitShouldBeNew = false;
         }
     }
 

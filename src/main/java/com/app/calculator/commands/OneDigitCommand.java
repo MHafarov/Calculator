@@ -57,7 +57,7 @@ public class OneDigitCommand extends Command {
         String output_String = toString(output_BigDecimal);
         setNumber_Current(output_String);
         show_CurrentNumber();
-        window.previousCommandWasSimple = true;
+        window.nextDigitShouldBeNew = true;
         return true;
     }
 }
