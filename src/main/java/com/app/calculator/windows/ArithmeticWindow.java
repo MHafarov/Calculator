@@ -2,7 +2,7 @@ package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.commands.InsertDigitCommand;
-import com.app.calculator.commands.OneDivXCommand;
+import com.app.calculator.commands.OneDigitCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
 import com.app.calculator.constants.Position;
@@ -78,22 +78,22 @@ public class ArithmeticWindow extends Window{
 //                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
 //                }
 //            });
-//            btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
-//            btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new OneDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new OneDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
             btn_OneDivX.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    executeCommand(new OneDivXCommand(ArithmeticWindow.this, event));
+                    executeCommand(new OneDigitCommand(ArithmeticWindow.this, event));
                 }
             });
 
