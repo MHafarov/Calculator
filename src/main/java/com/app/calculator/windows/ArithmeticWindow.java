@@ -266,12 +266,12 @@ public class ArithmeticWindow extends Window{
                     executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
                 }
             });
-//            btn_Zero.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_Zero.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+                }
+            });
             btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
