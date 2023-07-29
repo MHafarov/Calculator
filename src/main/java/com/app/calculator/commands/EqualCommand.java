@@ -3,7 +3,6 @@ package com.app.calculator.commands;
 import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 
 import java.math.BigDecimal;
 
@@ -18,13 +17,21 @@ public class EqualCommand extends Command {
         String input_String = getNumber_Previous();
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
 
-        Button source = getSource(event);
-        String source_String = source.getText();
+        String cash_String = window.getCashTwoNumberOperations().getCashCommandText();
 
         BigDecimal output_BigDecimal = null;
 
+        System.out.println("H " + window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand());
 
-        switch (source_String) {
+        if (window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand() == "="
+                & window.getCashEquelOperation().getCashCommandText() == "+") {
+            cash_String = window.getCashEquelOperation().getCashCommandText();
+            System.out.println(cash_String);
+        }
+
+
+
+        switch (cash_String) {
             case "÷":
                 break;
 
@@ -35,16 +42,16 @@ public class EqualCommand extends Command {
                 break;
 
             case "+":
-                if (window.getCash().getCashDigit() == null) {
-                    window.getCash().setCashDigit(input_BigDecimal);
+                if (window.getCashTwoNumberOperations().getCashDigit() != null) {
+                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumberOperations().getCashDigit());
+                    window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
+                    System.out.println("Command 1 " + cash_String + " digit " + input_BigDecimal);
                 }
-                if (window.getCash().getCashDigit() != null) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCash().getCashDigit());
-                    window.getCash().setCashDigit(output_BigDecimal);
+                if (window.getCashTwoNumberOperations().getCashDigit() == null) {
+                    output_BigDecimal = input_BigDecimal.add(window.getCashEquelOperation().getCashDigit());
+                    System.out.println("Command 2 " + cash_String + " digit " + input_BigDecimal);
                 }
-
                 break;
-
             default:
                 System.out.println("switch TwoDigitsCommand Error");
         }
@@ -53,6 +60,7 @@ public class EqualCommand extends Command {
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;
+        window.getCashTwoNumberOperations().clearCash();
         return true;
     }
 }

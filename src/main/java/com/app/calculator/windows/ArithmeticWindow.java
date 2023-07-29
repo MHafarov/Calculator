@@ -1,10 +1,7 @@
 package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.commands.InsertDigitCommand;
-import com.app.calculator.commands.EditDigitCommand;
-import com.app.calculator.commands.OneDigitCommand;
-import com.app.calculator.commands.TwoDigitsCommand;
+import com.app.calculator.commands.*;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
 import com.app.calculator.constants.Position;
@@ -297,12 +294,12 @@ public class ArithmeticWindow extends Window{
                     executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
                 }
             });
-//            btn_Equals.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_Equals.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new EqualCommand(ArithmeticWindow.this, event));
+                }
+            });
 
 
             list_ElementsTenthRow.add(btn_PlusMinus);

@@ -3,31 +3,42 @@ package com.app.calculator.history;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Cash {
-    private HashMap<String, BigDecimal> cash = new HashMap<>();
+    private HashMap<String, BigDecimal> cash_HashMap = new HashMap<>();
 
     public Cash() {
-        cash.put(null, null);
+        cash_HashMap.put(null, null);
+    }
+
+
+    public String getCashCommandText() {
+
+        Collection<String> keys_Collection = cash_HashMap.keySet();
+        String[] keys_Array = keys_Collection.toArray(new String[0]);
+
+        String cash_Keys = keys_Array[0];
+
+        return cash_Keys;
     }
 
     public BigDecimal getCashDigit() {
-        Collection<BigDecimal> values_Collection = cash.values();
-        Set<BigDecimal> values_Set = new HashSet<>(values_Collection);
 
-        BigDecimal cash_Value = null;
+        Collection<BigDecimal> values_Collection = cash_HashMap.values();
+        BigDecimal[] values_Array = values_Collection.toArray(new BigDecimal[0]);
 
-        if (values_Set.size() <= 1) {
-            for (BigDecimal element : values_Set) {
-                cash_Value = element;
-            }
-        }
+        BigDecimal cash_Value = values_Array[0];
+
         return cash_Value;
     }
 
-    public void setCashDigit(BigDecimal cash) {
-        this.cash[0] = cash;
+    public void setCash(String commandText, BigDecimal digit) {
+        cash_HashMap.clear();
+        cash_HashMap.put(commandText, digit);
+    }
+
+    public void clearCash() {
+        cash_HashMap.clear();
+        cash_HashMap.put(null, null);
     }
 }

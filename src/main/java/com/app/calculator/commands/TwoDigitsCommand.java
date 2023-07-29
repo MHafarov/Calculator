@@ -35,12 +35,15 @@ public class TwoDigitsCommand extends Command {
                 break;
 
             case "+":
-                if (window.getCash().getCashDigit() == null) {
-                    window.getCash().setCashDigit(input_BigDecimal);
+                if (window.getCashTwoNumberOperations().getCashDigit() != null) {
+                    System.out.println("2");
+                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumberOperations().getCashDigit());
+                    window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
-                if (window.getCash().getCashDigit() != null) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCash().getCashDigit());
-                    window.getCash().setCashDigit(output_BigDecimal);
+                if (window.getCashTwoNumberOperations().getCashDigit() == null) {
+                    System.out.println("First digit added to cash.");
+                    window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
+                    output_BigDecimal = input_BigDecimal;
                 }
 
                 break;

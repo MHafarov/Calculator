@@ -28,10 +28,11 @@ public abstract class Window implements Runnable {
 
 
     private History history = new History();
+    private Cash cashTwoNumberOperations = new Cash();
+    private Cash cashEquelOperation = new Cash();
 
 
 
-    private Cash cash = new Cash();
     public GridPane root;
 
     public Column[] columns;
@@ -468,7 +469,10 @@ public abstract class Window implements Runnable {
     public History getHistory() {
         return history;
     }
-    public Cash getCash() {
-        return cash;
+    public Cash getCashTwoNumberOperations() {
+        return cashTwoNumberOperations;
+    }
+    public Cash getCashEquelOperation() {
+        return cashEquelOperation;
     }
 }
