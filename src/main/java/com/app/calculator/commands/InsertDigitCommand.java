@@ -12,19 +12,6 @@ public class InsertDigitCommand extends Command {
     @Override
     public boolean execute() {
         save_PreviousNumber();
-//        String input_String = getNumber_Previous();
-//
-//        Button source = getSource(event);
-//        String source_String = source.getText();
-//
-//        String output_String = null;
-//
-//        if (input_String.equals("0") & source_String.equals("0")  ) {
-//
-//        }
-
-
-
         save_CurrentNumber();
 
         window.displayField.setText(getNumber_Current());
