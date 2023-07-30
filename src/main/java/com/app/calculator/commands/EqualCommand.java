@@ -14,6 +14,7 @@ public class EqualCommand extends Command {
     @Override
     public boolean execute() {
         save_PreviousNumber();
+        System.out.println("PreviousNumber = " + getNumber_Previous());
         String input_String = null;
         String cash_String = window.getCashTwoNumberOperations().getCashCommandText();
         System.out.println("Cash_String = " + cash_String);
@@ -26,7 +27,16 @@ public class EqualCommand extends Command {
             input_String = getNumber_Previous();
         }
 
+        if (window.getHistory().history.get(window.getHistory().history.size()-3).getTextCommand() == "CE") {
+            input_String = "0";
+        }
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
+
+        if (window.getCashTwoNumberOperations().getCashCommandText() == null) {
+            window.getCashTwoNumberOperations().setCash(window.getCashEquelOperation().getCashCommandText(), new BigDecimal("0"));
+            cash_String = window.getCashTwoNumberOperations().getCashCommandText();
+            input_BigDecimal = window.getCashEquelOperation().getCashDigit();
+        }
 
         BigDecimal output_BigDecimal = null;
         String output_String = null;
@@ -45,8 +55,6 @@ public class EqualCommand extends Command {
             System.out.println(cash_String);
             System.out.println("WasPressed");
         }
-
-
 
         switch (cash_String) {
             case "÷":
@@ -143,6 +151,7 @@ public class EqualCommand extends Command {
             return false;
         }
     }
+
     public boolean cashEmpty() {
         if (window.getCashTwoNumberOperations().getCashDigit() == null) {
             return true;
@@ -150,6 +159,7 @@ public class EqualCommand extends Command {
             return false;
         }
     }
+
     public boolean cashEqualEmpty() {
         if (window.getCashEquelOperation().getCashDigit() == null) {
             return true;
@@ -157,6 +167,7 @@ public class EqualCommand extends Command {
             return false;
         }
     }
+
     public boolean allCashIsEmpty() {
         if (cashEmpty() & cashEqualEmpty()) {
             return true;
@@ -164,5 +175,4 @@ public class EqualCommand extends Command {
             return false;
         }
     }
-
 }

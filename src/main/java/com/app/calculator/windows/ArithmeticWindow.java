@@ -72,12 +72,12 @@ public class ArithmeticWindow extends Window{
             Button btn_XSquared = new Button("X²");
             Button btn_OneDivX = new Button("1/X");
 
-//            btn_Percent.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_Percent.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new PercentCommand(ArithmeticWindow.this, event));
+                }
+            });
             btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -112,18 +112,18 @@ public class ArithmeticWindow extends Window{
             Button btn_Backspace = new Button("←");
             Button btn_Div = new Button("÷");
 
-//            btn_CE.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
-//            btn_C.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    executeCommand(new EditDigitCommand(ArithmeticWindow.this, event));
-//                }
-//            });
+            btn_CE.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new CAndCECommand(ArithmeticWindow.this, event));
+                }
+            });
+            btn_C.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new CAndCECommand(ArithmeticWindow.this, event));
+                }
+            });
             btn_Backspace.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
