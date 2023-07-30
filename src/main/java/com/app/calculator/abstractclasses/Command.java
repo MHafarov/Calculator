@@ -85,6 +85,41 @@ public abstract class Command {
     public String getTextCommand() {
         return getSource(event).getText();
     }
+    public boolean cashTwoNumberFull() {
+        if (window.getCashTwoNumberOperations().getCashDigit() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean cashTwoNumberEmpty() {
+        if (window.getCashTwoNumberOperations().getCashDigit() == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean cashEqualEmpty() {
+        if (window.getCashEquelOperation().getCashDigit() == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean allCashIsEmpty() {
+        if (cashTwoNumberEmpty() & cashEqualEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean cashFull() {
+        if (window.getCashTwoNumberOperations().getCashDigit() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

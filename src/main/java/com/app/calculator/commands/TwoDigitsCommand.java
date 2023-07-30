@@ -38,7 +38,7 @@ public class TwoDigitsCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
@@ -51,7 +51,7 @@ public class TwoDigitsCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
@@ -64,7 +64,7 @@ public class TwoDigitsCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
@@ -77,7 +77,7 @@ public class TwoDigitsCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
@@ -93,18 +93,5 @@ public class TwoDigitsCommand extends Command {
         window.nextDigitShouldBeNew = true;
         return true;
     }
-    public boolean cashFull() {
-        if (window.getCashTwoNumberOperations().getCashDigit() != null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public boolean cashEmpty() {
-        if (window.getCashTwoNumberOperations().getCashDigit() == null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 }

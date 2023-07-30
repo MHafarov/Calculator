@@ -69,7 +69,7 @@ public class EqualCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.divide(window.getCashEquelOperation().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
@@ -81,7 +81,7 @@ public class EqualCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.multiply(window.getCashEquelOperation().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
@@ -93,7 +93,7 @@ public class EqualCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.subtract(window.getCashEquelOperation().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
@@ -105,7 +105,7 @@ public class EqualCommand extends Command {
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
-                if (cashEmpty()) {
+                if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.add(window.getCashEquelOperation().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
@@ -138,38 +138,6 @@ public class EqualCommand extends Command {
                 window.getCashEquelOperation().getCashCommandText() == "╳" |
                 window.getCashEquelOperation().getCashCommandText() == "-" |
                 window.getCashEquelOperation().getCashCommandText() == "+" )) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean cashTwoNumberFull() {
-        if (window.getCashTwoNumberOperations().getCashDigit() != null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean cashEmpty() {
-        if (window.getCashTwoNumberOperations().getCashDigit() == null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean cashEqualEmpty() {
-        if (window.getCashEquelOperation().getCashDigit() == null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean allCashIsEmpty() {
-        if (cashEmpty() & cashEqualEmpty()) {
             return true;
         } else {
             return false;
