@@ -27,50 +27,60 @@ public class TwoDigitsCommand extends Command {
 
         switch (source_String) {
             case "÷":
-//                if (cashFull() & input_String.equals("0")) {
-//                    break;
-//                }
+                if (cashFull() & input_String.equals("0")) {
+                    output_String = "Деление на ноль невозможно";
+                    window.getCashTwoNumberOperations().clearCash();
+                    window.getCashEquelOperation().clearCash();
+                    break;
+                }
                 if (cashFull() & !input_String.equals("0")) {
-                    System.out.println("2");
                     output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().divide(input_BigDecimal);
+                    output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "╳":
                 if (cashFull()) {
                     output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumberOperations().getCashDigit());
+                    output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "-":
                 if (cashFull()) {
                     output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().subtract(input_BigDecimal);
+                    output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "+":
                 if (cashFull()) {
                     output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumberOperations().getCashDigit());
+                    output_String = toString(output_BigDecimal);
                     window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashEmpty()) {
                     window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
                 }
                 break;
 
@@ -78,14 +88,6 @@ public class TwoDigitsCommand extends Command {
                 System.out.println("switch TwoDigitsCommand Error");
         }
 
-//        if (output_BigDecimal == null) {
-//            output_String = "Деление на ноль невозможно";
-//            window.getCashTwoNumberOperations().clearCash();
-//            window.getCashEquelOperation().clearCash();
-//        } else {
-//            output_String = toString(output_BigDecimal);
-//        }
-        output_String = toString(output_BigDecimal);
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;

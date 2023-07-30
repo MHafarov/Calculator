@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Begin Cash for Digits">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added operations to TwoDigitCommand">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/CAndCECommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +154,8 @@
       <workItem from="1690443382159" duration="4212000" />
       <workItem from="1690530015122" duration="25580000" />
       <workItem from="1690621315377" duration="7883000" />
-      <workItem from="1690637987510" duration="7197000" />
+      <workItem from="1690637987510" duration="7310000" />
+      <workItem from="1690698790003" duration="7403000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -295,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690563736430</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added operations to TwoDigitCommand">
+      <created>1690649713561</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1690649713562</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +351,8 @@
     <MESSAGE value="Set History for EditDigitCommand" />
     <MESSAGE value="Added Command of Button Zero" />
     <MESSAGE value="Begin Cash for Digits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Begin Cash for Digits" />
+    <MESSAGE value="Added operations to TwoDigitCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added operations to TwoDigitCommand" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -3,7 +3,6 @@ package com.app.calculator.history;
 import com.app.calculator.abstractclasses.Command;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class History {
@@ -80,25 +79,8 @@ public class History {
 
             return history.get(currentIndex++);
         }
-
     }
     public boolean isEmpty() {
         return history.isEmpty(); }
 }
 
-//package com.app.calculator.history;
-//
-//import com.app.calculator.abstractclasses.Command;
-//
-//import java.util.Stack;
-//
-// class History {
-//    public Stack<Command> history = new Stack<>();
-//    public void push(Command c) {
-//            history.push(c);
-//        }
-//        public Command pop() {
-//            return history.pop();
-//        }
-//        public boolean isEmpty() { return history.isEmpty(); }
-//    }
