@@ -63,6 +63,7 @@ public class ArithmeticWindow extends Window{
                 }
             });
 
+            //
             list_ElementsFourthRow.add(btn_MC);
             list_ElementsFourthRow.add(btn_MR);
             list_ElementsFourthRow.add(btn_MPlus);
