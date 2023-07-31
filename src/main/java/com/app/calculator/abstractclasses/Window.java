@@ -5,6 +5,7 @@ import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
+import com.app.calculator.windows.MemoryWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -19,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import java.util.List;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 
@@ -120,6 +122,10 @@ public abstract class Window implements Runnable {
     public Label label_MathematicalRounding;
     public Label label_NoRounding;
     public boolean nextDigitShouldBeNew;
+    public boolean mStageIsHide = true;
+    public Stage mWindow_Stage = null;
+    MemoryWindow m_Window = null;
+    Thread mWindowThread = null;
 
 
     public Window (Stage stage) {
@@ -365,6 +371,12 @@ public abstract class Window implements Runnable {
 
         nextDigitShouldBeNew = false;
 
+        mWindow_Stage = new Stage();
+        m_Window = new MemoryWindow(mWindow_Stage);
+        mWindowThread = new Thread(m_Window);
+        mWindowThread.start();
+        mWindow_Stage.hide();
+        mStageIsHide = true;
     }
 
     public void executeCommand(Command command) {

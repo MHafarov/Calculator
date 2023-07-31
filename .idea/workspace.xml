@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Started PercentCommand with multiply">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MWindow.java" afterDir="false" />
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added PercentCommand">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ShowMemoryWindowCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MemoryWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/PercentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/PercentCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Dimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Dimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MWindow.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +159,7 @@
       <workItem from="1690621315377" duration="7883000" />
       <workItem from="1690637987510" duration="7310000" />
       <workItem from="1690698790003" duration="16151000" />
-      <workItem from="1690787763765" duration="11104000" />
+      <workItem from="1690787763765" duration="20526000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -326,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690737471097</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added PercentCommand">
+      <created>1690799565628</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1690799565628</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +353,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="guigrid" />
+                        <option value="origin/detached" />
                       </list>
                     </value>
                   </entry>
@@ -377,7 +387,8 @@
     <MESSAGE value="Done Equal operation" />
     <MESSAGE value="Added CE and С Command" />
     <MESSAGE value="Started PercentCommand with multiply" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started PercentCommand with multiply" />
+    <MESSAGE value="Added PercentCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added PercentCommand" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

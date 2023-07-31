@@ -2,7 +2,7 @@ package com.app.calculator.constants;
 
 public enum Dimension {
     ARITHMETIC_WINDOW(415, 450), TRIGONOMETRIC_WINDOW(415, 450),
-    CONVERTION_WINDOW(400, 450);
+    CONVERTION_WINDOW(400, 450), MEMORY_WINDOW(Dimension.ARITHMETIC_WINDOW.getWidth(), 40);
     private final double width;
     private final double height;
 

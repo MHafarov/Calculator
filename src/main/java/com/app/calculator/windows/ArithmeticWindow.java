@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class ArithmeticWindow extends Window{
@@ -54,6 +55,13 @@ public class ArithmeticWindow extends Window{
             Button btn_MMinus = new Button("M-");
             Button btn_MS = new Button("MS");
             Button btn_M = new Button("M");
+
+            btn_M.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    executeCommand(new ShowMemoryWindowCommand(ArithmeticWindow.this, event));
+                }
+            });
 
             list_ElementsFourthRow.add(btn_MC);
             list_ElementsFourthRow.add(btn_MR);
@@ -317,6 +325,7 @@ public class ArithmeticWindow extends Window{
 
             Scene scene = new Scene(root, Dimension.ARITHMETIC_WINDOW.getWidth(), Dimension.ARITHMETIC_WINDOW.getHeight());
             stage.setScene(scene);
+
 
             stage.show();
 
