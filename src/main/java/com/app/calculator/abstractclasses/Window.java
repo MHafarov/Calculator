@@ -25,13 +25,9 @@ import java.util.ArrayList;
 public abstract class Window implements Runnable {
     protected final Stage stage;
 
-
-
     private History history = new History();
     private Cash cashTwoNumberOperations = new Cash();
     private Cash cashEquelOperation = new Cash();
-
-
 
     public GridPane root;
 

@@ -18,22 +18,46 @@ public class PercentCommand extends Command {
         String input_String = getNumber_Previous();
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
 
+        String cash_String = window.getCashTwoNumberOperations().getCashCommandText();
+
         Button source = getSource(event);
         String source_String = source.getText();
 
         BigDecimal output_BigDecimal = null;
         String output_String = null;
 
-        System.out.println("% cash " + window.getCashTwoNumberOperations().getCashCommandText());
+        System.out.println("% cash " + cash_String);
 
         if (cashTwoNumberEmpty()) {
             output_String = "0";
         }
-        if (window.getCashTwoNumberOperations().getCashCommandText() == "+") {
-            output_BigDecimal = (window.getCashTwoNumberOperations().getCashDigit().divide(new BigDecimal(100)))
-                    .multiply(input_BigDecimal);
-            output_String = toString(output_BigDecimal);
-            System.out.println("+");
+
+
+        switch (cash_String) {
+            case "+":
+                output_BigDecimal = (window.getCashTwoNumberOperations().getCashDigit().divide(new BigDecimal(100)))
+                        .multiply(input_BigDecimal);
+                output_String = toString(output_BigDecimal);
+                System.out.println("In Percent +");
+                break;
+            case "-":
+                output_BigDecimal = (window.getCashTwoNumberOperations().getCashDigit().divide(new BigDecimal(100)))
+                        .multiply(input_BigDecimal);
+                output_String = toString(output_BigDecimal);
+                System.out.println("In Percent -");
+                break;
+            case "╳":
+                output_BigDecimal = input_BigDecimal.divide(new BigDecimal(100));
+                output_String = toString(output_BigDecimal);
+                System.out.println("In Percent ╳");
+                break;
+            case "÷":
+                output_BigDecimal = input_BigDecimal.divide(new BigDecimal(100));
+                output_String = toString(output_BigDecimal);
+                System.out.println("In Percent ÷");
+                break;
+            default:
+                System.out.println("switch Percent Error");
         }
 
         setNumber_Current(output_String);

@@ -32,23 +32,23 @@ public class EqualCommand extends Command {
         }
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
 
-        if (window.getCashTwoNumberOperations().getCashCommandText() == null) {
-            window.getCashTwoNumberOperations().setCash(window.getCashEquelOperation().getCashCommandText(), new BigDecimal("0"));
-            cash_String = window.getCashTwoNumberOperations().getCashCommandText();
-            input_BigDecimal = window.getCashEquelOperation().getCashDigit();
-        }
+//        if (window.getCashTwoNumberOperations().getCashCommandText() == null) {
+//            window.getCashTwoNumberOperations().setCash(window.getCashEquelOperation().getCashCommandText(), new BigDecimal("0"));
+//            cash_String = window.getCashTwoNumberOperations().getCashCommandText();
+//            input_BigDecimal = window.getCashEquelOperation().getCashDigit();
+//        }
 
         BigDecimal output_BigDecimal = null;
         String output_String = null;
 
-        System.out.println("Start");
-        System.out.println("Pressed button " + window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand());
-        System.out.println("Cash TwoDigit Command " + window.getCashTwoNumberOperations().getCashCommandText());
-        System.out.println("Cash TwoDigit Digit " + window.getCashTwoNumberOperations().getCashDigit());
-        System.out.println("Cash Equal Command " + window.getCashEquelOperation().getCashCommandText());
-        System.out.println("Cash Equal " + window.getCashEquelOperation().getCashDigit());
-        System.out.println("Start");
 
+        String pr1 = getNumber_Previous();
+        String pB1 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
+        String tDC1 = window.getCashTwoNumberOperations().getCashCommandText();
+        BigDecimal tDD1 = window.getCashTwoNumberOperations().getCashDigit();
+        String eOC1 = window.getCashEquelOperation().getCashCommandText();
+        BigDecimal eOD1 = window.getCashEquelOperation().getCashDigit();
+        String cr1 = getNumber_Current();
 
         if (equalWasPressedBefore()) {
             cash_String = window.getCashEquelOperation().getCashCommandText();
@@ -117,18 +117,35 @@ public class EqualCommand extends Command {
             default:
                 System.out.println("switch TwoDigitsCommand Error");
         }
-        System.out.println("End");
-        System.out.println("Pressed button " + window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand());
-        System.out.println("Cash TwoDigit Command " + window.getCashTwoNumberOperations().getCashCommandText());
-        System.out.println("Cash TwoDigit Digit " + window.getCashTwoNumberOperations().getCashDigit());
-        System.out.println("Cash Equal Command " + window.getCashEquelOperation().getCashCommandText());
-        System.out.println("Cash Equal " + window.getCashEquelOperation().getCashDigit());
-        System.out.println("End");
 
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;
         window.getCashTwoNumberOperations().clearCash();
+
+        String pr2 = getNumber_Previous();
+        String pB2 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
+        String tDC2 = window.getCashTwoNumberOperations().getCashCommandText();
+        BigDecimal tDD2 = window.getCashTwoNumberOperations().getCashDigit();
+        String eOC2 = window.getCashEquelOperation().getCashCommandText();
+        BigDecimal eOD2 = window.getCashEquelOperation().getCashDigit();
+        String cr2 = getNumber_Current();
+
+//        System.out.println("                         Before         After");
+//        System.out.println("Get_Previous         :      " + pr1 + "             " + pr2);
+//        System.out.println("Pressed button       :      " + pB1 + "             " + pB2);
+//        System.out.println("Cash TwoDigit Command:      "+ tDC1 + "             " + tDC2);
+//        System.out.println("Cash TwoDigit Digit  :      "+ tDD1 + "             " + tDD2);
+//        System.out.println("Cash Equal Command   :      "+ eOC1 + "             " + eOC2);
+//        System.out.println("Cash Equal Digit     :      "+ eOD1 + "             " + eOD2);
+//        System.out.println("Get_Current          :      "+ cr1 + "             " + cr2);
+
+        System.out.println("           Get_Previous   Pressed_button   Cash_TD_Command   Cash_TD_Digit   Cash_E_Command   Cash_E_Digit   Get_Current");
+        System.out.println("Before  :       " + pr1 + "             " + pB1 + "                 " + tDC1 +"                 " + tDD1 +"             " + eOC1 +"             "+ eOD1 +"             "+ cr1);
+        System.out.println("After   :       " + pr2 + "             " + pB2 + "                 " + tDC2 +"               " + tDD2 +"             " + eOC2 +"             "+ eOD2 +"             "+ cr2);
+
+
+
         return true;
     }
 
