@@ -29,17 +29,17 @@ public class TwoDigitsCommand extends Command {
             case "÷":
                 if (cashFull() & input_String.equals("0")) {
                     output_String = "Деление на ноль невозможно";
-                    window.getCashTwoNumberOperations().clearCash();
+                    window.getCashTwoNumbersOperations().clearCash();
                     window.getCashEquelOperation().clearCash();
                     break;
                 }
                 if (cashFull() & !input_String.equals("0")) {
-                    output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().divide(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().divide(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
-                    window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
                 }
@@ -47,12 +47,12 @@ public class TwoDigitsCommand extends Command {
 
             case "╳":
                 if (cashFull()) {
-                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumberOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumbersOperations().getCashDigit());
                     output_String = toString(output_BigDecimal);
-                    window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
                 }
@@ -60,12 +60,12 @@ public class TwoDigitsCommand extends Command {
 
             case "-":
                 if (cashFull()) {
-                    output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().subtract(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().subtract(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
-                    window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
                 }
@@ -73,12 +73,12 @@ public class TwoDigitsCommand extends Command {
 
             case "+":
                 if (cashFull()) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumberOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumbersOperations().getCashDigit());
                     output_String = toString(output_BigDecimal);
-                    window.getCashTwoNumberOperations().setCash(source_String, output_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    window.getCashTwoNumberOperations().setCash(source_String, input_BigDecimal);
+                    window.getCashTwoNumbersOperations().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
                     output_String = toString(output_BigDecimal);
                 }

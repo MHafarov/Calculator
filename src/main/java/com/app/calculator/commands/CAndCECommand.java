@@ -5,8 +5,6 @@ import com.app.calculator.abstractclasses.Window;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
-import java.math.BigDecimal;
-
 public class CAndCECommand extends Command {
     public CAndCECommand(Window window, ActionEvent event) {
         super(window, event);
@@ -22,7 +20,7 @@ public class CAndCECommand extends Command {
 
         switch (source_String) {
             case "C":
-                window.getCashTwoNumberOperations().clearCash();
+                window.getCashTwoNumbersOperations().clearCash();
                 window.getCashEquelOperation().clearCash();
                 break;
 

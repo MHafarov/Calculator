@@ -16,7 +16,7 @@ public class EqualCommand extends Command {
         save_PreviousNumber();
         System.out.println("PreviousNumber = " + getNumber_Previous());
         String input_String = null;
-        String cash_String = window.getCashTwoNumberOperations().getCashCommandText();
+        String cash_String = window.getCashTwoNumbersOperations().getCashCommandText();
         System.out.println("Cash_String = " + cash_String);
 
         if (getNumber_Previous().equals("Деление на ноль невозможно") |
@@ -44,8 +44,8 @@ public class EqualCommand extends Command {
 
         String pr1 = getNumber_Previous();
         String pB1 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
-        String tDC1 = window.getCashTwoNumberOperations().getCashCommandText();
-        BigDecimal tDD1 = window.getCashTwoNumberOperations().getCashDigit();
+        String tDC1 = window.getCashTwoNumbersOperations().getCashCommandText();
+        BigDecimal tDD1 = window.getCashTwoNumbersOperations().getCashDigit();
         String eOC1 = window.getCashEquelOperation().getCashCommandText();
         BigDecimal eOD1 = window.getCashEquelOperation().getCashDigit();
         String cr1 = getNumber_Current();
@@ -60,12 +60,12 @@ public class EqualCommand extends Command {
             case "÷":
                 if (cashTwoNumberFull() & input_String.equals("0")) {
                     output_String = "Деление на ноль невозможно";
-                    window.getCashTwoNumberOperations().clearCash();
+                    window.getCashTwoNumbersOperations().clearCash();
                     window.getCashEquelOperation().clearCash();
                     break;
                 }
                 if (cashTwoNumberFull() & input_String != "0") {
-                    output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().divide(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().divide(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
@@ -77,7 +77,7 @@ public class EqualCommand extends Command {
 
             case "╳":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumberOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumbersOperations().getCashDigit());
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
@@ -89,7 +89,7 @@ public class EqualCommand extends Command {
 
             case "-":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = window.getCashTwoNumberOperations().getCashDigit().subtract(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().subtract(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
@@ -101,7 +101,7 @@ public class EqualCommand extends Command {
 
             case "+":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumberOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumbersOperations().getCashDigit());
                     output_String = toString(output_BigDecimal);
                     window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
                 }
@@ -121,12 +121,12 @@ public class EqualCommand extends Command {
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;
-        window.getCashTwoNumberOperations().clearCash();
+        window.getCashTwoNumbersOperations().clearCash();
 
         String pr2 = getNumber_Previous();
         String pB2 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
-        String tDC2 = window.getCashTwoNumberOperations().getCashCommandText();
-        BigDecimal tDD2 = window.getCashTwoNumberOperations().getCashDigit();
+        String tDC2 = window.getCashTwoNumbersOperations().getCashCommandText();
+        BigDecimal tDD2 = window.getCashTwoNumbersOperations().getCashDigit();
         String eOC2 = window.getCashEquelOperation().getCashCommandText();
         BigDecimal eOD2 = window.getCashEquelOperation().getCashDigit();
         String cr2 = getNumber_Current();

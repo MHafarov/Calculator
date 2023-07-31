@@ -2,12 +2,10 @@ package com.app.calculator.commands;
 
 import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.windows.MemoryWindow;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
 
-public class ShowMemoryWindowCommand extends Command {
-    public ShowMemoryWindowCommand(Window window, ActionEvent event) {
+public class ShowMemoryCommand extends Command {
+    public ShowMemoryCommand(Window window, ActionEvent event) {
         super(window, event);
     }
     @Override

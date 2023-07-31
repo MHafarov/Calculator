@@ -1,5 +1,7 @@
 package com.app.calculator.abstractclasses;
 
+import com.app.calculator.commands.MemoryCommand;
+import com.app.calculator.commands.ShowMemoryCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
@@ -20,7 +22,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import java.util.List;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 
@@ -28,8 +29,9 @@ public abstract class Window implements Runnable {
     protected final Stage stage;
 
     private History history = new History();
-    private Cash cashTwoNumberOperations = new Cash();
+    private Cash cashTwoNumbersOperations = new Cash();
     private Cash cashEquelOperation = new Cash();
+    private Cash cashMemory = new Cash();
 
     public GridPane root;
 
@@ -121,10 +123,16 @@ public abstract class Window implements Runnable {
 
     public Label label_MathematicalRounding;
     public Label label_NoRounding;
+    public Button btn_MC;
+    public Button btn_MR;
+    public Button btn_MPlus;
+    public Button btn_MMinus;
+    public Button btn_MS;
+    public Button btn_M;
     public boolean nextDigitShouldBeNew;
     public boolean mStageIsHide = true;
     public Stage mWindow_Stage = null;
-    MemoryWindow m_Window = null;
+    public MemoryWindow m_Window = null;
     Thread mWindowThread = null;
 
 
@@ -367,6 +375,50 @@ public abstract class Window implements Runnable {
         subPanel_ThirdRow.setHalignment(label_NoRounding, HPos.CENTER);
         subPanel_ThirdRow.setValignment(label_NoRounding, VPos.CENTER);
 
+        btn_MC = new Button("MC");
+        btn_MR = new Button("MR");
+        btn_MPlus = new Button("M+");
+        btn_MMinus = new Button("M-");
+        btn_MS = new Button("MS");
+        btn_M = new Button("M");
+
+        turnOffMCMRM();
+        btn_MC.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new MemoryCommand(Window.this, event));
+            }
+        });
+        btn_MR.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new MemoryCommand(Window.this, event));
+            }
+        });
+        btn_MPlus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new MemoryCommand(Window.this, event));
+            }
+        });
+        btn_MMinus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new MemoryCommand(Window.this, event));
+            }
+        });
+        btn_MS.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new MemoryCommand(Window.this, event));
+            }
+        });
+        btn_M.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ShowMemoryCommand(Window.this, event));
+            }
+        });
         System.out.println("Конструктор Window выполнен");
 
         nextDigitShouldBeNew = false;
@@ -477,10 +529,20 @@ public abstract class Window implements Runnable {
     public History getHistory() {
         return history;
     }
-    public Cash getCashTwoNumberOperations() {
-        return cashTwoNumberOperations;
+    public Cash getCashTwoNumbersOperations() {
+        return cashTwoNumbersOperations;
     }
     public Cash getCashEquelOperation() {
         return cashEquelOperation;
     }
+    public Cash getCashMemory() {return cashMemory;}
+    public void turnOffMCMRM() {
+        btn_MC.setDisable(true);
+        btn_MR.setDisable(true);
+    }
+    public void turnOnMCMRM() {
+        btn_MC.setDisable(false);
+        btn_MR.setDisable(false);
+    }
+
 }

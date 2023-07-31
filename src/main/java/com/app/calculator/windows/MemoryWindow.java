@@ -18,7 +18,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class MemoryWindow implements Runnable{
-    Stage stage;
+    public Stage stage;
+    public TextField textField;
     public MemoryWindow(Stage stage) {
         this.stage = stage;
     }
@@ -31,9 +32,9 @@ public class MemoryWindow implements Runnable{
 
             GridPane root = new GridPane();
 
-            TextField textField = new TextField();
+            textField = new TextField();
             textField.setStyle("-fx-alignment: center-right;");
-            textField.setText("0");
+            textField.setText("");
             GridPane.setHgrow(textField, Priority.ALWAYS);
             GridPane.setVgrow(textField, Priority.ALWAYS);
 

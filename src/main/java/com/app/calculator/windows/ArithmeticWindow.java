@@ -49,21 +49,9 @@ public class ArithmeticWindow extends Window{
 
 
 
-            Button btn_MC = new Button("MC");
-            Button btn_MR = new Button("MR");
-            Button btn_MPlus = new Button("M+");
-            Button btn_MMinus = new Button("M-");
-            Button btn_MS = new Button("MS");
-            Button btn_M = new Button("M");
 
-            btn_M.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    executeCommand(new ShowMemoryWindowCommand(ArithmeticWindow.this, event));
-                }
-            });
 
-            ////
+
             list_ElementsFourthRow.add(btn_MC);
             list_ElementsFourthRow.add(btn_MR);
             list_ElementsFourthRow.add(btn_MPlus);

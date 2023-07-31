@@ -18,7 +18,7 @@ public class PercentCommand extends Command {
         String input_String = getNumber_Previous();
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
 
-        String cash_String = window.getCashTwoNumberOperations().getCashCommandText();
+        String cash_String = window.getCashTwoNumbersOperations().getCashCommandText();
 
         Button source = getSource(event);
         String source_String = source.getText();
@@ -35,13 +35,13 @@ public class PercentCommand extends Command {
 
         switch (cash_String) {
             case "+":
-                output_BigDecimal = (window.getCashTwoNumberOperations().getCashDigit().divide(new BigDecimal(100)))
+                output_BigDecimal = (window.getCashTwoNumbersOperations().getCashDigit().divide(new BigDecimal(100)))
                         .multiply(input_BigDecimal);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent +");
                 break;
             case "-":
-                output_BigDecimal = (window.getCashTwoNumberOperations().getCashDigit().divide(new BigDecimal(100)))
+                output_BigDecimal = (window.getCashTwoNumbersOperations().getCashDigit().divide(new BigDecimal(100)))
                         .multiply(input_BigDecimal);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent -");
