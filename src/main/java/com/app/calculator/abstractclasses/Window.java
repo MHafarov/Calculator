@@ -29,8 +29,8 @@ public abstract class Window implements Runnable {
     protected final Stage stage;
 
     private History history = new History();
-    private Cash cashTwoNumbersOperations = new Cash();
-    private Cash cashEquelOperation = new Cash();
+    private Cash cashTwoDigits = new Cash();
+    private Cash cashEquel = new Cash();
     private Cash cashMemory = new Cash();
 
     public GridPane root;
@@ -435,6 +435,7 @@ public abstract class Window implements Runnable {
         history.push(command);
         btn_Undo.setDisable(false);
         command.execute();
+        System.out.println("HISTORY 2" + history.history);
     }
 
     public void undo() {
@@ -529,11 +530,11 @@ public abstract class Window implements Runnable {
     public History getHistory() {
         return history;
     }
-    public Cash getCashTwoNumbersOperations() {
-        return cashTwoNumbersOperations;
+    public Cash getCashTwoDigits() {
+        return cashTwoDigits;
     }
-    public Cash getCashEquelOperation() {
-        return cashEquelOperation;
+    public Cash getCashEquel() {
+        return cashEquel;
     }
     public Cash getCashMemory() {return cashMemory;}
     public void turnOffMCMRM() {

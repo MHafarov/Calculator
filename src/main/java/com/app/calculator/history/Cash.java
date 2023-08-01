@@ -41,4 +41,19 @@ public class Cash {
         cash_HashMap.clear();
         cash_HashMap.put(null, null);
     }
+
+    public boolean isEmpty() {
+        if (getCashCommandText() == null & getCashDigit() == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean isFull() {
+        if (getCashCommandText() != null & getCashDigit() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

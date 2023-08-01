@@ -16,7 +16,7 @@ public class EqualCommand extends Command {
         save_PreviousNumber();
         System.out.println("PreviousNumber = " + getNumber_Previous());
         String input_String = null;
-        String cash_String = window.getCashTwoNumbersOperations().getCashCommandText();
+        String cash_String = window.getCashTwoDigits().getCashCommandText();
         System.out.println("Cash_String = " + cash_String);
 
         if (getNumber_Previous().equals("Деление на ноль невозможно") |
@@ -44,75 +44,81 @@ public class EqualCommand extends Command {
 
         String pr1 = getNumber_Previous();
         String pB1 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
-        String tDC1 = window.getCashTwoNumbersOperations().getCashCommandText();
-        BigDecimal tDD1 = window.getCashTwoNumbersOperations().getCashDigit();
-        String eOC1 = window.getCashEquelOperation().getCashCommandText();
-        BigDecimal eOD1 = window.getCashEquelOperation().getCashDigit();
+        String tDC1 = window.getCashTwoDigits().getCashCommandText();
+        BigDecimal tDD1 = window.getCashTwoDigits().getCashDigit();
+        String eOC1 = window.getCashEquel().getCashCommandText();
+        BigDecimal eOD1 = window.getCashEquel().getCashDigit();
         String cr1 = getNumber_Current();
 
         if (equalWasPressedBefore()) {
-            cash_String = window.getCashEquelOperation().getCashCommandText();
+            cash_String = window.getCashEquel().getCashCommandText();
             System.out.println(cash_String);
             System.out.println("WasPressed");
         }
+
+        if (cash_String == null) {
+            cash_String = "null";
+        }
+
 
         switch (cash_String) {
             case "÷":
                 if (cashTwoNumberFull() & input_String.equals("0")) {
                     output_String = "Деление на ноль невозможно";
-                    window.getCashTwoNumbersOperations().clearCash();
-                    window.getCashEquelOperation().clearCash();
+                    window.getCashTwoDigits().clearCash();
+                    window.getCashEquel().clearCash();
                     break;
                 }
                 if (cashTwoNumberFull() & input_String != "0") {
-                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().divide(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoDigits().getCashDigit().divide(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
-                    window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    output_BigDecimal = input_BigDecimal.divide(window.getCashEquelOperation().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.divide(window.getCashEquel().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "╳":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoNumbersOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoDigits().getCashDigit());
                     output_String = toString(output_BigDecimal);
-                    window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    output_BigDecimal = input_BigDecimal.multiply(window.getCashEquelOperation().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashEquel().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "-":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = window.getCashTwoNumbersOperations().getCashDigit().subtract(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoDigits().getCashDigit().subtract(input_BigDecimal);
                     output_String = toString(output_BigDecimal);
-                    window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    output_BigDecimal = input_BigDecimal.subtract(window.getCashEquelOperation().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.subtract(window.getCashEquel().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "+":
                 if (cashTwoNumberFull()) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoNumbersOperations().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.add(window.getCashTwoDigits().getCashDigit());
                     output_String = toString(output_BigDecimal);
-                    window.getCashEquelOperation().setCash(cash_String,input_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
-                    output_BigDecimal = input_BigDecimal.add(window.getCashEquelOperation().getCashDigit());
+                    output_BigDecimal = input_BigDecimal.add(window.getCashEquel().getCashDigit());
                     output_String = toString(output_BigDecimal);
                 }
                 break;
 
             case "null":
-                output_String = input_String;
+                output_String = getNumber_Previous();
+                System.out.println(output_String);
                 break;
             default:
                 System.out.println("switch TwoDigitsCommand Error");
@@ -121,40 +127,29 @@ public class EqualCommand extends Command {
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;
-        window.getCashTwoNumbersOperations().clearCash();
+        window.getCashTwoDigits().clearCash();
 
         String pr2 = getNumber_Previous();
         String pB2 = window.getHistory().history.get(window.getHistory().history.size()-2).getTextCommand();
-        String tDC2 = window.getCashTwoNumbersOperations().getCashCommandText();
-        BigDecimal tDD2 = window.getCashTwoNumbersOperations().getCashDigit();
-        String eOC2 = window.getCashEquelOperation().getCashCommandText();
-        BigDecimal eOD2 = window.getCashEquelOperation().getCashDigit();
+        String tDC2 = window.getCashTwoDigits().getCashCommandText();
+        BigDecimal tDD2 = window.getCashTwoDigits().getCashDigit();
+        String eOC2 = window.getCashEquel().getCashCommandText();
+        BigDecimal eOD2 = window.getCashEquel().getCashDigit();
         String cr2 = getNumber_Current();
-
-//        System.out.println("                         Before         After");
-//        System.out.println("Get_Previous         :      " + pr1 + "             " + pr2);
-//        System.out.println("Pressed button       :      " + pB1 + "             " + pB2);
-//        System.out.println("Cash TwoDigit Command:      "+ tDC1 + "             " + tDC2);
-//        System.out.println("Cash TwoDigit Digit  :      "+ tDD1 + "             " + tDD2);
-//        System.out.println("Cash Equal Command   :      "+ eOC1 + "             " + eOC2);
-//        System.out.println("Cash Equal Digit     :      "+ eOD1 + "             " + eOD2);
-//        System.out.println("Get_Current          :      "+ cr1 + "             " + cr2);
 
         System.out.println("           Get_Previous   Pressed_button   Cash_TD_Command   Cash_TD_Digit   Cash_E_Command   Cash_E_Digit   Get_Current");
         System.out.println("Before  :       " + pr1 + "             " + pB1 + "                 " + tDC1 +"                 " + tDD1 +"             " + eOC1 +"             "+ eOD1 +"             "+ cr1);
         System.out.println("After   :       " + pr2 + "             " + pB2 + "                 " + tDC2 +"               " + tDD2 +"             " + eOC2 +"             "+ eOD2 +"             "+ cr2);
-
-
 
         return true;
     }
 
     public boolean equalWasPressedBefore() {
         if (window.getHistory().history.get(window.getHistory().history.size()-3).getTextCommand() == "="
-                & (window.getCashEquelOperation().getCashCommandText() == "÷" |
-                window.getCashEquelOperation().getCashCommandText() == "╳" |
-                window.getCashEquelOperation().getCashCommandText() == "-" |
-                window.getCashEquelOperation().getCashCommandText() == "+" )) {
+                & (window.getCashEquel().getCashCommandText() == "÷" |
+                window.getCashEquel().getCashCommandText() == "╳" |
+                window.getCashEquel().getCashCommandText() == "-" |
+                window.getCashEquel().getCashCommandText() == "+" )) {
             return true;
         } else {
             return false;

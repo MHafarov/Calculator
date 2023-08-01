@@ -86,21 +86,21 @@ public abstract class Command {
         return getSource(event).getText();
     }
     public boolean cashTwoNumberFull() {
-        if (window.getCashTwoNumbersOperations().getCashDigit() != null) {
+        if (window.getCashTwoDigits().getCashDigit() != null) {
             return true;
         } else {
             return false;
         }
     }
     public boolean cashTwoNumberEmpty() {
-        if (window.getCashTwoNumbersOperations().getCashDigit() == null) {
+        if (window.getCashTwoDigits().getCashDigit() == null) {
             return true;
         } else {
             return false;
         }
     }
     public boolean cashEqualEmpty() {
-        if (window.getCashEquelOperation().getCashDigit() == null) {
+        if (window.getCashEquel().getCashDigit() == null) {
             return true;
         } else {
             return false;
@@ -114,7 +114,7 @@ public abstract class Command {
         }
     }
     public boolean cashFull() {
-        if (window.getCashTwoNumbersOperations().getCashDigit() != null) {
+        if (window.getCashTwoDigits().getCashDigit() != null) {
             return true;
         } else {
             return false;

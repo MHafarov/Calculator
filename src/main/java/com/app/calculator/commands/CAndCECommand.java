@@ -20,11 +20,18 @@ public class CAndCECommand extends Command {
 
         switch (source_String) {
             case "C":
-                window.getCashTwoNumbersOperations().clearCash();
-                window.getCashEquelOperation().clearCash();
+                window.getCashTwoDigits().clearCash();
+                window.getCashEquel().clearCash();
+                window.getHistory().clearHistory();
                 break;
 
             case "CE":
+                window.displayField.setText("0");
+                if (window.getHistory().history.get(window.getHistory().history.size()-3).getTextCommand() ==
+                        this.getTextCommand()) {
+                    window.getHistory().history.remove(window.getHistory().history.size()-3);
+                    window.getHistory().currentIndex -= 1;
+                }
                 break;
         }
             window.displayField.setText(getNumber_Current());
