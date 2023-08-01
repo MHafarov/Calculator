@@ -4,12 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public abstract class Command {
     public Window window;
     public ActionEvent event;
     private String number_Previous;
     private String number_Current;
+
+    protected RoundingMode roundMode = RoundingMode.DOWN;
 
 
     public Command(Window window, ActionEvent event) {

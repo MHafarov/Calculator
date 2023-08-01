@@ -1,6 +1,8 @@
 package com.app.calculator.abstractclasses;
 
 import com.app.calculator.commands.MemoryCommand;
+import com.app.calculator.commands.RoundingModeCommand;
+import com.app.calculator.commands.ScaleCommand;
 import com.app.calculator.commands.ShowMemoryCommand;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Row;
@@ -296,7 +298,6 @@ public abstract class Window implements Runnable {
         rBtn_FiveDivFour = new RadioButton();
         rBtn_Down = new RadioButton();
 
-
         rBtn_A = new RadioButton();
         rBtn_Zero = new RadioButton();
         rBtn_Two = new RadioButton();
@@ -304,6 +305,61 @@ public abstract class Window implements Runnable {
         rBtn_Four = new RadioButton();
         rBtn_F = new RadioButton();
 
+        rBtn_Up.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new RoundingModeCommand(Window.this, event));
+            }
+        });
+        rBtn_FiveDivFour.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new RoundingModeCommand(Window.this, event));
+            }
+        });
+        rBtn_Down.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new RoundingModeCommand(Window.this, event));
+            }
+        });
+
+        rBtn_A.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
+        rBtn_Zero.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
+        rBtn_Two.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
+        rBtn_Three.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
+        rBtn_Four.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
+        rBtn_F.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ScaleCommand(Window.this, event));
+            }
+        });
 
         label_Space_9.setAlignment(Pos.CENTER);
         rBtn_Up.setAlignment(Pos.CENTER);

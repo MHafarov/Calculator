@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added MemoryCommand">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Done all operations of MemoryCommand">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/RoundingModeCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ScaleCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/CAndCECommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/CAndCECommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/MemoryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/MemoryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/PercentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/PercentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/Cash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/Cash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +157,7 @@
       <workItem from="1690637987510" duration="7310000" />
       <workItem from="1690698790003" duration="16151000" />
       <workItem from="1690787763765" duration="20526000" />
-      <workItem from="1690873459695" duration="17939000" />
+      <workItem from="1690873459695" duration="19734000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -360,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690832439570</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Done all operations of MemoryCommand">
+      <created>1690909432343</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1690909432343</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +379,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/detached" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -390,7 +392,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Firsts steps." />
     <MESSAGE value="Add packages" />
     <MESSAGE value="Create GUI classes" />
     <MESSAGE value="Now each GUI window is created on its own thread" />
@@ -415,7 +416,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Test2" />
     <MESSAGE value="Added MemoryCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MemoryCommand" />
+    <MESSAGE value="Done all operations of MemoryCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done all operations of MemoryCommand" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
