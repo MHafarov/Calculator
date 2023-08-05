@@ -33,7 +33,7 @@ public class OneDigitCommand extends Command {
                     setNumber_Current("Деление на ноль невозможно");
                     window.displayField.setText(getNumber_Current());
                 } else {
-                    output_BigDecimal = BigDecimalDigit.ONE.getNumber().divide(input_BigDecimal,8, RoundingMode.HALF_UP);
+                    output_BigDecimal = BigDecimalDigit.ONE.getNumber().divide(input_BigDecimal);
                 }
                 break;
 
@@ -54,6 +54,7 @@ public class OneDigitCommand extends Command {
                 System.out.println("switch OneDigitCommand Error");
         }
 
+        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
         String output_String = toString(output_BigDecimal);
         setNumber_Current(output_String);
         show_CurrentNumber();

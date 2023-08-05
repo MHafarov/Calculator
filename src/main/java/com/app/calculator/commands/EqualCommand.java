@@ -5,6 +5,7 @@ import com.app.calculator.abstractclasses.Window;
 import javafx.event.ActionEvent;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class EqualCommand extends Command {
     public EqualCommand(Window window, ActionEvent event) {
@@ -31,13 +32,6 @@ public class EqualCommand extends Command {
             input_String = "0";
         }
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
-
-//        if (window.getCashTwoNumberOperations().getCashCommandText() == null) {
-//            window.getCashTwoNumberOperations().setCash(window.getCashEquelOperation().getCashCommandText(), new BigDecimal("0"));
-//            cash_String = window.getCashTwoNumberOperations().getCashCommandText();
-//            input_BigDecimal = window.getCashEquelOperation().getCashDigit();
-//        }
-
         BigDecimal output_BigDecimal = null;
         String output_String = null;
 
@@ -70,12 +64,14 @@ public class EqualCommand extends Command {
                     break;
                 }
                 if (cashTwoNumberFull() & input_String != "0") {
-                    output_BigDecimal = window.getCashTwoDigits().getCashDigit().divide(input_BigDecimal);
+                    output_BigDecimal = window.getCashTwoDigits().getCashDigit().divide(input_BigDecimal,Command.scale,Command.roundMode);;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.divide(window.getCashEquel().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -83,11 +79,13 @@ public class EqualCommand extends Command {
             case "╳":
                 if (cashTwoNumberFull()) {
                     output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoDigits().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.multiply(window.getCashEquel().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -95,11 +93,13 @@ public class EqualCommand extends Command {
             case "-":
                 if (cashTwoNumberFull()) {
                     output_BigDecimal = window.getCashTwoDigits().getCashDigit().subtract(input_BigDecimal);
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.subtract(window.getCashEquel().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -107,11 +107,13 @@ public class EqualCommand extends Command {
             case "+":
                 if (cashTwoNumberFull()) {
                     output_BigDecimal = input_BigDecimal.add(window.getCashTwoDigits().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashEquel().setCash(cash_String,input_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     output_BigDecimal = input_BigDecimal.add(window.getCashEquel().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;

@@ -13,7 +13,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class ArithmeticWindow extends Window{
@@ -44,8 +43,7 @@ public class ArithmeticWindow extends Window{
                 addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);
             }
 
-            subPanel_ThirdRow.add(label_MathematicalRounding,0,2, 5, 2);
-            subPanel_ThirdRow.add(label_NoRounding,5,2,14,2);
+
 
 
 

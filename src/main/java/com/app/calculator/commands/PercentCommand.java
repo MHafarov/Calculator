@@ -37,22 +37,26 @@ public class PercentCommand extends Command {
             case "+":
                 output_BigDecimal = (window.getCashTwoDigits().getCashDigit().divide(new BigDecimal(100)))
                         .multiply(input_BigDecimal);
+                output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent +");
                 break;
             case "-":
                 output_BigDecimal = (window.getCashTwoDigits().getCashDigit().divide(new BigDecimal(100)))
                         .multiply(input_BigDecimal);
+                output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent -");
                 break;
             case "╳":
                 output_BigDecimal = input_BigDecimal.divide(new BigDecimal(100));
+                output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent ╳");
                 break;
             case "÷":
                 output_BigDecimal = input_BigDecimal.divide(new BigDecimal(100));
+                output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                 output_String = toString(output_BigDecimal);
                 System.out.println("In Percent ÷");
                 break;

@@ -12,7 +12,8 @@ public abstract class Command {
     private String number_Previous;
     private String number_Current;
 
-    protected RoundingMode roundMode = RoundingMode.DOWN;
+    public static RoundingMode roundMode = RoundingMode.DOWN;
+    public static int scale = 11;
 
 
     public Command(Window window, ActionEvent event) {
@@ -44,9 +45,10 @@ public abstract class Command {
     }
 
     public void show_CurrentNumber() {
+        number_Current = cutLastZeros(number_Current);
         window.displayField.setText(number_Current);
+        System.out.println("s " + scale + " r " + roundMode + " outNumber " + number_Current);
     }
-
 
     public abstract boolean execute();
 
@@ -83,7 +85,11 @@ public abstract class Command {
 
     @Override
     public String toString() {
-        return getSource(event).getText();
+        try {
+            return getSource(event).getText();
+        } catch (ClassCastException e) {
+            return "R";
+        }
     }
     public String getTextCommand() {
         return getSource(event).getText();
@@ -123,6 +129,19 @@ public abstract class Command {
             return false;
         }
     }
+
+    public String cutLastZeros(String stringWithZeros) {
+        if (Command.roundMode == RoundingMode.DOWN) {
+            for (int i = stringWithZeros.length(); i > 0; i--) {
+                if (stringWithZeros.charAt(stringWithZeros.length()-1) == '0' & stringWithZeros.charAt(stringWithZeros.length()-2) == '0') {
+                    stringWithZeros = stringWithZeros.substring(0, stringWithZeros.length() - 1);
+                    System.out.println("stringNonZero " + stringWithZeros);
+                }
+            }
+        }
+        return stringWithZeros;
+    }
+
 }
 
 

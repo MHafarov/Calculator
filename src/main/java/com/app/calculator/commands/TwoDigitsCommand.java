@@ -35,12 +35,14 @@ public class TwoDigitsCommand extends Command {
                 }
                 if (cashFull() & !input_String.equals("0")) {
                     output_BigDecimal = window.getCashTwoDigits().getCashDigit().divide(input_BigDecimal);
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -48,12 +50,14 @@ public class TwoDigitsCommand extends Command {
             case "╳":
                 if (cashFull()) {
                     output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoDigits().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -61,12 +65,14 @@ public class TwoDigitsCommand extends Command {
             case "-":
                 if (cashFull()) {
                     output_BigDecimal = window.getCashTwoDigits().getCashDigit().subtract(input_BigDecimal);
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;
@@ -74,12 +80,14 @@ public class TwoDigitsCommand extends Command {
             case "+":
                 if (cashFull()) {
                     output_BigDecimal = input_BigDecimal.add(window.getCashTwoDigits().getCashDigit());
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
                 }
                 if (cashTwoNumberEmpty()) {
                     window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
                     output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                 }
                 break;

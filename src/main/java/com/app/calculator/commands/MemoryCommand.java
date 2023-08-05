@@ -51,6 +51,7 @@ public class MemoryCommand extends Command {
             case "MS":
                 window.m_Window.textField.setText(input_String);
                 window.turnOnMCMRM();
+                input_BigDecimal = input_BigDecimal.setScale(scale, roundMode);
                 window.getCashMemory().setCash(source_String, input_BigDecimal);
                 output_String = input_String;
                 break;
@@ -64,6 +65,7 @@ public class MemoryCommand extends Command {
 
             case "MR":
                 output_BigDecimal = cashMemory_BigDecimal;
+                output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                 output_String = toString(output_BigDecimal);
                 break;
 
@@ -78,24 +80,30 @@ public class MemoryCommand extends Command {
                             break;
                         }
                         output_BigDecimal = cashTwoDigits_BigDecimal.divide(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "╳":
                         output_BigDecimal = cashTwoDigits_BigDecimal.multiply(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "-":
                         output_BigDecimal = cashTwoDigits_BigDecimal.subtract(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "+":
                         output_BigDecimal = cashTwoDigits_BigDecimal.add(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
                     case "null":
                         output_BigDecimal = input_BigDecimal;
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         if (cashMemory.isEmpty()) {
                             cashMemory.setCash(this.getTextCommand(), new BigDecimal(0));
                             cashMemory_BigDecimal = cashMemory.getCashDigit();
+                            cashMemory_BigDecimal = cashMemory_BigDecimal.setScale(scale, roundMode);
                         }
                         break;
 
@@ -108,12 +116,15 @@ public class MemoryCommand extends Command {
                 }
 
                 if (cashMemory.isEmpty()) {
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     outputMemory_String = output_String;
                 } else {
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
 
                     outputMemory_BigDecimal = cashMemory_BigDecimal.add(output_BigDecimal);
+                    outputMemory_BigDecimal = outputMemory_BigDecimal.setScale(scale, roundMode);
                     outputMemory_String = toString(outputMemory_BigDecimal);
                 }
                 window.m_Window.textField.setText(outputMemory_String);
@@ -135,25 +146,31 @@ public class MemoryCommand extends Command {
                             break;
                         }
                         output_BigDecimal = cashTwoDigits_BigDecimal.divide(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "╳":
                         output_BigDecimal = cashTwoDigits_BigDecimal.multiply(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "-":
                         output_BigDecimal = cashTwoDigits_BigDecimal.subtract(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "+":
                         output_BigDecimal = cashTwoDigits_BigDecimal.add(input_BigDecimal);
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         break;
 
                     case "null":
                         output_BigDecimal = input_BigDecimal;
+                        output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                         if (cashMemory.isEmpty()) {
                             cashMemory.setCash(this.getTextCommand(), new BigDecimal(0));
                             cashMemory_BigDecimal = cashMemory.getCashDigit();
+                            cashMemory_BigDecimal = cashMemory_BigDecimal.setScale(scale, roundMode);
                         }
                         break;
 
@@ -166,12 +183,15 @@ public class MemoryCommand extends Command {
                 }
 
                 if (cashMemory.isEmpty()) {
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
                     outputMemory_String = output_String;
                 } else {
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
                     output_String = toString(output_BigDecimal);
 
                     outputMemory_BigDecimal = cashMemory_BigDecimal.subtract(output_BigDecimal);
+                    outputMemory_BigDecimal = outputMemory_BigDecimal.setScale(scale, roundMode);
                     outputMemory_String = toString(outputMemory_BigDecimal);
                 }
                 window.m_Window.textField.setText(outputMemory_String);

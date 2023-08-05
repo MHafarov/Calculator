@@ -5,6 +5,7 @@ import com.app.calculator.commands.RoundingModeCommand;
 import com.app.calculator.commands.ScaleCommand;
 import com.app.calculator.commands.ShowMemoryCommand;
 import com.app.calculator.constants.Column;
+import com.app.calculator.constants.Dimension;
 import com.app.calculator.constants.Row;
 import com.app.calculator.constants.Size;
 import com.app.calculator.history.Cash;
@@ -20,8 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+
+import java.math.RoundingMode;
 import java.util.List;
 import javafx.stage.Stage;
 
@@ -123,8 +127,8 @@ public abstract class Window implements Runnable {
     public ToggleGroup toggleGroup_Left;
     public ToggleGroup toggleGroup_Right;
 
-    public Label label_MathematicalRounding;
-    public Label label_NoRounding;
+    public Label label_TypeRounding;
+    public Label label_ScaleRounding;
     public Button btn_MC;
     public Button btn_MR;
     public Button btn_MPlus;
@@ -298,12 +302,14 @@ public abstract class Window implements Runnable {
         rBtn_FiveDivFour = new RadioButton();
         rBtn_Down = new RadioButton();
 
+
         rBtn_A = new RadioButton();
         rBtn_Zero = new RadioButton();
         rBtn_Two = new RadioButton();
         rBtn_Three = new RadioButton();
         rBtn_Four = new RadioButton();
         rBtn_F = new RadioButton();
+
 
         rBtn_Up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -417,19 +423,32 @@ public abstract class Window implements Runnable {
         rBtn_F.setToggleGroup(toggleGroup_Right);
         rBtn_A.setSelected(true);
 
-        label_MathematicalRounding = new Label("Mathematical rounding");
-        label_MathematicalRounding.setAlignment(Pos.CENTER);
-        GridPane.setHgrow(label_MathematicalRounding, Priority.ALWAYS);
-        GridPane.setVgrow(label_MathematicalRounding, Priority.ALWAYS);
-        subPanel_ThirdRow.setHalignment(label_MathematicalRounding, HPos.CENTER);
-        subPanel_ThirdRow.setValignment(label_MathematicalRounding, VPos.CENTER);
 
-        label_NoRounding = new Label("No rounding");
-        label_NoRounding.setAlignment(Pos.CENTER);
-        GridPane.setHgrow(label_NoRounding, Priority.ALWAYS);
-        GridPane.setVgrow(label_NoRounding, Priority.ALWAYS);
-        subPanel_ThirdRow.setHalignment(label_NoRounding, HPos.CENTER);
-        subPanel_ThirdRow.setValignment(label_NoRounding, VPos.CENTER);
+
+
+
+
+        label_TypeRounding = new Label("Mathematical rounding");
+        label_TypeRounding.setAlignment(Pos.CENTER);
+        GridPane.setHgrow(label_TypeRounding, Priority.ALWAYS);
+        GridPane.setVgrow(label_TypeRounding, Priority.ALWAYS);
+        subPanel_ThirdRow.setHalignment(label_TypeRounding, HPos.CENTER);
+        subPanel_ThirdRow.setValignment(label_TypeRounding, VPos.CENTER);
+
+        label_ScaleRounding = new Label("No rounding");
+        label_ScaleRounding.setAlignment(Pos.CENTER);
+        GridPane.setHgrow(label_ScaleRounding, Priority.ALWAYS);
+        GridPane.setVgrow(label_ScaleRounding, Priority.ALWAYS);
+        subPanel_ThirdRow.setHalignment(label_ScaleRounding, HPos.CENTER);
+        subPanel_ThirdRow.setValignment(label_ScaleRounding, VPos.CENTER);
+
+        subPanel_ThirdRow.add(label_TypeRounding,0,2, 5, 2);
+        subPanel_ThirdRow.add(label_ScaleRounding,5,2,14,2);
+
+        label_TypeRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
+        label_ScaleRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
+
+
 
         btn_MC = new Button("MC");
         btn_MR = new Button("MR");
@@ -490,18 +509,20 @@ public abstract class Window implements Runnable {
     public void executeCommand(Command command) {
         history.push(command);
         btn_Undo.setDisable(false);
+        System.out.println("H1");
         command.execute();
-        System.out.println("HISTORY 2" + history.history);
+        System.out.println("H2");
+        System.out.println("Command.roundMode " + Command.roundMode);
+        System.out.println("Command.scale " + Command.scale);
+        System.out.println("S " + history.history);
     }
 
     public void undo() {
         if (history.isEmpty()) return;
 
-        //System.out.println("Стек до отмены: " + history.history);
-
         Command command = history.pop();
         btn_Redo.setDisable(false);
-       //System.out.println("Стек после отмены: " + history.history);
+
         if (command != null) {
             command.show_PreviousNumber();
         }
@@ -521,6 +542,7 @@ public abstract class Window implements Runnable {
             history.currentIndex -= 1;
         }
     }
+
 
 
     public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ScaleCommand extends Command {
     public ScaleCommand(Window window, ActionEvent event) {
@@ -14,45 +15,30 @@ public class ScaleCommand extends Command {
 
     @Override
     public boolean execute() {
-        save_PreviousNumber();
-        String input_String = getNumber_Previous();
-        BigDecimal input_BigDecimal = toBigDecimal(input_String);
-
-        String cash_String = window.getCashTwoDigits().getCashCommandText();
-
-        Button source = getSource(event);
-        String source_String = source.getText();
-
-        BigDecimal output_BigDecimal = null;
-        String output_String = null;
-
-        System.out.println("% cash " + cash_String);
-
-        if (cashTwoNumberEmpty()) {
-            output_String = "0";
+        if (window.rBtn_A.isSelected()) {
+            window.label_ScaleRounding.setText("Автоматическая запятая");
+            Command.scale = 11;
         }
-
-
-        switch (cash_String) {
-            case "+":
-
-                break;
-            case "-":
-
-                break;
-            case "╳":
-
-                break;
-            case "÷":
-
-                break;
-            default:
-                System.out.println("switch RoundingMode Error");
+        if (window.rBtn_Zero.isSelected()) {
+            window.label_ScaleRounding.setText("0 знаков после запятой");
+            Command.scale = 0;
         }
-
-        setNumber_Current(output_String);
-        show_CurrentNumber();
-        window.nextDigitShouldBeNew = true;
+        if (window.rBtn_Two.isSelected()) {
+            window.label_ScaleRounding.setText("2 знака после запятой");
+            Command.scale = 2;
+        }
+        if (window.rBtn_Three.isSelected()) {
+            window.label_ScaleRounding.setText("3 знака после запятой");
+            Command.scale = 3;
+        }
+        if (window.rBtn_Four.isSelected()) {
+            window.label_ScaleRounding.setText("4 знака после запятой");
+            Command.scale = 4;
+        }
+        if (window.rBtn_F.isSelected()) {
+            window.label_ScaleRounding.setText("Без округления");
+            Command.scale = 11;
+        }
         return true;
     }
 }

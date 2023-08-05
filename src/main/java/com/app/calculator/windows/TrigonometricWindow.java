@@ -6,13 +6,10 @@ import com.app.calculator.constants.Dimension;
 import com.app.calculator.constants.Position;
 import com.app.calculator.constants.Row;
 import javafx.application.Platform;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -44,8 +41,8 @@ public class TrigonometricWindow extends Window{
                 addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);
             }
 
-            subPanel_ThirdRow.add(label_MathematicalRounding,0,2, 5, 2);
-            subPanel_ThirdRow.add(label_NoRounding,5,2,14,2);
+//            subPanel_ThirdRow.add(label_TypeRounding,0,2, 5, 2);
+//            subPanel_ThirdRow.add(label_ScaleRounding,5,2,14,2);
 
 
             Button btn_MC = new Button("MC");
