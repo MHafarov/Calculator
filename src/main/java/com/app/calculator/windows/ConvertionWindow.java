@@ -76,24 +76,6 @@ public class ConvertionWindow extends Window{
             subPanel_SixthRow.getChildren().add(combo_Box_UnitOfMeasurement_Out);
             GridPane.setConstraints(combo_Box_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-
-
-
-
-//            list_ElementsSeventhRowTop.add(label_Space_10);
-//            list_ElementsSeventhRowTop.add(label_Up);
-//            list_ElementsSeventhRowTop.add(label_FiveDivFour);
-//            list_ElementsSeventhRowTop.add(label_Down);
-//            list_ElementsSeventhRowTop.add(label_Space_11);
-//            list_ElementsSeventhRowTop.add(label_Space_12);
-//            list_ElementsSeventhRowTop.add(label_A);
-//            list_ElementsSeventhRowTop.add(label_Zero);
-//            list_ElementsSeventhRowTop.add(label_Two);
-//            list_ElementsSeventhRowTop.add(label_Three);
-//            list_ElementsSeventhRowTop.add(label_Four);
-//            list_ElementsSeventhRowTop.add(label_F);
-//            list_ElementsSeventhRowTop.add(label_Space_13);
-
             for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {
                 addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);
                 list_ElementsRoundingTop.get(i).setAlignment(Pos.CENTER);
@@ -103,64 +85,6 @@ public class ConvertionWindow extends Window{
                 addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_SeventhRow, columns[i], Row.SECOND);
             }
 
-
-//
-//            list_ElementsSeventhRowDown.add(label_Space_10);
-//            list_ElementsSeventhRowDown.add(rBtn_Up);
-//            list_ElementsSeventhRowDown.add(rBtn_FiveDivFour);
-//            list_ElementsSeventhRowDown.add(rBtn_Down);
-//            list_ElementsSeventhRowDown.add(label_Space_11);
-//            list_ElementsSeventhRowDown.add(label_Space_12);
-//            list_ElementsSeventhRowDown.add(rBtn_A);
-//            list_ElementsSeventhRowDown.add(rBtn_Zero);
-//            list_ElementsSeventhRowDown.add(rBtn_Two);
-//            list_ElementsSeventhRowDown.add(rBtn_Three);
-//            list_ElementsSeventhRowDown.add(rBtn_Four);
-//            list_ElementsSeventhRowDown.add(rBtn_F);
-//            list_ElementsSeventhRowDown.add(label_Space_13);
-
-
-            ToggleGroup toggleGroup_Left = new ToggleGroup();
-            ToggleGroup toggleGroup_Right = new ToggleGroup();
-
-            rBtn_Up.setToggleGroup(toggleGroup_Left);
-            rBtn_FiveDivFour.setToggleGroup(toggleGroup_Left);
-            rBtn_Down.setToggleGroup(toggleGroup_Left);
-            rBtn_Up.setSelected(true);
-
-            rBtn_A.setToggleGroup(toggleGroup_Right);
-            rBtn_Zero.setToggleGroup(toggleGroup_Right);
-            rBtn_Two.setToggleGroup(toggleGroup_Right);
-            rBtn_Three.setToggleGroup(toggleGroup_Right);
-            rBtn_Four.setToggleGroup(toggleGroup_Right);
-            rBtn_F.setToggleGroup(toggleGroup_Right);
-            rBtn_A.setSelected(true);
-
-            Label label_MathematicalRounding = new Label("Mathematical rounding");
-
-            subPanel_SeventhRow.add(label_MathematicalRounding,0,2, 5, 2);
-            label_MathematicalRounding.setAlignment(Pos.CENTER);
-            GridPane.setHgrow(label_MathematicalRounding, Priority.ALWAYS);
-            GridPane.setVgrow(label_MathematicalRounding, Priority.ALWAYS);
-            subPanel_SeventhRow.setHalignment(label_MathematicalRounding, HPos.CENTER);
-            subPanel_SeventhRow.setValignment(label_MathematicalRounding, VPos.CENTER);
-
-            Label label_NoRounding = new Label("No rounding");
-
-            subPanel_SeventhRow.add(label_NoRounding,5,2,14,2);
-            label_NoRounding.setAlignment(Pos.CENTER);
-            GridPane.setHgrow(label_NoRounding, Priority.ALWAYS);
-            GridPane.setVgrow(label_NoRounding, Priority.ALWAYS);
-            subPanel_SeventhRow.setHalignment(label_NoRounding, HPos.CENTER);
-            subPanel_SeventhRow.setValignment(label_NoRounding, VPos.CENTER);
-
-
-
-            Button btn_ThreeSpaces = new Button("   ");
-            btn_ThreeSpaces.setVisible(false);
-            Button btn_CE = new Button("CE");
-            Button btn_Backspace = new Button("←");
-
             list_ElementsEighthRow.add(btn_ThreeSpaces);
             list_ElementsEighthRow.add(btn_CE);
             list_ElementsEighthRow.add(btn_Backspace);
@@ -169,10 +93,6 @@ public class ConvertionWindow extends Window{
                 addButtonsToPanel(list_ElementsEighthRow.get(i), subPanel_EighthRow, columns[i], Row.FIRST);
             }
 
-            Button btn_Seven = new Button("7");
-            Button btn_Eight = new Button("8");
-            Button btn_Nine = new Button("9");
-
             list_ElementsNinthRow.add(btn_Seven);
             list_ElementsNinthRow.add(btn_Eight);
             list_ElementsNinthRow.add(btn_Nine);
@@ -180,10 +100,6 @@ public class ConvertionWindow extends Window{
             for (int i = 0; i < list_ElementsNinthRow.size(); i++) {
                 addButtonsToPanel(list_ElementsNinthRow.get(i), subPanel_NinthRow, columns[i], Row.FIRST);
             }
-
-            Button btn_Four = new Button("4");
-            Button btn_Five = new Button("5");
-            Button btn_Six = new Button("6");
 
             list_ElementsTenthRow.add(btn_Four);
             list_ElementsTenthRow.add(btn_Five);
@@ -197,12 +113,6 @@ public class ConvertionWindow extends Window{
             list_GridPanes.add(subPanel_EleventhRow);
             List<Control> list_ElementsEleventhRow = new ArrayList<>();
 
-            Button btn_One = new Button("1");
-            Button btn_Two = new Button("2");
-            Button btn_Three = new Button("3");
-
-
-
             list_ElementsEleventhRow.add(btn_One);
             list_ElementsEleventhRow.add(btn_Two);
             list_ElementsEleventhRow.add(btn_Three);
@@ -215,9 +125,6 @@ public class ConvertionWindow extends Window{
             list_GridPanes.add(subPanel_TwelthRow);
 
             List<Control> list_ElementsTwelthRow = new ArrayList<>();
-
-            Button btn_Zero = new Button("0");
-            Button btn_Comma = new Button(",");
 
             list_ElementsTwelthRow.add(btn_ThreeSpaces );
             list_ElementsTwelthRow.add(btn_Zero);

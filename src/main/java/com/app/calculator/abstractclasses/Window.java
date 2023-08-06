@@ -30,15 +30,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public abstract class Window implements Runnable {
-    protected final Stage stage;
-
+    public Stage stage;
     private History history = new History();
     private Cash cashTwoDigits = new Cash();
     private Cash cashEquel = new Cash();
     private Cash cashMemory = new Cash();
-
     public GridPane root;
-
     public Column[] columns;
     public Row[] rows;
     public List<GridPane> list_GridPanes;
@@ -63,18 +60,14 @@ public abstract class Window implements Runnable {
     public List<Control> list_ElementsEighthRow;
     public List<Control> list_ElementsNinthRow;
     public List<Control> list_ElementsTenthRow;
-    public List<Control> list_ElementsEleventhRow;
-    public List<Control> list_ElementsTwelthRow;
     public MenuBar menuBar;
     public Menu menu_Type;
     public Menu menu_Theme;
     public Menu menu_Language;
     public Menu menu_Sound;
-
     public Button btn_Undo;
     public Button btn_Redo;
-
-
+    public CheckMenuItem cMI_ArithmeticWindow;
     public CheckMenuItem cMI_TrigonometricWindow;
     public CheckMenuItem cMI_ConvertionWindow;
     public SeparatorMenuItem sMI_SeparatorExit;
@@ -100,10 +93,6 @@ public abstract class Window implements Runnable {
     public Label label_Space_7 = new Label(" ");
     public Label label_Space_8 = new Label(" ");
     public Label label_Space_9 = new Label(" ");
-    public Label label_Space_10 = new Label(" ");
-    public Label label_Space_11 = new Label(" ");
-    public Label label_Space_12 = new Label(" ");
-    public Label label_Space_13 = new Label(" ");
     public Label label_Up;
     public Label label_FiveDivFour;
     public Label label_Down;
@@ -124,7 +113,6 @@ public abstract class Window implements Runnable {
     public RadioButton rBtn_F;
     public ToggleGroup toggleGroup_Left;
     public ToggleGroup toggleGroup_Right;
-
     public Label label_TypeRounding;
     public Label label_ScaleRounding;
     public Button btn_MC;
@@ -133,38 +121,52 @@ public abstract class Window implements Runnable {
     public Button btn_MMinus;
     public Button btn_MS;
     public Button btn_M;
-
+    public Button btn_XToThePowerOfY;
+    public Button btn_Sin;
+    public Button btn_Cos;
+    public Button btn_Tan;
+    public Button btn_Log;
+    public Button btn_XToThePowerOf1divY;
+    public Button btn_SineToThePowerOfNegativeOne;
+    public Button btn_CosToThePowerOfNegativeOne;
+    public Button btn_TanToThePowerOfNegativeOne;
+    public Button btn_Ln;
+    public Button btn_Ex;
     public Button btn_Percent;
     public Button btn_Sqrt;
     public Button btn_XSquared;
     public Button btn_OneDivX;
+    public Button btn_X3;
     public Button btn_CE;
     public Button btn_C;
     public Button btn_Backspace;
     public Button btn_Div;
+    public Button btn_Exp;
     public Button btn_Seven;
     public Button btn_Eight;
     public Button btn_Nine;
     public Button btn_Mult;
+    public Button btn_Mod;
     public Button btn_Four;
     public Button btn_Five;
     public Button btn_Six;
     public Button btn_Minus;
+    public Button btn_Pi;
     public Button btn_One;
     public Button btn_Two;
     public Button btn_Three;
     public Button btn_Plus;
+    public Button btn_Factorial;
     public Button btn_PlusMinus;
     public Button btn_Zero;
     public Button btn_Comma;
     public Button btn_Equals;
+    public Button btn_ThreeSpaces;
     public boolean nextDigitShouldBeNew;
     public boolean mStageIsHide = true;
     public Stage mWindow_Stage = null;
     public MemoryWindow m_Window = null;
     Thread mWindowThread = null;
-
-
     public Window (Stage stage) {
         this.stage = stage;
 
@@ -217,7 +219,6 @@ public abstract class Window implements Runnable {
         columns = Column.values();
         rows = Row.values();
 
-
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
@@ -229,6 +230,10 @@ public abstract class Window implements Runnable {
         menuBar.getMenus().addAll(menu_Type, menu_Theme, menu_Language, menu_Sound);
         subPanel_FirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
+        cMI_ArithmeticWindow = new CheckMenuItem("Arithmetic");
+        addImageToCheckMenuItem(cMI_ArithmeticWindow, "/images/plusminus.png");
+        cMI_ArithmeticWindow.setSelected(true);
+
         cMI_TrigonometricWindow = new CheckMenuItem("Trigonometric");
         addImageToCheckMenuItem(cMI_TrigonometricWindow, "/images/function.png");
 
@@ -239,7 +244,35 @@ public abstract class Window implements Runnable {
         menuItem_Exit = new MenuItem("Exit");
         addImageToMenuItem(menuItem_Exit, "/images/exit.png");
 
-        menu_Type.getItems().addAll(cMI_TrigonometricWindow, cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);
+        cMI_ArithmeticWindow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new CheckMenuItemCommand(Window.this, event));
+            }
+        });
+        cMI_TrigonometricWindow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new CheckMenuItemCommand(Window.this, event));
+            }
+        });
+        cMI_ConvertionWindow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new CheckMenuItemCommand(Window.this, event));
+            }
+        });
+        menuItem_Exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new CheckMenuItemCommand(Window.this, event));
+            }
+        });
+
+
+
+        menu_Type.getItems().addAll(cMI_ArithmeticWindow, cMI_TrigonometricWindow,
+                                    cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);
 
         rMI_ThemeClassic = new RadioMenuItem("Classic");
         rMI_ThemeDark = new RadioMenuItem("Dark");
@@ -319,12 +352,9 @@ public abstract class Window implements Runnable {
         list_ElementsRoundingTop.add(label_F);
         list_ElementsRoundingTop.add(label_Space_4);
 
-
-
         rBtn_Up = new RadioButton();
         rBtn_FiveDivFour = new RadioButton();
         rBtn_Down = new RadioButton();
-
 
         rBtn_A = new RadioButton();
         rBtn_Zero = new RadioButton();
@@ -466,8 +496,6 @@ public abstract class Window implements Runnable {
         label_TypeRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
         label_ScaleRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
 
-
-
         btn_MC = new Button("MC");
         btn_MR = new Button("MR");
         btn_MPlus = new Button("M+");
@@ -512,8 +540,20 @@ public abstract class Window implements Runnable {
                 executeCommand(new ShowMemoryCommand(Window.this, event));
             }
         });
-        System.out.println("Конструктор Window выполнен");
 
+        btn_XToThePowerOfY = new Button("x^y");
+        btn_Sin = new Button("sin");
+        btn_Cos = new Button("cos");
+        btn_Tan = new Button("tan");
+        btn_Log = new Button("log");
+
+        btn_XToThePowerOf1divY = new Button("x^(1/y)");
+        btn_SineToThePowerOfNegativeOne = new Button("sin^(-1)");
+        btn_CosToThePowerOfNegativeOne = new Button("cos^(-1)");
+        btn_TanToThePowerOfNegativeOne = new Button("tan^(-1)");
+        btn_Ln = new Button("ln");
+
+        btn_Ex = new Button("e^x");
         btn_Percent = new Button("%");
         btn_Sqrt = new Button("√");
         btn_XSquared = new Button("X²");
@@ -544,6 +584,7 @@ public abstract class Window implements Runnable {
             }
         });
 
+        btn_X3 = new Button("x^3");
         btn_CE = new Button("CE");
         btn_C = new Button("C");
         btn_Backspace = new Button("←");
@@ -574,6 +615,7 @@ public abstract class Window implements Runnable {
             }
         });
 
+        btn_Exp = new Button("Exp");
         btn_Seven = new Button("7");
         btn_Eight = new Button("8");
         btn_Nine = new Button("9");
@@ -604,6 +646,7 @@ public abstract class Window implements Runnable {
             }
         });
 
+        btn_Mod = new Button("Mod");
         btn_Four = new Button("4");
         btn_Five = new Button("5");
         btn_Six = new Button("6");
@@ -634,6 +677,7 @@ public abstract class Window implements Runnable {
             }
         });
 
+        btn_Pi = new Button("π");
         btn_One = new Button("1");
         btn_Two = new Button("2");
         btn_Three = new Button("3");
@@ -665,10 +709,11 @@ public abstract class Window implements Runnable {
             }
         });
 
-        Button btn_PlusMinus = new Button("±");
-        Button btn_Zero = new Button("0");
-        Button btn_Comma = new Button(",");
-        Button btn_Equals = new Button("=");
+        btn_Factorial = new Button("n!");
+        btn_PlusMinus = new Button("±");
+        btn_Zero = new Button("0");
+        btn_Comma = new Button(",");
+        btn_Equals = new Button("=");
 
         btn_PlusMinus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -695,14 +740,8 @@ public abstract class Window implements Runnable {
             }
         });
 
-
-
-
-
-
-
-
-
+        btn_ThreeSpaces = new Button("   ");
+        btn_ThreeSpaces.setVisible(false);
 
         nextDigitShouldBeNew = false;
 
@@ -750,8 +789,6 @@ public abstract class Window implements Runnable {
             history.currentIndex -= 1;
         }
     }
-
-
 
     public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {
         root.add(subPanel, column.getNumber(), row.getNumber());
@@ -831,5 +868,4 @@ public abstract class Window implements Runnable {
         btn_MC.setDisable(false);
         btn_MR.setDisable(false);
     }
-
 }
