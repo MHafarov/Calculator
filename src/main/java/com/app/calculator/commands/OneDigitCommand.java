@@ -8,7 +8,12 @@ import javafx.scene.control.Button;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.math.RoundingMode;
+import java.util.Map;
+
+import org.apache.commons.math3.analysis.function.Sin;
+import org.apache.commons.math3.analysis.function.Exp;
+import org.apache.commons.math3.analysis.function.Pow;
+import org.apache.commons.math3.analysis.FunctionUtils;
 
 public class OneDigitCommand extends Command {
     public OneDigitCommand(Window window, ActionEvent event) {
@@ -20,6 +25,8 @@ public class OneDigitCommand extends Command {
         save_PreviousNumber();
         String input_String = getNumber_Previous();
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
+        input_Radians = toRadians(input_BigDecimal);
+        input_Double = toDouble(input_BigDecimal);
 
         Button source = getSource(event);
         String source_String = source.getText();
@@ -50,12 +57,16 @@ public class OneDigitCommand extends Command {
                 }
                 break;
             case "sin":
+                output_BigDecimal = BigDecimal.valueOf(Math.sin(input_Radians));
                 break;
             case "cos":
+                output_BigDecimal = BigDecimal.valueOf(Math.cos(input_Radians));
                 break;
             case "tan":
+                output_BigDecimal = BigDecimal.valueOf(Math.tan(input_Radians));
                 break;
             case "log":
+                output_BigDecimal = BigDecimal.valueOf(Math.log10(input_Double));
                 break;
             case "sin^(-1)":
                 break;
@@ -64,14 +75,13 @@ public class OneDigitCommand extends Command {
             case "tan^(-1)":
                 break;
             case "ln":
+                output_BigDecimal = BigDecimal.valueOf(Math.log(input_Double));
                 break;
             case "x^3":
-                break;
-            case "Exp":
-                break;
-            case "Mod":
+                output_BigDecimal = BigDecimal.valueOf(Math.pow(input_Double, 3));
                 break;
             case "π":
+                output_BigDecimal = BigDecimal.valueOf(Math.PI);
                 break;
             case "n!":
                 break;

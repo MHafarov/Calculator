@@ -757,6 +757,12 @@ public abstract class Window implements Runnable {
         btn_Three = new Button("3");
         btn_Plus = new Button("+");
 
+        btn_Pi.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_One.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

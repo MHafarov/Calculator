@@ -14,6 +14,8 @@ public abstract class Command {
 
     public static RoundingMode roundMode = RoundingMode.DOWN;
     public static int scale = 11;
+    public Double input_Radians;
+    public Double input_Double;
 
 
     public Command(Window window, ActionEvent event) {
@@ -141,7 +143,15 @@ public abstract class Command {
         }
         return stringWithZeros;
     }
-
+    public Double toRadians(BigDecimal bigDecimal) {
+        Double input_Double = bigDecimal.doubleValue();
+        Double output_Radians = Math.toRadians(input_Double);
+        return output_Radians;
+    }
+    public Double toDouble(BigDecimal bigDecimal) {
+        Double output_Double = bigDecimal.doubleValue();
+        return output_Double;
+    }
 }
 
 

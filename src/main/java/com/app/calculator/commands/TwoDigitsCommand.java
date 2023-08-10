@@ -97,6 +97,10 @@ public class TwoDigitsCommand extends Command {
                 break;
             case "e^x":
                 break;
+            case "Exp":
+                break;
+            case "Mod":
+                break;
 
             default:
                 System.out.println("switch TwoDigitsCommand Error");
