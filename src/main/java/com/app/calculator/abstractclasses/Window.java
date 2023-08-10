@@ -544,11 +544,64 @@ public abstract class Window implements Runnable {
         btn_Tan = new Button("tan");
         btn_Log = new Button("log");
 
+
+        btn_Sin.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_Cos.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_Tan.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_Log.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+
+
+
         btn_XToThePowerOf1divY = new Button("x^(1/y)");
         btn_SineToThePowerOfNegativeOne = new Button("sin^(-1)");
         btn_CosToThePowerOfNegativeOne = new Button("cos^(-1)");
         btn_TanToThePowerOfNegativeOne = new Button("tan^(-1)");
         btn_Ln = new Button("ln");
+
+        btn_SineToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_CosToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_TanToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
+        btn_Ln.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
 
         btn_Ex = new Button("e^x");
         btn_Percent = new Button("%");
@@ -556,6 +609,12 @@ public abstract class Window implements Runnable {
         btn_XSquared = new Button("X²");
         btn_OneDivX = new Button("1/X");
 
+        btn_Ex.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_Percent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -587,6 +646,12 @@ public abstract class Window implements Runnable {
         btn_Backspace = new Button("←");
         btn_Div = new Button("÷");
 
+        btn_X3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_CE.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -618,6 +683,12 @@ public abstract class Window implements Runnable {
         btn_Nine = new Button("9");
         btn_Mult = new Button("╳");
 
+        btn_Exp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_Seven.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -649,6 +720,12 @@ public abstract class Window implements Runnable {
         btn_Six = new Button("6");
         btn_Minus = new Button("-");
 
+        btn_Mod.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_Four.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -712,6 +789,12 @@ public abstract class Window implements Runnable {
         btn_Comma = new Button(",");
         btn_Equals = new Button("=");
 
+        btn_Factorial.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new OneDigitCommand(Window.this, event));
+            }
+        });
         btn_PlusMinus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

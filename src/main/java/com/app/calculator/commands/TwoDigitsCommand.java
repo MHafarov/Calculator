@@ -91,6 +91,12 @@ public class TwoDigitsCommand extends Command {
                     output_String = toString(output_BigDecimal);
                 }
                 break;
+            case "x^y":
+                break;
+            case "x^(1/y)":
+                break;
+            case "e^x":
+                break;
 
             default:
                 System.out.println("switch TwoDigitsCommand Error");

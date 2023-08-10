@@ -49,7 +49,32 @@ public class OneDigitCommand extends Command {
                     output_BigDecimal = input_BigDecimal.sqrt(new MathContext(100));
                 }
                 break;
-
+            case "sin":
+                break;
+            case "cos":
+                break;
+            case "tan":
+                break;
+            case "log":
+                break;
+            case "sin^(-1)":
+                break;
+            case "cos^(-1)":
+                break;
+            case "tan^(-1)":
+                break;
+            case "ln":
+                break;
+            case "x^3":
+                break;
+            case "Exp":
+                break;
+            case "Mod":
+                break;
+            case "π":
+                break;
+            case "n!":
+                break;
             default:
                 System.out.println("switch OneDigitCommand Error");
         }
