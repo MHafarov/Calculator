@@ -8,12 +8,6 @@ import javafx.scene.control.Button;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.util.Map;
-
-import org.apache.commons.math3.analysis.function.Sin;
-import org.apache.commons.math3.analysis.function.Exp;
-import org.apache.commons.math3.analysis.function.Pow;
-import org.apache.commons.math3.analysis.FunctionUtils;
 
 public class OneDigitCommand extends Command {
     public OneDigitCommand(Window window, ActionEvent event) {
@@ -68,11 +62,14 @@ public class OneDigitCommand extends Command {
             case "log":
                 output_BigDecimal = BigDecimal.valueOf(Math.log10(input_Double));
                 break;
-            case "sin^(-1)":
+            case "arcsin":
+                output_BigDecimal = BigDecimal.valueOf(Math.toDegrees(Math.asin(input_Double)));
                 break;
-            case "cos^(-1)":
+            case "arccos":
+                output_BigDecimal = BigDecimal.valueOf(Math.toDegrees(Math.acos(input_Double)));
                 break;
-            case "tan^(-1)":
+            case "arctan":
+                output_BigDecimal = BigDecimal.valueOf(Math.toDegrees(Math.atan(input_Double)));
                 break;
             case "ln":
                 output_BigDecimal = BigDecimal.valueOf(Math.log(input_Double));
@@ -80,10 +77,18 @@ public class OneDigitCommand extends Command {
             case "x^3":
                 output_BigDecimal = BigDecimal.valueOf(Math.pow(input_Double, 3));
                 break;
+            case "e^x":
+                output_BigDecimal = BigDecimal.valueOf(Math.pow(Math.E, input_Double));
+                break;
             case "π":
                 output_BigDecimal = BigDecimal.valueOf(Math.PI);
                 break;
             case "n!":
+                output_BigDecimal = new BigDecimal(1);
+
+                for (int i = 1; i <= input_BigDecimal.intValue(); i++) {
+                    output_BigDecimal = output_BigDecimal.multiply(new BigDecimal(i));
+                }
                 break;
             default:
                 System.out.println("switch OneDigitCommand Error");

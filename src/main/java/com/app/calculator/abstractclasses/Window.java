@@ -545,6 +545,12 @@ public abstract class Window implements Runnable {
         btn_Log = new Button("log");
 
 
+        btn_XToThePowerOfY.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new TwoDigitsCommand(Window.this, event));
+            }
+        });
         btn_Sin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -573,9 +579,9 @@ public abstract class Window implements Runnable {
 
 
         btn_XToThePowerOf1divY = new Button("x^(1/y)");
-        btn_SineToThePowerOfNegativeOne = new Button("sin^(-1)");
-        btn_CosToThePowerOfNegativeOne = new Button("cos^(-1)");
-        btn_TanToThePowerOfNegativeOne = new Button("tan^(-1)");
+        btn_SineToThePowerOfNegativeOne = new Button("arcsin");
+        btn_CosToThePowerOfNegativeOne = new Button("arccos");
+        btn_TanToThePowerOfNegativeOne = new Button("arctan");
         btn_Ln = new Button("ln");
 
         btn_SineToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {

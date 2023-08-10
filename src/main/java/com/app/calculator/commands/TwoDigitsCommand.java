@@ -17,6 +17,7 @@ public class TwoDigitsCommand extends Command {
         save_PreviousNumber();
         String input_String = getNumber_Previous();
         BigDecimal input_BigDecimal = toBigDecimal(input_String);
+        input_Double = toDouble(input_BigDecimal);
 
         Button source = getSource(event);
         String source_String = source.getText();
@@ -92,10 +93,20 @@ public class TwoDigitsCommand extends Command {
                 }
                 break;
             case "x^y":
+                if (cashFull()) {
+                    output_BigDecimal = BigDecimal.valueOf(Math.pow(toDouble(window.getCashTwoDigits().getCashDigit()), input_Double));
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
+                    output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                }
                 break;
             case "x^(1/y)":
-                break;
-            case "e^x":
                 break;
             case "Exp":
                 break;
@@ -106,6 +117,7 @@ public class TwoDigitsCommand extends Command {
                 System.out.println("switch TwoDigitsCommand Error");
         }
 
+        System.out.println("output_String in witch " + output_String);
         setNumber_Current(output_String);
         show_CurrentNumber();
         window.nextDigitShouldBeNew = true;
