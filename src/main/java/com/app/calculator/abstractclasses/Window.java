@@ -1,13 +1,9 @@
 package com.app.calculator.abstractclasses;
 
 import com.app.calculator.commands.*;
-import com.app.calculator.constants.Column;
-import com.app.calculator.constants.Dimension;
-import com.app.calculator.constants.Row;
-import com.app.calculator.constants.Size;
+import com.app.calculator.constants.*;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
-import com.app.calculator.windows.ArithmeticWindow;
 import com.app.calculator.windows.MemoryWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,11 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
-import java.math.RoundingMode;
 import java.util.List;
 import javafx.stage.Stage;
 
@@ -38,6 +33,8 @@ public abstract class Window implements Runnable {
     public GridPane root;
     public Column[] columns;
     public Row[] rows;
+    public static int stagePositionX = Position.ARITHMETIC_WINDOW.getHorizontal();
+    public static int stagePositionY = Position.ARITHMETIC_WINDOW.getVertical();
     public List<GridPane> list_GridPanes;
     public GridPane subPanel_FirstRow;
     public GridPane subPanel_SecondRow;
@@ -169,6 +166,8 @@ public abstract class Window implements Runnable {
     Thread mWindowThread = null;
     public Window (Stage stage) {
         this.stage = stage;
+        this.stage.setX(stagePositionX);
+        this.stage.setY(stagePositionY);
 
         subPanel_FirstRow = new GridPane();
         subPanel_SecondRow = new GridPane();
@@ -265,11 +264,9 @@ public abstract class Window implements Runnable {
         menuItem_Exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new CheckMenuItemCommand(Window.this, event));
+                executeCommand(new ExitCommand(Window.this, event));
             }
         });
-
-
 
         menu_Type.getItems().addAll(cMI_ArithmeticWindow, cMI_TrigonometricWindow,
                                     cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);

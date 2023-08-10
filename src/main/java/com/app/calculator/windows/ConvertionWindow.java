@@ -26,8 +26,6 @@ public class ConvertionWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Convertion");
-            this.stage.setX(Position.CONVERTION_WINDOW.getHorizontal());
-            this.stage.setY(Position.CONVERTION_WINDOW.getVertical());
 
             ComboBox<String> comboBox_Category = new ComboBox<String>();
             ObservableList<String> observablelist_Category = FXCollections.observableArrayList();

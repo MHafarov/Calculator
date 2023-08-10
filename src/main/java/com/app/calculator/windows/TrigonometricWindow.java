@@ -24,8 +24,6 @@ public class TrigonometricWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Trigonometric");
-            this.stage.setX(Position.TRIGONOMETRIC_WINDOW.getHorizontal());
-            this.stage.setY(Position.TRIGONOMETRIC_WINDOW.getVertical());
 
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());

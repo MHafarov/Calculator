@@ -1,17 +1,12 @@
 package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.commands.*;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
-import com.app.calculator.constants.Position;
 import com.app.calculator.constants.Row;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 
@@ -24,10 +19,7 @@ public class ArithmeticWindow extends Window{
     public void run() {
         Platform.runLater(() -> {
 
-            this.stage.setTitle("Calculator");
-            this.stage.setX(Position.ARITHMETIC_WINDOW.getHorizontal());
-            this.stage.setY(Position.ARITHMETIC_WINDOW.getVertical());
-
+            stage.setTitle("Calculator");
 
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());

@@ -12,12 +12,14 @@ import java.math.RoundingMode;
 import java.util.List;
 
 public class CheckMenuItemCommand extends Command {
+    Window currentWindow;
     public CheckMenuItemCommand(Window window, ActionEvent event) {
         super(window, event);
+        currentWindow = window;
     }
     CheckMenuItem cMI_input = (CheckMenuItem) event.getSource();
     String cMI_name = cMI_input.getText();
-    List<Window> list_windows = WindowCollection.getList_windows();
+    //List<Window> list_windows = WindowCollection.getList_windows();
 
     @Override
     public boolean execute() {
@@ -26,24 +28,23 @@ public class CheckMenuItemCommand extends Command {
                 window.cMI_ArithmeticWindow.setSelected(true);
                 window.cMI_TrigonometricWindow.setSelected(false);
                 window.cMI_ConvertionWindow.setSelected(false);
+                WindowCollection.turnOnWindow("Arithmetic", currentWindow.stage.getX(),currentWindow.stage.getY());
                 System.out.println("A");
-                for (int i = 0; i < list_windows.size(); i++) {
-                    if
-                }
                 break;
             case "Trigonometric":
                 window.cMI_ArithmeticWindow.setSelected(false);
                 window.cMI_TrigonometricWindow.setSelected(true);
                 window.cMI_ConvertionWindow.setSelected(false);
+                WindowCollection.turnOnWindow("Trigonometric", currentWindow.stage.getX(),currentWindow.stage.getY());
                 System.out.println("T");
                 break;
             case "Convertion":
                 window.cMI_ArithmeticWindow.setSelected(false);
                 window.cMI_TrigonometricWindow.setSelected(false);
                 window.cMI_ConvertionWindow.setSelected(true);
+                WindowCollection.turnOnWindow("Convertion", currentWindow.stage.getX(),currentWindow.stage.getY());
                 System.out.println("C");
                 break;
-
             default:
                 System.out.println("switch CheckMenuItemCommand Error");
         }
