@@ -107,10 +107,68 @@ public class TwoDigitsCommand extends Command {
                 }
                 break;
             case "x^(1/y)":
+                if (cashFull() & input_String.equals("0")) {
+                    output_String = "Деление на ноль невозможно";
+                    window.getCashTwoDigits().clearCash();
+                    window.getCashEquel().clearCash();
+                    break;
+                }
+                if (cashFull() & !input_String.equals("0")) {
+                    output_BigDecimal = BigDecimal.valueOf(Math.pow(toDouble(window.getCashTwoDigits().getCashDigit()), 1 / input_Double));
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
+                    output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                }
                 break;
             case "Exp":
+                if (cashFull()) {
+                    BigDecimal ten_Number = new BigDecimal(10);
+                    input_BigDecimal = ten_Number.pow(input_BigDecimal.intValueExact());
+
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoDigits().getCashDigit());
+
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
+                    output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                }
                 break;
+
             case "Mod":
+                if (cashFull() & input_String.equals("0")) {
+                    output_String = "Результат не определен";
+                    window.getCashTwoDigits().clearCash();
+                    window.getCashEquel().clearCash();
+                    break;
+                }
+                if (cashFull() & !input_String.equals("0")) {
+                    double dividend = window.getCashTwoDigits().getCashDigit().doubleValue();
+                    double divisor = input_BigDecimal.doubleValue();
+
+                    double remainder = dividend - ((int)(dividend / divisor)) * divisor;
+
+                    output_BigDecimal = new BigDecimal(remainder);
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashTwoDigits().setCash(source_String, output_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    window.getCashTwoDigits().setCash(source_String, input_BigDecimal);
+                    output_BigDecimal = input_BigDecimal;
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                }
                 break;
 
             default:

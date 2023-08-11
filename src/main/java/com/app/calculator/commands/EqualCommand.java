@@ -132,8 +132,70 @@ public class EqualCommand extends Command {
                     output_String = toString(output_BigDecimal);
                 }
                 break;
+            case "x^(1/y)":
+                if (cashTwoNumberFull() & input_String.equals("0")) {
+                    output_String = "Деление на ноль невозможно";
+                    window.getCashTwoDigits().clearCash();
+                    window.getCashEquel().clearCash();
+                    break;
+                }
+                if (cashTwoNumberFull() & input_String != "0") {
+                    output_BigDecimal = BigDecimal.valueOf(Math.pow(toDouble(window.getCashTwoDigits().getCashDigit()), 1 / input_Double));
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    System.out.println("cash E " + toDouble(window.getCashEquel().getCashDigit()));
+                    System.out.println("input_double " + input_Double);
 
+                    output_BigDecimal = BigDecimal.valueOf(Math.pow(input_Double, 1 / toDouble(window.getCashEquel().getCashDigit())));
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                }
+                break;
+            case "Exp":
+                if (cashTwoNumberFull()) {
+                    BigDecimal ten_Number = new BigDecimal(10);
+                    input_BigDecimal = ten_Number.pow(input_BigDecimal.intValueExact());
 
+                    output_BigDecimal = input_BigDecimal.multiply(window.getCashTwoDigits().getCashDigit());
+
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
+                }
+                if (cashTwoNumberEmpty()) {
+                    output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
+                }
+                break;
+            case "Mod":
+                if (cashTwoNumberFull() & input_String.equals("0")) {
+                    output_String = "Результат не определен";
+                    window.getCashTwoDigits().clearCash();
+                    window.getCashEquel().clearCash();
+                    break;
+                }
+                if (cashTwoNumberFull() & input_String != "0") {
+                    double dividend = window.getCashTwoDigits().getCashDigit().doubleValue();
+                    double divisor = input_BigDecimal.doubleValue();
+
+                    double remainder = dividend - ((int)(dividend / divisor)) * divisor;
+
+                    output_BigDecimal = new BigDecimal(remainder);
+                    output_BigDecimal = output_BigDecimal.setScale(scale, roundMode);
+                    output_String = toString(output_BigDecimal);
+                    window.getCashEquel().setCash(cash_String,input_BigDecimal);
+                    System.out.println("CashTwo dividend" + dividend);
+                    System.out.println("input_BigDecimal divisor" + divisor);
+                    System.out.println("remainder" + remainder);
+                }
+                if (cashTwoNumberEmpty()) {
+                    output_BigDecimal = input_BigDecimal;
+                    output_String = toString(output_BigDecimal);
+                }
+                break;
             case "null":
                 output_String = getNumber_Previous();
                 System.out.println(output_String);
@@ -168,7 +230,10 @@ public class EqualCommand extends Command {
                 window.getCashEquel().getCashCommandText() == "╳" |
                 window.getCashEquel().getCashCommandText() == "-" |
                 window.getCashEquel().getCashCommandText() == "+" |
-                window.getCashEquel().getCashCommandText() == "x^y" )) {
+                window.getCashEquel().getCashCommandText() == "x^y" |
+                window.getCashEquel().getCashCommandText() == "x^(1/y)" |
+                window.getCashEquel().getCashCommandText() == "Mod" |
+                window.getCashEquel().getCashCommandText() == "Exp")) {
             return true;
         } else {
             return false;

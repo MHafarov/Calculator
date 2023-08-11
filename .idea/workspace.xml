@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Add some Trigonometric Buttons">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Done all OneDigitCommand for TrigonometricWindow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EqualCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/OneDigitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/OneDigitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/TwoDigitsCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +163,8 @@
       <workItem from="1691173561015" duration="1727000" />
       <workItem from="1691225454749" duration="13248000" />
       <workItem from="1691313715209" duration="9211000" />
-      <workItem from="1691653090354" duration="25543000" />
+      <workItem from="1691653090354" duration="25719000" />
+      <workItem from="1691741207336" duration="7077000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -418,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691675904475</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Done all OneDigitCommand for TrigonometricWindow">
+      <created>1691688695875</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1691688695875</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Buttons to Menu" />
     <MESSAGE value="Added Enum Column, Enum Row. Added methods: addSubPanelToRoot, addLabelToPanel, addRadioButtonToPanel" />
     <MESSAGE value="Set Button Undo of history" />
     <MESSAGE value="Set Button Redo of history" />
@@ -473,7 +479,8 @@
     <MESSAGE value="Done Menu Calculator" />
     <MESSAGE value="Start Button TrigonometricWindow" />
     <MESSAGE value="Add some Trigonometric Buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some Trigonometric Buttons" />
+    <MESSAGE value="Done all OneDigitCommand for TrigonometricWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done all OneDigitCommand for TrigonometricWindow" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
