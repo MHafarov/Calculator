@@ -17,7 +17,7 @@ public abstract class Command {
     public Double input_Radians;
     public Double input_Double;
 
-
+    public Command() {}
     public Command(Window window, ActionEvent event) {
         this.window = window;
         this.event = event;

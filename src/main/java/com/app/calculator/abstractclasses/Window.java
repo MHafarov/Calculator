@@ -487,8 +487,7 @@ public abstract class Window implements Runnable {
         subPanel_ThirdRow.setHalignment(label_ScaleRounding, HPos.CENTER);
         subPanel_ThirdRow.setValignment(label_ScaleRounding, VPos.CENTER);
 
-        subPanel_ThirdRow.add(label_TypeRounding,0,2, 5, 2);
-        subPanel_ThirdRow.add(label_ScaleRounding,5,2,14,2);
+
 
         label_TypeRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
         label_ScaleRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);

@@ -39,6 +39,9 @@ public class TrigonometricWindow extends Window{
                 addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);
             }
 
+            subPanel_ThirdRow.add(label_TypeRounding,0,2, 5, 2);
+            subPanel_ThirdRow.add(label_ScaleRounding,5,2,14,2);
+
             list_ElementsFourthRow.add(btn_MC);
             list_ElementsFourthRow.add(btn_MR);
             list_ElementsFourthRow.add(btn_MPlus);

@@ -1,8 +1,12 @@
 package com.app.calculator.windows;
 
 import com.app.calculator.abstractclasses.Window;
+import com.app.calculator.commands.CategoryCommand;
+import com.app.calculator.commands.CheckMenuItemCommand;
 import com.app.calculator.constants.*;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
@@ -40,6 +44,17 @@ public class ConvertionWindow extends Window{
             subPanel_SecondRow.getChildren().add(comboBox_Category);
             GridPane.setConstraints(comboBox_Category, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
+            comboBox_Category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    executeCommand(new CategoryCommand());
+                }
+            });
+
+
+
+
+
             TextField textField_In = new TextField();
             textField_In.setStyle("-fx-alignment: center-left;");
             textField_In.setText("0");
@@ -63,6 +78,7 @@ public class ConvertionWindow extends Window{
             GridPane.setHgrow(DisplayField_Out, Priority.ALWAYS);
             GridPane.setVgrow(DisplayField_Out, Priority.ALWAYS);
             subPanel_FifthRow.add(DisplayField_Out, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            DisplayField_Out.setEditable(false);
 
             ComboBox<String> combo_Box_UnitOfMeasurement_Out = new ComboBox<String>();
             ObservableList<String> oblist_UnitsOfMeasurement_Out = FXCollections.observableArrayList();
@@ -82,6 +98,8 @@ public class ConvertionWindow extends Window{
             for (int i = 0; i < list_ElementsRoundingDown.size(); i++) {
                 addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_SeventhRow, columns[i], Row.SECOND);
             }
+            subPanel_SeventhRow.add(label_TypeRounding,0,2, 5, 2);
+            subPanel_SeventhRow.add(label_ScaleRounding,5,2,14,2);
 
             list_ElementsEighthRow.add(btn_ThreeSpaces);
             list_ElementsEighthRow.add(btn_CE);
