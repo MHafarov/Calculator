@@ -1,7 +1,10 @@
 package com.app.calculator.abstractclasses;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,8 +19,15 @@ public abstract class Command {
     public static int scale = 11;
     public Double input_Radians;
     public Double input_Double;
+    public String newValue;
+
 
     public Command() {}
+    public Command(String newValue,  Window window) {
+        this.newValue = newValue;
+        this.window = window;
+
+    }
     public Command(Window window, ActionEvent event) {
         this.window = window;
         this.event = event;
@@ -55,7 +65,11 @@ public abstract class Command {
     public abstract boolean execute();
 
     public Button getSource(ActionEvent actionEvent) {
-        return (Button) actionEvent.getSource();
+        try {
+            return (Button) actionEvent.getSource();
+        } catch (NullPointerException e) {
+            return new Button("Menu");
+        }
     }
 
     public BigDecimal toBigDecimal(String inputString) {

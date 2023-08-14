@@ -1,10 +1,17 @@
 package com.app.calculator.abstractclasses;
 
+import com.app.calculator.categories.Area;
+import com.app.calculator.categories.Categories;
+import com.app.calculator.categories.Pressure;
+import com.app.calculator.categories.Volume;
 import com.app.calculator.commands.*;
 import com.app.calculator.constants.*;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
 import com.app.calculator.windows.MemoryWindow;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -164,6 +171,15 @@ public abstract class Window implements Runnable {
     public Stage mWindow_Stage = null;
     public MemoryWindow m_Window = null;
     Thread mWindowThread = null;
+    public Categories categories;
+    public Volume volume;
+    public Pressure pressure;
+    public Area area;
+    public ComboBox<String> comboBox_Category;
+    public ComboBox<String> comboBox_UnitOfMeasurement_In;
+    public ComboBox<String> combo_Box_UnitOfMeasurement_Out;
+    public ObservableList<String> obList_UnitsOfMeasurement_In;
+    public ObservableList<String> oblist_UnitsOfMeasurement_Out;
     public Window (Stage stage) {
         this.stage = stage;
         this.stage.setX(stagePositionX);
@@ -848,6 +864,26 @@ public abstract class Window implements Runnable {
         mWindowThread.start();
         mWindow_Stage.hide();
         mStageIsHide = true;
+
+        comboBox_UnitOfMeasurement_In = new ComboBox<>();
+        combo_Box_UnitOfMeasurement_Out = new ComboBox<>();
+
+        categories = new Categories();
+        volume = new Volume();
+        pressure = new Pressure();
+        area = new Area();
+
+        categories.observableList_Category.add(volume.nameCategory);
+        categories.observableList_Category.add(pressure.nameCategory);
+        categories.observableList_Category.add(area.nameCategory);
+
+        comboBox_Category = new ComboBox<String>();
+        comboBox_Category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                executeCommand(new CategoryCommand(newValue, Window.this));
+            }
+        });
     }
 
     public void executeCommand(Command command) {
@@ -965,4 +1001,5 @@ public abstract class Window implements Runnable {
         btn_MC.setDisable(false);
         btn_MR.setDisable(false);
     }
+
 }
