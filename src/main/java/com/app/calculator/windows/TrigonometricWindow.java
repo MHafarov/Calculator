@@ -3,7 +3,6 @@ package com.app.calculator.windows;
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
-import com.app.calculator.constants.Position;
 import com.app.calculator.constants.Row;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -28,7 +27,7 @@ public class TrigonometricWindow extends Window{
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
-            subPanel_SecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            subPanel_SecondRow.add(textField_ArithmeticTrigonometric, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
             for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {
                 addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_ThirdRow, columns[i], Row.FIRST);

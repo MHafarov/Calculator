@@ -1,8 +1,6 @@
 package com.app.calculator.windows;
 
-import com.app.calculator.categories.Categories;
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.categories.Volume;
 import com.app.calculator.constants.*;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -10,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -36,34 +33,20 @@ public class ConvertionWindow extends Window{
             subPanel_SecondRow.getChildren().add(comboBox_Category);
             GridPane.setConstraints(comboBox_Category, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            TextField textField_In = new TextField();
-            textField_In.setStyle("-fx-alignment: center-left;");
-            textField_In.setText("0");
-            GridPane.setHgrow(textField_In, Priority.ALWAYS);
-            GridPane.setVgrow(textField_In, Priority.ALWAYS);
-            subPanel_ThirdRow.add(textField_In, Column.FIRST.getNumber(), Row.FIRST.getNumber());
-
-            comboBox_UnitOfMeasurement_In = new ComboBox<String>();
             obList_UnitsOfMeasurement_In = volume.getSubCategoryKeys();
             comboBox_UnitOfMeasurement_In.setItems(obList_UnitsOfMeasurement_In);
             comboBox_UnitOfMeasurement_In.getSelectionModel().select(Element.FIRST.getNumber());
             subPanel_FourthRow.getChildren().add(comboBox_UnitOfMeasurement_In);
             GridPane.setConstraints(comboBox_UnitOfMeasurement_In, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            TextField DisplayField_Out = new TextField();
-            DisplayField_Out.setStyle("-fx-alignment: center-left;");
-            DisplayField_Out.setText("0");
-            GridPane.setHgrow(DisplayField_Out, Priority.ALWAYS);
-            GridPane.setVgrow(DisplayField_Out, Priority.ALWAYS);
-            subPanel_FifthRow.add(DisplayField_Out, Column.FIRST.getNumber(), Row.FIRST.getNumber());
-            DisplayField_Out.setEditable(false);
+            subPanel_ThirdRow.add(textField_Convertion_In, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            subPanel_FifthRow.add(textField_Convertion_Out, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-            combo_Box_UnitOfMeasurement_Out = new ComboBox<String>();
             oblist_UnitsOfMeasurement_Out = volume.getSubCategoryKeys();
-            combo_Box_UnitOfMeasurement_Out.setItems(oblist_UnitsOfMeasurement_Out);
-            combo_Box_UnitOfMeasurement_Out.getSelectionModel().select(Element.FIRST.getNumber());
-            subPanel_SixthRow.getChildren().add(combo_Box_UnitOfMeasurement_Out);
-            GridPane.setConstraints(combo_Box_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
+            comboBox_UnitOfMeasurement_Out.setItems(oblist_UnitsOfMeasurement_Out);
+            comboBox_UnitOfMeasurement_Out.getSelectionModel().select(Element.FIRST.getNumber());
+            subPanel_SixthRow.getChildren().add(comboBox_UnitOfMeasurement_Out);
+            GridPane.setConstraints(comboBox_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
             for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {
                 addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);

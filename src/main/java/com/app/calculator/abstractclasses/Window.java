@@ -22,7 +22,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
@@ -87,7 +86,10 @@ public abstract class Window implements Runnable {
     public RadioMenuItem rMI_SoundOff;
     public RadioMenuItem rMI_SoundOn;
     public ToggleGroup group_Sound;
-    public TextField displayField = new TextField();
+    public TextField displayField;
+    public TextField textField_ArithmeticTrigonometric;
+    public TextField textField_Convertion_In;
+    public TextField textField_Convertion_Out;
     public Label label_Space_1 = new Label(" ");
     public Label label_Space_2 = new Label(" ");
     public Label label_Space_3 = new Label(" ");
@@ -170,14 +172,14 @@ public abstract class Window implements Runnable {
     public boolean mStageIsHide = true;
     public Stage mWindow_Stage = null;
     public MemoryWindow m_Window = null;
-    Thread mWindowThread = null;
+    public Thread mWindowThread = null;
     public Categories categories;
     public Volume volume;
     public Pressure pressure;
     public Area area;
     public ComboBox<String> comboBox_Category;
     public ComboBox<String> comboBox_UnitOfMeasurement_In;
-    public ComboBox<String> combo_Box_UnitOfMeasurement_Out;
+    public ComboBox<String> comboBox_UnitOfMeasurement_Out;
     public ObservableList<String> obList_UnitsOfMeasurement_In;
     public ObservableList<String> oblist_UnitsOfMeasurement_Out;
     public Window (Stage stage) {
@@ -336,10 +338,19 @@ public abstract class Window implements Runnable {
             }
         });
 
-        displayField.setStyle("-fx-alignment: center-right;");
-        displayField.setText("0");
-        GridPane.setHgrow(displayField, Priority.ALWAYS);
-        GridPane.setVgrow(displayField, Priority.ALWAYS);
+
+
+        textField_ArithmeticTrigonometric = new TextField();
+        setTextField(textField_ArithmeticTrigonometric, "-fx-alignment: center-right;", "0");
+
+        textField_Convertion_In = new TextField();
+        setTextField(textField_Convertion_In, "-fx-alignment: center-left;", "0");
+
+        textField_Convertion_Out = new TextField();
+        setTextField(textField_Convertion_Out, "-fx-alignment: center-left;", "0");
+
+        displayField = textField_ArithmeticTrigonometric;
+
 
         label_Up = new Label("⮤");
         label_FiveDivFour = new Label("5/4");
@@ -866,12 +877,16 @@ public abstract class Window implements Runnable {
         mStageIsHide = true;
 
         comboBox_UnitOfMeasurement_In = new ComboBox<>();
-        combo_Box_UnitOfMeasurement_Out = new ComboBox<>();
+        comboBox_UnitOfMeasurement_Out = new ComboBox<>();
 
         categories = new Categories();
         volume = new Volume();
         pressure = new Pressure();
         area = new Area();
+
+        categories.subCategory.put("Volume", volume);
+        categories.subCategory.put("Pressure", volume);
+        categories.subCategory.put("Area", volume);
 
         categories.observableList_Category.add(volume.nameCategory);
         categories.observableList_Category.add(pressure.nameCategory);
@@ -884,12 +899,30 @@ public abstract class Window implements Runnable {
                 executeCommand(new CategoryCommand(newValue, Window.this));
             }
         });
+
+        comboBox_UnitOfMeasurement_In = new ComboBox<String>();
+        comboBox_UnitOfMeasurement_Out = new ComboBox<String>();
+
+        comboBox_UnitOfMeasurement_In.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                executeCommand(new SubCategoryCommand(newValue, Window.this));
+            }
+        });
+
+        comboBox_UnitOfMeasurement_Out.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                executeCommand(new SubCategoryCommand(newValue, Window.this));
+            }
+        });
+
+
     }
 
     public void executeCommand(Command command) {
         history.push(command);
         btn_Undo.setDisable(false);
-        System.out.println("H1");
         command.execute();
         System.out.println("H2");
         System.out.println("Command.roundMode " + Command.roundMode);
@@ -928,6 +961,13 @@ public abstract class Window implements Runnable {
         stretchElement(subPanel, root);
     }
 
+    public void setTextField(TextField textField, String digitPosition, String text) {
+        textField.setStyle(digitPosition);
+        textField.setText(text);
+        GridPane.setHgrow(textField, Priority.ALWAYS);
+        GridPane.setVgrow(textField, Priority.ALWAYS);
+        textField.setEditable(false);
+    }
     public void addElementToPanel(Control control, GridPane gridPane, Column column, Row row) {
         gridPane.add(control, column.getNumber(),row.getNumber());
         stretchElement(control, gridPane);

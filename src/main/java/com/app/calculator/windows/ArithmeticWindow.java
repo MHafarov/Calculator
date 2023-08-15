@@ -24,7 +24,7 @@ public class ArithmeticWindow extends Window{
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());
 
-            subPanel_SecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            subPanel_SecondRow.add(textField_ArithmeticTrigonometric, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
             for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {
                 addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_ThirdRow, columns[i], Row.FIRST);

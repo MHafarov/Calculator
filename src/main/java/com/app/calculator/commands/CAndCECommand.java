@@ -2,6 +2,7 @@ package com.app.calculator.commands;
 
 import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
+import com.app.calculator.windows.ConvertionWindow;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
@@ -32,6 +33,11 @@ public class CAndCECommand extends Command {
                     window.getHistory().history.remove(window.getHistory().history.size()-3);
                     window.getHistory().currentIndex -= 1;
                 }
+                if (window instanceof ConvertionWindow) {
+                    window.textField_Convertion_Out.setText("0");
+                }
+
+
                 break;
         }
             window.displayField.setText(getNumber_Current());
