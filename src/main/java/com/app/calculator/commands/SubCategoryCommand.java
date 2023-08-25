@@ -31,7 +31,7 @@ public class SubCategoryCommand extends Command {
         System.out.println("unitOfMeasurement_In " + unitOfMeasurement_In);
 
         // Получить название выходящей подкатегории (kgs/cm2)
-        String unitOfMeasurement_Out =window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem();
+        String unitOfMeasurement_Out = window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem();
         System.out.println("unitOfMeasurement_Out " + unitOfMeasurement_Out);
 
         // Получить подкатегорию (obj kgs/cm2)

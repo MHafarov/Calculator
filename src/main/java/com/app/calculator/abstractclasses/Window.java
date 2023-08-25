@@ -180,7 +180,7 @@ public abstract class Window implements Runnable {
     public ComboBox<String> comboBox_Category;
     public ComboBox<String> comboBox_UnitOfMeasurement_In;
     public ComboBox<String> comboBox_UnitOfMeasurement_Out;
-    public ObservableList<String> obList_UnitsOfMeasurement_In;
+    public ObservableList<String> oblist_UnitsOfMeasurement_In;
     public ObservableList<String> oblist_UnitsOfMeasurement_Out;
     public Window (Stage stage) {
         this.stage = stage;
@@ -885,8 +885,8 @@ public abstract class Window implements Runnable {
         area = new Area();
 
         categories.subCategory.put("Volume", volume);
-        categories.subCategory.put("Pressure", volume);
-        categories.subCategory.put("Area", volume);
+        categories.subCategory.put("Pressure", pressure);
+        categories.subCategory.put("Area", area);
 
         categories.observableList_Category.add(volume.nameCategory);
         categories.observableList_Category.add(pressure.nameCategory);
@@ -900,8 +900,8 @@ public abstract class Window implements Runnable {
             }
         });
 
-        comboBox_UnitOfMeasurement_In = new ComboBox<String>();
-        comboBox_UnitOfMeasurement_Out = new ComboBox<String>();
+//        comboBox_UnitOfMeasurement_In = new ComboBox<String>();
+//        comboBox_UnitOfMeasurement_Out = new ComboBox<String>();
 
         comboBox_UnitOfMeasurement_In.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override

@@ -33,8 +33,8 @@ public class ConvertionWindow extends Window{
             subPanel_SecondRow.getChildren().add(comboBox_Category);
             GridPane.setConstraints(comboBox_Category, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            obList_UnitsOfMeasurement_In = volume.getSubCategoryKeys();
-            comboBox_UnitOfMeasurement_In.setItems(obList_UnitsOfMeasurement_In);
+            oblist_UnitsOfMeasurement_In = volume.getSubCategoryKeys();
+            comboBox_UnitOfMeasurement_In.setItems(oblist_UnitsOfMeasurement_In);
             comboBox_UnitOfMeasurement_In.getSelectionModel().select(Element.FIRST.getNumber());
             subPanel_FourthRow.getChildren().add(comboBox_UnitOfMeasurement_In);
             GridPane.setConstraints(comboBox_UnitOfMeasurement_In, Column.SECOND.getNumber(), Row.FIRST.getNumber());
