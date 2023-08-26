@@ -37,9 +37,16 @@ public class CategoryCommand extends Command {
     }
     public void showSubCategories() {
         window.comboBox_UnitOfMeasurement_In.setItems(window.oblist_UnitsOfMeasurement_In);
+        System.out.println("window.oblist_UnitsOfMeasurement_In ----- " + window.oblist_UnitsOfMeasurement_In);
+
         window.comboBox_UnitOfMeasurement_Out.setItems(window.oblist_UnitsOfMeasurement_Out);
+        System.out.println("window.oblist_UnitsOfMeasurement_Out ----- " + window.oblist_UnitsOfMeasurement_Out);
+
+
         window.comboBox_UnitOfMeasurement_In.getSelectionModel().select(Element.FIRST.getNumber());
+        System.out.println("comboBox_UnitOfMeasurement_In ||||| " + window.comboBox_UnitOfMeasurement_In.getSelectionModel().getSelectedItem());
         window.comboBox_UnitOfMeasurement_Out.getSelectionModel().select(Element.FIRST.getNumber());
+        System.out.println("comboBox_UnitOfMeasurement_Out ||||| " + window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem());
     }
 
     public void clearInOutDisplays() {

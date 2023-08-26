@@ -893,6 +893,21 @@ public abstract class Window implements Runnable {
         categories.observableList_Category.add(area.nameCategory);
 
         comboBox_Category = new ComboBox<String>();
+
+
+        ObservableList<String> observablelist_Category = categories.getObservableList_Category();
+        comboBox_Category.setItems(observablelist_Category);
+        comboBox_Category.getSelectionModel().select(Element.FIRST.getNumber());
+
+
+        oblist_UnitsOfMeasurement_In = volume.getSubCategoryKeys();
+        comboBox_UnitOfMeasurement_In.setItems(oblist_UnitsOfMeasurement_In);
+        comboBox_UnitOfMeasurement_In.getSelectionModel().select(Element.FIRST.getNumber());
+
+        oblist_UnitsOfMeasurement_Out = volume.getSubCategoryKeys();
+        comboBox_UnitOfMeasurement_Out.setItems(oblist_UnitsOfMeasurement_Out);
+        comboBox_UnitOfMeasurement_Out.getSelectionModel().select(Element.FIRST.getNumber());
+
         comboBox_Category.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

@@ -28,31 +28,36 @@ public class SubCategoryCommand extends Command {
 
         // Получить название входящей подкатегории (MPa)
         String unitOfMeasurement_In = window.comboBox_UnitOfMeasurement_In.getSelectionModel().getSelectedItem();
-        System.out.println("unitOfMeasurement_In " + unitOfMeasurement_In);
+        System.out.println("1unitOfMeasurement_In " + unitOfMeasurement_In);
 
         // Получить название выходящей подкатегории (kgs/cm2)
         String unitOfMeasurement_Out = window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem();
-        System.out.println("unitOfMeasurement_Out " + unitOfMeasurement_Out);
+        System.out.println("2unitOfMeasurement_Out " + unitOfMeasurement_Out);
 
         // Получить подкатегорию (obj kgs/cm2)
         Categories subCategory_Category = mainCategory_Category.subCategory.get(unitOfMeasurement_Out);
         //                                         Volume         hashmap           "kgs/cm2"
         System.out.println("subCategory_Category " + subCategory_Category);
 
-        // Получить коэффициент пересчета входящей категории в выходящую (obj kgs/cm2)
-        BigDecimal coeficient = subCategory_Category.coeficient.get(unitOfMeasurement_In);
-        //                                                obj kgs/cm2          hashmap             "MPa"
 
-        // Получить выходящее число путем умножения входящего числа на коэффициент пересчета
-        BigDecimal digit_BigDecimal_Out = digit_BigDecimal_In.multiply(coeficient);
-        System.out.println("digit_BigDecimal_Out " + digit_BigDecimal_Out);
+        try {
+            // Получить коэффициент пересчета входящей категории в выходящую (obj kgs/cm2)
+            BigDecimal coeficient = subCategory_Category.coeficient.get(unitOfMeasurement_In);
+            //                                                obj kgs/cm2          hashmap             "MPa"
 
-        // Преобразовать выходящее число в строку
-        String digit_String_Out = toString(digit_BigDecimal_Out);
-        System.out.println("digit_String_Out " + digit_String_Out);
+            // Получить выходящее число путем умножения входящего числа на коэффициент пересчета
+            BigDecimal digit_BigDecimal_Out = digit_BigDecimal_In.multiply(coeficient);
+            System.out.println("digit_BigDecimal_Out " + digit_BigDecimal_Out);
 
-        // Вывести на выходящий дисплей текст выходящего числа
-        window.textField_Convertion_Out.setText(digit_String_Out);
+            // Преобразовать выходящее число в строку
+            String digit_String_Out = toString(digit_BigDecimal_Out);
+            System.out.println("digit_String_Out " + digit_String_Out);
+
+            // Вывести на выходящий дисплей текст выходящего числа
+            window.textField_Convertion_Out.setText(digit_String_Out);
+        } catch (NullPointerException e) {
+            System.out.println("subCategory_Category is null");
+        }
         return true;
     }
 }

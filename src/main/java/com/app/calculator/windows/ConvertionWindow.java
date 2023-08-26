@@ -23,28 +23,31 @@ public class ConvertionWindow extends Window{
         Platform.runLater(() -> {
 
             this.stage.setTitle("Convertion");
-            ObservableList<String> observablelist_Category = categories.getObservableList_Category();
-            comboBox_Category.setItems(observablelist_Category);
 
-            comboBox_Category.getSelectionModel().select(Element.FIRST.getNumber());
+
+
             Label list_SelectCategory = new Label("Select Category: ");
             subPanel_SecondRow.getChildren().add(list_SelectCategory);
             GridPane.setConstraints(list_SelectCategory, Column.FIRST.getNumber(), Row.FIRST.getNumber());
             subPanel_SecondRow.getChildren().add(comboBox_Category);
             GridPane.setConstraints(comboBox_Category, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
-            oblist_UnitsOfMeasurement_In = volume.getSubCategoryKeys();
-            comboBox_UnitOfMeasurement_In.setItems(oblist_UnitsOfMeasurement_In);
-            comboBox_UnitOfMeasurement_In.getSelectionModel().select(Element.FIRST.getNumber());
+
+
+            System.out.println("AAAA " + comboBox_UnitOfMeasurement_In.getSelectionModel().getSelectedItem());
+
             subPanel_FourthRow.getChildren().add(comboBox_UnitOfMeasurement_In);
             GridPane.setConstraints(comboBox_UnitOfMeasurement_In, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
             subPanel_ThirdRow.add(textField_Convertion_In, Column.FIRST.getNumber(), Row.FIRST.getNumber());
             subPanel_FifthRow.add(textField_Convertion_Out, Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-            oblist_UnitsOfMeasurement_Out = volume.getSubCategoryKeys();
-            comboBox_UnitOfMeasurement_Out.setItems(oblist_UnitsOfMeasurement_Out);
-            comboBox_UnitOfMeasurement_Out.getSelectionModel().select(Element.FIRST.getNumber());
+
+            System.out.println("AAAAB " + comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem());
+
+
+
+
             subPanel_SixthRow.getChildren().add(comboBox_UnitOfMeasurement_Out);
             GridPane.setConstraints(comboBox_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 

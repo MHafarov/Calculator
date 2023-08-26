@@ -37,7 +37,7 @@ public class InsertDigitCommand extends Command {
                 System.out.println("unitOfMeasurement_In " + unitOfMeasurement_In);
 
                 // Получить название выходящей подкатегории (kgs/cm2)
-                String unitOfMeasurement_Out =window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem();
+                String unitOfMeasurement_Out = window.comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem();
                 System.out.println("unitOfMeasurement_Out " + unitOfMeasurement_Out);
 
                 // Получить подкатегорию (obj kgs/cm2)
@@ -51,10 +51,12 @@ public class InsertDigitCommand extends Command {
 
                 // Получить выходящее число путем умножения входящего числа на коэффициент пересчета
                 BigDecimal digit_BigDecimal_Out = digit_BigDecimal_In.multiply(coeficient);
+                digit_BigDecimal_Out = digit_BigDecimal_Out.setScale(scale, roundMode);
                 System.out.println("digit_BigDecimal_Out " + digit_BigDecimal_Out);
 
                 // Преобразовать выходящее число в строку
                 String digit_String_Out = toString(digit_BigDecimal_Out);
+                digit_String_Out = cutLastZeros(digit_String_Out);
                 System.out.println("digit_String_Out " + digit_String_Out);
 
                 // Вывести на выходящий дисплей текст выходящего числа
