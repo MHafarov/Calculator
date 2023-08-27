@@ -28,8 +28,6 @@ public class WindowCollection {
             hashMap_windows.get("Trigonometric").stage.hide();
             hashMap_windows.get("Convertion").stage.hide();
             hashMap_windows.get(windowName).displayField = hashMap_windows.get(windowName).textField_ArithmeticTrigonometric;
-
-            System.out.println("A2");
         }
         if (windowName == "Trigonometric") {
             hashMap_windows.get(windowName).stage.setX(positionX);
@@ -53,7 +51,6 @@ public class WindowCollection {
             hashMap_windows.get("Arithmetic").stage.hide();
             hashMap_windows.get("Trigonometric").stage.hide();
             hashMap_windows.get(windowName).displayField = hashMap_windows.get(windowName).textField_Convertion_In;
-            System.out.println("C2");
         }
     }
 }

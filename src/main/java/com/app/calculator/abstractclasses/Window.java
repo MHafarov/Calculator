@@ -8,6 +8,7 @@ import com.app.calculator.commands.*;
 import com.app.calculator.constants.*;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
+import com.app.calculator.theme.ClassicTheme;
 import com.app.calculator.windows.MemoryWindow;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,6 +27,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 import java.util.List;
+
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -63,6 +66,7 @@ public abstract class Window implements Runnable {
     public List<Control> list_ElementsEighthRow;
     public List<Control> list_ElementsNinthRow;
     public List<Control> list_ElementsTenthRow;
+    public List<Button> list_Buttons;
     public MenuBar menuBar;
     public Menu menu_Type;
     public Menu menu_Theme;
@@ -182,6 +186,7 @@ public abstract class Window implements Runnable {
     public ComboBox<String> comboBox_UnitOfMeasurement_Out;
     public ObservableList<String> oblist_UnitsOfMeasurement_In;
     public ObservableList<String> oblist_UnitsOfMeasurement_Out;
+    public Theme theme;
     public Window (Stage stage) {
         this.stage = stage;
         this.stage.setX(stagePositionX);
@@ -225,6 +230,8 @@ public abstract class Window implements Runnable {
         list_ElementsEighthRow = new ArrayList<>();
         list_ElementsNinthRow = new ArrayList<>();
         list_ElementsTenthRow = new ArrayList<>();
+
+        list_Buttons = new ArrayList<>();
 
         root = new GridPane();
 
@@ -290,8 +297,29 @@ public abstract class Window implements Runnable {
                                     cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);
 
         rMI_ThemeClassic = new RadioMenuItem("Classic");
+        rMI_ThemeClassic.setSelected(true);
+        System.out.println("Classic");
+        rMI_ThemeClassic.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseThemeCommand(Window.this, event));
+            }
+        });
         rMI_ThemeDark = new RadioMenuItem("Dark");
+        rMI_ThemeDark.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseThemeCommand(Window.this, event));
+            }
+        });
         rMI_ThemeAnimated = new RadioMenuItem("Animated");
+        rMI_ThemeAnimated.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseThemeCommand(Window.this, event));
+            }
+        });
+
         group_Theme = new ToggleGroup();
         rMI_ThemeClassic.setToggleGroup(group_Theme);
         rMI_ThemeDark.setToggleGroup(group_Theme);
@@ -320,6 +348,7 @@ public abstract class Window implements Runnable {
         btn_Undo.setDisable(true);
         stretchMenuButton(btn_Undo);
         addImageToButton(btn_Undo, "/images/undo.png");
+        list_Buttons.add(btn_Undo);
         btn_Undo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -331,14 +360,13 @@ public abstract class Window implements Runnable {
         btn_Redo.setDisable(true);
         stretchMenuButton(btn_Redo);
         addImageToButton(btn_Redo, "/images/redo.png");
+        list_Buttons.add(btn_Redo);
         btn_Redo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 redo();
             }
         });
-
-
 
         textField_ArithmeticTrigonometric = new TextField();
         setTextField(textField_ArithmeticTrigonometric, "-fx-alignment: center-right;", "0");
@@ -520,43 +548,52 @@ public abstract class Window implements Runnable {
         label_ScaleRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
 
         btn_MC = new Button("MC");
-        btn_MR = new Button("MR");
-        btn_MPlus = new Button("M+");
-        btn_MMinus = new Button("M-");
-        btn_MS = new Button("MS");
-        btn_M = new Button("M");
-
-        turnOffMCMRM();
+        list_Buttons.add(btn_MC);
         btn_MC.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new MemoryCommand(Window.this, event));
             }
         });
+
+        btn_MR = new Button("MR");
+        list_Buttons.add(btn_MR);
         btn_MR.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new MemoryCommand(Window.this, event));
             }
         });
+
+        btn_MPlus = new Button("M+");
+        list_Buttons.add(btn_MPlus);
         btn_MPlus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new MemoryCommand(Window.this, event));
             }
         });
+
+        btn_MMinus = new Button("M-");
+        list_Buttons.add(btn_MMinus);
         btn_MMinus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new MemoryCommand(Window.this, event));
             }
         });
+
+        btn_MS = new Button("MS");
+        list_Buttons.add(btn_MS);
         btn_MS.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new MemoryCommand(Window.this, event));
             }
         });
+
+        btn_M = new Button("M");
+        list_Buttons.add(btn_M);
         btn_M.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -564,37 +601,46 @@ public abstract class Window implements Runnable {
             }
         });
 
+        turnOffMCMRM();
+
         btn_XToThePowerOfY = new Button("x^y");
-        btn_Sin = new Button("sin");
-        btn_Cos = new Button("cos");
-        btn_Tan = new Button("tan");
-        btn_Log = new Button("log");
-
-
+        list_Buttons.add(btn_XToThePowerOfY);
         btn_XToThePowerOfY.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new TwoDigitsCommand(Window.this, event));
             }
         });
+
+        btn_Sin = new Button("sin");
+        list_Buttons.add(btn_Sin);
         btn_Sin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_Cos = new Button("cos");
+        list_Buttons.add(btn_Cos);
         btn_Cos.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_Tan = new Button("tan");
+        list_Buttons.add(btn_Tan);
         btn_Tan.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_Log = new Button("log");
+        list_Buttons.add(btn_Log);
         btn_Log.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -602,38 +648,44 @@ public abstract class Window implements Runnable {
             }
         });
 
-
-
         btn_XToThePowerOf1divY = new Button("x^(1/y)");
-        btn_SineToThePowerOfNegativeOne = new Button("arcsin");
-        btn_CosToThePowerOfNegativeOne = new Button("arccos");
-        btn_TanToThePowerOfNegativeOne = new Button("arctan");
-        btn_Ln = new Button("ln");
-
+        list_Buttons.add(btn_XToThePowerOf1divY);
         btn_XToThePowerOf1divY.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new TwoDigitsCommand(Window.this, event));
             }
         });
+
+        btn_SineToThePowerOfNegativeOne = new Button("arcsin");
+        list_Buttons.add(btn_SineToThePowerOfNegativeOne);
         btn_SineToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_CosToThePowerOfNegativeOne = new Button("arccos");
+        list_Buttons.add(btn_CosToThePowerOfNegativeOne);
         btn_CosToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_TanToThePowerOfNegativeOne = new Button("arctan");
+        list_Buttons.add(btn_TanToThePowerOfNegativeOne);
         btn_TanToThePowerOfNegativeOne.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_Ln = new Button("ln");
+        list_Buttons.add(btn_Ln);
         btn_Ln.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -642,35 +694,50 @@ public abstract class Window implements Runnable {
         });
 
         btn_Ex = new Button("e^x");
-        btn_Percent = new Button("%");
-        btn_Sqrt = new Button("√");
-        btn_XSquared = new Button("X²");
-        btn_OneDivX = new Button("1/X");
-
+        list_Buttons.add(btn_Ex);
         btn_Ex.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_Percent = new Button("%");
+        list_Buttons.add(btn_Percent);
         btn_Percent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new PercentCommand(Window.this, event));
             }
         });
+
+//        btn_Percent.setTextFill(theme.getTextColor());
+//        btn_Percent.setStyle(theme.getBackgroundColor());
+//        btn_Percent.setTextFill(Color.RED);
+//        btn_Percent.setStyle("-fx-background-color: lightblue;");
+
+
+
+        btn_Sqrt = new Button("√");
+        list_Buttons.add(btn_Sqrt);
         btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_XSquared = new Button("X²");
+        list_Buttons.add(btn_XSquared);
         btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_OneDivX = new Button("1/X");
+        list_Buttons.add(btn_OneDivX);
         btn_OneDivX.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -679,35 +746,43 @@ public abstract class Window implements Runnable {
         });
 
         btn_X3 = new Button("x^3");
-        btn_CE = new Button("CE");
-        btn_C = new Button("C");
-        btn_Backspace = new Button("←");
-        btn_Div = new Button("÷");
-
+        list_Buttons.add(btn_X3);
         btn_X3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_CE = new Button("CE");
+        list_Buttons.add(btn_CE);
         btn_CE.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new CAndCECommand(Window.this, event));
             }
         });
+
+        btn_C = new Button("C");
+        list_Buttons.add(btn_C);
         btn_C.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new CAndCECommand(Window.this, event));
             }
         });
+
+        btn_Backspace = new Button("←");
+        list_Buttons.add(btn_Backspace);
         btn_Backspace.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new EditDigitCommand(Window.this, event));
             }
         });
+
+        btn_Div = new Button("÷");
+        list_Buttons.add(btn_Div);
         btn_Div.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -716,35 +791,43 @@ public abstract class Window implements Runnable {
         });
 
         btn_Exp = new Button("Exp");
-        btn_Seven = new Button("7");
-        btn_Eight = new Button("8");
-        btn_Nine = new Button("9");
-        btn_Mult = new Button("╳");
-
+        list_Buttons.add(btn_Exp);
         btn_Exp.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new TwoDigitsCommand(Window.this, event));
             }
         });
+
+        btn_Seven = new Button("7");
+        list_Buttons.add(btn_Seven);
         btn_Seven.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Eight = new Button("8");
+        list_Buttons.add(btn_Eight);
         btn_Eight.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Nine = new Button("9");
+        list_Buttons.add(btn_Nine);
         btn_Nine.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Mult = new Button("╳");
+        list_Buttons.add(btn_Mult);
         btn_Mult.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -753,35 +836,43 @@ public abstract class Window implements Runnable {
         });
 
         btn_Mod = new Button("Mod");
-        btn_Four = new Button("4");
-        btn_Five = new Button("5");
-        btn_Six = new Button("6");
-        btn_Minus = new Button("-");
-
+        list_Buttons.add(btn_Mod);
         btn_Mod.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new TwoDigitsCommand(Window.this, event));
             }
         });
+
+        btn_Four = new Button("4");
+        list_Buttons.add(btn_Four);
         btn_Four.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Five = new Button("5");
+        list_Buttons.add(btn_Five);
         btn_Five.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Six = new Button("6");
+        list_Buttons.add(btn_Six);
         btn_Six.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Minus = new Button("-");
+        list_Buttons.add(btn_Minus);
         btn_Minus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -790,17 +881,16 @@ public abstract class Window implements Runnable {
         });
 
         btn_Pi = new Button("π");
-        btn_One = new Button("1");
-        btn_Two = new Button("2");
-        btn_Three = new Button("3");
-        btn_Plus = new Button("+");
-
+        list_Buttons.add(btn_Pi);
         btn_Pi.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_One = new Button("1");
+        list_Buttons.add(btn_One);
         btn_One.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -808,18 +898,26 @@ public abstract class Window implements Runnable {
             }
         });
 
+        btn_Two = new Button("2");
+        list_Buttons.add(btn_Two);
         btn_Two.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Three = new Button("3");
+        list_Buttons.add(btn_Three);
         btn_Three.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Plus = new Button("+");
+        list_Buttons.add(btn_Plus);
         btn_Plus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -828,35 +926,43 @@ public abstract class Window implements Runnable {
         });
 
         btn_Factorial = new Button("n!");
-        btn_PlusMinus = new Button("±");
-        btn_Zero = new Button("0");
-        btn_Comma = new Button(",");
-        btn_Equals = new Button("=");
-
+        list_Buttons.add(btn_Factorial);
         btn_Factorial.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new OneDigitCommand(Window.this, event));
             }
         });
+
+        btn_PlusMinus = new Button("±");
+        list_Buttons.add(btn_PlusMinus);
         btn_PlusMinus.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new EditDigitCommand(Window.this, event));
             }
         });
+
+        btn_Zero = new Button("0");
+        list_Buttons.add(btn_Zero);
         btn_Zero.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new InsertDigitCommand(Window.this, event));
             }
         });
+
+        btn_Comma = new Button(",");
+        list_Buttons.add(btn_Comma);
         btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new EditDigitCommand(Window.this, event));
             }
         });
+
+        btn_Equals = new Button("=");
+        list_Buttons.add(btn_Equals);
         btn_Equals.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -915,9 +1021,6 @@ public abstract class Window implements Runnable {
             }
         });
 
-//        comboBox_UnitOfMeasurement_In = new ComboBox<String>();
-//        comboBox_UnitOfMeasurement_Out = new ComboBox<String>();
-
         comboBox_UnitOfMeasurement_In.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -932,7 +1035,7 @@ public abstract class Window implements Runnable {
             }
         });
 
-
+        theme = new ClassicTheme(this);
     }
 
     public void executeCommand(Command command) {
@@ -1056,5 +1159,4 @@ public abstract class Window implements Runnable {
         btn_MC.setDisable(false);
         btn_MR.setDisable(false);
     }
-
 }
