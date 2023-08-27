@@ -9,8 +9,8 @@ public class DarkTheme extends Theme {
     public DarkTheme(Window window) {
         this.window = window;
         nameTheme = "DarkTheme";
-        textColor = Color.WHITE;
-        backgroundColor = "-fx-background-color: black;";
+        backgroundColor = "-fx-background-color: rgba(0, 0, 0, 0.8);";
+        textColor = "-fx-text-fill: red;";
         chooseButtonsTheme(this.window, this);
    }
 }

@@ -5,20 +5,18 @@ import javafx.scene.paint.Color;
 
 public abstract class Theme {
     protected String nameTheme;
-    protected Color textColor;
-    protected String backgroundColor;
-    public Color getTextColor() {
-        return textColor;
-    }
+    protected String textColor = "-fx-text-fill: black";
+    protected String backgroundColor = "-fx-background-color: lightgray;";
 
-    public String getBackgroundColor() {
-        return backgroundColor;
+    protected String style =  backgroundColor + textColor;
+
+    public String getStyle() {
+        return style = backgroundColor  + textColor;
     }
 
     public void chooseButtonsTheme(Window window, Theme theme) {
         for (int i = 0; i < window.list_Buttons.size(); i++) {
-            window.list_Buttons.get(i).setTextFill(theme.getTextColor());
-            window.list_Buttons.get(i).setStyle(theme.getBackgroundColor());
+            window.list_Buttons.get(i).setStyle(theme.getStyle());
         }
     };
 }
