@@ -216,6 +216,17 @@ public abstract class Window implements Runnable {
         list_GridPanes.add(subPanel_NinthRow);
         list_GridPanes.add(subPanel_TenthRow);
 
+        subPanel_FirstRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_SecondRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_ThirdRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_FourthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_FifthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_SixthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_SeventhRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_EighthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_NinthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        subPanel_TenthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+
         list_ElementsRoundingTop = new ArrayList<>();
         list_ElementsRoundingDown = new ArrayList<>();
 

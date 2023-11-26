@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Starts Theme Menu">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added three themes classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/AnimatedTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/AnimatedTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +168,9 @@
       <workItem from="1692810091765" duration="578000" />
       <workItem from="1692954513885" duration="4626000" />
       <workItem from="1693045170960" duration="8300000" />
-      <workItem from="1693130135521" duration="15526000" />
+      <workItem from="1693130135521" duration="16643000" />
+      <workItem from="1694197109130" duration="994000" />
+      <workItem from="1700985152966" duration="4500000" />
     </task>
     <task id="LOCAL-00001" summary="Firsts steps.">
       <created>1683807725396</created>
@@ -481,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693144369570</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Added three themes classes">
+      <created>1693153919979</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1693153919979</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Begin Cash for Digits" />
     <MESSAGE value="Added operations to TwoDigitCommand" />
     <MESSAGE value="Done Equal operation" />
     <MESSAGE value="Added CE and С Command" />
@@ -536,7 +541,8 @@
     <MESSAGE value="Fixed no switching subCategory curing switching mainCategory" />
     <MESSAGE value="Done ConvertionWindow" />
     <MESSAGE value="Starts Theme Menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Starts Theme Menu" />
+    <MESSAGE value="Added three themes classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added three themes classes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
