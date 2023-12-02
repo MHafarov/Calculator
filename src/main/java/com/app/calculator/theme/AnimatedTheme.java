@@ -2,7 +2,6 @@ package com.app.calculator.theme;
 
 import com.app.calculator.abstractclasses.Theme;
 import com.app.calculator.abstractclasses.Window;
-import javafx.scene.paint.Color;
 
 public class AnimatedTheme extends Theme {
     Window window;
@@ -11,6 +10,6 @@ public class AnimatedTheme extends Theme {
         nameTheme = "DarkTheme";
         backgroundColor = "-fx-background-color: rgba(0, 0, 0, 0.8);";
         textColor = "-fx-text-fill: red;";
-        chooseButtonsTheme(this.window, this);
+        chooseTheme(this.window, this);
     }
 }

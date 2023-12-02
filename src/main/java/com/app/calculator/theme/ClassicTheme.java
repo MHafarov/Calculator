@@ -11,8 +11,10 @@ public class ClassicTheme extends Theme {
         nameTheme = "ClassicTheme";
         backgroundColor = "-fx-background-color: lightgray;";
         textColor = "-fx-text-fill: black";
+        color = Color.rgb(167, 171, 171);
+        textColor = "-fx-text-fill: rgb(12, 13, 13);";
 
         System.out.println(style);
-        chooseButtonsTheme(this.window, this);
+        chooseTheme(this.window, this);
     }
 }

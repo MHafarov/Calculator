@@ -216,16 +216,9 @@ public abstract class Window implements Runnable {
         list_GridPanes.add(subPanel_NinthRow);
         list_GridPanes.add(subPanel_TenthRow);
 
-        subPanel_FirstRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_SecondRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_ThirdRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_FourthRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_FifthRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_SixthRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_SeventhRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_EighthRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_NinthRow.setHgap(Size.FIVE_PIXELS.getNumber());
-        subPanel_TenthRow.setHgap(Size.FIVE_PIXELS.getNumber());
+        for (int i = 0; i < list_GridPanes.size(); i++) {
+            list_GridPanes.get(i).setHgap(Size.FIVE_PIXELS.getNumber());
+        }
 
         list_ElementsRoundingTop = new ArrayList<>();
         list_ElementsRoundingDown = new ArrayList<>();
@@ -416,29 +409,22 @@ public abstract class Window implements Runnable {
         list_ElementsRoundingTop.add(label_Space_4);
 
         rBtn_Up = new RadioButton();
-        rBtn_FiveDivFour = new RadioButton();
-        rBtn_Down = new RadioButton();
-
-        rBtn_A = new RadioButton();
-        rBtn_Zero = new RadioButton();
-        rBtn_Two = new RadioButton();
-        rBtn_Three = new RadioButton();
-        rBtn_Four = new RadioButton();
-        rBtn_F = new RadioButton();
-
-
         rBtn_Up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new RoundingModeCommand(Window.this, event));
             }
         });
+
+        rBtn_FiveDivFour = new RadioButton();
         rBtn_FiveDivFour.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new RoundingModeCommand(Window.this, event));
             }
         });
+
+        rBtn_Down = new RadioButton();
         rBtn_Down.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -446,36 +432,47 @@ public abstract class Window implements Runnable {
             }
         });
 
+        rBtn_A = new RadioButton();
         rBtn_A.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ScaleCommand(Window.this, event));
             }
         });
+
+        rBtn_Zero = new RadioButton();
         rBtn_Zero.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ScaleCommand(Window.this, event));
             }
         });
+
+        rBtn_Two = new RadioButton();
         rBtn_Two.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ScaleCommand(Window.this, event));
             }
         });
+
+        rBtn_Three = new RadioButton();
         rBtn_Three.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ScaleCommand(Window.this, event));
             }
         });
+
+        rBtn_Four = new RadioButton();
         rBtn_Four.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ScaleCommand(Window.this, event));
             }
         });
+
+        rBtn_F = new RadioButton();
         rBtn_F.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
