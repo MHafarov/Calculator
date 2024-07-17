@@ -19,7 +19,6 @@ public class CheckMenuItemCommand extends Command {
     }
     CheckMenuItem cMI_input = (CheckMenuItem) event.getSource();
     String cMI_name = cMI_input.getText();
-    //List<Window> list_windows = WindowCollection.getList_windows();
 
     @Override
     public boolean execute() {

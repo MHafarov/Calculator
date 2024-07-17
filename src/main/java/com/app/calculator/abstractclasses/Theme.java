@@ -27,12 +27,6 @@ public abstract class Theme {
         window.root.setBackground(background);
         window.menuBar.setStyle(theme.getStyle());
 
-        for (int i = 0; i < window.list_ElementsRoundingTop.size(); i++) {
-            window.list_ElementsRoundingTop.get(i).setStyle(theme.getStyle());
-        }
-        window.label_TypeRounding.setStyle(theme.getStyle());
-        window.label_ScaleRounding.setStyle(theme.getStyle());
-
     };
 }
 

@@ -13,6 +13,7 @@ public class ClassicTheme extends Theme {
         textColor = "-fx-text-fill: black";
         color = Color.rgb(167, 171, 171);
         textColor = "-fx-text-fill: rgb(12, 13, 13);";
+        //labelColor = "-fx-text-fill: rgb(12, 13, 13);";
 
         System.out.println(style);
         chooseTheme(this.window, this);

@@ -274,9 +274,7 @@ public abstract class Window implements Runnable {
 
         cMI_ArithmeticWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                executeCommand(new CheckMenuItemCommand(Window.this, event));
-            }
+            public void handle(ActionEvent event) {executeCommand(new CheckMenuItemCommand(Window.this, event));}
         });
         cMI_TrigonometricWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -718,13 +716,6 @@ public abstract class Window implements Runnable {
                 executeCommand(new PercentCommand(Window.this, event));
             }
         });
-
-//        btn_Percent.setTextFill(theme.getTextColor());
-//        btn_Percent.setStyle(theme.getBackgroundColor());
-//        btn_Percent.setTextFill(Color.RED);
-//        btn_Percent.setStyle("-fx-background-color: lightblue;");
-
-
 
         btn_Sqrt = new Button("√");
         list_Buttons.add(btn_Sqrt);
