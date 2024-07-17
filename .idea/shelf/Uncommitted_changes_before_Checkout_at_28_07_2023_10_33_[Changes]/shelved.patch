@@ -1,0 +1,669 @@
+Index: src/main/java/com/app/calculator/abstractclasses/Window.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.abstractclasses;\r\n\r\nimport com.app.calculator.constants.Column;\r\nimport com.app.calculator.constants.Row;\r\nimport com.app.calculator.constants.Size;\r\nimport com.app.calculator.history.History;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.geometry.HPos;\r\nimport javafx.geometry.Insets;\r\nimport javafx.geometry.Pos;\r\nimport javafx.geometry.VPos;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.GridPane;\r\nimport javafx.scene.layout.Priority;\r\nimport java.util.List;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic abstract class Window implements Runnable {\r\n    protected final Stage stage;\r\n    private History history = new History();\r\n    public GridPane root;\r\n\r\n    public Column[] columns;\r\n    public Row[] rows;\r\n    public List<GridPane> list_GridPanes;\r\n    public GridPane subPanel_FirstRow;\r\n    public GridPane subPanel_SecondRow;\r\n    public GridPane subPanel_ThirdRow;\r\n    public GridPane subPanel_FourthRow;\r\n    public GridPane subPanel_FifthRow;\r\n    public GridPane subPanel_SixthRow;\r\n    public GridPane subPanel_SeventhRow;\r\n    public GridPane subPanel_EighthRow;\r\n    public GridPane subPanel_NinthRow;\r\n    public GridPane subPanel_TenthRow;\r\n    public List<Label> list_ElementsRoundingTop;\r\n    public List<Control> list_ElementsRoundingDown;\r\n    public List<Control> list_ElementsFourthRow;\r\n    public List<Control> list_ElementsFifthRow;\r\n    public List<Control> list_ElementsSixthRow;\r\n    public List<Control> list_ElementsSeventhRow;\r\n    public List<Label> list_ElementsSeventhRowTop;\r\n    public List<Control> list_ElementsSeventhRowDown;\r\n    public List<Control> list_ElementsEighthRow;\r\n    public List<Control> list_ElementsNinthRow;\r\n    public List<Control> list_ElementsTenthRow;\r\n    public List<Control> list_ElementsEleventhRow;\r\n    public List<Control> list_ElementsTwelthRow;\r\n    public MenuBar menuBar;\r\n    public Menu menu_Type;\r\n    public Menu menu_Theme;\r\n    public Menu menu_Language;\r\n    public Menu menu_Sound;\r\n\r\n    public Button btn_Undo;\r\n    public Button btn_Redo;\r\n\r\n\r\n    public CheckMenuItem cMI_TrigonometricWindow;\r\n    public CheckMenuItem cMI_ConvertionWindow;\r\n    public SeparatorMenuItem sMI_SeparatorExit;\r\n    public MenuItem menuItem_Exit;\r\n    public RadioMenuItem rMI_ThemeClassic;\r\n    public RadioMenuItem rMI_ThemeDark;\r\n    public RadioMenuItem rMI_ThemeAnimated;\r\n    public ToggleGroup group_Theme;\r\n    public RadioMenuItem rMI_LanguageEnglish;\r\n    public RadioMenuItem rMI_LanguageUkranian;\r\n    public RadioMenuItem rMI_LanguageRussian;\r\n    public ToggleGroup groupLanguage;\r\n    public RadioMenuItem rMI_SoundOff;\r\n    public RadioMenuItem rMI_SoundOn;\r\n    public ToggleGroup group_Sound;\r\n    public TextField displayField = new TextField();\r\n    public Label label_Space_1 = new Label(\" \");\r\n    public Label label_Space_2 = new Label(\" \");\r\n    public Label label_Space_3 = new Label(\" \");\r\n    public Label label_Space_4 = new Label(\" \");\r\n    public Label label_Space_5 = new Label(\" \");\r\n    public Label label_Space_6 = new Label(\" \");\r\n    public Label label_Space_7 = new Label(\" \");\r\n    public Label label_Space_8 = new Label(\" \");\r\n    public Label label_Space_9 = new Label(\" \");\r\n    public Label label_Space_10 = new Label(\" \");\r\n    public Label label_Space_11 = new Label(\" \");\r\n    public Label label_Space_12 = new Label(\" \");\r\n    public Label label_Space_13 = new Label(\" \");\r\n    public Label label_Up;\r\n    public Label label_FiveDivFour;\r\n    public Label label_Down;\r\n    public Label label_A;\r\n    public Label label_Zero;\r\n    public Label label_Two;\r\n    public Label label_Three;\r\n    public Label label_Four;\r\n    public Label label_F;\r\n    public RadioButton rBtn_Up;\r\n    public RadioButton rBtn_FiveDivFour;\r\n    public RadioButton rBtn_Down;\r\n    public RadioButton rBtn_A;\r\n    public RadioButton rBtn_Zero;\r\n    public RadioButton rBtn_Two;\r\n    public RadioButton rBtn_Three;\r\n    public RadioButton rBtn_Four;\r\n    public RadioButton rBtn_F;\r\n    public ToggleGroup toggleGroup_Left;\r\n    public ToggleGroup toggleGroup_Right;\r\n\r\n    public Label label_MathematicalRounding;\r\n    public Label label_NoRounding;\r\n    public boolean previousCommandWasSimple;\r\n\r\n\r\n    public Window (Stage stage) {\r\n        this.stage = stage;\r\n\r\n        subPanel_FirstRow = new GridPane();\r\n        subPanel_SecondRow = new GridPane();\r\n        subPanel_ThirdRow = new GridPane();\r\n        subPanel_FourthRow = new GridPane();\r\n        subPanel_FifthRow = new GridPane();\r\n        subPanel_SixthRow = new GridPane();\r\n        subPanel_SeventhRow = new GridPane();\r\n        subPanel_EighthRow = new GridPane();\r\n        subPanel_NinthRow = new GridPane();\r\n        subPanel_TenthRow = new GridPane();\r\n\r\n        list_GridPanes = new ArrayList<>();\r\n\r\n        list_GridPanes.add(subPanel_FirstRow);\r\n        list_GridPanes.add(subPanel_SecondRow);\r\n        list_GridPanes.add(subPanel_ThirdRow);\r\n        list_GridPanes.add(subPanel_FourthRow);\r\n        list_GridPanes.add(subPanel_FifthRow);\r\n        list_GridPanes.add(subPanel_SixthRow);\r\n        list_GridPanes.add(subPanel_SeventhRow);\r\n        list_GridPanes.add(subPanel_EighthRow);\r\n        list_GridPanes.add(subPanel_NinthRow);\r\n        list_GridPanes.add(subPanel_TenthRow);\r\n\r\n        list_ElementsRoundingTop = new ArrayList<>();\r\n        list_ElementsRoundingDown = new ArrayList<>();\r\n\r\n        list_ElementsFourthRow = new ArrayList<>();\r\n        list_ElementsFifthRow = new ArrayList<>();\r\n        list_ElementsSixthRow = new ArrayList<>();\r\n\r\n        list_ElementsSeventhRow = new ArrayList<>();\r\n        list_ElementsSeventhRowTop = new ArrayList<>();\r\n        list_ElementsSeventhRowDown = new ArrayList<>();\r\n\r\n        list_ElementsEighthRow = new ArrayList<>();\r\n        list_ElementsNinthRow = new ArrayList<>();\r\n        list_ElementsTenthRow = new ArrayList<>();\r\n\r\n        root = new GridPane();\r\n\r\n        root.setPadding(new Insets(Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber(),\r\n                Size.TEN_PIXELS.getNumber(),Size.TEN_PIXELS.getNumber()));\r\n        root.setHgap(Size.FIVE_PIXELS.getNumber());\r\n        root.setVgap(Size.FIVE_PIXELS.getNumber());\r\n\r\n        columns = Column.values();\r\n        rows = Row.values();\r\n\r\n\r\n        menuBar = new MenuBar();\r\n        stretchMenuBar(menuBar);\r\n\r\n        menu_Type = new Menu(\"Calculator\");\r\n        menu_Theme = new Menu(\"Theme\");\r\n        menu_Language = new Menu(\"Language\");\r\n        menu_Sound = new Menu(\"Sound\");\r\n\r\n        menuBar.getMenus().addAll(menu_Type, menu_Theme, menu_Language, menu_Sound);\r\n        subPanel_FirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());\r\n\r\n        cMI_TrigonometricWindow = new CheckMenuItem(\"Trigonometric\");\r\n        addImageToCheckMenuItem(cMI_TrigonometricWindow, \"/images/function.png\");\r\n\r\n        cMI_ConvertionWindow = new CheckMenuItem(\"Convertion\");\r\n        addImageToCheckMenuItem(cMI_ConvertionWindow, \"/images/scales.png\");\r\n\r\n        sMI_SeparatorExit = new SeparatorMenuItem();\r\n        menuItem_Exit = new MenuItem(\"Exit\");\r\n        addImageToMenuItem(menuItem_Exit, \"/images/exit.png\");\r\n\r\n        menu_Type.getItems().addAll(cMI_TrigonometricWindow, cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);\r\n\r\n        rMI_ThemeClassic = new RadioMenuItem(\"Classic\");\r\n        rMI_ThemeDark = new RadioMenuItem(\"Dark\");\r\n        rMI_ThemeAnimated = new RadioMenuItem(\"Animated\");\r\n        group_Theme = new ToggleGroup();\r\n        rMI_ThemeClassic.setToggleGroup(group_Theme);\r\n        rMI_ThemeDark.setToggleGroup(group_Theme);\r\n        rMI_ThemeAnimated.setToggleGroup(group_Theme);\r\n        menu_Theme.getItems().addAll(rMI_ThemeClassic, rMI_ThemeDark, rMI_ThemeAnimated);\r\n\r\n        rMI_LanguageEnglish = new RadioMenuItem(\"English\");\r\n        rMI_LanguageUkranian = new RadioMenuItem(\"Українська\");\r\n        rMI_LanguageRussian = new RadioMenuItem(\"Русский\");\r\n        groupLanguage = new ToggleGroup();\r\n        rMI_LanguageEnglish.setToggleGroup(groupLanguage);\r\n        rMI_LanguageUkranian.setToggleGroup(groupLanguage);\r\n        rMI_LanguageRussian.setToggleGroup(groupLanguage);\r\n        rMI_LanguageEnglish.setSelected(true);\r\n        menu_Language.getItems().addAll(rMI_LanguageEnglish, rMI_LanguageUkranian, rMI_LanguageRussian);\r\n\r\n        rMI_SoundOff = new RadioMenuItem(\"Sound off\");\r\n        rMI_SoundOn = new RadioMenuItem(\"Sound on\");\r\n        group_Sound = new ToggleGroup();\r\n        rMI_SoundOff.setToggleGroup(group_Sound);\r\n        rMI_SoundOn.setToggleGroup(group_Sound);\r\n        rMI_SoundOff.setSelected(true);\r\n        menu_Sound.getItems().addAll(rMI_SoundOff, rMI_SoundOn);\r\n\r\n        btn_Undo = new Button();\r\n        btn_Undo.setDisable(true);\r\n        stretchMenuButton(btn_Undo);\r\n        addImageToButton(btn_Undo, \"/images/undo.png\");\r\n        btn_Undo.setOnAction(new EventHandler<ActionEvent>() {\r\n            @Override\r\n            public void handle(ActionEvent event) {\r\n                undo();\r\n            }\r\n        });\r\n\r\n        btn_Redo = new Button();\r\n        btn_Redo.setDisable(true);\r\n        stretchMenuButton(btn_Redo);\r\n        addImageToButton(btn_Redo, \"/images/redo.png\");\r\n        btn_Redo.setOnAction(new EventHandler<ActionEvent>() {\r\n            @Override\r\n            public void handle(ActionEvent event) {\r\n                redo();\r\n            }\r\n        });\r\n\r\n        displayField.setStyle(\"-fx-alignment: center-right;\");\r\n        displayField.setText(\"0\");\r\n        GridPane.setHgrow(displayField, Priority.ALWAYS);\r\n        GridPane.setVgrow(displayField, Priority.ALWAYS);\r\n\r\n        label_Up = new Label(\"⮤\");\r\n        label_FiveDivFour = new Label(\"5/4\");\r\n        label_Down  = new Label(\"⮧\");\r\n        label_A  = new Label(\"A\");\r\n        label_Zero  = new Label(\"0\");\r\n        label_Two  = new Label(\"2\");\r\n        label_Three  = new Label(\"3\");\r\n        label_Four  = new Label(\"4\");\r\n        label_F   = new Label(\"F\");\r\n\r\n        list_ElementsRoundingTop.add(label_Space_1);\r\n        list_ElementsRoundingTop.add(label_Up);\r\n        list_ElementsRoundingTop.add(label_FiveDivFour);\r\n        list_ElementsRoundingTop.add(label_Down);\r\n        list_ElementsRoundingTop.add(label_Space_2);\r\n        list_ElementsRoundingTop.add(label_Space_3);\r\n        list_ElementsRoundingTop.add(label_A);\r\n        list_ElementsRoundingTop.add(label_Zero);\r\n        list_ElementsRoundingTop.add(label_Two);\r\n        list_ElementsRoundingTop.add(label_Three);\r\n        list_ElementsRoundingTop.add(label_Four);\r\n        list_ElementsRoundingTop.add(label_F);\r\n        list_ElementsRoundingTop.add(label_Space_4);\r\n\r\n\r\n\r\n        rBtn_Up = new RadioButton();\r\n        rBtn_FiveDivFour = new RadioButton();\r\n        rBtn_Down = new RadioButton();\r\n\r\n\r\n        rBtn_A = new RadioButton();\r\n        rBtn_Zero = new RadioButton();\r\n        rBtn_Two = new RadioButton();\r\n        rBtn_Three = new RadioButton();\r\n        rBtn_Four = new RadioButton();\r\n        rBtn_F = new RadioButton();\r\n\r\n\r\n        label_Space_9.setAlignment(Pos.CENTER);\r\n        rBtn_Up.setAlignment(Pos.CENTER);\r\n        rBtn_FiveDivFour.setAlignment(Pos.CENTER);\r\n        rBtn_Down.setAlignment(Pos.CENTER);\r\n        rBtn_A.setAlignment(Pos.CENTER);\r\n        rBtn_Zero.setAlignment(Pos.CENTER);\r\n        rBtn_Two.setAlignment(Pos.CENTER);\r\n        rBtn_Three.setAlignment(Pos.CENTER);\r\n        rBtn_Four.setAlignment(Pos.CENTER);\r\n        rBtn_F.setAlignment(Pos.CENTER);\r\n\r\n        label_Space_1.setAlignment(Pos.CENTER);\r\n        rBtn_Up.setAlignment(Pos.CENTER);\r\n        rBtn_FiveDivFour.setAlignment(Pos.CENTER);\r\n        rBtn_Down.setAlignment(Pos.CENTER);\r\n        label_Space_2.setAlignment(Pos.CENTER);\r\n        label_Space_3.setAlignment(Pos.CENTER);\r\n        rBtn_A.setAlignment(Pos.CENTER);\r\n        rBtn_Zero.setAlignment(Pos.CENTER);\r\n        rBtn_Two.setAlignment(Pos.CENTER);\r\n        rBtn_Three.setAlignment(Pos.CENTER);\r\n        rBtn_Four.setAlignment(Pos.CENTER);\r\n        rBtn_F.setAlignment(Pos.CENTER);\r\n        label_Space_4.setAlignment(Pos.CENTER);\r\n\r\n        list_ElementsRoundingDown.add(label_Space_5);\r\n        list_ElementsRoundingDown.add(rBtn_Up);\r\n        list_ElementsRoundingDown.add(rBtn_FiveDivFour);\r\n        list_ElementsRoundingDown.add(rBtn_Down);\r\n        list_ElementsRoundingDown.add(label_Space_6);\r\n        list_ElementsRoundingDown.add(label_Space_7);\r\n        list_ElementsRoundingDown.add(rBtn_A);\r\n        list_ElementsRoundingDown.add(rBtn_Zero);\r\n        list_ElementsRoundingDown.add(rBtn_Two);\r\n        list_ElementsRoundingDown.add(rBtn_Three);\r\n        list_ElementsRoundingDown.add(rBtn_Four);\r\n        list_ElementsRoundingDown.add(rBtn_F);\r\n        list_ElementsRoundingDown.add(label_Space_8);\r\n\r\n\r\n        toggleGroup_Left = new ToggleGroup();\r\n        toggleGroup_Right = new ToggleGroup();\r\n\r\n        rBtn_Up.setToggleGroup(toggleGroup_Left);\r\n        rBtn_FiveDivFour.setToggleGroup(toggleGroup_Left);\r\n        rBtn_Down.setToggleGroup(toggleGroup_Left);\r\n        rBtn_Up.setSelected(true);\r\n\r\n        rBtn_A.setToggleGroup(toggleGroup_Right);\r\n        rBtn_Zero.setToggleGroup(toggleGroup_Right);\r\n        rBtn_Two.setToggleGroup(toggleGroup_Right);\r\n        rBtn_Three.setToggleGroup(toggleGroup_Right);\r\n        rBtn_Four.setToggleGroup(toggleGroup_Right);\r\n        rBtn_F.setToggleGroup(toggleGroup_Right);\r\n        rBtn_A.setSelected(true);\r\n\r\n        label_MathematicalRounding = new Label(\"Mathematical rounding\");\r\n        label_MathematicalRounding.setAlignment(Pos.CENTER);\r\n        GridPane.setHgrow(label_MathematicalRounding, Priority.ALWAYS);\r\n        GridPane.setVgrow(label_MathematicalRounding, Priority.ALWAYS);\r\n        subPanel_ThirdRow.setHalignment(label_MathematicalRounding, HPos.CENTER);\r\n        subPanel_ThirdRow.setValignment(label_MathematicalRounding, VPos.CENTER);\r\n\r\n        label_NoRounding = new Label(\"No rounding\");\r\n        label_NoRounding.setAlignment(Pos.CENTER);\r\n        GridPane.setHgrow(label_NoRounding, Priority.ALWAYS);\r\n        GridPane.setVgrow(label_NoRounding, Priority.ALWAYS);\r\n        subPanel_ThirdRow.setHalignment(label_NoRounding, HPos.CENTER);\r\n        subPanel_ThirdRow.setValignment(label_NoRounding, VPos.CENTER);\r\n\r\n        System.out.println(\"Конструктор Window выполнен\");\r\n\r\n        previousCommandWasSimple = false;\r\n\r\n    }\r\n\r\n    public void executeCommand(Command command) {\r\n        if (command.execute()) {\r\n//            System.out.println(\"Стек до ввода: \" + history.history);\r\n            history.push(command);\r\n            btn_Undo.setDisable(false);\r\n//            System.out.println(\"Стек после ввода: \" + history.history);\r\n        }\r\n    }\r\n\r\n    public void undo() {\r\n        if (history.isEmpty()) return;\r\n\r\n        //System.out.println(\"Стек до отмены: \" + history.history);\r\n\r\n        Command command = history.pop();\r\n        btn_Redo.setDisable(false);\r\n       //System.out.println(\"Стек после отмены: \" + history.history);\r\n        if (command != null) {\r\n            command.show_PreviousNumber();\r\n        }\r\n    }\r\n\r\n    public void redo() {\r\n        if (history.isEmpty()) return;\r\n\r\n        //System.out.println(\"Стек до отмены: \" + history.history);\r\n\r\n        Command command = history.next();\r\n        btn_Undo.setDisable(false);\r\n        //System.out.println(\"Стек после отмены: \" + history.history);\r\n        if (command != null) {\r\n            command.show_CurrentNumber();\r\n        } else {\r\n            history.currentIndex -= 1;\r\n        }\r\n    }\r\n\r\n\r\n    public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {\r\n        root.add(subPanel, column.getNumber(), row.getNumber());\r\n        stretchElement(subPanel, root);\r\n    }\r\n\r\n    public void addElementToPanel(Control control, GridPane gridPane, Column column, Row row) {\r\n        gridPane.add(control, column.getNumber(),row.getNumber());\r\n        stretchElement(control, gridPane);\r\n        control.setMaxWidth(Double.MAX_VALUE);\r\n        control.setMaxHeight(Double.MAX_VALUE);\r\n    }\r\n\r\n    public void addButtonsToPanel(Control control, GridPane gridPane, Column column, Row row) {\r\n        gridPane.add(control, column.getNumber(),row.getNumber());\r\n        control.prefWidthProperty().bind(gridPane.widthProperty().multiply(1.0));\r\n        stretchElement(control, gridPane);\r\n        control.setMaxWidth(Double.MAX_VALUE);\r\n        control.setMaxHeight(Double.MAX_VALUE);\r\n    }\r\n\r\n    public void stretchElement(Parent parent, GridPane gridPane) {\r\n        GridPane.setHgrow(parent, Priority.ALWAYS);\r\n        GridPane.setVgrow(parent, Priority.ALWAYS);\r\n        gridPane.setHalignment(parent, HPos.CENTER);\r\n        gridPane.setValignment(parent, VPos.CENTER);\r\n    }\r\n    public void stretchMenuBar(MenuBar menuBar) {\r\n        GridPane.setHgrow(menuBar, Priority.ALWAYS);\r\n        GridPane.setVgrow(menuBar, Priority.ALWAYS);\r\n        menuBar.setMaxWidth(Double.MAX_VALUE);\r\n        menuBar.setMaxHeight(Double.MAX_VALUE);\r\n    }\r\n\r\n    public void stretchMenuButton(Control control) {\r\n        GridPane.setHgrow(control, Priority.ALWAYS);\r\n        GridPane.setVgrow(control, Priority.ALWAYS);\r\n        control.setMaxWidth(Double.MAX_VALUE);\r\n        control.setMaxHeight(Double.MAX_VALUE);\r\n    }\r\n    public void addImageToButton(Button button, String imagePath) {\r\n        Image image = new Image(imagePath);\r\n        ImageView imageView = new ImageView(image);\r\n        button.setGraphic(imageView);\r\n        button.setFocusTraversable(false);\r\n    }\r\n    public void addImageToCheckMenuItem(CheckMenuItem checkMenu, String imagePath) {\r\n        Image image = new Image(imagePath);\r\n        ImageView imageView = new ImageView(image);\r\n        imageView.setFitWidth(20);\r\n        imageView.setFitHeight(20);\r\n        checkMenu.setGraphic(imageView);\r\n    }\r\n\r\n    public void addImageToMenuItem(MenuItem checkMenu, String imagePath) {\r\n        Image image = new Image(imagePath);\r\n        ImageView imageView = new ImageView(image);\r\n        imageView.setFitWidth(20);\r\n        imageView.setFitHeight(20);\r\n        checkMenu.setGraphic(imageView);\r\n    }\r\n    //window.checkDigit();\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/app/calculator/abstractclasses/Window.java b/src/main/java/com/app/calculator/abstractclasses/Window.java
+--- a/src/main/java/com/app/calculator/abstractclasses/Window.java	
++++ b/src/main/java/com/app/calculator/abstractclasses/Window.java	
+@@ -1,5 +1,6 @@
+ package com.app.calculator.abstractclasses;
+ 
++import com.app.calculator.commands.EditNumberCommand;
+ import com.app.calculator.constants.Column;
+ import com.app.calculator.constants.Row;
+ import com.app.calculator.constants.Size;
+@@ -363,42 +364,54 @@
+     }
+ 
+     public void executeCommand(Command command) {
+-        if (command.execute()) {
+-//            System.out.println("Стек до ввода: " + history.history);
+-            history.push(command);
+-            btn_Undo.setDisable(false);
+-//            System.out.println("Стек после ввода: " + history.history);
++        if (firstElementHistoryNull()) {
++        command.execute();
++        history.push(command);
++        btn_Undo.setDisable(false);
++        System.out.println("F");
++        } else {
++            if (commaIsAndPushedComma(command)) {
++                System.out.println("FF");
++            } else {
++                if (commaIsOnDisplay(command)) {
++                    System.out.println("DDD");
++
++
++                } else {
++                    command.execute();
++                    history.push(command);
++                    btn_Undo.setDisable(false);
++                    System.out.println("FFF");
++                }
++            }
+         }
+     }
+ 
+     public void undo() {
+         if (history.isEmpty()) return;
+ 
+-        //System.out.println("Стек до отмены: " + history.history);
+-
+         Command command = history.pop();
+         btn_Redo.setDisable(false);
+-       //System.out.println("Стек после отмены: " + history.history);
+         if (command != null) {
+             command.show_PreviousNumber();
+         }
+     }
+ 
+     public void redo() {
+-        if (history.isEmpty()) return;
+-
+-        //System.out.println("Стек до отмены: " + history.history);
+ 
+         Command command = history.next();
+         btn_Undo.setDisable(false);
+-        //System.out.println("Стек после отмены: " + history.history);
++
+         if (command != null) {
+             command.show_CurrentNumber();
+         } else {
++            System.out.println("ДО history.currentIndex " + history.currentIndex);
+             history.currentIndex -= 1;
++            System.out.println("Минус один");
++            System.out.println("history.currentIndex " + history.currentIndex);
+         }
+-    }
+ 
++    }
+ 
+     public void addSubPanelToRoot(GridPane subPanel, GridPane root, Column column, Row row) {
+         root.add(subPanel, column.getNumber(), row.getNumber());
+@@ -460,6 +473,56 @@
+         imageView.setFitHeight(20);
+         checkMenu.setGraphic(imageView);
+     }
+-    //window.checkDigit();
++    public boolean historyHasComma() {
++        List<Command> listCommands = history.history_List;
++        boolean comma = false;
++        System.out.println("T1");
++
++            for (int i = 0; i < listCommands.size(); i++) {
++                System.out.println("T2");
++                if (listCommands.get(i) == null) {
++                    System.out.println("T3");
++                } else if ((listCommands.get(i).getSource(listCommands.get(i).event)).getText() == ",") {
++                    comma = true;
++                    System.out.println("T4");
++                    break;
++                } else {
++                    comma = false;
++                    System.out.println("T5");
++                }
++            }
++
++        return comma;
++    }
++
++    public boolean firstElementHistoryNull() {
++        boolean isNull;
++        if (history.history_List.get(0) == null) {
++            isNull = true;
++        } else {
++            isNull = false;
++        }
++        return isNull;
++    }
++
++    public boolean commaIsAndPushedComma(Command command) {
++        boolean commaIs;
++        if (historyHasComma() & command.getSource(command.event).getText() == ","
++                & displayField.getText().indexOf(',') != -1) {
++            commaIs = true;
++        } else {
++            commaIs = false;
++        }
++        return commaIs;
++    }
++    public boolean commaIsOnDisplay(Command command) {
++        boolean commaIs;
++        if (displayField.getText().indexOf(',') != -1 & command.getSource(command.event).getText() != ",") {
++            commaIs = true;
++        } else {
++            commaIs = false;
++        }
++        return commaIs;
++    }
+ 
+ }
+Index: src/main/java/com/app/calculator/windows/ArithmeticWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.windows;\r\n\r\nimport com.app.calculator.abstractclasses.Window;\r\nimport com.app.calculator.commands.InsertDigitCommand;\r\nimport com.app.calculator.commands.OneDivXCommand;\r\nimport com.app.calculator.constants.Column;\r\nimport com.app.calculator.constants.Dimension;\r\nimport com.app.calculator.constants.Position;\r\nimport com.app.calculator.constants.Row;\r\nimport javafx.application.Platform;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.geometry.Pos;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\n\r\npublic class ArithmeticWindow extends Window{\r\n    public ArithmeticWindow (Stage stage) {\r\n        super(stage);\r\n    }\r\n    @Override\r\n    public void run() {\r\n        Platform.runLater(() -> {\r\n\r\n            this.stage.setTitle(\"Calculator\");\r\n            this.stage.setX(Position.ARITHMETIC_WINDOW.getHorizontal());\r\n            this.stage.setY(Position.ARITHMETIC_WINDOW.getVertical());\r\n\r\n\r\n            subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());\r\n            subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());\r\n\r\n            subPanel_SecondRow.add(displayField, Column.FIRST.getNumber(), Row.FIRST.getNumber());\r\n\r\n            for (int i = 0; i < list_ElementsRoundingTop.size(); i++) {\r\n                addElementToPanel(list_ElementsRoundingTop.get(i), subPanel_ThirdRow, columns[i], Row.FIRST);\r\n                list_ElementsRoundingTop.get(i).setAlignment(Pos.CENTER);\r\n            }\r\n\r\n            for (int i = 0; i < list_ElementsRoundingDown.size(); i++) {\r\n                addElementToPanel(list_ElementsRoundingDown.get(i), subPanel_ThirdRow, columns[i], Row.SECOND);\r\n            }\r\n\r\n            subPanel_ThirdRow.add(label_MathematicalRounding,0,2, 5, 2);\r\n            subPanel_ThirdRow.add(label_NoRounding,5,2,14,2);\r\n\r\n\r\n\r\n            Button btn_MC = new Button(\"MC\");\r\n            Button btn_MR = new Button(\"MR\");\r\n            Button btn_MPlus = new Button(\"M+\");\r\n            Button btn_MMinus = new Button(\"M-\");\r\n            Button btn_MS = new Button(\"MS\");\r\n            Button btn_M = new Button(\"M\");\r\n\r\n            list_ElementsFourthRow.add(btn_MC);\r\n            list_ElementsFourthRow.add(btn_MR);\r\n            list_ElementsFourthRow.add(btn_MPlus);\r\n            list_ElementsFourthRow.add(btn_MMinus);\r\n            list_ElementsFourthRow.add(btn_MS );\r\n            list_ElementsFourthRow.add(btn_M);\r\n\r\n            for (int i = 0; i < list_ElementsFourthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsFourthRow.get(i), subPanel_FourthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n\r\n            Button btn_Percent = new Button(\"%\");\r\n            Button btn_Sqrt = new Button(\"√\");\r\n            Button btn_XSquared = new Button(\"X²\");\r\n            Button btn_OneDivX = new Button(\"1/X\");\r\n\r\n//            btn_Percent.setOnAction(new EventHandler<ActionEvent>() {\r\n//                @Override\r\n//                public void handle(ActionEvent event) {\r\n//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n//                }\r\n//            });\r\n//            btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {\r\n//                @Override\r\n//                public void handle(ActionEvent event) {\r\n//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n//                }\r\n//            });\r\n//            btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {\r\n//                @Override\r\n//                public void handle(ActionEvent event) {\r\n//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n//                }\r\n//            });\r\n            btn_OneDivX.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new OneDivXCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n            list_ElementsFifthRow.add(btn_Percent);\r\n            list_ElementsFifthRow.add(btn_Sqrt);\r\n            list_ElementsFifthRow.add(btn_XSquared);\r\n            list_ElementsFifthRow.add(btn_OneDivX);\r\n\r\n            for (int i = 0; i < list_ElementsFifthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsFifthRow.get(i), subPanel_FifthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n\r\n            Button btn_CE = new Button(\"CE\");\r\n            Button btn_C = new Button(\"C\");\r\n            Button btn_Backspace = new Button(\"←\");\r\n            Button btn_Div = new Button(\"÷\");\r\n\r\n            list_ElementsSixthRow.add(btn_CE);\r\n            list_ElementsSixthRow.add(btn_C);\r\n            list_ElementsSixthRow.add(btn_Backspace);\r\n            list_ElementsSixthRow.add(btn_Div);\r\n\r\n            for (int i = 0; i < list_ElementsSixthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsSixthRow.get(i), subPanel_SixthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n\r\n            Button btn_Seven = new Button(\"7\");\r\n            Button btn_Eight = new Button(\"8\");\r\n            Button btn_Nine = new Button(\"9\");\r\n            Button btn_Mult = new Button(\"╳\");\r\n\r\n            btn_Seven.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n            btn_Eight.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n            btn_Nine.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n\r\n\r\n            list_ElementsSeventhRow.add(btn_Seven);\r\n            list_ElementsSeventhRow.add(btn_Eight);\r\n            list_ElementsSeventhRow.add(btn_Nine);\r\n            list_ElementsSeventhRow.add(btn_Mult);\r\n\r\n            for (int i = 0; i < list_ElementsSeventhRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsSeventhRow.get(i), subPanel_SeventhRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n\r\n            Button btn_Four = new Button(\"4\");\r\n            Button btn_Five = new Button(\"5\");\r\n            Button btn_Six = new Button(\"6\");\r\n            Button btn_Minus = new Button(\"-\");\r\n\r\n            btn_Four.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n            btn_Five.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n            btn_Six.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n\r\n\r\n\r\n            list_ElementsEighthRow.add(btn_Four);\r\n            list_ElementsEighthRow.add(btn_Five);\r\n            list_ElementsEighthRow.add(btn_Six);\r\n            list_ElementsEighthRow.add(btn_Minus);\r\n\r\n            for (int i = 0; i < list_ElementsEighthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsEighthRow.get(i), subPanel_EighthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n\r\n            Button btn_One = new Button(\"1\");\r\n            Button btn_Two = new Button(\"2\");\r\n            Button btn_Three = new Button(\"3\");\r\n            Button btn_Plus = new Button(\"+\");\r\n\r\n            btn_One.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n\r\n            btn_Two.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n            btn_Three.setOnAction(new EventHandler<ActionEvent>() {\r\n                @Override\r\n                public void handle(ActionEvent event) {\r\n                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));\r\n                }\r\n            });\r\n\r\n\r\n            list_ElementsNinthRow.add(btn_One);\r\n            list_ElementsNinthRow.add(btn_Two);\r\n            list_ElementsNinthRow.add(btn_Three);\r\n            list_ElementsNinthRow.add(btn_Plus);\r\n\r\n            for (int i = 0; i < list_ElementsNinthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsNinthRow.get(i), subPanel_NinthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n            Button btn_PlusMinus = new Button(\"±\");\r\n            Button btn_Zero = new Button(\"0\");\r\n            Button btn_Comma = new Button(\",\");\r\n            Button btn_Equals = new Button(\"=\");\r\n\r\n            list_ElementsTenthRow.add(btn_PlusMinus);\r\n            list_ElementsTenthRow.add(btn_Zero);\r\n            list_ElementsTenthRow.add(btn_Comma);\r\n            list_ElementsTenthRow.add(btn_Equals);\r\n\r\n            for (int i = 0; i < list_ElementsTenthRow.size(); i++) {\r\n                addButtonsToPanel(list_ElementsTenthRow.get(i), subPanel_TenthRow, columns[i], Row.FIRST);\r\n            }\r\n\r\n            for (int i = 0; i < list_GridPanes.size(); i++) {\r\n                addSubPanelToRoot(list_GridPanes.get(i), root, Column.FIRST, rows[i]);\r\n            }\r\n\r\n            Scene scene = new Scene(root, Dimension.ARITHMETIC_WINDOW.getWidth(), Dimension.ARITHMETIC_WINDOW.getHeight());\r\n            stage.setScene(scene);\r\n\r\n            stage.show();\r\n\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/app/calculator/windows/ArithmeticWindow.java b/src/main/java/com/app/calculator/windows/ArithmeticWindow.java
+--- a/src/main/java/com/app/calculator/windows/ArithmeticWindow.java	
++++ b/src/main/java/com/app/calculator/windows/ArithmeticWindow.java	
+@@ -2,7 +2,8 @@
+ 
+ import com.app.calculator.abstractclasses.Window;
+ import com.app.calculator.commands.InsertDigitCommand;
+-import com.app.calculator.commands.OneDivXCommand;
++import com.app.calculator.commands.EditNumberCommand;
++import com.app.calculator.commands.SingleNumberCommand;
+ import com.app.calculator.constants.Column;
+ import com.app.calculator.constants.Dimension;
+ import com.app.calculator.constants.Position;
+@@ -78,22 +79,22 @@
+ //                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+ //                }
+ //            });
+-//            btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
+-//                @Override
+-//                public void handle(ActionEvent event) {
+-//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+-//                }
+-//            });
+-//            btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {
+-//                @Override
+-//                public void handle(ActionEvent event) {
+-//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
+-//                }
+-//            });
++            btn_Sqrt.setOnAction(new EventHandler<ActionEvent>() {
++                @Override
++                public void handle(ActionEvent event) {
++                    executeCommand(new SingleNumberCommand(ArithmeticWindow.this, event));
++                }
++            });
++            btn_XSquared.setOnAction(new EventHandler<ActionEvent>() {
++                @Override
++                public void handle(ActionEvent event) {
++                    executeCommand(new SingleNumberCommand(ArithmeticWindow.this, event));
++                }
++            });
+             btn_OneDivX.setOnAction(new EventHandler<ActionEvent>() {
+                 @Override
+                 public void handle(ActionEvent event) {
+-                    executeCommand(new OneDivXCommand(ArithmeticWindow.this, event));
++                    executeCommand(new SingleNumberCommand(ArithmeticWindow.this, event));
+                 }
+             });
+ 
+@@ -118,6 +119,33 @@
+             Button btn_Backspace = new Button("←");
+             Button btn_Div = new Button("÷");
+ 
++//            btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
++//                @Override
++//                public void handle(ActionEvent event) {
++//                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++//                }
++//            });
++//            btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
++//                @Override
++//                public void handle(ActionEvent event) {
++//                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++//                }
++//            });
++            btn_Backspace.setOnAction(new EventHandler<ActionEvent>() {
++                @Override
++                public void handle(ActionEvent event) {
++                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++                }
++            });
++//            btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
++//                @Override
++//                public void handle(ActionEvent event) {
++//                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++//                }
++//            });
++
++
++
+             list_ElementsSixthRow.add(btn_CE);
+             list_ElementsSixthRow.add(btn_C);
+             list_ElementsSixthRow.add(btn_Backspace);
+@@ -238,6 +266,30 @@
+             Button btn_Zero = new Button("0");
+             Button btn_Comma = new Button(",");
+             Button btn_Equals = new Button("=");
++            btn_PlusMinus.setOnAction(new EventHandler<ActionEvent>() {
++                @Override
++                public void handle(ActionEvent event) {
++                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++                }
++            });
++//            btn_One.setOnAction(new EventHandler<ActionEvent>() {
++//                @Override
++//                public void handle(ActionEvent event) {
++//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
++//                }
++//            });
++            btn_Comma.setOnAction(new EventHandler<ActionEvent>() {
++                @Override
++                public void handle(ActionEvent event) {
++                    executeCommand(new EditNumberCommand(ArithmeticWindow.this, event));
++                }
++            });
++//            btn_One.setOnAction(new EventHandler<ActionEvent>() {
++//                @Override
++//                public void handle(ActionEvent event) {
++//                    executeCommand(new InsertDigitCommand(ArithmeticWindow.this, event));
++//                }
++//            });
+ 
+             list_ElementsTenthRow.add(btn_PlusMinus);
+             list_ElementsTenthRow.add(btn_Zero);
+Index: src/main/java/com/app/calculator/commands/InsertDigitCommand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.commands;\r\n\r\nimport com.app.calculator.abstractclasses.Command;\r\nimport com.app.calculator.abstractclasses.Window;\r\nimport javafx.event.ActionEvent;\r\n\r\npublic class InsertDigitCommand extends Command {\r\n    public InsertDigitCommand(Window window, ActionEvent event) {\r\n        super(window, event);\r\n    }\r\n    @Override\r\n    public boolean execute() {\r\n        save_PreviousNumber();\r\n        save_CurrentNumber();\r\n\r\n        window.displayField.setText(getNumber_Current());\r\n        return true;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/app/calculator/commands/InsertDigitCommand.java b/src/main/java/com/app/calculator/commands/InsertDigitCommand.java
+--- a/src/main/java/com/app/calculator/commands/InsertDigitCommand.java	
++++ b/src/main/java/com/app/calculator/commands/InsertDigitCommand.java	
+@@ -12,8 +12,7 @@
+     public boolean execute() {
+         save_PreviousNumber();
+         save_CurrentNumber();
+-
+-        window.displayField.setText(getNumber_Current());
++        show_CurrentNumber();
+         return true;
+     }
+ }
+Index: src/main/java/com/app/calculator/history/History.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.history;\r\n\r\nimport com.app.calculator.abstractclasses.Command;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.List;\r\n\r\npublic class History {\r\n    public List<Command> history = new ArrayList<>();\r\n    public History(){\r\n        history.add(null);\r\n    }\r\n    public int currentIndex = 0;\r\n\r\n    public void push(Command c) {\r\n        //history.add(null);\r\n        if (history.size() == (currentIndex - 1)) {\r\n            currentIndex -= 1;\r\n        }\r\n\r\n        if (history.get(currentIndex) == null) {\r\n            System.out.println(\"1 currentIndex \" + currentIndex);\r\n            System.out.println(\"Стек до добавления элемента: \" + history);\r\n\r\n            history.add(currentIndex, c);\r\n            System.out.println(\"2 currentIndex \" + currentIndex);\r\n            System.out.println(\"Стек после добавления элемента: \" + history);\r\n\r\n            currentIndex += 1;\r\n            System.out.println(\"3 currentIndex \" + currentIndex);\r\n            System.out.println(\"\");\r\n        } else\r\n            if (history.get(currentIndex + 1) instanceof Command) {\r\n            System.out.println(\"12 currentIndex \" + currentIndex);\r\n            history = history.subList(0, currentIndex);\r\n            System.out.println(\"Стек 2 после добавления элемента: \" + history);\r\n            history.add(c);\r\n            System.out.println(\"Стек 3 после добавления элемента: \" + history);\r\n            history.add(null);\r\n            System.out.println(\"Стек 4 после добавления элемента: \" + history);\r\n            currentIndex += 1;\r\n            System.out.println(\"13 currentIndex \" + currentIndex);\r\n            System.out.println(\"Стек 5 после добавления элемента: \" + history);\r\n        }\r\n    }\r\n    public Command pop() {\r\n        System.out.println(\"4 currentIndex \" + currentIndex);\r\n        currentIndex -= 1;\r\n        System.out.println(\"5 currentIndex \" + currentIndex);\r\n\r\n        if (currentIndex < 0) {\r\n            System.out.println(\"6 currentIndex \" + currentIndex);\r\n            currentIndex += 1;\r\n            System.out.println(\"7 currentIndex \" + currentIndex);\r\n        }\r\n        System.out.println(\"8 currentIndex \" + currentIndex);\r\n\r\n        if (history.get(currentIndex) == null) {\r\n            System.out.println(\"9 currentIndex \" + currentIndex);\r\n            currentIndex -= 1;\r\n            System.out.println(\"10 currentIndex \" + currentIndex);\r\n        }\r\n\r\n        System.out.println(\"11 currentIndex \" + currentIndex);\r\n        System.out.println(\"Стек после добавления элемента: \" + history);\r\n        return history.get(currentIndex);\r\n    }\r\n    public Command next() {\r\n        if (currentIndex == history.size() | history.size() == (currentIndex - 1)) {\r\n            currentIndex -= 1;\r\n        }\r\n        System.out.println(\"A currentIndex \" + currentIndex);\r\n        if (history.get(currentIndex) == null) {\r\n            System.out.println(\"B currentIndex \" + currentIndex);\r\n            return history.get(currentIndex++);\r\n        } else {\r\n            System.out.println(\"C currentIndex \" + currentIndex);\r\n            System.out.println(\"D currentIndex \" + currentIndex);\r\n\r\n            return history.get(currentIndex++);\r\n        }\r\n\r\n    }\r\n    public boolean isEmpty() {\r\n        return history.isEmpty(); }\r\n}\r\n\r\n//package com.app.calculator.history;\r\n//\r\n//import com.app.calculator.abstractclasses.Command;\r\n//\r\n//import java.util.Stack;\r\n//\r\n// class History {\r\n//    public Stack<Command> history = new Stack<>();\r\n//    public void push(Command c) {\r\n//            history.push(c);\r\n//        }\r\n//        public Command pop() {\r\n//            return history.pop();\r\n//        }\r\n//        public boolean isEmpty() { return history.isEmpty(); }\r\n//    }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/app/calculator/history/History.java b/src/main/java/com/app/calculator/history/History.java
+--- a/src/main/java/com/app/calculator/history/History.java	
++++ b/src/main/java/com/app/calculator/history/History.java	
+@@ -3,45 +3,44 @@
+ import com.app.calculator.abstractclasses.Command;
+ 
+ import java.util.ArrayList;
+-import java.util.Arrays;
+ import java.util.List;
+ 
+ public class History {
+-    public List<Command> history = new ArrayList<>();
++    public List<Command> history_List = new ArrayList<>();
+     public History(){
+-        history.add(null);
++        history_List.add(null);
+     }
+     public int currentIndex = 0;
+ 
+     public void push(Command c) {
+         //history.add(null);
+-        if (history.size() == (currentIndex - 1)) {
++        if (history_List.size() == (currentIndex - 1)) {
+             currentIndex -= 1;
+         }
+ 
+-        if (history.get(currentIndex) == null) {
++        if (history_List.get(currentIndex) == null) {
+             System.out.println("1 currentIndex " + currentIndex);
+-            System.out.println("Стек до добавления элемента: " + history);
++            System.out.println("Стек до добавления элемента: " + history_List);
+ 
+-            history.add(currentIndex, c);
++            history_List.add(currentIndex, c);
+             System.out.println("2 currentIndex " + currentIndex);
+-            System.out.println("Стек после добавления элемента: " + history);
++            System.out.println("Стек после добавления элемента: " + history_List);
+ 
+             currentIndex += 1;
+             System.out.println("3 currentIndex " + currentIndex);
+             System.out.println("");
+         } else
+-            if (history.get(currentIndex + 1) instanceof Command) {
++            if (history_List.get(currentIndex + 1) instanceof Command) {
+             System.out.println("12 currentIndex " + currentIndex);
+-            history = history.subList(0, currentIndex);
+-            System.out.println("Стек 2 после добавления элемента: " + history);
+-            history.add(c);
+-            System.out.println("Стек 3 после добавления элемента: " + history);
+-            history.add(null);
+-            System.out.println("Стек 4 после добавления элемента: " + history);
++            history_List = history_List.subList(0, currentIndex);
++            System.out.println("Стек 2 после добавления элемента: " + history_List);
++            history_List.add(c);
++            System.out.println("Стек 3 после добавления элемента: " + history_List);
++            history_List.add(null);
++            System.out.println("Стек 4 после добавления элемента: " + history_List);
+             currentIndex += 1;
+             System.out.println("13 currentIndex " + currentIndex);
+-            System.out.println("Стек 5 после добавления элемента: " + history);
++            System.out.println("Стек 5 после добавления элемента: " + history_List);
+         }
+     }
+     public Command pop() {
+@@ -56,34 +55,34 @@
+         }
+         System.out.println("8 currentIndex " + currentIndex);
+ 
+-        if (history.get(currentIndex) == null) {
++        if (history_List.get(currentIndex) == null) {
+             System.out.println("9 currentIndex " + currentIndex);
+             currentIndex -= 1;
+             System.out.println("10 currentIndex " + currentIndex);
+         }
+ 
+         System.out.println("11 currentIndex " + currentIndex);
+-        System.out.println("Стек после добавления элемента: " + history);
+-        return history.get(currentIndex);
++        System.out.println("Стек после добавления элемента: " + history_List);
++        return history_List.get(currentIndex);
+     }
+     public Command next() {
+-        if (currentIndex == history.size() | history.size() == (currentIndex - 1)) {
++        if (currentIndex == history_List.size() | history_List.size() == (currentIndex - 1)) {
+             currentIndex -= 1;
+         }
+         System.out.println("A currentIndex " + currentIndex);
+-        if (history.get(currentIndex) == null) {
++        if (history_List.get(currentIndex) == null) {
+             System.out.println("B currentIndex " + currentIndex);
+-            return history.get(currentIndex++);
++            return history_List.get(currentIndex++);
+         } else {
+             System.out.println("C currentIndex " + currentIndex);
+             System.out.println("D currentIndex " + currentIndex);
+ 
+-            return history.get(currentIndex++);
++            return history_List.get(currentIndex++);
+         }
+ 
+     }
+     public boolean isEmpty() {
+-        return history.isEmpty(); }
++        return history_List.isEmpty(); }
+ }
+ 
+ //package com.app.calculator.history;
+Index: src/main/java/com/app/calculator/abstractclasses/Command.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.abstractclasses;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.scene.control.Button;\r\n\r\nimport java.math.BigDecimal;\r\n\r\npublic abstract class Command {\r\n    public Window window;\r\n    public ActionEvent event;\r\n    private String number_Previous;\r\n    private String number_Current;\r\n\r\n\r\n    public Command(Window window, ActionEvent event) {\r\n        this.window = window;\r\n        this.event = event;\r\n    }\r\n\r\n    public void save_PreviousNumber() {\r\n        number_Previous = window.displayField.getText();\r\n    }\r\n\r\n    public void show_PreviousNumber() {\r\n        window.displayField.setText(number_Previous);\r\n    }\r\n\r\n    public void save_CurrentNumber() {\r\n\r\n        Button source = getSource(event);\r\n        String outputString = source.getText();\r\n        setNumber_Current(outputString);\r\n\r\n        if (getNumber_Previous().equals(\"0\") | window.previousCommandWasSimple == true) {\r\n            setNumber_Current(outputString);\r\n            window.previousCommandWasSimple = false;\r\n        } else {\r\n            setNumber_Current(getNumber_Previous() + getNumber_Current());\r\n            window.previousCommandWasSimple = false;\r\n        }\r\n    }\r\n\r\n    public void show_CurrentNumber() {\r\n        window.displayField.setText(number_Current);\r\n    }\r\n\r\n\r\n    public abstract boolean execute();\r\n\r\n    public Button getSource(ActionEvent actionEvent) {\r\n        return (Button) actionEvent.getSource();\r\n    }\r\n\r\n    public BigDecimal toBigDecimal(String inputString) {\r\n        inputString = inputString.replace(',','.');\r\n        return new BigDecimal(inputString);\r\n    }\r\n\r\n    public String toString(BigDecimal bigDecimal) {\r\n        String outputString = String.valueOf(bigDecimal);\r\n        outputString = outputString.replace('.',',');\r\n        return outputString;\r\n    }\r\n\r\n    public String getNumber_Previous() {\r\n        return number_Previous;\r\n    }\r\n\r\n    public void setNumber_Previous(String number_Previous) {\r\n        this.number_Previous = number_Previous;\r\n    }\r\n\r\n    public String getNumber_Current() {\r\n        return number_Current;\r\n    }\r\n\r\n    public void setNumber_Current(String number_Current) {\r\n        this.number_Current = number_Current;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return getSource(event).getText();\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/app/calculator/abstractclasses/Command.java b/src/main/java/com/app/calculator/abstractclasses/Command.java
+--- a/src/main/java/com/app/calculator/abstractclasses/Command.java	
++++ b/src/main/java/com/app/calculator/abstractclasses/Command.java	
+@@ -19,9 +19,12 @@
+ 
+     public void save_PreviousNumber() {
+         number_Previous = window.displayField.getText();
++        number_Previous = number_Previous.replace(',', '.');
+     }
+ 
+     public void show_PreviousNumber() {
++
++        number_Previous = number_Previous.replace('.', ',');
+         window.displayField.setText(number_Previous);
+     }
+ 
+@@ -29,6 +32,7 @@
+ 
+         Button source = getSource(event);
+         String outputString = source.getText();
++        outputString = outputString.replace(',', '.');
+         setNumber_Current(outputString);
+ 
+         if (getNumber_Previous().equals("0") | window.previousCommandWasSimple == true) {
+@@ -41,6 +45,7 @@
+     }
+ 
+     public void show_CurrentNumber() {
++        number_Current = number_Current.replace('.', ',');
+         window.displayField.setText(number_Current);
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8467d883-c917-47cb-b32c-5f695a9aa272\" name=\"Changes\" comment=\"Set Button Redo of history\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/commands/OneDivXCommand.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/constants/BigDecimalDigit.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"Enum\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PUSH_AUTO_UPDATE\" value=\"true\" />\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"HARD\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"a2e3ddd9-4e92-4cc0-bca8-abb389f54aff\" />\r\n        <option name=\"url\" value=\"https://github.com/MHafarov/Calculator.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Pe1HaV07lOqwyNADChI2etQUji\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aero/IdeaProjects/Pet_Calculator&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2321839&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\resources\\images\" />\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\java\\com\\app\\calculator\\windows\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\resources\\images\" />\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\java\" />\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\" />\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\java\\com\\app\\calculator\" />\r\n      <recent name=\"C:\\Users\\Aero\\IdeaProjects\\Calculator\\src\\main\\java\\com\\app\\calculator\\windows\\images\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.app.calculator.windows\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Calculator\" type=\"Application\" factoryName=\"Application\" activateToolWindowBeforeRun=\"false\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.app.calculator.Main\" />\r\n      <module name=\"Calculator\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path C:\\Java\\javafx-sdk-17.0.7\\lib --add-modules javafx.controls,javafx.fxml \" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8467d883-c917-47cb-b32c-5f695a9aa272\" name=\"Changes\" comment=\"\" />\r\n      <created>1683802648867</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1683802648867</updated>\r\n      <workItem from=\"1683802649923\" duration=\"342000\" />\r\n      <workItem from=\"1683803071745\" duration=\"3325000\" />\r\n      <workItem from=\"1683809060221\" duration=\"42000\" />\r\n      <workItem from=\"1683813104608\" duration=\"10000\" />\r\n      <workItem from=\"1683900619547\" duration=\"302000\" />\r\n      <workItem from=\"1683907189763\" duration=\"7094000\" />\r\n      <workItem from=\"1683966470822\" duration=\"13614000\" />\r\n      <workItem from=\"1683987710595\" duration=\"1712000\" />\r\n      <workItem from=\"1684063078763\" duration=\"3255000\" />\r\n      <workItem from=\"1684173515653\" duration=\"2364000\" />\r\n      <workItem from=\"1684260915115\" duration=\"842000\" />\r\n      <workItem from=\"1684261966751\" duration=\"1750000\" />\r\n      <workItem from=\"1684343513331\" duration=\"2762000\" />\r\n      <workItem from=\"1684435709267\" duration=\"2077000\" />\r\n      <workItem from=\"1684515913564\" duration=\"6412000\" />\r\n      <workItem from=\"1684693588616\" duration=\"8887000\" />\r\n      <workItem from=\"1684953810020\" duration=\"1917000\" />\r\n      <workItem from=\"1685037918064\" duration=\"6402000\" />\r\n      <workItem from=\"1685123185986\" duration=\"4578000\" />\r\n      <workItem from=\"1685214979857\" duration=\"4079000\" />\r\n      <workItem from=\"1685248929968\" duration=\"3202000\" />\r\n      <workItem from=\"1685252482098\" duration=\"37620000\" />\r\n      <workItem from=\"1685561818533\" duration=\"2822000\" />\r\n      <workItem from=\"1685645969953\" duration=\"2611000\" />\r\n      <workItem from=\"1685816602729\" duration=\"6050000\" />\r\n      <workItem from=\"1689444080715\" duration=\"8833000\" />\r\n      <workItem from=\"1689492267811\" duration=\"24925000\" />\r\n      <workItem from=\"1690028137342\" duration=\"10289000\" />\r\n      <workItem from=\"1690054443576\" duration=\"585000\" />\r\n      <workItem from=\"1690102525568\" duration=\"18170000\" />\r\n      <workItem from=\"1690223013961\" duration=\"2611000\" />\r\n      <workItem from=\"1690304272396\" duration=\"8803000\" />\r\n      <workItem from=\"1690395004243\" duration=\"3643000\" />\r\n      <workItem from=\"1690443382159\" duration=\"4212000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Firsts steps.\">\r\n      <created>1683807725396</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683807725396</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Add packages\">\r\n      <created>1683915987153</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683915987153</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Create GUI classes\">\r\n      <created>1683921813120</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683921813120</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Now each GUI window is created on its own thread\">\r\n      <created>1683978702097</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683978702097</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Set padding for ArithmeticWindow\">\r\n      <created>1684263782181</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684263782181</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Set padding for ArithmeticWindow\">\r\n      <created>1684263873249</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684263873249</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Created Buttons of ArithmeticWindow\">\r\n      <created>1684351176251</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684351176251</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Created Buttons of ArithmeticWindow\">\r\n      <created>1684436143621</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684436143621</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Added TextField of ArithmeticWindow\">\r\n      <created>1684437740709</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684437740709</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Added Main Menu\">\r\n      <created>1684702525274</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684702525274</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Added Main Menu\">\r\n      <created>1684702594236</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684702594236</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Added Buttons to Menu\">\r\n      <created>1684955699104</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684955699104</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added Enum Column, Enum Row. Added methods: addSubPanelToRoot, addLabelToPanel, addRadioButtonToPanel\">\r\n      <created>1689454205185</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1689454205186</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Set Button Undo of history\">\r\n      <created>1690143943610</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1690143943610</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Set Button Redo of history\">\r\n      <created>1690313418156</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1690313418156</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"16\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Firsts steps.\" />\r\n    <MESSAGE value=\"Add packages\" />\r\n    <MESSAGE value=\"Create GUI classes\" />\r\n    <MESSAGE value=\"Now each GUI window is created on its own thread\" />\r\n    <MESSAGE value=\"Set padding for ArithmeticWindow\" />\r\n    <MESSAGE value=\"Created Buttons of ArithmeticWindow\" />\r\n    <MESSAGE value=\"Added TextField of ArithmeticWindow\" />\r\n    <MESSAGE value=\"Added Main Menu\" />\r\n    <MESSAGE value=\"Added Buttons to Menu\" />\r\n    <MESSAGE value=\"Added Enum Column, Enum Row. Added methods: addSubPanelToRoot, addLabelToPanel, addRadioButtonToPanel\" />\r\n    <MESSAGE value=\"Set Button Undo of history\" />\r\n    <MESSAGE value=\"Set Button Redo of history\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Set Button Redo of history\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/Calculator$Calculator.ic\" NAME=\"Calculator Coverage Results\" MODIFIED=\"1690027705686\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,12 +4,15 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Set Button Redo of history">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/OneDivXCommand.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/BigDecimalDigit.java" afterDir="false" />
++    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Set Button OneDivXCommand">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/EditNumberCommand.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SingleNumberCommand.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Command.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/InsertDigitCommand.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/OneDivXCommand.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/BigDecimalDigit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/constants/BigDecimalDigit.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/history/History.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
+     </list>
+@@ -21,8 +24,8 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="Class" />
+         <option value="Enum" />
++        <option value="Class" />
+       </list>
+     </option>
+   </component>
+@@ -153,7 +156,7 @@
+       <workItem from="1690223013961" duration="2611000" />
+       <workItem from="1690304272396" duration="8803000" />
+       <workItem from="1690395004243" duration="3643000" />
+-      <workItem from="1690443382159" duration="4212000" />
++      <workItem from="1690443382159" duration="27008000" />
+     </task>
+     <task id="LOCAL-00001" summary="Firsts steps.">
+       <created>1683807725396</created>
+@@ -260,7 +263,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1690313418156</updated>
+     </task>
+-    <option name="localTasksCounter" value="16" />
++    <task id="LOCAL-00016" summary="Set Button OneDivXCommand">
++      <created>1690447872112</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1690447872112</updated>
++    </task>
++    <option name="localTasksCounter" value="17" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -290,7 +300,8 @@
+     <MESSAGE value="Added Enum Column, Enum Row. Added methods: addSubPanelToRoot, addLabelToPanel, addRadioButtonToPanel" />
+     <MESSAGE value="Set Button Undo of history" />
+     <MESSAGE value="Set Button Redo of history" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Set Button Redo of history" />
++    <MESSAGE value="Set Button OneDivXCommand" />
++    <option name="LAST_COMMIT_MESSAGE" value="Set Button OneDivXCommand" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+Index: src/main/java/com/app/calculator/commands/EditNumberCommand.java
+===================================================================
+diff --git a/src/main/java/com/app/calculator/commands/EditNumberCommand.java b/src/main/java/com/app/calculator/commands/EditNumberCommand.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/app/calculator/commands/EditNumberCommand.java	
+@@ -0,0 +1,57 @@
++package com.app.calculator.commands;
++
++import com.app.calculator.abstractclasses.Command;
++import com.app.calculator.abstractclasses.Window;
++import com.app.calculator.constants.BigDecimalDigit;
++import javafx.event.ActionEvent;
++import javafx.scene.control.Button;
++import java.math.BigDecimal;
++import java.math.RoundingMode;
++
++public class EditNumberCommand extends Command {
++    public EditNumberCommand(Window window, ActionEvent event) {
++        super(window, event);
++    }
++
++    @Override
++    public boolean execute() {
++        save_PreviousNumber();
++        Button source = getSource(event);
++        String source_String = source.getText();
++        String input_String = getNumber_Previous();
++        String output_String = null;
++
++
++        switch (source_String) {
++            case "←":
++                break;
++
++            case "±":
++                break;
++
++            case ",":
++                if (input_String.equals("0")) {
++                    output_String = "0.";
++                    break;
++                }
++                if (input_String.indexOf('.') != -1) {
++                    output_String = input_String;
++                    break;
++                }
++                if (input_String.equals("")) {
++                    output_String = input_String;
++                    break;
++                }
++                output_String = input_String + ",";
++                break;
++            default:
++                System.out.println("switch Error!");
++                break;
++        }
++
++        setNumber_Current(output_String);
++        show_CurrentNumber();
++
++        return true;
++    }
++}
+Index: src/main/java/com/app/calculator/commands/SingleNumberCommand.java
+===================================================================
+diff --git a/src/main/java/com/app/calculator/commands/SingleNumberCommand.java b/src/main/java/com/app/calculator/commands/SingleNumberCommand.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/app/calculator/commands/SingleNumberCommand.java	
+@@ -0,0 +1,63 @@
++package com.app.calculator.commands;
++
++import com.app.calculator.abstractclasses.Command;
++import com.app.calculator.abstractclasses.Window;
++import com.app.calculator.constants.BigDecimalDigit;
++import javafx.event.ActionEvent;
++import javafx.scene.control.Button;
++import java.math.BigDecimal;
++import java.math.RoundingMode;
++
++public class SingleNumberCommand extends Command {
++    public SingleNumberCommand(Window window, ActionEvent event) {
++        super(window, event);
++    }
++
++    @Override
++    public boolean execute() {
++        save_PreviousNumber();
++        Button source = getSource(event);
++        String source_String = source.getText();
++        String input_String = getNumber_Previous();
++        BigDecimal input_BigDecimal = toBigDecimal(input_String);
++        BigDecimal output_BigDecimal = null;
++        int comparisonResult;
++
++        switch (source_String) {
++            case "1/X":
++                window.previousCommandWasSimple = true;
++                if (getNumber_Previous().equals("0")) {
++                    setNumber_Current("Деление на ноль невозможно");
++                    window.displayField.setText(getNumber_Current());
++                } else {
++                    output_BigDecimal = BigDecimalDigit.ONE.getNumber().divide(input_BigDecimal, 8, RoundingMode.UP);
++                }
++                break;
++
++            case "X²":
++                window.previousCommandWasSimple = true;
++                output_BigDecimal = BigDecimal.valueOf(Math.pow(input_BigDecimal.doubleValue(), 2));
++                break;
++
++            case "√":
++                window.previousCommandWasSimple = true;
++                comparisonResult = input_BigDecimal.compareTo(BigDecimalDigit.ZERO.getNumber());
++                if (comparisonResult == -1) {
++                    setNumber_Current("Введены неверные данные");
++                    window.displayField.setText(getNumber_Current());
++                } else {
++                    output_BigDecimal = BigDecimal.valueOf(Math.sqrt(input_BigDecimal.doubleValue()));
++                }
++                break;
++            default:
++                System.out.println("switch Error!");
++                break;
++        }
++
++        String output_String = toString(output_BigDecimal);
++        setNumber_Current(output_String);
++        show_CurrentNumber();
++
++        return true;
++    }
++}
+Index: src/main/java/com/app/calculator/constants/BigDecimalDigit.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.app.calculator.constants;\r\n\r\nimport java.math.BigDecimal;\r\n\r\npublic enum BigDecimalDigit {\r\n    ZERO(0), ONE(1),TWO(2),THREE(3),FOUR(4),FIVE(5);\r\n    private final BigDecimal number;\r\n\r\n    BigDecimalDigit (int number) {\r\n        this.number = new BigDecimal(number);\r\n    }\r\n    BigDecimalDigit (String number) {\r\n        this.number = new BigDecimal(number);\r\n    }\r\n    public BigDecimal getNumber() {\r\n        return number;\r\n    }\r\n}\r\n\r\n
+===================================================================
+diff --git a/src/main/java/com/app/calculator/constants/BigDecimalDigit.java b/src/main/java/com/app/calculator/constants/BigDecimalDigit.java
+--- a/src/main/java/com/app/calculator/constants/BigDecimalDigit.java	
++++ b/src/main/java/com/app/calculator/constants/BigDecimalDigit.java	
+@@ -3,13 +3,10 @@
+ import java.math.BigDecimal;
+ 
+ public enum BigDecimalDigit {
+-    ZERO(0), ONE(1),TWO(2),THREE(3),FOUR(4),FIVE(5);
++    ZERO("0"), ONE("1"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5");
+     private final BigDecimal number;
+-
+-    BigDecimalDigit (int number) {
+-        this.number = new BigDecimal(number);
+-    }
+     BigDecimalDigit (String number) {
++
+         this.number = new BigDecimal(number);
+     }
+     public BigDecimal getNumber() {
