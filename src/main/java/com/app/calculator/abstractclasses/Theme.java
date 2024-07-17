@@ -25,7 +25,7 @@ public abstract class Theme {
         Background background = new Background(backgroundFill);
 
         window.root.setBackground(background);
-        window.menuBar.setStyle(theme.getStyle());
+        window.menuBar.setBackground(background);
 
     };
 }
