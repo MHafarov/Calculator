@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Theme - Background - RoundingLabel changed to dark gray color">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="MenuBar changed cololr of Menu Calculator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +80,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2321839&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -176,14 +179,9 @@
       <workItem from="1717318777103" duration="173000" />
       <workItem from="1720934331786" duration="2972000" />
       <workItem from="1720952063443" duration="2132000" />
-      <workItem from="1721196487663" duration="2424000" />
-    </task>
-    <task id="LOCAL-00001" summary="Firsts steps.">
-      <created>1683807725396</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683807725396</updated>
+      <workItem from="1721196487663" duration="2631000" />
+      <workItem from="1721448792485" duration="2621000" />
+      <workItem from="1721451731784" duration="11511000" />
     </task>
     <task id="LOCAL-00002" summary="Add packages">
       <created>1683915987153</created>
@@ -521,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1721197660232</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Theme - Background - MenuBar changed to dark gray color">
+      <created>1721199142406</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1721199142406</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,9 +556,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Started PercentCommand with multiply" />
-    <MESSAGE value="Added PercentCommand" />
-    <MESSAGE value="Test" />
     <MESSAGE value="Test2" />
     <MESSAGE value="Added MemoryCommand" />
     <MESSAGE value="Done all operations of MemoryCommand" />
@@ -576,7 +578,10 @@
     <MESSAGE value="Added padding for buttons" />
     <MESSAGE value="Changed text-color for Dark Theme." />
     <MESSAGE value="Theme - Background - RoundingLabel changed to dark gray color" />
-    <option name="LAST_COMMIT_MESSAGE" value="Theme - Background - RoundingLabel changed to dark gray color" />
+    <MESSAGE value="Theme - Background - MenuBar changed to dark gray color" />
+    <MESSAGE value="Theme - TextColor - RadioLabela changed to theme color" />
+    <MESSAGE value="MenuBar changed cololr of Menu Calculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="MenuBar changed cololr of Menu Calculator" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

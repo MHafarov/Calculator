@@ -2,15 +2,11 @@ package com.app.calculator.commands;
 
 import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.constants.BigDecimalDigit;
 import com.app.calculator.theme.AnimatedTheme;
 import com.app.calculator.theme.ClassicTheme;
 import com.app.calculator.theme.DarkTheme;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioMenuItem;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
 
 public class ChooseThemeCommand extends Command {
     Window currentWindow;
