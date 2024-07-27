@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public abstract class Theme {
+    public Window window;
     protected String nameTheme;
     protected String textColor = "-fx-text-fill: rgb(12, 13, 13);";
     protected String backgroundColorStart = "-fx-background-color: rgb(158, 163, 163);";

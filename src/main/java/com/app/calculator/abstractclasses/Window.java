@@ -193,6 +193,7 @@ public abstract class Window implements Runnable {
     public ObservableList<String> oblist_UnitsOfMeasurement_In;
     public ObservableList<String> oblist_UnitsOfMeasurement_Out;
     public Theme theme;
+    public Text text;
     public Window (Stage stage) {
         this.stage = stage;
         this.stage.setX(stagePositionX);
@@ -257,22 +258,22 @@ public abstract class Window implements Runnable {
         stretchMenuBar(menuBar);
 
         menu_Type = new Menu("");
-        label_Calculator = new Label("Calculator");
+        label_Calculator = new Label(text.calculator);
         label_Calculator.setStyle("-fx-text-fill: blue;");
         menu_Type.setGraphic(label_Calculator);
 
         menu_Theme = new Menu("");
-        label_Theme = new Label("Theme");
+        label_Theme = new Label(text.theme);
         label_Theme.setStyle("-fx-text-fill: blue;");
         menu_Theme.setGraphic(label_Theme);
 
         menu_Language = new Menu("");
-        label_Language = new Label("Language");
+        label_Language = new Label(text.language);
         label_Language.setStyle("-fx-text-fill: blue;");
         menu_Language.setGraphic(label_Language);
 
         menu_Sound = new Menu("");
-        label_Sound = new Label("Sound");
+        label_Sound = new Label(text.sound);
         label_Sound.setStyle("-fx-text-fill: blue;");
         menu_Sound.setGraphic(label_Sound);
 
@@ -356,8 +357,29 @@ public abstract class Window implements Runnable {
         menu_Theme.getItems().addAll(rMI_ThemeClassic, rMI_ThemeDark, rMI_ThemeAnimated);
 
         rMI_LanguageEnglish = new RadioMenuItem("English");
+        rMI_LanguageEnglish.setSelected(true);
+        System.out.println("English");
+        rMI_LanguageEnglish.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseLanguageCommand(Window.this, event));
+            }
+        });
         rMI_LanguageUkranian = new RadioMenuItem("Українська");
+        rMI_LanguageUkranian.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseLanguageCommand(Window.this, event));
+            }
+        });
         rMI_LanguageRussian = new RadioMenuItem("Русский");
+        rMI_LanguageRussian.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                executeCommand(new ChooseLanguageCommand(Window.this, event));
+            }
+        });
+
         groupLanguage = new ToggleGroup();
         rMI_LanguageEnglish.setToggleGroup(groupLanguage);
         rMI_LanguageUkranian.setToggleGroup(groupLanguage);

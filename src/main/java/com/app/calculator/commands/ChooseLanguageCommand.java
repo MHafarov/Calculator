@@ -2,35 +2,36 @@ package com.app.calculator.commands;
 
 import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
-import com.app.calculator.theme.AnimatedTheme;
-import com.app.calculator.theme.ClassicTheme;
-import com.app.calculator.theme.DarkTheme;
+import com.app.calculator.text.TextEnglish;
+import com.app.calculator.text.TextRussian;
+import com.app.calculator.text.TextUkrainian;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioMenuItem;
 
-public class ChooseThemeCommand extends Command {
+public class ChooseLanguageCommand extends Command {
     Window currentWindow;
     RadioMenuItem selectedMenuItem = (RadioMenuItem) event.getSource();
     String rMI_name = selectedMenuItem.getText();
-    public ChooseThemeCommand(Window window, ActionEvent event) {
+    public ChooseLanguageCommand(Window window, ActionEvent event) {
         super(window, event);
         currentWindow = window;
     }
     @Override
     public boolean execute() {
         switch (rMI_name) {
-            case "Classic":
-                window.theme = new ClassicTheme(currentWindow);
+            case "English":
+                window.text = new TextEnglish(currentWindow);
                 break;
-            case "Dark":
-                window.theme = new DarkTheme(currentWindow);
+            case "Українська":
+                window.text = new TextUkrainian(currentWindow);
                 break;
-            case "Animated":
-                window.theme = new AnimatedTheme(currentWindow);
+            case "Русский":
+                window.text = new TextRussian(currentWindow);
                 break;
             default:
-                System.out.println("switch ChooseThemeCommand Error");
+                System.out.println("switch ChooseLanguageCommand Error");
         }
         return true;
     }
 }
+

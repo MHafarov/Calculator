@@ -5,7 +5,6 @@ import com.app.calculator.abstractclasses.Window;
 import javafx.scene.paint.Color;
 
 public class ClassicTheme extends Theme {
-    Window window;
     public ClassicTheme(Window window) {
         this.window = window;
         nameTheme = "ClassicTheme";
