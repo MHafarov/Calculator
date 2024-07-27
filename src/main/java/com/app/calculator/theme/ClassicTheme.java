@@ -9,10 +9,10 @@ public class ClassicTheme extends Theme {
     public ClassicTheme(Window window) {
         this.window = window;
         nameTheme = "ClassicTheme";
-        backgroundColor = "-fx-background-color: lightgray;";
+        backgroundColorStart = "-fx-background-color: lightgray;";
         textColor = "-fx-text-fill: black";
         color = Color.rgb(167, 171, 171);
-        textColor = "-fx-text-fill: white";
+        textColor = "-fx-text-fill: black";
 
         System.out.println(style);
         chooseTheme(this.window, this);

@@ -28,7 +28,6 @@ import javafx.scene.layout.Priority;
 
 import java.util.List;
 
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -67,6 +66,9 @@ public abstract class Window implements Runnable {
     public List<Control> list_ElementsNinthRow;
     public List<Control> list_ElementsTenthRow;
     public List<Button> list_Buttons;
+    List<Label> list_MenuLables = new ArrayList<>();
+    public List<Menu> list_Menu_Buttons = new ArrayList<>();;
+    List<Label> list_TypeScaleRounding = new ArrayList<>();
     public MenuBar menuBar;
     public Menu menu_Type;
     public Menu menu_Theme;
@@ -112,6 +114,10 @@ public abstract class Window implements Runnable {
     public Label label_Three;
     public Label label_Four;
     public Label label_F;
+    public Label label_Calculator;
+    public Label label_Theme;
+    public Label label_Language;
+    public Label label_Sound;
     public RadioButton rBtn_Up;
     public RadioButton rBtn_FiveDivFour;
     public RadioButton rBtn_Down;
@@ -250,10 +256,31 @@ public abstract class Window implements Runnable {
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
-        menu_Type = new Menu("Calculator");
-        menu_Theme = new Menu("Theme");
-        menu_Language = new Menu("Language");
-        menu_Sound = new Menu("Sound");
+        menu_Type = new Menu("");
+        label_Calculator = new Label("Calculator");
+        label_Calculator.setStyle("-fx-text-fill: blue;");
+        menu_Type.setGraphic(label_Calculator);
+
+        menu_Theme = new Menu("");
+        label_Theme = new Label("Theme");
+        label_Theme.setStyle("-fx-text-fill: blue;");
+        menu_Theme.setGraphic(label_Theme);
+
+        menu_Language = new Menu("");
+        label_Language = new Label("Language");
+        label_Language.setStyle("-fx-text-fill: blue;");
+        menu_Language.setGraphic(label_Language);
+
+        menu_Sound = new Menu("");
+        label_Sound = new Label("Sound");
+        label_Sound.setStyle("-fx-text-fill: blue;");
+        menu_Sound.setGraphic(label_Sound);
+
+        list_MenuLables.add(label_Calculator);
+        list_MenuLables.add(label_Theme);
+        list_MenuLables.add(label_Language);
+        list_MenuLables.add(label_Sound);
+
 
         menuBar.getMenus().addAll(menu_Type, menu_Theme, menu_Language, menu_Sound);
         subPanel_FirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
@@ -548,7 +575,8 @@ public abstract class Window implements Runnable {
         subPanel_ThirdRow.setHalignment(label_ScaleRounding, HPos.CENTER);
         subPanel_ThirdRow.setValignment(label_ScaleRounding, VPos.CENTER);
 
-
+        list_TypeScaleRounding.add(label_TypeRounding);
+        list_TypeScaleRounding.add(label_ScaleRounding);
 
         label_TypeRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
         label_ScaleRounding.setPrefWidth(Dimension.ARITHMETIC_WINDOW.getWidth() / 2);
