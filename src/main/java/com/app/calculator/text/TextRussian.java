@@ -37,12 +37,12 @@ public class TextRussian extends Text {
         this.area = "Площадь";
         this.selectCategory = "Виберите Категорию: ";
         initList();
-        chooseText(this.window, this);
-
-        System.out.println("this.calculator " + this.calculator);
-        for(String x: list_TextLabels) {
-            System.out.println("list_TextButtons i " + x);
-        }
-        System.out.println("list_TextButtons i " + list_TextLabels.size());
+//        chooseText(this.window, this);
+//
+//        System.out.println("this.calculator " + this.calculator);
+//        for(String x: list_TextLabels) {
+//            System.out.println("list_TextButtons i " + x);
+//        }
+//        System.out.println("list_TextButtons i " + list_TextLabels.size());
     }
 }

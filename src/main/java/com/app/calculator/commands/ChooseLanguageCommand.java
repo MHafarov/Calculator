@@ -43,23 +43,23 @@ public class ChooseLanguageCommand extends Command {
                 window.text.chooseText(currentWindow, newText);
                 break;
             case "Украинский":
-                window.text = new TextUkrainian(currentWindow);
+                newText = new TextUkrainian(currentWindow);
                 window.text.chooseText(currentWindow, newText);
                 break;
             case "Українська":
-                window.text = new TextUkrainian(currentWindow);
+                newText = new TextUkrainian(currentWindow);
                 window.text.chooseText(currentWindow, newText);
                 break;
             case "Russian":
-                window.text = new TextRussian(currentWindow);
+                newText = new TextRussian(currentWindow);
                 window.text.chooseText(currentWindow, newText);
                 break;
             case "Русский":
-                window.text = new TextRussian(currentWindow);
+                newText = new TextRussian(currentWindow);
                 window.text.chooseText(currentWindow, newText);
                 break;
             case "Російська":
-                window.text = new TextRussian(currentWindow);
+                newText = new TextRussian(currentWindow);
                 window.text.chooseText(currentWindow, newText);
                 break;
             default:

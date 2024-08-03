@@ -19,29 +19,56 @@ public class ChooseMenuItemCommand extends Command {
     public boolean execute() {
         switch (cMI_name) {
             case "Arithmetic":
-                window.cMI_ArithmeticWindow.setSelected(true);
-                window.cMI_TrigonometricWindow.setSelected(false);
-                window.cMI_ConvertionWindow.setSelected(false);
-                WindowCollection.turnOnWindow("Arithmetic", currentWindow.stage.getX(),currentWindow.stage.getY());
-                System.out.println("A");
+                showArithmeticWindow();
+                break;
+            case "Арифметичний":
+                showArithmeticWindow();
+                break;
+            case "Арифметический":
+                showArithmeticWindow();
                 break;
             case "Trigonometric":
-                window.cMI_ArithmeticWindow.setSelected(false);
-                window.cMI_TrigonometricWindow.setSelected(true);
-                window.cMI_ConvertionWindow.setSelected(false);
-                WindowCollection.turnOnWindow("Trigonometric", currentWindow.stage.getX(),currentWindow.stage.getY());
-                System.out.println("T");
+                showTrigonometricWindow();
+                break;
+            case "Тригонометричний":
+                showTrigonometricWindow();
+                break;
+            case "Тригонометрический":
+                showTrigonometricWindow();
                 break;
             case "Convertion":
-                window.cMI_ArithmeticWindow.setSelected(false);
-                window.cMI_TrigonometricWindow.setSelected(false);
-                window.cMI_ConvertionWindow.setSelected(true);
-                WindowCollection.turnOnWindow("Convertion", currentWindow.stage.getX(),currentWindow.stage.getY());
-                System.out.println("C");
+                showConvertionWindow();
+                break;
+            case "Переведення одиниць":
+                showConvertionWindow();
+                break;
+            case "Перевод единиц":
+                showConvertionWindow();
                 break;
             default:
                 System.out.println("switch CheckMenuItemCommand Error");
         }
         return true;
+    }
+    private void showArithmeticWindow() {
+        window.cMI_ArithmeticWindow.setSelected(true);
+        window.cMI_TrigonometricWindow.setSelected(false);
+        window.cMI_ConvertionWindow.setSelected(false);
+        WindowCollection.turnOnWindow("Arithmetic", currentWindow.stage.getX(),currentWindow.stage.getY());
+        System.out.println("A");
+    }
+    private void showTrigonometricWindow() {
+        window.cMI_ArithmeticWindow.setSelected(false);
+        window.cMI_TrigonometricWindow.setSelected(true);
+        window.cMI_ConvertionWindow.setSelected(false);
+        WindowCollection.turnOnWindow("Trigonometric", currentWindow.stage.getX(),currentWindow.stage.getY());
+        System.out.println("T");
+    }
+    private void showConvertionWindow() {
+        window.cMI_ArithmeticWindow.setSelected(false);
+        window.cMI_TrigonometricWindow.setSelected(false);
+        window.cMI_ConvertionWindow.setSelected(true);
+        WindowCollection.turnOnWindow("Convertion", currentWindow.stage.getX(),currentWindow.stage.getY());
+        System.out.println("C");
     }
 }

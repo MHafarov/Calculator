@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added three languages to GUI:Englich, Ukrainian, Russian.">
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Updated. All menus names can switch three languages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/CheckMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MemoryWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MemoryWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,14 +201,7 @@
       <workItem from="1722601168371" duration="93000" />
       <workItem from="1722609208022" duration="721000" />
       <workItem from="1722610281915" duration="597000" />
-      <workItem from="1722655821634" duration="9126000" />
-    </task>
-    <task id="LOCAL-00004" summary="Now each GUI window is created on its own thread">
-      <created>1683978702097</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683978702097</updated>
+      <workItem from="1722655821634" duration="10379000" />
     </task>
     <task id="LOCAL-00005" summary="Set padding for ArithmeticWindow">
       <created>1684263782181</created>
@@ -553,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1722059542446</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added base localization">
+      <created>1722665131814</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1722665131814</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,8 +576,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done all operations of MemoryCommand" />
-    <MESSAGE value="Added empty classes of RoundingModeCommand and ScaleCommand" />
     <MESSAGE value="Done RoundingModeCommand and ScaleCommand" />
     <MESSAGE value="Refactoring ArithmeticWindow" />
     <MESSAGE value="Refactoring Window" />
@@ -608,7 +599,9 @@
     <MESSAGE value="MenuBar changed cololr of Menu Calculator" />
     <MESSAGE value="MenuBar changed color of text all Menu to color of current theme" />
     <MESSAGE value="Added animation for AnimatedTheme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added animation for AnimatedTheme" />
+    <MESSAGE value="Added base localization" />
+    <MESSAGE value="Updated. All menus names can switch three languages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated. All menus names can switch three languages" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1722070605725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

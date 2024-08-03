@@ -37,6 +37,6 @@ public class TextUkrainian extends Text {
         this.area = "Площа";
         this.selectCategory = "Виберіть Категорію: ";
         initList();
-        chooseText(this.window, this);
+//        chooseText(this.window, this);
     }
 }

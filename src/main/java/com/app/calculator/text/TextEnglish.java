@@ -36,7 +36,7 @@ public class TextEnglish extends Text {
         this.pressure = "pressure";
         this.area = "area";
         this.selectCategory = "Select Category: ";
-//        initList();
+        initList();
 //        chooseText(this.window, this);
     }
 
