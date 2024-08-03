@@ -4,16 +4,11 @@ import com.app.calculator.abstractclasses.Command;
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.windowsCollection.WindowCollection;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-public class CheckMenuItemCommand extends Command {
+public class ChooseMenuItemCommand extends Command {
     Window currentWindow;
-    public CheckMenuItemCommand(Window window, ActionEvent event) {
+    public ChooseMenuItemCommand(Window window, ActionEvent event) {
         super(window, event);
         currentWindow = window;
     }

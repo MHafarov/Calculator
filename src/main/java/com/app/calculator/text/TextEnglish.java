@@ -10,29 +10,34 @@ public class TextEnglish extends Text {
         this.theme = "Theme";
         this.language = "Language";
         this.sound = "Sound";
-        this.arithmetic = null;
-        this.trigonometric = null;
-        this.convertion = null;
-        this.memoryWindow = null;
-        this.exit = null;
-        this.classic = null;
-        this.dark = null;
-        this.animated = null;
-        this.english = null;
-        this.ukranian = null;
-        this.russian = null;
-        this.soundOff = null;
-        this.soundOn = null;
-        this.roundUP = null;
-        this.mathematicalRounding = null;
-        this.roundDown= null;
-        this.automaticComma= null;
-        this.noChargesAfterCommal= null;
-        this.twoChargesAfterCommal = null;
-        this.threeChargesAfterCommal = null;
-        this.fourChargesAfterCommal = null;
-        this.withoutRounding = null;
-
+        this.arithmetic = "Arithmetic";
+        this.trigonometric = "Trigonometric";
+        this.convertion = "Convertion";
+        this.memoryWindow = "Memory window";
+        this.exit = "Exit";
+        this.classic = "Classic";
+        this.dark = "Dark";
+        this.animated = "Animated";
+        this.english = "English";
+        this.ukranian = "Ukranian";
+        this.russian = "Russian";
+        this.soundOff = "Sound off";
+        this.soundOn = "Sound on";
+        this.roundUP = "Round up";
+        this.mathematicalRounding = "Mathematical rounding";
+        this.roundDown = "Round down";
+        this.automaticComma = "Automatic comma";
+        this.noChargesAfterCommal = "No charges after commal";
+        this.twoChargesAfterCommal = "Two charges after commal";
+        this.threeChargesAfterCommal = "Three charges after commal";
+        this.fourChargesAfterCommal = "Four charges after commal";
+        this.withoutRounding = "Without rounding";
+        this.volume = "volume";
+        this.pressure = "pressure";
+        this.area = "area";
+        this.selectCategory = "Select Category: ";
+//        initList();
+//        chooseText(this.window, this);
     }
 
 

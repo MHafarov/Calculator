@@ -92,7 +92,7 @@ public abstract class Theme {
         }
 
 
-    };
+    }
     public static <T extends Region> void applyBackgroundAnimation(T region, Color colorStart, Color colorEnd, Timeline timeline) {
         final ObjectProperty<Color> color = new SimpleObjectProperty<>(colorStart);
         color.addListener(new ChangeListener<Color>() {

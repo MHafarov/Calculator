@@ -22,7 +22,7 @@ public class TrigonometricWindow extends Window{
     public void run() {
         Platform.runLater(() -> {
 
-            this.stage.setTitle("Trigonometric");
+            this.stage.setTitle(text.trigonometric);
 
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());

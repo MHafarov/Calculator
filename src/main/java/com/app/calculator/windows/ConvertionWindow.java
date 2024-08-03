@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ConvertionWindow extends Window{
 
+
     public ConvertionWindow (Stage stage) {
         super(stage);
     }
@@ -22,13 +23,11 @@ public class ConvertionWindow extends Window{
     public void run() {
         Platform.runLater(() -> {
 
-            this.stage.setTitle("Convertion");
+            this.stage.setTitle(text.convertion);
 
-
-
-            Label list_SelectCategory = new Label("Select Category: ");
-            subPanel_SecondRow.getChildren().add(list_SelectCategory);
-            GridPane.setConstraints(list_SelectCategory, Column.FIRST.getNumber(), Row.FIRST.getNumber());
+            label_category = new Label(text.selectCategory);
+            subPanel_SecondRow.getChildren().add(label_category);
+            GridPane.setConstraints(label_category, Column.FIRST.getNumber(), Row.FIRST.getNumber());
             subPanel_SecondRow.getChildren().add(comboBox_Category);
             GridPane.setConstraints(comboBox_Category, Column.SECOND.getNumber(), Row.FIRST.getNumber());
 
@@ -44,9 +43,6 @@ public class ConvertionWindow extends Window{
 
 
             System.out.println("AAAAB " + comboBox_UnitOfMeasurement_Out.getSelectionModel().getSelectedItem());
-
-
-
 
             subPanel_SixthRow.getChildren().add(comboBox_UnitOfMeasurement_Out);
             GridPane.setConstraints(comboBox_UnitOfMeasurement_Out, Column.SECOND.getNumber(), Row.FIRST.getNumber());
@@ -117,8 +113,6 @@ public class ConvertionWindow extends Window{
 
             Scene scene = new Scene(root, Dimension.CONVERTION_WINDOW.getWidth(), Dimension.CONVERTION_WINDOW.getHeight());
             stage.setScene(scene);
-
-            //stage.show();
         });
     }
 }

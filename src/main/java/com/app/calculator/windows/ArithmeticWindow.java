@@ -19,7 +19,7 @@ public class ArithmeticWindow extends Window{
     public void run() {
         Platform.runLater(() -> {
 
-            stage.setTitle("Arithmetic");
+            stage.setTitle(text.arithmetic);
 
             subPanel_FirstRow.add(btn_Undo,Column.SECOND.getNumber(), Row.FIRST.getNumber());
             subPanel_FirstRow.add(btn_Redo,Column.THIRD.getNumber(),Row.FIRST.getNumber());

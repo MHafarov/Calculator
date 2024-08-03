@@ -8,6 +8,7 @@ import com.app.calculator.commands.*;
 import com.app.calculator.constants.*;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
+import com.app.calculator.text.TextEnglish;
 import com.app.calculator.theme.ClassicTheme;
 import com.app.calculator.windows.MemoryWindow;
 import javafx.beans.value.ChangeListener;
@@ -66,9 +67,16 @@ public abstract class Window implements Runnable {
     public List<Control> list_ElementsNinthRow;
     public List<Control> list_ElementsTenthRow;
     public List<Button> list_Buttons;
-    List<Label> list_MenuLables = new ArrayList<>();
-    public List<Menu> list_Menu_Buttons = new ArrayList<>();;
-    List<Label> list_TypeScaleRounding = new ArrayList<>();
+    public List<Label> list_LabelsWithText = new ArrayList<>();
+    public List<RadioMenuItem> list_RmiWithText = new ArrayList<>();
+    public List<CheckMenuItem> list_CmiWithText = new ArrayList<>();
+    public List<String> list_StringWithText = new ArrayList<>();
+    public List<MemoryWindow> list_MwWithText = new ArrayList<>();
+    public List<MenuItem> list_MiWithText = new ArrayList<>();
+
+    public List<Label> list_MenuLables = new ArrayList<>();
+
+    public List<Label> list_TypeScaleRounding = new ArrayList<>();
     public MenuBar menuBar;
     public Menu menu_Type;
     public Menu menu_Theme;
@@ -192,6 +200,7 @@ public abstract class Window implements Runnable {
     public ComboBox<String> comboBox_UnitOfMeasurement_Out;
     public ObservableList<String> oblist_UnitsOfMeasurement_In;
     public ObservableList<String> oblist_UnitsOfMeasurement_Out;
+    public Label label_category;
     public Theme theme;
     public Text text;
     public Window (Stage stage) {
@@ -257,6 +266,8 @@ public abstract class Window implements Runnable {
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
+        text = new TextEnglish(this);
+
         menu_Type = new Menu("");
         label_Calculator = new Label(text.calculator);
         label_Calculator.setStyle("-fx-text-fill: blue;");
@@ -286,34 +297,34 @@ public abstract class Window implements Runnable {
         menuBar.getMenus().addAll(menu_Type, menu_Theme, menu_Language, menu_Sound);
         subPanel_FirstRow.add(menuBar,Column.FIRST.getNumber(), Row.FIRST.getNumber());
 
-        cMI_ArithmeticWindow = new CheckMenuItem("Arithmetic");
+        cMI_ArithmeticWindow = new CheckMenuItem(text.arithmetic);
         addImageToCheckMenuItem(cMI_ArithmeticWindow, "/images/plusminus.png");
         cMI_ArithmeticWindow.setSelected(true);
 
-        cMI_TrigonometricWindow = new CheckMenuItem("Trigonometric");
+        cMI_TrigonometricWindow = new CheckMenuItem(text.trigonometric);
         addImageToCheckMenuItem(cMI_TrigonometricWindow, "/images/function.png");
 
-        cMI_ConvertionWindow = new CheckMenuItem("Convertion");
+        cMI_ConvertionWindow = new CheckMenuItem(text.convertion);
         addImageToCheckMenuItem(cMI_ConvertionWindow, "/images/scales.png");
 
         sMI_SeparatorExit = new SeparatorMenuItem();
-        menuItem_Exit = new MenuItem("Exit");
+        menuItem_Exit = new MenuItem(text.exit);
         addImageToMenuItem(menuItem_Exit, "/images/exit.png");
 
         cMI_ArithmeticWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {executeCommand(new CheckMenuItemCommand(Window.this, event));}
+            public void handle(ActionEvent event) {executeCommand(new ChooseMenuItemCommand(Window.this, event));}
         });
         cMI_TrigonometricWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new CheckMenuItemCommand(Window.this, event));
+                executeCommand(new ChooseMenuItemCommand(Window.this, event));
             }
         });
         cMI_ConvertionWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new CheckMenuItemCommand(Window.this, event));
+                executeCommand(new ChooseMenuItemCommand(Window.this, event));
             }
         });
         menuItem_Exit.setOnAction(new EventHandler<ActionEvent>() {
@@ -326,7 +337,7 @@ public abstract class Window implements Runnable {
         menu_Type.getItems().addAll(cMI_ArithmeticWindow, cMI_TrigonometricWindow,
                                     cMI_ConvertionWindow, sMI_SeparatorExit, menuItem_Exit);
 
-        rMI_ThemeClassic = new RadioMenuItem("Classic");
+        rMI_ThemeClassic = new RadioMenuItem(text.classic);
         rMI_ThemeClassic.setSelected(true);
         System.out.println("Classic");
         rMI_ThemeClassic.setOnAction(new EventHandler<ActionEvent>() {
@@ -335,14 +346,14 @@ public abstract class Window implements Runnable {
                 executeCommand(new ChooseThemeCommand(Window.this, event));
             }
         });
-        rMI_ThemeDark = new RadioMenuItem("Dark");
+        rMI_ThemeDark = new RadioMenuItem(text.dark);
         rMI_ThemeDark.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ChooseThemeCommand(Window.this, event));
             }
         });
-        rMI_ThemeAnimated = new RadioMenuItem("Animated");
+        rMI_ThemeAnimated = new RadioMenuItem(text.animated);
         rMI_ThemeAnimated.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -356,7 +367,7 @@ public abstract class Window implements Runnable {
         rMI_ThemeAnimated.setToggleGroup(group_Theme);
         menu_Theme.getItems().addAll(rMI_ThemeClassic, rMI_ThemeDark, rMI_ThemeAnimated);
 
-        rMI_LanguageEnglish = new RadioMenuItem("English");
+        rMI_LanguageEnglish = new RadioMenuItem(text.english);
         rMI_LanguageEnglish.setSelected(true);
         System.out.println("English");
         rMI_LanguageEnglish.setOnAction(new EventHandler<ActionEvent>() {
@@ -365,14 +376,14 @@ public abstract class Window implements Runnable {
                 executeCommand(new ChooseLanguageCommand(Window.this, event));
             }
         });
-        rMI_LanguageUkranian = new RadioMenuItem("Українська");
+        rMI_LanguageUkranian = new RadioMenuItem(text.ukranian);
         rMI_LanguageUkranian.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 executeCommand(new ChooseLanguageCommand(Window.this, event));
             }
         });
-        rMI_LanguageRussian = new RadioMenuItem("Русский");
+        rMI_LanguageRussian = new RadioMenuItem(text.russian);
         rMI_LanguageRussian.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -387,8 +398,8 @@ public abstract class Window implements Runnable {
         rMI_LanguageEnglish.setSelected(true);
         menu_Language.getItems().addAll(rMI_LanguageEnglish, rMI_LanguageUkranian, rMI_LanguageRussian);
 
-        rMI_SoundOff = new RadioMenuItem("Sound off");
-        rMI_SoundOn = new RadioMenuItem("Sound on");
+        rMI_SoundOff = new RadioMenuItem(text.soundOff);
+        rMI_SoundOn = new RadioMenuItem(text.soundOn);
         group_Sound = new ToggleGroup();
         rMI_SoundOff.setToggleGroup(group_Sound);
         rMI_SoundOn.setToggleGroup(group_Sound);
@@ -583,14 +594,14 @@ public abstract class Window implements Runnable {
         rBtn_F.setToggleGroup(toggleGroup_Right);
         rBtn_A.setSelected(true);
 
-        label_TypeRounding = new Label("Mathematical rounding");
+        label_TypeRounding = new Label(text.mathematicalRounding);
         label_TypeRounding.setAlignment(Pos.CENTER);
         GridPane.setHgrow(label_TypeRounding, Priority.ALWAYS);
         GridPane.setVgrow(label_TypeRounding, Priority.ALWAYS);
         subPanel_ThirdRow.setHalignment(label_TypeRounding, HPos.CENTER);
         subPanel_ThirdRow.setValignment(label_TypeRounding, VPos.CENTER);
 
-        label_ScaleRounding = new Label("No rounding");
+        label_ScaleRounding = new Label(text.withoutRounding);
         label_ScaleRounding.setAlignment(Pos.CENTER);
         GridPane.setHgrow(label_ScaleRounding, Priority.ALWAYS);
         GridPane.setVgrow(label_ScaleRounding, Priority.ALWAYS);
@@ -1025,7 +1036,7 @@ public abstract class Window implements Runnable {
         nextDigitShouldBeNew = false;
 
         mWindow_Stage = new Stage();
-        m_Window = new MemoryWindow(mWindow_Stage);
+        m_Window = new MemoryWindow(mWindow_Stage, text);
         mWindowThread = new Thread(m_Window);
         mWindowThread.start();
         mWindow_Stage.hide();
@@ -1039,9 +1050,9 @@ public abstract class Window implements Runnable {
         pressure = new Pressure();
         area = new Area();
 
-        categories.subCategory.put("Volume", volume);
-        categories.subCategory.put("Pressure", pressure);
-        categories.subCategory.put("Area", area);
+        categories.subCategory.put(text.volume, volume);
+        categories.subCategory.put(text.pressure, pressure);
+        categories.subCategory.put(text.area, area);
 
         categories.observableList_Category.add(volume.nameCategory);
         categories.observableList_Category.add(pressure.nameCategory);
@@ -1085,6 +1096,38 @@ public abstract class Window implements Runnable {
         });
 
         theme = new ClassicTheme(this);
+
+
+        list_LabelsWithText.add(label_Calculator);
+        list_LabelsWithText.add(label_Theme);
+        list_LabelsWithText.add(label_Language);
+        list_LabelsWithText.add(label_Sound);
+//        list_LabelsWithText.add(label_category);
+
+        //        list_LabelsWithText.add(label_TypeRounding);
+//        list_LabelsWithText.add(label_ScaleRounding);
+
+        list_CmiWithText.add(cMI_ArithmeticWindow);
+        list_CmiWithText.add(cMI_TrigonometricWindow);
+        list_CmiWithText.add(cMI_ConvertionWindow);
+
+        list_MwWithText.add(m_Window);
+
+        list_MiWithText.add(menuItem_Exit);
+
+        list_RmiWithText.add(rMI_ThemeClassic);
+        list_RmiWithText.add(rMI_ThemeDark);
+        list_RmiWithText.add(rMI_ThemeAnimated);
+        list_RmiWithText.add(rMI_LanguageEnglish);
+        list_RmiWithText.add(rMI_LanguageUkranian);
+        list_RmiWithText.add(rMI_LanguageRussian);
+        list_RmiWithText.add(rMI_SoundOff);
+        list_RmiWithText.add(rMI_SoundOn);
+
+        list_StringWithText.add(text.volume);
+        list_StringWithText.add(text.pressure);
+        list_StringWithText.add(text.area);
+
     }
 
     public void executeCommand(Command command) {
@@ -1111,11 +1154,9 @@ public abstract class Window implements Runnable {
     public void redo() {
         if (history.isEmpty()) return;
 
-        //System.out.println("Стек до отмены: " + history.history);
-
         Command command = history.next();
         btn_Undo.setDisable(false);
-        //System.out.println("Стек после отмены: " + history.history);
+
         if (command != null) {
             command.show_CurrentNumber();
         } else {

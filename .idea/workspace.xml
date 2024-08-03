@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added animation for AnimatedTheme">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" afterDir="false" />
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Added three languages to GUI:Englich, Ukrainian, Russian.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/AnimatedTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/AnimatedTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/CheckMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ArithmeticWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/ConvertionWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MemoryWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/MemoryWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/windows/TrigonometricWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="d97b33a85b3503f4cfb814cdb61bbf379ea69328" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,6 +65,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2Pe1HaV07lOqwyNADChI2etQUji" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -79,6 +82,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Aero/IdeaProjects/Pet_Calculator&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -194,6 +198,17 @@
       <workItem from="1721891490695" duration="562000" />
       <workItem from="1722053275732" duration="6213000" />
       <workItem from="1722063175448" duration="5778000" />
+      <workItem from="1722075301541" duration="1031000" />
+      <workItem from="1722139739275" duration="6786000" />
+      <workItem from="1722338793505" duration="488000" />
+      <workItem from="1722486791925" duration="2836000" />
+      <workItem from="1722491114249" duration="1103000" />
+      <workItem from="1722522787621" duration="1628000" />
+      <workItem from="1722575360409" duration="2475000" />
+      <workItem from="1722601168371" duration="93000" />
+      <workItem from="1722609208022" duration="721000" />
+      <workItem from="1722610281915" duration="597000" />
+      <workItem from="1722655821634" duration="9126000" />
     </task>
     <task id="LOCAL-00004" summary="Now each GUI window is created on its own thread">
       <created>1683978702097</created>
@@ -596,6 +611,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added animation for AnimatedTheme" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1690027705686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1722070605725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

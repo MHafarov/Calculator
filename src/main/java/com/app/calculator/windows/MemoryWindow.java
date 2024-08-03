@@ -1,5 +1,6 @@
 package com.app.calculator.windows;
 
+import com.app.calculator.abstractclasses.Text;
 import com.app.calculator.abstractclasses.Window;
 import com.app.calculator.constants.Column;
 import com.app.calculator.constants.Dimension;
@@ -20,13 +21,16 @@ import javafx.stage.StageStyle;
 public class MemoryWindow implements Runnable{
     public Stage stage;
     public TextField textField;
-    public MemoryWindow(Stage stage) {
+    public Text text;
+    public MemoryWindow(Stage stage, Text text) {
+
         this.stage = stage;
+        this.text = text;
     }
     @Override
     public void run() {
         Platform.runLater(() -> {
-            stage.setTitle("Memory Window");
+            stage.setTitle(text.memoryWindow);
             stage.setX(Position.MEMORY_WINDOW.getHorizontal());
             stage.setY(Position.MEMORY_WINDOW.getVertical());
 
