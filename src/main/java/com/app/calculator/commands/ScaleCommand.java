@@ -16,27 +16,27 @@ public class ScaleCommand extends Command {
     @Override
     public boolean execute() {
         if (window.rBtn_A.isSelected()) {
-            window.label_ScaleRounding.setText("Автоматическая запятая");
+            window.label_ScaleRounding.setText(window.text.automaticComma);
             Command.scale = 11;
         }
         if (window.rBtn_Zero.isSelected()) {
-            window.label_ScaleRounding.setText("0 знаков после запятой");
+            window.label_ScaleRounding.setText(window.text.noChargesAfterCommal);
             Command.scale = 0;
         }
         if (window.rBtn_Two.isSelected()) {
-            window.label_ScaleRounding.setText("2 знака после запятой");
+            window.label_ScaleRounding.setText(window.text.twoChargesAfterCommal);
             Command.scale = 2;
         }
         if (window.rBtn_Three.isSelected()) {
-            window.label_ScaleRounding.setText("3 знака после запятой");
+            window.label_ScaleRounding.setText(window.text.threeChargesAfterCommal);
             Command.scale = 3;
         }
         if (window.rBtn_Four.isSelected()) {
-            window.label_ScaleRounding.setText("4 знака после запятой");
+            window.label_ScaleRounding.setText(window.text.fourChargesAfterCommal);
             Command.scale = 4;
         }
         if (window.rBtn_F.isSelected()) {
-            window.label_ScaleRounding.setText("Без округления");
+            window.label_ScaleRounding.setText(window.text.withoutRounding);
             Command.scale = 11;
         }
         return true;

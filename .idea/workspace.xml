@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Updated. All menus names can switch three languages">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="RoundingMode done Internationalization">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectLanguageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectCalculatorTypeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectThemeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/RoundingModeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/RoundingModeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ScaleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ScaleCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,14 +203,7 @@
       <workItem from="1722866550913" duration="983000" />
       <workItem from="1722920898202" duration="3305000" />
       <workItem from="1722953927567" duration="2502000" />
-      <workItem from="1723089547808" duration="4547000" />
-    </task>
-    <task id="LOCAL-00006" summary="Set padding for ArithmeticWindow">
-      <created>1684263873249</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1684263873249</updated>
+      <workItem from="1723089547808" duration="5339000" />
     </task>
     <task id="LOCAL-00007" summary="Created Buttons of ArithmeticWindow">
       <created>1684351176251</created>
@@ -560,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1722666331829</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="RoundingMode done Internationalization">
+      <created>1723094407435</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1723094407435</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +578,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done RoundingModeCommand and ScaleCommand" />
     <MESSAGE value="Refactoring ArithmeticWindow" />
     <MESSAGE value="Refactoring Window" />
     <MESSAGE value="Done Menu Calculator" />
@@ -615,7 +602,8 @@
     <MESSAGE value="Added animation for AnimatedTheme" />
     <MESSAGE value="Added base localization" />
     <MESSAGE value="Updated. All menus names can switch three languages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated. All menus names can switch three languages" />
+    <MESSAGE value="RoundingMode done Internationalization" />
+    <option name="LAST_COMMIT_MESSAGE" value="RoundingMode done Internationalization" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$Calculator.ic" NAME="Calculator Coverage Results" MODIFIED="1722070605725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

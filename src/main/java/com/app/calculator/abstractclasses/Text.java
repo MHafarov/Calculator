@@ -1,6 +1,5 @@
 package com.app.calculator.abstractclasses;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Text {
@@ -68,7 +67,8 @@ public abstract class Text {
 
 
 
-        ChangeTextRoundingPanels(currentWindow, newText);
+        ChangeTextRoundingPanel(currentWindow, newText);
+        ChangeTextScalePanel(currentWindow, newText);
 
 
 
@@ -116,7 +116,7 @@ public abstract class Text {
 
     }
 
-    public void ChangeTextRoundingPanels(Window window, Text newText) {
+    public void ChangeTextRoundingPanel(Window window, Text newText) {
         if (window.rBtn_Up.isSelected()) {
             window.label_TypeRounding.setText(newText.roundUP);
             System.out.println("Меняем ВВЕРХ " + newText.roundUP);
@@ -129,6 +129,32 @@ public abstract class Text {
         if (window.rBtn_Down.isSelected()) {
             window.label_TypeRounding.setText(newText.roundDown);
             System.out.println("Меняем ВНИЗ " + newText.roundDown);
+        }
+    }
+    public void ChangeTextScalePanel(Window window, Text newText) {
+        if (window.rBtn_A.isSelected()) {
+            window.label_ScaleRounding.setText(newText.automaticComma);
+            Command.scale = 11;
+        }
+        if (window.rBtn_Zero.isSelected()) {
+            window.label_ScaleRounding.setText(newText.noChargesAfterCommal);
+            Command.scale = 0;
+        }
+        if (window.rBtn_Two.isSelected()) {
+            window.label_ScaleRounding.setText(newText.twoChargesAfterCommal);
+            Command.scale = 2;
+        }
+        if (window.rBtn_Three.isSelected()) {
+            window.label_ScaleRounding.setText(newText.threeChargesAfterCommal);
+            Command.scale = 3;
+        }
+        if (window.rBtn_Four.isSelected()) {
+            window.label_ScaleRounding.setText(newText.fourChargesAfterCommal);
+            Command.scale = 4;
+        }
+        if (window.rBtn_F.isSelected()) {
+            window.label_ScaleRounding.setText(newText.withoutRounding);
+            Command.scale = 11;
         }
     }
 }
