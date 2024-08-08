@@ -14,6 +14,7 @@ public class ClassicTheme extends Theme {
         textColor = "-fx-text-fill: black";
 
         System.out.println(style);
+        isThemeAnimated = false;
         chooseTheme(this.window, this);
     }
 }

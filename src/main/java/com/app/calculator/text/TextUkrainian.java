@@ -4,8 +4,8 @@ import com.app.calculator.abstractclasses.Text;
 import com.app.calculator.abstractclasses.Window;
 
 public class TextUkrainian extends Text {
-    public TextUkrainian(Window window){
-        this.window = window;
+    public TextUkrainian(){
+        //this.window = window;
         this.calculator = "Калькулятор";
         this.theme = "Тема";
         this.language = "Мова";
@@ -36,7 +36,7 @@ public class TextUkrainian extends Text {
         this.pressure = "Тиск";
         this.area = "Площа";
         this.selectCategory = "Виберіть Категорію: ";
-        initList();
+//        initList();
 //        chooseText(this.window, this);
     }
 }

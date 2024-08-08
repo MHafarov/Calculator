@@ -4,8 +4,8 @@ import com.app.calculator.abstractclasses.Text;
 import com.app.calculator.abstractclasses.Window;
 
 public class TextEnglish extends Text {
-    public TextEnglish(Window window){
-        this.window = window;
+    public TextEnglish(){
+        //this.window = window;
         this.calculator = "Calculator";
         this.theme = "Theme";
         this.language = "Language";
@@ -36,8 +36,6 @@ public class TextEnglish extends Text {
         this.pressure = "pressure";
         this.area = "area";
         this.selectCategory = "Select Category: ";
-        initList();
-//        chooseText(this.window, this);
     }
 
 

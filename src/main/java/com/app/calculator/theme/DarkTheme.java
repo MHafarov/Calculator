@@ -11,6 +11,7 @@ public class DarkTheme extends Theme {
         backgroundColorStart = "-fx-background-color: rgb(59, 61, 61);";
         textColor = "-fx-text-fill: rgb(138, 194, 194);";
         color = Color.rgb(71, 74, 74);
+        isThemeAnimated = false;
         chooseTheme(this.window, this);
    }
 }

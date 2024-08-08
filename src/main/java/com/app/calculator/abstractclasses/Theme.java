@@ -29,12 +29,23 @@ public abstract class Theme {
     public String getStyle() {
         return style = backgroundColorStart + textColor;
     }
-    public boolean isThemeAnimated = false;
+    public static Timeline timeline = new Timeline();
+    public static boolean isThemeAnimated = false;
 
     public void chooseTheme(Window window, Theme theme) {
+        System.out.println("isThemeAnimated 1 " + isThemeAnimated);
+
+        if (isThemeAnimated == false) {
+            System.out.println("isThemeAnimated 1-1 " + isThemeAnimated);
+            timeline.stop();
+            System.out.println("isThemeAnimated 1-2 " + isThemeAnimated);
+        }
 
         for (int i = 0; i < window.list_MenuLables.size(); i++) {
             window.list_MenuLables.get(i).setStyle(theme.textColor);
+        }
+        for (int i = 0; i < window.list_ElementsRoundingDown.size(); i++) {
+            window.list_ElementsRoundingDown.get(i).setStyle(theme.textColor);
         }
 
         for (int i = 0; i < window.list_ElementsRoundingTop.size(); i++) {
@@ -48,13 +59,14 @@ public abstract class Theme {
             window.list_Buttons.get(i).setStyle(theme.getStyle());
         }
 
+        System.out.println("isThemeAnimated 2 " + isThemeAnimated);
 
-        if (isThemeAnimated) {
 
-            Timeline timeline = new Timeline();
+        if (isThemeAnimated == true) {
+            System.out.println("isThemeAnimated 3 " + isThemeAnimated);
+
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.setAutoReverse(true);
-
 
             for (Button button : window.list_Buttons) {
                 applyBackgroundAnimation(button, colorStart, colorEnd, timeline);
@@ -79,12 +91,9 @@ public abstract class Theme {
             applyBackgroundAnimation(window.root, colorStart, colorEnd, timeline);
             applyBackgroundAnimation(window.menuBar, colorStart, colorEnd, timeline);
 
-
-            // Запускаем анимацию один раз для всех кнопок
             timeline.play();
 
-
-        } else {BackgroundFill backgroundFill = new BackgroundFill(color, CornerRadii.EMPTY, javafx.geometry.Insets.EMPTY);
+        } else {BackgroundFill backgroundFill = new BackgroundFill(theme.color, CornerRadii.EMPTY, javafx.geometry.Insets.EMPTY);
             Background background = new Background(backgroundFill);
             window.root.setBackground(background);
             window.menuBar.setBackground(background);

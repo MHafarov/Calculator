@@ -13,20 +13,24 @@ import java.math.RoundingMode;
 public class RoundingModeCommand extends Command {
     public RoundingModeCommand(Window window, ActionEvent event) {
         super(window, event);
+        this.window = window;
     }
 
     @Override
     public boolean execute() {
         if (window.rBtn_Up.isSelected()) {
-            window.label_TypeRounding.setText("Округление вверх");
+            window.label_TypeRounding.setText(window.text.roundUP);
+            System.out.println(window.text.roundUP);
             Command.roundMode = RoundingMode.CEILING;
         }
         if (window.rBtn_FiveDivFour.isSelected()) {
-            window.label_TypeRounding.setText("Математическое округление");
+            window.label_TypeRounding.setText(window.text.mathematicalRounding);
+            System.out.println(window.text.mathematicalRounding);
             Command.roundMode = RoundingMode.HALF_UP;
         }
         if (window.rBtn_Down.isSelected()) {
-            window.label_TypeRounding.setText("Округление вниз");
+            window.label_TypeRounding.setText(window.text.roundDown);
+            System.out.println(window.text.roundDown);
             Command.roundMode = RoundingMode.FLOOR;
         }
         return true;

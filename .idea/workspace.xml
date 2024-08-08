@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="8467d883-c917-47cb-b32c-5f695a9aa272" name="Changes" comment="Updated. All menus names can switch three languages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Theme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/abstractclasses/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/application/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseLanguageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectLanguageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseMenuItemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectCalculatorTypeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/ChooseThemeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/SelectThemeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/RoundingModeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/commands/RoundingModeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextEnglish.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextRussian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/text/TextUkrainian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/ClassicTheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/calculator/theme/DarkTheme.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,14 +209,13 @@
       <workItem from="1722601168371" duration="93000" />
       <workItem from="1722609208022" duration="721000" />
       <workItem from="1722610281915" duration="597000" />
-      <workItem from="1722655821634" duration="10379000" />
-    </task>
-    <task id="LOCAL-00005" summary="Set padding for ArithmeticWindow">
-      <created>1684263782181</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1684263782181</updated>
+      <workItem from="1722655821634" duration="11332000" />
+      <workItem from="1722667764956" duration="3416000" />
+      <workItem from="1722835545206" duration="568000" />
+      <workItem from="1722866550913" duration="983000" />
+      <workItem from="1722920898202" duration="3305000" />
+      <workItem from="1722953927567" duration="2502000" />
+      <workItem from="1723089547808" duration="4547000" />
     </task>
     <task id="LOCAL-00006" summary="Set padding for ArithmeticWindow">
       <created>1684263873249</created>
@@ -546,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1722665131814</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Updated. All menus names can switch three languages">
+      <created>1722666331827</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1722666331829</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

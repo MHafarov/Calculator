@@ -4,8 +4,8 @@ import com.app.calculator.abstractclasses.Text;
 import com.app.calculator.abstractclasses.Window;
 
 public class TextRussian extends Text {
-    public TextRussian(Window window){
-        this.window = window;
+    public TextRussian(){
+       // this.window = window;
         this.calculator = "Калькулятор";
         this.theme = "Тема";
         this.language = "Язык";
@@ -36,7 +36,7 @@ public class TextRussian extends Text {
         this.pressure = "Давление";
         this.area = "Площадь";
         this.selectCategory = "Виберите Категорию: ";
-        initList();
+//        initList();
 //        chooseText(this.window, this);
 //
 //        System.out.println("this.calculator " + this.calculator);

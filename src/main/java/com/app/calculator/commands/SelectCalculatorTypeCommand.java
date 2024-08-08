@@ -6,9 +6,9 @@ import com.app.calculator.windowsCollection.WindowCollection;
 import javafx.event.ActionEvent;
 import javafx.scene.control.CheckMenuItem;
 
-public class ChooseMenuItemCommand extends Command {
+public class SelectCalculatorTypeCommand extends Command {
     Window currentWindow;
-    public ChooseMenuItemCommand(Window window, ActionEvent event) {
+    public SelectCalculatorTypeCommand(Window window, ActionEvent event) {
         super(window, event);
         currentWindow = window;
     }

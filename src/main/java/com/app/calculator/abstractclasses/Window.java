@@ -266,7 +266,7 @@ public abstract class Window implements Runnable {
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
-        text = new TextEnglish(this);
+        text = new TextEnglish();
 
         menu_Type = new Menu("");
         label_Calculator = new Label(text.calculator);
@@ -313,18 +313,18 @@ public abstract class Window implements Runnable {
 
         cMI_ArithmeticWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {executeCommand(new ChooseMenuItemCommand(Window.this, event));}
+            public void handle(ActionEvent event) {executeCommand(new SelectCalculatorTypeCommand(Window.this, event));}
         });
         cMI_TrigonometricWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseMenuItemCommand(Window.this, event));
+                executeCommand(new SelectCalculatorTypeCommand(Window.this, event));
             }
         });
         cMI_ConvertionWindow.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseMenuItemCommand(Window.this, event));
+                executeCommand(new SelectCalculatorTypeCommand(Window.this, event));
             }
         });
         menuItem_Exit.setOnAction(new EventHandler<ActionEvent>() {
@@ -343,21 +343,21 @@ public abstract class Window implements Runnable {
         rMI_ThemeClassic.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseThemeCommand(Window.this, event));
+                executeCommand(new SelectThemeCommand(Window.this, event));
             }
         });
         rMI_ThemeDark = new RadioMenuItem(text.dark);
         rMI_ThemeDark.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseThemeCommand(Window.this, event));
+                executeCommand(new SelectThemeCommand(Window.this, event));
             }
         });
         rMI_ThemeAnimated = new RadioMenuItem(text.animated);
         rMI_ThemeAnimated.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseThemeCommand(Window.this, event));
+                executeCommand(new SelectThemeCommand(Window.this, event));
             }
         });
 
@@ -370,24 +370,25 @@ public abstract class Window implements Runnable {
         rMI_LanguageEnglish = new RadioMenuItem(text.english);
         rMI_LanguageEnglish.setSelected(true);
         System.out.println("English");
+        System.out.println(this.text.getClass());
         rMI_LanguageEnglish.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseLanguageCommand(Window.this, event));
+                executeCommand(new SelectLanguageCommand(Window.this, event));
             }
         });
         rMI_LanguageUkranian = new RadioMenuItem(text.ukranian);
         rMI_LanguageUkranian.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseLanguageCommand(Window.this, event));
+                executeCommand(new SelectLanguageCommand(Window.this, event));
             }
         });
         rMI_LanguageRussian = new RadioMenuItem(text.russian);
         rMI_LanguageRussian.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                executeCommand(new ChooseLanguageCommand(Window.this, event));
+                executeCommand(new SelectLanguageCommand(Window.this, event));
             }
         });
 
@@ -469,8 +470,7 @@ public abstract class Window implements Runnable {
         rBtn_Up = new RadioButton();
         rBtn_Up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                executeCommand(new RoundingModeCommand(Window.this, event));
+            public void handle(ActionEvent event) {executeCommand(new RoundingModeCommand(Window.this, event));
             }
         });
 
@@ -1098,35 +1098,35 @@ public abstract class Window implements Runnable {
         theme = new ClassicTheme(this);
 
 
-        list_LabelsWithText.add(label_Calculator);
-        list_LabelsWithText.add(label_Theme);
-        list_LabelsWithText.add(label_Language);
-        list_LabelsWithText.add(label_Sound);
-//        list_LabelsWithText.add(label_category);
-
-        //        list_LabelsWithText.add(label_TypeRounding);
-//        list_LabelsWithText.add(label_ScaleRounding);
-
-        list_CmiWithText.add(cMI_ArithmeticWindow);
-        list_CmiWithText.add(cMI_TrigonometricWindow);
-        list_CmiWithText.add(cMI_ConvertionWindow);
-
-        list_MwWithText.add(m_Window);
-
-        list_MiWithText.add(menuItem_Exit);
-
-        list_RmiWithText.add(rMI_ThemeClassic);
-        list_RmiWithText.add(rMI_ThemeDark);
-        list_RmiWithText.add(rMI_ThemeAnimated);
-        list_RmiWithText.add(rMI_LanguageEnglish);
-        list_RmiWithText.add(rMI_LanguageUkranian);
-        list_RmiWithText.add(rMI_LanguageRussian);
-        list_RmiWithText.add(rMI_SoundOff);
-        list_RmiWithText.add(rMI_SoundOn);
-
-        list_StringWithText.add(text.volume);
-        list_StringWithText.add(text.pressure);
-        list_StringWithText.add(text.area);
+//        list_LabelsWithText.add(label_Calculator);
+//        list_LabelsWithText.add(label_Theme);
+//        list_LabelsWithText.add(label_Language);
+//        list_LabelsWithText.add(label_Sound);
+////        list_LabelsWithText.add(label_category);
+//
+//        //        list_LabelsWithText.add(label_TypeRounding);
+////        list_LabelsWithText.add(label_ScaleRounding);
+//
+//        list_CmiWithText.add(cMI_ArithmeticWindow);
+//        list_CmiWithText.add(cMI_TrigonometricWindow);
+//        list_CmiWithText.add(cMI_ConvertionWindow);
+//
+//        list_MwWithText.add(m_Window);
+//
+//        list_MiWithText.add(menuItem_Exit);
+//
+//        list_RmiWithText.add(rMI_ThemeClassic);
+//        list_RmiWithText.add(rMI_ThemeDark);
+//        list_RmiWithText.add(rMI_ThemeAnimated);
+//        list_RmiWithText.add(rMI_LanguageEnglish);
+//        list_RmiWithText.add(rMI_LanguageUkranian);
+//        list_RmiWithText.add(rMI_LanguageRussian);
+//        list_RmiWithText.add(rMI_SoundOff);
+//        list_RmiWithText.add(rMI_SoundOn);
+//
+//        list_StringWithText.add(text.volume);
+//        list_StringWithText.add(text.pressure);
+//        list_StringWithText.add(text.area);
 
     }
 

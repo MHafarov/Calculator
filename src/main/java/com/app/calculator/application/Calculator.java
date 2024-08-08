@@ -20,6 +20,7 @@ public class Calculator extends Application {
         Window trigonometricWindow = new TrigonometricWindow(new Stage());
         Window convertionWindow = new ConvertionWindow(new Stage());
 
+
         windowCollection.add("Arithmetic", arithmeticWindow);
         windowCollection.add("Trigonometric", trigonometricWindow);
         windowCollection.add("Convertion", convertionWindow);
