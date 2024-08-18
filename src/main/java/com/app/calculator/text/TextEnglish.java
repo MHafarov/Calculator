@@ -32,9 +32,9 @@ public class TextEnglish extends Text {
         this.threeChargesAfterCommal = "Three charges after commal";
         this.fourChargesAfterCommal = "Four charges after commal";
         this.withoutRounding = "Without rounding";
-        this.volume = "volume";
-        this.pressure = "pressure";
-        this.area = "area";
+        this.volume = "Volume";
+        this.pressure = "Pressure";
+        this.area = "Area";
         this.selectCategory = "Select Category: ";
     }
 

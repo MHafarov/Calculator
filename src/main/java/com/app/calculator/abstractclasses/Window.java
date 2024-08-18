@@ -9,6 +9,8 @@ import com.app.calculator.constants.*;
 import com.app.calculator.history.Cash;
 import com.app.calculator.history.History;
 import com.app.calculator.text.TextEnglish;
+import com.app.calculator.text.TextRussian;
+import com.app.calculator.text.TextUkrainian;
 import com.app.calculator.theme.ClassicTheme;
 import com.app.calculator.windows.MemoryWindow;
 import javafx.beans.value.ChangeListener;
@@ -44,6 +46,7 @@ public abstract class Window implements Runnable {
     public Row[] rows;
     public static int stagePositionX = Position.ARITHMETIC_WINDOW.getHorizontal();
     public static int stagePositionY = Position.ARITHMETIC_WINDOW.getVertical();
+    public static String currentLanguage;
     public List<GridPane> list_GridPanes;
     public GridPane subPanel_FirstRow;
     public GridPane subPanel_SecondRow;
@@ -266,7 +269,7 @@ public abstract class Window implements Runnable {
         menuBar = new MenuBar();
         stretchMenuBar(menuBar);
 
-        text = new TextEnglish();
+        text = setCurrentLanguage();
 
         menu_Type = new Menu("");
         label_Calculator = new Label(text.calculator);
@@ -1050,9 +1053,13 @@ public abstract class Window implements Runnable {
         pressure = new Pressure();
         area = new Area();
 
-        categories.subCategory.put(text.volume, volume);
-        categories.subCategory.put(text.pressure, pressure);
-        categories.subCategory.put(text.area, area);
+        volume.nameCategory = text.volume;
+        pressure.nameCategory = text.pressure;
+        area.nameCategory = text.area;
+
+        categories.subCategory.put(volume.nameCategory, volume);
+        categories.subCategory.put(pressure.nameCategory, pressure);
+        categories.subCategory.put(area.nameCategory, area);
 
         categories.observableList_Category.add(volume.nameCategory);
         categories.observableList_Category.add(pressure.nameCategory);
@@ -1249,4 +1256,46 @@ public abstract class Window implements Runnable {
         btn_MC.setDisable(false);
         btn_MR.setDisable(false);
     }
+
+    public Text setCurrentLanguage() {
+        Text text = this.text;
+        if (currentLanguage == null) {
+            text = new TextEnglish();
+        }
+        else {
+            switch (currentLanguage) {
+                case "English":
+                    text = new TextEnglish();
+                    break;
+                case "Английский":
+                    text = new TextEnglish();
+                    break;
+                case "Англійська":
+                    text = new TextEnglish();
+                    break;
+                case "Ukranian":
+                    text = new TextUkrainian();
+                    break;
+                case "Украинский":
+                    text = new TextUkrainian();
+                    break;
+                case "Українська":
+                    text = new TextUkrainian();
+                    break;
+                case "Russian":
+                    text = new TextRussian();
+                    break;
+                case "Русский":
+                    text = new TextRussian();
+                    break;
+                case "Російська":
+                    text = new TextRussian();
+                    break;
+                default:
+                    System.out.println("switch ChooseCurrentLanguage Error");
+            }
+        }
+        return text;
+    }
+
 }

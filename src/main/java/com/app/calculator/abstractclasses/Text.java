@@ -1,5 +1,12 @@
 package com.app.calculator.abstractclasses;
 
+import com.app.calculator.constants.Element;
+import com.app.calculator.windows.ArithmeticWindow;
+import com.app.calculator.windows.ConvertionWindow;
+import com.app.calculator.windows.MemoryWindow;
+import com.app.calculator.windows.TrigonometricWindow;
+import javafx.collections.ObservableList;
+
 import java.util.List;
 
 public abstract class Text {
@@ -48,7 +55,11 @@ public abstract class Text {
         currentWindow.label_Theme.setText(newText.theme);
         currentWindow.label_Language.setText(newText.language);
         currentWindow.label_Sound.setText(newText.sound);
-        //currentWindow.label_category.setText(newText.selectCategory);
+
+        if (currentWindow.label_category == null) {
+        } else {
+            currentWindow.label_category.setText(newText.selectCategory);
+        }
 
         currentWindow.cMI_ArithmeticWindow.setText(newText.arithmetic);
         currentWindow.cMI_TrigonometricWindow.setText(newText.trigonometric);
@@ -67,8 +78,25 @@ public abstract class Text {
 
 
 
+
+
         ChangeTextRoundingPanel(currentWindow, newText);
         ChangeTextScalePanel(currentWindow, newText);
+        changeTitleWindow(currentWindow, newText);
+        changeNameCatrgory(currentWindow, newText);
+
+        if (currentWindow.volume.name == null) {
+        } else {
+            currentWindow.volume.name = newText.volume;
+        }
+        if (currentWindow.pressure.name == null) {
+        } else {
+            currentWindow.pressure.name = newText.pressure;
+        }
+        if (currentWindow.area.name == null) {
+        } else {
+            currentWindow.area.name = newText.area;
+        }
 
 
 
@@ -156,5 +184,48 @@ public abstract class Text {
             window.label_ScaleRounding.setText(newText.withoutRounding);
             Command.scale = 11;
         }
+    }
+    public void changeTitleWindow(Window window, Text newText) {
+        if (window instanceof ArithmeticWindow) {
+            window.stage.setTitle(newText.arithmetic);
+            System.out.println("newText.arithmetic " + newText.arithmetic);
+        }
+        if (window instanceof TrigonometricWindow) {
+            window.stage.setTitle(newText.trigonometric);
+            System.out.println("newText.trigonometric " + newText.trigonometric);
+        }
+        if (window instanceof ConvertionWindow) {
+            window.stage.setTitle(newText.convertion);
+            System.out.println("newText.trigonometric " + newText.trigonometric);
+        }
+    }
+    public void changeNameCatrgory(Window window, Text newText) {
+        window.categories.subCategory.clear();
+        window.categories.observableList_Category.clear();
+
+        if (window.volume.nameCategory == null) {
+        } else {
+            window.volume.nameCategory = newText.volume;
+            window.categories.subCategory.put(window.volume.nameCategory, window.volume);
+            window.categories.observableList_Category.add(window.volume.nameCategory);
+            System.out.println("window.volume.nameCategory " + window.volume.nameCategory);
+        }
+        if (window.pressure.nameCategory == null) {
+        } else {
+            window.pressure.nameCategory = newText.pressure;
+            window.categories.subCategory.put(window.pressure.nameCategory, window.pressure);
+            window.categories.observableList_Category.add(window.pressure.nameCategory);
+            System.out.println("window.pressure.nameCategory " + window.pressure.nameCategory);
+        }
+        if (window.area.nameCategory == null) {
+        } else {
+            window.area.nameCategory = newText.area;
+            window.categories.subCategory.put(window.area.nameCategory, window.area);
+            window.categories.observableList_Category.add(window.area.nameCategory);
+            System.out.println("window.area.nameCategory " + window.area.nameCategory);
+        }
+        ObservableList<String> observablelist_Category = window.categories.getObservableList_Category();
+        window.comboBox_Category.setItems(observablelist_Category);
+        window.comboBox_Category.getSelectionModel().select(Element.FIRST.getNumber());
     }
 }

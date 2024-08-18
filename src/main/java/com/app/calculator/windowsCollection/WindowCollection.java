@@ -12,6 +12,9 @@ public class WindowCollection {
     public static void add(String windowName, Window window) {
         hashMap_windows.put(windowName, window);
     }
+    public static Window getWindow(String windowName) {
+        return hashMap_windows.get(windowName);
+    }
 
     public static HashMap<String, Window> getHashMap_windows() {
         return hashMap_windows;

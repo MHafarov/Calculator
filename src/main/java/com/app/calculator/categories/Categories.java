@@ -14,6 +14,7 @@ public class Categories {
     public String nameCategory;
     public HashMap<String, Categories> subCategory = new HashMap<>();
     public HashMap<String, BigDecimal> coeficient = new HashMap<>();
+    public String name;
     public Categories() {
 
     }
